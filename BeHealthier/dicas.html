@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BeHealthier — Dicas</title>
+<link rel="icon" type="image/svg+xml" href="Imagens/esquilo-logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+<script src="js/receitas-data.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body data-page="dicas">
+<div id="app">
+  <aside id="sb">
+    <div class="logo"><img src="Imagens/esquilo-logo.svg" alt="BeHealthier"></div>
+    <a href="index.html"><span>🏠</span>Início</a>
+    <a href="receitas.html"><span>🍽️</span>Receitas</a>
+    <a href="cardapio.html"><span>📅</span>Cardápio</a>
+    <a href="equilibrio.html"><span>⚖️</span>Equilíbrio</a>
+    <a href="dicas.html" class="active"><span>💡</span>Dicas</a>
+    <a href="entrega.html"><span>🛵</span>Entrega <span class="badge cart-count" hidden></span></a>
+    <a href="videos.html"><span>▶️</span>Vídeos</a>
+    <a href="sobre.html"><span>🐿️</span>Sobre nós</a>
+    <div class="user-box"><b class="user-name"></b><span class="user-detail"></span><button data-a="logout" class="user-button"></button></div>
+  </aside>
+  <div>
+    <header id="tb">
+      <div class="logo"><img src="Imagens/esquilo-logo.svg" alt="BeHealthier"></div>
+      <span class="city-button city-now" data-a="citym"></span>
+      <button class="cart-button" data-a="cart">🛍️ <span class="cart-count">0</span></button>
+    </header>
+    <main id="v">
+      <div class="page-title"><div><h2>Dicas</h2><p>Escolha seu objetivo para ver as dicas certas.</p></div></div>
+      <div class="chip-list"><button class="chip" data-a="goal" data-k="perder">Perder peso</button><button class="chip" data-a="goal" data-k="manter">Manter o peso</button><button class="chip" data-a="goal" data-k="ganhar">Ganhar peso</button><button class="chip" data-a="goal" data-k="musculo">Ganhar músculo</button></div>
+      <div class="recipe-grid goal" data-g="perder" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+        <div class="tip-card"><span>🥗</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Déficit moderado</h3><p class="muted-text">Reduza cerca de 300–500 kcal/dia. Cortes radicais causam efeito sanfona.</p></div></div>
+        <div class="tip-card"><span>💧</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Água antes das refeições</h3><p class="muted-text">Ajuda na saciedade e evita confundir sede com fome.</p></div></div>
+        <div class="tip-card"><span>🥦</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Metade do prato de vegetais</h3><p class="muted-text">Fibras saciam com poucas calorias.</p></div></div>
+        <div class="tip-card"><span>🍗</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Proteína em toda refeição</h3><p class="muted-text">Preserva a massa magra e segura a fome por mais tempo.</p></div></div>
+        <div class="tip-card"><span>🐢</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Coma devagar</h3><p class="muted-text">O cérebro leva ~20 minutos para registrar a saciedade.</p></div></div>
+        <div class="tip-card"><span>🛒</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Não vá ao mercado com fome</h3><p class="muted-text">Evita levar ultraprocessados para casa.</p></div></div>
+        <div class="tip-card"><span>🚶</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Caminhe todo dia</h3><p class="muted-text">30 minutos já fazem diferença, sem exageros.</p></div></div>
+      </div>
+      <div class="recipe-grid goal" data-g="manter" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+        <div class="tip-card"><span>⚖️</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Equilíbrio no prato</h3><p class="muted-text">Metade vegetais, um quarto proteína, um quarto carboidrato integral.</p></div></div>
+        <div class="tip-card"><span>🕒</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Mantenha horários</h3><p class="muted-text">Refeições regulares evitam beliscos e exageros.</p></div></div>
+        <div class="tip-card"><span>🍎</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Varie as cores</h3><p class="muted-text">Frutas e legumes diferentes trazem vitaminas diferentes.</p></div></div>
+        <div class="tip-card"><span>📏</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Acompanhe sem obsessão</h3><p class="muted-text">Pese-se ou meça-se 1x por semana, olhando a tendência.</p></div></div>
+        <div class="tip-card"><span>🍽️</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Regra 80/20</h3><p class="muted-text">Coma bem 80% do tempo e aproveite o restante sem culpa.</p></div></div>
+        <div class="tip-card"><span>🧂</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Atenção ao sal e açúcar</h3><p class="muted-text">Prefira temperos naturais e leia os rótulos.</p></div></div>
+        <div class="tip-card"><span>🏃</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Movimente-se</h3><p class="muted-text">Atividade regular ajuda a manter o peso e o humor.</p></div></div>
+      </div>
+      <div class="recipe-grid goal" data-g="ganhar" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+        <div class="tip-card"><span>🍚</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Superávit saudável</h3><p class="muted-text">Adicione ~300 kcal/dia com comida de verdade, não ultraprocessados.</p></div></div>
+        <div class="tip-card"><span>🥜</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Gorduras boas</h3><p class="muted-text">Castanhas, abacate e azeite têm muitas calorias em pouco volume.</p></div></div>
+        <div class="tip-card"><span>🍽️</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">5 a 6 refeições</h3><p class="muted-text">Lanches entre as refeições ajudam a bater a meta.</p></div></div>
+        <div class="tip-card"><span>🥛</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Vitaminas cremosas</h3><p class="muted-text">Leite, banana e aveia batidos são ótimos e fáceis de tomar.</p></div></div>
+        <div class="tip-card"><span>🥔</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Carboidrato complexo</h3><p class="muted-text">Arroz, batata-doce e aveia dão energia de longa duração.</p></div></div>
+        <div class="tip-card"><span>⏰</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Não pule refeições</h3><p class="muted-text">Deixe lanches prontos para os dias corridos.</p></div></div>
+        <div class="tip-card"><span>💪</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Um pouco de treino</h3><p class="muted-text">Musculação leve faz o ganho ser mais saudável.</p></div></div>
+      </div>
+      <div class="recipe-grid goal" data-g="musculo" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+        <div class="tip-card"><span>🥩</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Proteína em todas as refeições</h3><p class="muted-text">Meta de cerca de 1,6 a 2 g por kg de peso.</p></div></div>
+        <div class="tip-card"><span>🏋️</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Treino de força</h3><p class="muted-text">Sem estímulo, a proteína não vira músculo.</p></div></div>
+        <div class="tip-card"><span>🍌</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Carboidrato pré-treino</h3><p class="muted-text">Energia para treinar pesado (banana, aveia, arroz).</p></div></div>
+        <div class="tip-card"><span>🥚</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Fontes variadas</h3><p class="muted-text">Ovos, frango, peixe, leguminosas e laticínios.</p></div></div>
+        <div class="tip-card"><span>😴</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Descanse 7–9h</h3><p class="muted-text">O músculo cresce no descanso, não no treino.</p></div></div>
+        <div class="tip-card"><span>📈</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Progressão de carga</h3><p class="muted-text">Aumente peso ou repetições aos poucos.</p></div></div>
+        <div class="tip-card"><span>💧</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Hidrate-se</h3><p class="muted-text">Desidratação derruba o desempenho no treino.</p></div></div>
+      </div>
+      <h3>Para todos os objetivos</h3>
+      <div class="recipe-grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))">
+        <div class="tip-card"><span>💧</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Beba água</h3><p class="muted-text">Cerca de 35 ml por kg de peso ao dia.</p></div></div>
+        <div class="tip-card"><span>🌈</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Prato colorido</h3><p class="muted-text">Quanto mais cores, mais nutrientes.</p></div></div>
+        <div class="tip-card"><span>🍳</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Café da manhã de verdade</h3><p class="muted-text">Ovos, frutas e grãos integrais começam bem o dia.</p></div></div>
+        <div class="tip-card"><span>🧑‍🍳</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Cozinhe em casa</h3><p class="muted-text">Você controla os ingredientes e economiza.</p></div></div>
+        <div class="tip-card"><span>📵</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Sem telas na refeição</h3><p class="muted-text">Comer com atenção reduz exageros.</p></div></div>
+        <div class="tip-card"><span>😴</span><div><h3 style="margin:0 0 6px;font-size:1.1rem">Durma bem</h3><p class="muted-text">Sono ruim aumenta a fome e a vontade de doce.</p></div></div>
+      </div>
+    </main>
+  </div>
+</div>
+<nav id="tabs">
+  <a href="index.html"><span>🏠</span>Início</a>
+  <a href="receitas.html"><span>🍽️</span>Receitas</a>
+  <a href="cardapio.html"><span>📅</span>Cardápio</a>
+  <a href="equilibrio.html"><span>⚖️</span>Equilíbrio</a>
+  <a href="#" data-a="more"><span>☰</span>Mais</a>
+</nav>
+<div class="overlay" id="ov"><div class="modal-box" id="mb"></div></div>
+<div class="toast" id="tt"></div>
+</body>
+</html>

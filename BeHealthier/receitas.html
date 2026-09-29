@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BeHealthier — Receitas</title>
+<link rel="icon" type="image/svg+xml" href="Imagens/esquilo-logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+<link rel="stylesheet" href="css/responsive.css">
+<script src="js/receitas-data.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body data-page="receitas">
+<div id="app">
+  <aside id="sb">
+    <div class="logo"><img src="Imagens/esquilo-logo.svg" alt="BeHealthier"></div>
+    <a href="index.html"><span>🏠</span>Início</a>
+    <a href="receitas.html" class="active"><span>🍽️</span>Receitas</a>
+    <a href="cardapio.html"><span>📅</span>Cardápio</a>
+    <a href="equilibrio.html"><span>⚖️</span>Equilíbrio</a>
+    <a href="dicas.html"><span>💡</span>Dicas</a>
+    <a href="entrega.html"><span>🛵</span>Entrega <span class="badge cart-count" hidden></span></a>
+    <a href="videos.html"><span>▶️</span>Vídeos</a>
+    <a href="sobre.html"><span>🐿️</span>Sobre nós</a>
+    <div class="user-box"><b class="user-name"></b><span class="user-detail"></span><button data-a="logout" class="user-button"></button></div>
+  </aside>
+  <div>
+    <header id="tb">
+      <div class="logo"><img src="Imagens/esquilo-logo.svg" alt="BeHealthier"></div>
+      <span class="city-button city-now" data-a="citym"></span>
+      <button class="cart-button" data-a="cart">🛍️ <span class="cart-count">0</span></button>
+    </header>
+    <main id="v">
+      <div class="page-title"><div><h2>Receitas</h2><p>Filtre por restrições, categoria e favoritas. Toque em uma receita para ver detalhes.</p></div></div>
+      <div class="toolbar">
+        <input id="q" placeholder="🔍 Buscar receita ou ingrediente">
+        <select id="cat"><option value="">Todas as categorias</option><option>Ovos e café da manhã</option><option>Frango</option><option>Carne bovina</option><option>Diversos</option><option>Bebidas e café da manhã</option><option>Veganas/vegetarianas</option><option>Pratos diversos</option><option>Doces, sobremesas e lanches</option><option>Tortas e quiches</option><option>Peixes e frutos do mar</option></select>
+      </div>
+      <div class="chip-list"><button class="chip" data-a="rf" data-k="lactose">Sem lactose</button><button class="chip" data-a="rf" data-k="gluten">Sem glúten</button><button class="chip" data-a="rf" data-k="ovo">Sem ovo</button><button class="chip" data-a="rf" data-k="vegetariano">Vegetariano</button><button class="chip" data-a="fvf">♥ Favoritas</button></div>
+      <div id="rl"></div>
+    </main>
+  </div>
+</div>
+<nav id="tabs">
+  <a href="index.html"><span>🏠</span>Início</a>
+  <a href="receitas.html" class="active"><span>🍽️</span>Receitas</a>
+  <a href="cardapio.html"><span>📅</span>Cardápio</a>
+  <a href="equilibrio.html"><span>⚖️</span>Equilíbrio</a>
+  <a href="#" data-a="more"><span>☰</span>Mais</a>
+</nav>
+<div class="overlay" id="ov"><div class="modal-box" id="mb"></div></div>
+<div class="toast" id="tt"></div>
+</body>
+</html>
