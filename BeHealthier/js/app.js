@@ -13,14 +13,14 @@ const DAYS = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
 const MEALS = ['Café da manhã', 'Almoço', 'Lanche', 'Jantar'];
 
 const PG = [
-    ['home', 'Início', '🏠'],
-    ['receitas', 'Receitas', '🍽️'],
-    ['cardapio', 'Cardápio', '📅'],
-    ['equilibrio', 'Equilíbrio', '⚖️'],
-    ['dicas', 'Dicas', '💡'],
-    ['entrega', 'Entrega', '🛵'],
-    ['videos', 'Vídeos', '▶️'],
-    ['sobre', 'Sobre nós', '🐿️'],
+    ['home', 'Início', 'casa'],
+    ['receitas', 'Receitas', 'receitas'],
+    ['cardapio', 'Cardápio', 'Calendar_Event'],
+    ['equilibrio', 'Equilíbrio', 'equilibrio'],
+    ['dicas', 'Dicas', 'lampada'],
+    ['entrega', 'Entrega', 'entrega'],
+    ['videos', 'Vídeos', 'Play'],
+    ['sobre', 'Sobre nós', 'sobre'],
 ];
 
 // IDs dos vídeos do YouTube (os 11 caracteres depois de v=). Adicione aqui.
@@ -484,11 +484,11 @@ document.addEventListener('click', e => {
                 `<div class="modal-content"><h2>Mais</h2>${PG.slice(4)
                     .map(
                         p =>
-                            `<a class="item-row" href="${p[0] == 'home' ? 'index' : p[0]}.html" data-a="x"><span style="font-size:1.8rem">${p[2]}</span><div><b>${p[1]}</b></div></a>`,
+                            `<a class="item-row" href="${p[0] == 'home' ? 'index' : p[0]}.html" data-a="x"><img class="more-icon" src="Imagens/icons-preto/${p[2]}.svg" alt=""><div><b>${p[1]}</b></div></a>`,
                     )
                     .join(
                         '',
-                    )}<div class="item-row"><span style="font-size:1.8rem">👤</span><div><b>${ME ? esc(ME.nome) : 'Visitante'}</b><span class="muted-text">${ME ? esc(ME.email) : 'Progresso só neste aparelho'}</span></div><button class="btn btn-small btn-outlined" data-a="logout">${ME ? 'Sair' : 'Entrar'}</button></div></div>`,
+                    )}<div class="item-row"><img class="more-icon" src="Imagens/icons-preto/User.svg" alt=""><div><b>${ME ? esc(ME.nome) : 'Visitante'}</b><span class="muted-text">${ME ? esc(ME.email) : 'Progresso só neste aparelho'}</span></div><button class="btn btn-small btn-outlined" data-a="logout">${ME ? 'Sair' : 'Entrar'}</button></div></div>`,
             );
         },
 
@@ -735,6 +735,14 @@ setInterval(() => {
 }, 3000);
 
 /*=== inicialização ===*/
+
+// marca a aba correta na barra inferior (o HTML deixava "Início" sempre ativo)
+(() => {
+    const atual = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('#tabs a[href]').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === atual);
+    });
+})();
 
 (async () => {
     try {
