@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BeHealthier — Receitas</title>
+<link rel="icon" type="image/svg+xml" href="Imagens/esquilo-logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+<script src="js/receitas-data.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body data-page="receitas">
+<div id="app">
+  <aside id="sb">
+    <div class="logo"><img src="Imagens/esquilo-logo.svg" alt="BeHealthier"></div>
+    <a href="index.html"><span><img src="Imagens/icons/casa.svg" alt=""></span>Início</a>
+    <a href="receitas.html" class="active"><span><img src="Imagens/icons/receitas.svg" alt=""></span>Receitas</a>
+    <a href="cardapio.html"><span><img src="Imagens/icons/Calendar_Event.svg" alt=""></span>Cardápio</a>
+    <a href="equilibrio.html"><span><img src="Imagens/icons/equilibrio.svg" alt=""></span>Equilíbrio</a>
+    <a href="dicas.html"><span><img src="Imagens/icons/lampada.svg" alt=""></span>Dicas</a>
+    <a href="entrega.html"><span><img src="Imagens/icons/entrega.svg" alt=""></span>Entrega <span class="badge cart-count" hidden></span></a>
+    <a href="videos.html"><span><img src="Imagens/icons/Play.svg" alt=""></span>Vídeos</a>
+    <a href="sobre.html"><span><img src="Imagens/icons/sobre.svg" alt=""></span>Sobre nós</a>
+    <div class="user-box"><b class="user-name"></b><span class="user-detail"></span><button data-a="logout" class="user-button"></button></div>
+  </aside>
+  <div>
+    <header id="tb">
+      <div class="logo"><img src="Imagens/esquilo-logo.svg" alt="BeHealthier"></div>
+      <span class="city-button city-now" data-a="citym"></span>
+      <button class="cart-button" data-a="cart"><img src="Imagens/icons/Shopping_Cart_01.svg" alt="" style="width:1.2em;height:1.2em;vertical-align:-.25em"> <span class="cart-count">0</span></button>
+    </header>
+    <main id="v">
+      <div class="page-title"><div><h2>Receitas</h2><p>Filtre por restrições, categoria e favoritas. Toque em uma receita para ver detalhes.</p></div></div>
+      <div class="toolbar">
+        <input id="q" placeholder="Buscar receita ou ingrediente">
+        <select id="cat"><option value="">Todas as categorias</option><option>Ovos e café da manhã</option><option>Frango</option><option>Carne bovina</option><option>Diversos</option><option>Bebidas e café da manhã</option><option>Veganas/vegetarianas</option><option>Pratos diversos</option><option>Doces, sobremesas e lanches</option><option>Tortas e quiches</option><option>Peixes e frutos do mar</option></select>
+      </div>
+      <div class="chip-list"><button class="chip" data-a="rf" data-k="lactose">Sem lactose</button><button class="chip" data-a="rf" data-k="gluten">Sem glúten</button><button class="chip" data-a="rf" data-k="ovo">Sem ovo</button><button class="chip" data-a="rf" data-k="vegetariano">Vegetariano</button><button class="chip" data-a="fvf">♥ Favoritas</button></div>
+      <div id="rl"></div>
+    </main>
+  </div>
+</div>
+<nav id="tabs">
+  <a href="index.html" class="active"><span><img src="Imagens/icons-preto/casa.svg" alt=""></span>Início</a>
+  <a href="receitas.html"><span><img src="Imagens/icons-preto/receitas.svg" alt=""></span>Receitas</a>
+  <a href="cardapio.html"><span><img src="Imagens/icons-preto/Calendar_Event.svg" alt=""></span>Cardápio</a>
+  <a href="equilibrio.html"><span><img src="Imagens/icons-preto/equilibrio.svg" alt=""></span>Equilíbrio</a>
+  <a href="#" data-a="more"><span><img src="Imagens/icons-preto/mais.svg" alt=""></span>Mais</a>
+</nav>
+<div class="overlay" id="ov"><div class="modal-box" id="mb"></div></div>
+<div class="toast" id="tt"></div>
+</body>
+</html>

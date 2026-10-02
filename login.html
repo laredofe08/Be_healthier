@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BeHealthier — Entrar</title>
+<link rel="icon" type="image/svg+xml" href="Imagens/esquilo-logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+<script src="js/receitas-data.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body data-page="login">
+<div class="auth-page">
+  <div class="auth-hero" style="background-image:url(Imagens/esquilo-fundo.png)">
+    <div>
+      <div class="auth-logo"><img src="Imagens/esquilo-logo.svg" alt="BeHealthier"></div>
+      <h1>Seu progresso,<br><em>salvo na sua conta.</em></h1>
+      <p>Entre para guardar cardápio, favoritas e metas em qualquer dispositivo.</p>
+    </div>
+  </div>
+  <div class="auth-form-area">
+    <div class="auth-box">
+      <h2 id="ttl">Bem-vindo de volta</h2>
+      <div class="chip-list">
+        <button class="chip active" data-a="atab" data-k="login">Entrar</button>
+        <button class="chip" data-a="atab" data-k="reg">Criar conta</button>
+      </div>
+      <form class="form-grid" id="af" onsubmit="return false">
+        <label class="only-register">Nome<input name="nome" autocomplete="name"></label>
+        <label>E-mail<input name="email" type="email" autocomplete="email"></label>
+        <label>Senha<input name="senha" type="password" autocomplete="current-password"></label>
+      </form>
+      <p id="ae"></p>
+      <button class="btn" id="go" data-a="auth">Entrar</button>
+      <button class="guest-button" data-a="guest">Continuar como visitante</button>
+    </div>
+  </div>
+</div>
+<div class="overlay" id="ov"><div class="modal-box" id="mb"></div></div>
+<div class="toast" id="tt"></div>
+</body>
+</html>

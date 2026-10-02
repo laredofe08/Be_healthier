@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BeHealthier — Equilíbrio</title>
+<link rel="icon" type="image/svg+xml" href="Imagens/esquilo-logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+<script src="js/receitas-data.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body data-page="equilibrio">
+<div id="app">
+  <aside id="sb">
+    <div class="logo"><img src="Imagens/esquilo-logo.svg" alt="BeHealthier"></div>
+    <a href="index.html"><span><img src="Imagens/icons/casa.svg" alt=""></span>Início</a>
+    <a href="receitas.html"><span><img src="Imagens/icons/receitas.svg" alt=""></span>Receitas</a>
+    <a href="cardapio.html"><span><img src="Imagens/icons/Calendar_Event.svg" alt=""></span>Cardápio</a>
+    <a href="equilibrio.html" class="active"><span><img src="Imagens/icons/equilibrio.svg" alt=""></span>Equilíbrio</a>
+    <a href="dicas.html"><span><img src="Imagens/icons/lampada.svg" alt=""></span>Dicas</a>
+    <a href="entrega.html"><span><img src="Imagens/icons/entrega.svg" alt=""></span>Entrega <span class="badge cart-count" hidden></span></a>
+    <a href="videos.html"><span><img src="Imagens/icons/Play.svg" alt=""></span>Vídeos</a>
+    <a href="sobre.html"><span><img src="Imagens/icons/sobre.svg" alt=""></span>Sobre nós</a>
+    <div class="user-box"><b class="user-name"></b><span class="user-detail"></span><button data-a="logout" class="user-button"></button></div>
+  </aside>
+  <div>
+    <header id="tb">
+      <div class="logo"><img src="Imagens/esquilo-logo.svg" alt="BeHealthier"></div>
+      <span class="city-button city-now" data-a="citym"></span>
+      <button class="cart-button" data-a="cart"><img src="Imagens/icons/Shopping_Cart_01.svg" alt="" style="width:1.2em;height:1.2em;vertical-align:-.25em"> <span class="cart-count">0</span></button>
+    </header>
+    <main id="v">
+      <div class="page-title"><div><h2>Equilíbrio</h2><p>Suas metas e o progresso da semana.</p></div></div>
+      <div class="panel">
+        <h3 style="margin-top:0">Seu perfil</h3>
+        <form class="form-grid" id="pf">
+          <label>Peso (kg)<input name="peso" type="number" min="30" max="250"></label>
+          <label>Altura (cm)<input name="alt" type="number" min="120" max="230"></label>
+          <label>Idade<input name="idade" type="number" min="10" max="100"></label>
+          <label>Sexo<select name="sexo"><option value="m" selected>Masculino</option><option value="f">Feminino</option></select></label>
+          <label>Atividade física<select name="ativ"><option value="0">Sedentário</option><option value="1" selected>Leve (1-3x/sem)</option><option value="2">Moderada (3-5x/sem)</option><option value="3">Intensa (6-7x/sem)</option></select></label>
+          <label>Objetivo<select name="obj"><option value="perder">Perder peso</option><option value="manter" selected>Manter o peso</option><option value="ganhar">Ganhar peso</option><option value="musculo">Ganhar músculo</option></select></label>
+          <div class="full-width check-group">
+            <b>Restrições e tolerâncias</b>
+            <label class="check-item"><input type="checkbox" name="rest" value="lactose"> Sem lactose</label>
+            <label class="check-item"><input type="checkbox" name="rest" value="gluten"> Sem glúten</label>
+            <label class="check-item"><input type="checkbox" name="rest" value="ovo"> Sem ovo</label>
+            <label class="check-item"><input type="checkbox" name="rest" value="vegetariano"> Vegetariano</label>
+          </div>
+          <label class="full-width">O que você gosta de comer? (separe por vírgula)<input name="gosta" placeholder="ex: frango, banana, aveia"></label>
+          <div class="full-width"><button type="button" class="btn" data-a="save">Salvar perfil</button></div>
+        </form>
+      </div>
+      <div id="eq"></div>
+    </main>
+  </div>
+</div>
+<nav id="tabs">
+  <a href="index.html" class="active"><span><img src="Imagens/icons-preto/casa.svg" alt=""></span>Início</a>
+  <a href="receitas.html"><span><img src="Imagens/icons-preto/receitas.svg" alt=""></span>Receitas</a>
+  <a href="cardapio.html"><span><img src="Imagens/icons-preto/Calendar_Event.svg" alt=""></span>Cardápio</a>
+  <a href="equilibrio.html"><span><img src="Imagens/icons-preto/equilibrio.svg" alt=""></span>Equilíbrio</a>
+  <a href="#" data-a="more"><span><img src="Imagens/icons-preto/mais.svg" alt=""></span>Mais</a>
+</nav>
+<div class="overlay" id="ov"><div class="modal-box" id="mb"></div></div>
+<div class="toast" id="tt"></div>
+</body>
+</html>
