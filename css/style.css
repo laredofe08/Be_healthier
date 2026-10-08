@@ -205,45 +205,6 @@ main {
     color: var(--folha);
     font-weight: 700;
 }
-.vdos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 20px;
-}
-
-.vdos iframe {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border: 0;
-    border-radius: 18px;
-}
-
-.empty-state {
-    text-align: center;
-    padding: 50px 20px;
-    color: var(--muted);
-}
-
-[hidden] {
-    display: none !important;
-}
-
-#hi {
-    margin-bottom: 8px !important;
-}
-
-#hi:empty {
-    display: none;
-}
-.vdos li {
-  background: var(--white);
-  border-radius: 18px;
-  padding: 12px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(44, 62, 28, 0.08),
-              0 6px 18px rgba(44, 62, 28, 0.06);
-  border: 1px solid var(--line);
-}
 
 @media (min-width: 900px) {
     /*~~~~ geral barra superior e menu inferior desktop ~~~~*/
@@ -2039,6 +2000,14 @@ select:focus {
 .rodapeContato a:hover {
     opacity: 1;
     color: var(--salvia);
+}
+
+/* E-mail e telefone no rodapé são texto simples (sem link). */
+.rodapeContato p {
+    margin: 0;
+    font-size: 0.92rem;
+    opacity: 0.85;
+    padding: 4px 0;
 }
 
 /* Linha final com o ano. */
