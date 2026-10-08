@@ -205,6 +205,31 @@ main {
     color: var(--folha);
     font-weight: 700;
 }
+.vdos {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+.vdos li {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 18px;
+    padding: 12px;
+    min-width: 0;
+    box-shadow: 0 2px 8px rgba(44, 62, 28, 0.08),
+                0 6px 18px rgba(44, 62, 28, 0.06);
+}
+.vdos iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 12px;
+}
 
 @media (min-width: 900px) {
     /*~~~~ geral barra superior e menu inferior desktop ~~~~*/
@@ -213,6 +238,10 @@ main {
     #barraSuperior,
     #menuInferior {
         display: none;
+    }
+    .vdos,
+    .gradeVideos {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     }
 }
 
