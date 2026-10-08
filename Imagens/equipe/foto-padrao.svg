@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Foto do integrante">
+  <rect width="200" height="200" fill="#E6ECDE"/>
+  <circle cx="100" cy="78" r="36" fill="#9AB17A"/>
+  <path d="M30 200c0-44 31-72 70-72s70 28 70 72z" fill="#9AB17A"/>
+</svg>

@@ -1,118 +1,160 @@
-/*=== login ===*/
+/* BeHealthier - estilos da tela de login (login.html)
 
-.auth-page {
+   Como este arquivo está organizado:
+   - A tela de login tem um bloco "====== nome mobile ======" com a formatação do celular.
+     O celular é a base: vale para toda largura de tela.
+   - Logo depois vem o @media (min-width: 900px) com o comentário "~~~~ nome desktop ~~~~":
+     só o que muda no computador.
+   - Quando existe, "tablet" (900px a 1100px) e "mobile ate 420px / 600px" são ajustes de faixas específicas.
+   Nenhuma regra de estilo é escrita direto no HTML: tudo fica aqui.  Depende de reset.css */
+
+/* ====== login mobile ====== */
+/* Onde: página de login (login.html). */
+/* O que faz: banner à esquerda e formulário à direita no computador; só o formulário no celular. */
+
+/* Estrutura da tela de login (banner + formulário lado a lado no computador). */
+.paginaAutenticacao {
     display: flex;
     min-height: 100vh;
-    background: var(--bg);
+    background: var(--fundo);
 }
 
-#ae {
-    color: var(--danger);
+/* Mensagem de erro do login, em vermelho. */
+#erroAutenticacao {
+    color: var(--perigo);
     min-height: 22px;
     margin: 8px 0;
 }
 
-.auth-box .btn {
+/* Botão Entrar / Criar conta (largura total). */
+.caixaAutenticacao .botao {
     width: 100%;
     justify-content: center;
 }
 
-.auth-box form {
+/* Espaçamento do formulário do login. */
+.caixaAutenticacao form {
     grid-template-columns: 1fr;
 }
 
-.form-grid .only-register {
+/* Campo "Nome": escondido por padrão (só aparece em Criar conta). */
+.gradeFormulario .somenteCadastro {
     display: none;
 }
 
-[data-mode=reg] .form-grid .only-register {
+/* Mostra o campo "Nome" quando a aba é Criar conta (o app.js põe data-modo no body). */
+[data-modo=cadastro] .gradeFormulario .somenteCadastro {
     display: flex;
 }
 
-.guest-button {
+/* Botão "Continuar como visitante" (parece um link). */
+.botaoVisitante {
     display: block;
     margin: 14px auto 0;
-    color: var(--muted);
+    color: var(--textoSuave);
     text-decoration: underline;
 }
 
-.auth-hero {
+/* Banner do login (some no celular). */
+.bannerAutenticacao {
     flex: 1.1;
-    background: var(--peach) no-repeat center top / min(100%, 640px) auto;
+    background: var(--pessego) no-repeat center top / min(100%, 640px) auto;
+    background-image: url('../Imagens/esquilo-fundo.png');
     position: relative;
     color: #fff;
-    display: flex;
+    display: none;
     align-items: flex-end;
     padding: 56px;
 }
 
-.auth-hero:before {
+/* Degradê escuro embaixo do banner, para o texto ficar legível. */
+.bannerAutenticacao:before {
     content: "";
     position: absolute;
     inset: 0;
     background: linear-gradient(0deg, rgba(44, 62, 28, 0.85), rgba(44, 62, 28, 0) 60%);
 }
 
-.auth-hero > div {
+/* Texto do banner. */
+.bannerAutenticacao > div {
     position: relative;
     max-width: 520px;
 }
 
-.auth-hero h1 {
+/* Título do banner. */
+.bannerAutenticacao h1 {
     font-size: 3rem;
     margin: 18px 0;
 }
 
-.auth-hero em {
-    color: var(--peach);
+/* Parte do título em destaque. */
+.bannerAutenticacao em {
+    color: var(--pessego);
 }
 
-.auth-logo {
+/* Área do logo no banner. */
+.logoAutenticacao {
     display: flex;
     align-items: center;
     gap: 10px;
     font: 800 1.6rem Fraunces, serif;
 }
 
-.auth-logo img {
+/* Tamanho do logo. */
+.logoAutenticacao img {
     width: auto;
     height: 46px;
 }
 
-.auth-form-area {
+/* Lado do formulário (centralizado). No celular tem uma faixa verde no topo; no computador o fundo é liso. */
+.areaFormularioAutenticacao {
     flex: 1;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding: 30px;
     overflow: auto;
+    background: linear-gradient(var(--floresta) 0 26%, var(--fundo) 26%);
+    padding-top: 12vh;
 }
 
-.auth-box {
+/* Caixa que guarda título, abas, campos e botões. */
+.caixaAutenticacao {
     width: min(420px, 100%);
+    background: var(--branco);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: var(--sombra);
 }
 
-.auth-box h2 {
+/* Título "Bem-vindo de volta" / "Criar conta". */
+.caixaAutenticacao h2 {
     font-size: 2.2rem;
-    color: var(--forest);
+    color: var(--floresta);
     margin-bottom: 16px;
 }
 
-@media (max-width: 899px) {
-    .auth-hero {
-        display: none;
+@media (min-width: 900px) {
+    /*~~~~ login desktop ~~~~*/
+
+    /* Banner do login (some no celular). */
+    .bannerAutenticacao {
+        display: flex;
     }
 
-    .auth-form-area {
-        background: linear-gradient(var(--forest) 0 26%, var(--bg) 26%);
-        align-items: flex-start;
-        padding-top: 12vh;
+    /* Lado do formulário (centralizado). No celular tem uma faixa verde no topo; no computador o fundo é liso. */
+    .areaFormularioAutenticacao {
+        background: none;
+        align-items: center;
+        padding: 30px;
     }
 
-    .auth-box {
-        background: var(--white);
-        border-radius: 24px;
-        padding: 24px;
-        box-shadow: var(--shadow);
+    /* Caixa que guarda título, abas, campos e botões. */
+    .caixaAutenticacao {
+        background: none;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
     }
 }
+

@@ -1,35 +1,46 @@
-/* BeHealthier - estilos base, layout e componentes. Depende de reset.css */
-.videos {
-    text-align: center;
-}
-/*=== base ===*/
+/* BeHealthier - estilos de todas as páginas e componentes
 
+   Como este arquivo está organizado:
+   - Cada página (ou componente compartilhado) tem um bloco "====== nome mobile ======" com a formatação do celular.
+     O celular é a base: vale para toda largura de tela.
+   - Logo depois vem o @media (min-width: 900px) com o comentário "~~~~ nome desktop ~~~~":
+     só o que muda no computador.
+   - Quando existe, "tablet" (900px a 1100px) e "mobile ate 420px / 600px" são ajustes de faixas específicas.
+   Nenhuma regra de estilo é escrita direto no HTML: tudo fica aqui.  Depende de reset.css */
+
+/* ====== geral base e layout mobile ====== */
+/* Onde: todas as páginas. */
+/* O que faz: cores e fontes do site (variáveis em :root), tipografia, links, botões e campos, e a grade principal (menu lateral + conteúdo). */
+
+/* Variáveis de cor e sombra do site. Para mudar a paleta, é só editar aqui. */
 :root {
-    /* paleta: verdes (floresta, folha, sálvia), tons quentes (pêssego, areia) e tinta escura */
-    --forest: #395224;
-    --leaf: #5e7745;
-    --sage: #9ab17a;
-    --sage-soft: #e6ecde;
-    --ink: #2c3e1c;
-    --peach: #ffe4be;
-    --sand: #e4dfb5;
-    --bg: #fff6e8;
-    --white: #fff;
-    --muted: #66704f;
-    --line: var(--sand);
-    --danger: #c2453a;
-    --amber: #feba4f;
-    --amber-deep: #feba4f;
-    --amber-soft: rgba(254, 186, 79, 0.25);
-    --shadow: 0 8px 28px rgba(44, 62, 28, 0.14);
+    --floresta: #395224;
+    --florestaRodape: #2f4620; /* verde do rodapé: um tom mais escuro que o --floresta */
+    --folha: #5e7745;
+    --salvia: #9ab17a;
+    --salviaSuave: #e6ecde;
+    --tinta: #2c3e1c;
+    --pessego: #ffe4be;
+    --areia: #e4dfb5;
+    --fundo: #fff6e8;
+    --branco: #fff;
+    --textoSuave: #66704f;
+    --borda: var(--areia);
+    --perigo: #c2453a;
+    --ambar: #feba4f;
+    --ambarEscuro: #feba4f;
+    --ambarSuave: rgba(254, 186, 79, 0.25);
+    --sombra: 0 8px 28px rgba(44, 62, 28, 0.14);
     font-family: 'DM Sans', system-ui, sans-serif;
-    color: var(--ink);
+    color: var(--tinta);
 }
 
+/* Fundo e fonte padrão de todas as páginas. */
 body {
-    background: var(--bg);
+    background: var(--fundo);
 }
 
+/* Fonte dos títulos. */
 h1,
 h2,
 h3 {
@@ -38,20 +49,24 @@ h3 {
     font-weight: 800;
 }
 
+/* Tamanho dos títulos grandes (h2). */
 h2 {
     font-size: 1.9rem;
 }
 
+/* Tamanho dos subtítulos pequenos (h4). */
 h4 {
     font-size: 1.05rem;
     font-weight: 700;
 }
 
+/* Links sem sublinhado, na cor do texto ao redor. */
 a {
     color: inherit;
     text-decoration: none;
 }
 
+/* Botões e campos usam a mesma fonte do site. */
 button,
 input,
 select {
@@ -59,799 +74,144 @@ select {
     color: inherit;
 }
 
+/* Aparência padrão de todo botão. */
 button {
     cursor: pointer;
     border: 0;
     background: none;
 }
 
-/*=== layout ===*/
-
-#app {
-    display: grid;
-    grid-template-columns: 240px 1fr;
+/* Estrutura geral: menu lateral + conteúdo (no celular, uma coluna só). */
+#aplicacao {
+    display: block;
     min-height: 100vh;
     width: 100%;
 }
 
-/*=== menu lateral ===*/
+/* Coluna de conteúdo (barra superior + main + rodapé): ocupa a altura toda, assim o rodapé fica sempre colado no fundo da tela. */
+#aplicacao > div {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 0;
+}
 
-#sb {
-    background: var(--forest);
-    color: #fff;
+/* Área do conteúdo principal: espaçamentos (o rodapé, que vem depois, cuida do espaço da barra de abas). */
+main {
+    flex: 1 0 auto;
+    padding: 16px 16px 0;
+    min-width: 0;
+    width: 100%;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ geral base e layout desktop ~~~~*/
+
+    /* Estrutura geral: menu lateral + conteúdo (no celular, uma coluna só). */
+    #aplicacao {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+    }
+
+    /* Área do conteúdo principal: espaçamentos (no celular, com espaço embaixo para a barra de abas). */
+    main {
+        padding: 34px 44px 0;
+    }
+}
+
+/* ====== geral barra superior e menu inferior mobile ====== */
+/* Onde: todas as páginas (menos o login), SÓ NO CELULAR. */
+/* O que faz: barra superior (logo, cidade, sacola) e barra de abas fixa na parte de baixo. No computador as duas somem e entra o menu lateral. */
+
+/* Barra superior do celular: fixa no topo, fundo verde. */
+#barraSuperior {
+    display: flex;
     position: sticky;
     top: 0;
-    height: 100vh;
-    padding: 26px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-#sb .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font: 800 1.5rem Fraunces, serif;
-    margin-bottom: 22px;
-    padding: 0 8px;
-}
-
-#sb .logo img {
-    width: auto;
-    height: 40px;
-}
-
-#sb a {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    padding: 11px 14px;
-    border-radius: 12px;
-    font-weight: 500;
-    opacity: 0.85;
-    transition: 0.2s;
-}
-
-#sb a:hover {
-    background: rgba(255, 255, 255, 0.1);
-    opacity: 1;
-}
-
-#sb a.active {
-    background: var(--sage);
-    color: var(--ink);
-    opacity: 1;
-    font-weight: 700;
-}
-
-#sb .sidebar-footer {
-    margin-top: auto;
-    font-size: 0.8rem;
-    opacity: 0.6;
-    padding: 0 8px;
-}
-
-main {
-    padding: 34px 44px 60px;
-    min-width: 0;
-    width: 100%;
-}
-
-#tb,
-#tabs {
-    display: none;
-}
-
-.badge {
-    background: var(--amber);
-    color: var(--ink);
-    border-radius: 99px;
-    font-size: 0.72rem;
-    padding: 1px 7px;
-    font-weight: 700;
-}
-
-/*=== home ===*/
-
-.hero {
-    position: relative;
-    border-radius: 28px;
-    min-height: 58vh;
-    background: var(--peach) no-repeat right top / auto 100%;
+    z-index: 20;
+    background: var(--floresta);
     color: #fff;
-    display: flex;
-    align-items: flex-end;
-    padding: 48px;
-    overflow: hidden;
-    margin-bottom: 34px;
-}
-
-.hero:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(100deg, rgba(44, 62, 28, 0.92) 25%, rgba(44, 62, 28, 0) 70%);
-}
-
-.hero > div {
-    position: relative;
-    max-width: 620px;
-}
-
-.hero h1 {
-    font-size: clamp(2.3rem, 5vw, 4.2rem);
-    font-weight: 800;
-    margin-bottom: 14px;
-}
-
-.hero h1 em {
-    color: var(--peach);
-    font-style: italic;
-}
-
-.hero .btn:not(.btn-outline-light) {
-    background: var(--amber);
-    color: var(--ink);
-}
-
-.hero p {
-    font-size: 1.15rem;
-    opacity: 0.92;
-    margin-bottom: 24px;
-}
-
-/*=== botões ===*/
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--forest);
-    color: #fff;
-    padding: 13px 24px;
-    border-radius: 99px;
-    font-weight: 700;
-    transition: 0.2s;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.05);
-}
-
-.btn.btn-outline-light {
-    background: transparent;
-    border: 2px solid #fff;
-    margin-left: 8px;
-}
-
-.btn.btn-green {
-    background: var(--amber);
-    color: var(--ink);
-    box-shadow: 0 4px 12px rgba(254, 186, 79, 0.35);
-}
-
-.btn.btn-small {
-    padding: 8px 16px;
-    font-size: 0.9rem;
-}
-
-.btn.btn-outlined {
-    background: var(--white);
-    color: var(--forest);
-    border: 2px solid var(--forest);
-}
-
-.stats {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin: -8px 0 34px;
-}
-
-.stats div {
-    flex: 1;
-    min-width: 150px;
-    background: var(--white);
-    border-radius: 18px;
-    padding: 18px 20px;
-    box-shadow: var(--shadow);
-}
-
-.stats b {
-    font: 800 2rem Fraunces, serif;
-    color: var(--amber-deep);
-    display: block;
-}
-
-/*=== títulos ===*/
-
-.page-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: end;
-    margin-bottom: 20px;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.page-title h2 {
-    font-size: clamp(1.7rem, 3vw, 2.4rem);
-    color: var(--forest);
-}
-
-.page-title p {
-    color: var(--muted);
-}
-
-h3 {
-    font-size: 1.4rem;
-    margin: 26px 0 14px;
-    color: var(--forest);
-}
-
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-    margin-bottom: 30px;
-}
-
-.feature-card {
-    position: relative;
-    border-radius: 22px;
-    overflow: hidden;
-    aspect-ratio: 3 / 4;
-    color: #fff;
-    background: var(--ink) center / cover;
-    display: flex;
-    align-items: flex-end;
-    padding: 20px;
-    transition: 0.3s;
-}
-
-.feature-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow);
-}
-
-.feature-card:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(0deg, rgba(44, 62, 28, 0.85), transparent 60%);
-}
-
-.feature-card div {
-    position: relative;
-}
-
-.feature-card b {
-    font: 800 1.4rem Fraunces, serif;
-    display: block;
-}
-
-/*=== receitas ===*/
-
-.recipe-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 20px;
-}
-
-.recipe-card {
-    background: var(--white);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    cursor: pointer;
-    position: relative;
-    transition: 0.25s;
-    display: flex;
-    flex-direction: column;
-}
-
-.recipe-card:hover {
-    transform: translateY(-5px);
-}
-
-.recipe-card img {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    display: block;
-}
-
-.recipe-card-body {
-    padding: 14px 16px 16px;
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.recipe-card-body h4 {
-    font-size: 1rem;
-    line-height: 1.25;
-    min-height: 2.5em;
-    overflow-wrap: anywhere;
-}
-
-.recipe-card-body .muted-text {
-    margin-top: auto;
-    align-items: center;
-}
-
-.recipe-card-body .price {
-    margin-top: 0;
-}
-
-.muted-text {
-    font-size: 0.82rem;
-    color: var(--muted);
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-p.muted-text {
-    display: block;
-}
-
-.muted-text b {
-    color: var(--ink);
-    background: var(--amber-soft);
-    border-radius: 99px;
-    padding: 1px 8px;
-}
-
-.favorite-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.95);
-    font-size: 1.1rem;
-    color: #bbb;
-    display: grid;
-    place-items: center;
-}
-
-.favorite-button.active {
-    color: var(--danger);
-}
-
-.price {
-    font-weight: 700;
-    color: var(--forest);
-    margin-top: 6px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/*=== filtros ===*/
-
-.toolbar {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 18px;
-    align-items: center;
-}
-
-.toolbar input,
-.toolbar select,
-.form-grid input,
-.form-grid select {
     padding: 12px 16px;
-    border: 2px solid var(--line);
-    border-radius: 14px;
-    background: var(--white);
-    outline: 0;
-    min-width: 0;
-}
-
-.toolbar input {
-    flex: 1;
-    min-width: 200px;
-}
-
-input:focus,
-select:focus {
-    border-color: var(--leaf);
-}
-
-.chip {
-    padding: 8px 16px;
-    border-radius: 99px;
-    background: var(--white);
-    border: 2px solid var(--line);
-    font-size: 0.9rem;
-    font-weight: 500;
-    white-space: nowrap;
-}
-
-.chip.active {
-    background: var(--forest);
-    color: #fff;
-    border-color: var(--forest);
-}
-
-.chip.active[data-a='fvf'] {
-    background: var(--amber);
-    border-color: var(--amber);
-    color: var(--ink);
-}
-
-.chip-list {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 18px;
-}
-
-/*=== painéis e formulários ===*/
-
-.panel {
-    background: var(--white);
-    border-radius: 22px;
-    padding: 24px;
-    box-shadow: var(--shadow);
-    margin-bottom: 20px;
-}
-
-.two-columns {
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 20px;
-    align-items: start;
-}
-
-.three-columns {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
-}
-
-.form-grid > * {
-    min-width: 0;
-}
-
-.form-grid input,
-.form-grid select {
-    width: 100%;
-}
-
-.check-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.check-group > b {
-    width: 100%;
-    color: var(--forest);
-    font-size: 0.85rem;
-}
-
-.form-grid .check-item {
-    flex-direction: row;
+    padding-top: calc(12px + env(safe-area-inset-top));
     align-items: center;
-    gap: 8px;
-    padding: 8px 14px;
-    border: 2px solid var(--line);
-    border-radius: 99px;
-    background: var(--white);
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.form-grid .check-item input {
-    width: 18px;
-    height: 18px;
-    padding: 0;
-    accent-color: var(--amber-deep);
-    flex: none;
-}
-
-.form-grid .check-item:has(input:checked) {
-    border-color: var(--amber);
-    background: var(--amber-soft);
-}
-
-.form-grid label {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--forest);
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.form-grid .full-width {
-    grid-column: 1 / -1;
-}
-
-/*=== cardápio e equilíbrio ===*/
-
-.progress-bar {
-    height: 11px;
-    background: var(--sand);
-    border-radius: 9px;
-    overflow: hidden;
-    margin: 6px 0 14px;
-}
-
-.progress-bar i {
-    display: block;
-    height: 100%;
-    background: var(--amber);
-    border-radius: 9px;
-    transition: width 0.5s;
-}
-
-.progress-bar i.over-limit {
-    background: var(--danger);
-}
-
-.week-chart {
-    display: flex;
-    gap: 10px;
-    align-items: flex-end;
-    height: 180px;
-    margin-top: 10px;
-}
-
-.week-chart div {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    height: 100%;
-    font-size: 0.8rem;
-    gap: 6px;
-}
-
-.week-chart i {
-    width: 100%;
-    background: var(--leaf);
-    border-radius: 10px 10px 4px 4px;
-    min-height: 4px;
-}
-
-.week-chart i.over-limit {
-    background: var(--danger);
-}
-
-.week-chart .current-day {
-    font-weight: 700;
-    color: var(--forest);
-}
-
-.big-number {
-    font: 800 2.6rem Fraunces, serif;
-    color: var(--amber-deep);
-}
-
-.alert {
-    background: var(--peach);
-    border-left: 5px solid var(--leaf);
-    padding: 16px 18px;
-    border-radius: 14px;
-    margin-bottom: 16px;
-}
-
-.item-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--line);
-}
-
-.item-row img {
-    width: 54px;
-    height: 54px;
-    border-radius: 12px;
-    object-fit: cover;
-}
-
-.item-row div {
-    flex: 1;
-    min-width: 0;
-}
-
-.item-row b {
-    font-size: 0.95rem;
-    display: block;
-}
-
-.remove-button {
-    color: var(--danger);
-    font-size: 1.3rem;
-    padding: 6px;
-}
-
-.meal-header {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: 16px;
 }
 
-.meal-header h4 {
-    color: var(--forest);
-    font-size: 1.05rem;
-}
-
-/*=== modal ===*/
-
-.overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(44, 62, 28, 0.55);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 50;
-    padding: 20px;
-    backdrop-filter: blur(3px);
-}
-
-.overlay.active {
+/* Logo da barra superior. */
+#barraSuperior .logo {
     display: flex;
+    gap: 8px;
+    align-items: center;
+    font: 800 1.25rem Fraunces, serif;
 }
 
-.modal-box {
-    background: var(--white);
-    border-radius: 26px;
-    width: min(720px, 100%);
-    max-height: 88vh;
-    overflow: auto;
-    position: relative;
+/* Tamanho da imagem do logo na barra superior. */
+#barraSuperior .logo img {
+    width: auto;
+    height: 26px;
 }
 
-.modal-box .modal-content {
-    padding: 26px;
-}
-
-.modal-box > img {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    display: block;
-}
-
-.modal-close {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: #fff;
-    font-size: 1.3rem;
-    z-index: 2;
-    box-shadow: var(--shadow);
-}
-
-.modal-box pre {
-    font: inherit;
-    white-space: pre-wrap;
-    background: var(--bg);
-    padding: 14px;
-    border-radius: 12px;
-    margin: 8px 0 14px;
-}
-
-/*=== avisos ===*/
-
-.toast {
-    position: fixed;
-    left: 50%;
-    bottom: 90px;
-    transform: translateX(-50%);
-    background: var(--forest);
-    color: #fff;
-    padding: 12px 22px;
+/* Botão da cidade de entrega (leva para Entrega). */
+#barraSuperior .botaoCidade {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 7px 13px;
     border-radius: 99px;
-    z-index: 99;
-    box-shadow: var(--shadow);
-    font-weight: 500;
-    transition: 0.3s;
-    opacity: 0;
-    pointer-events: none;
+    font-size: 0.85rem;
 }
 
-.toast.active {
-    opacity: 1;
+/* Botão amarelo da sacola, com o contador de itens. */
+#barraSuperior .botaoSacola {
+    background: var(--ambar);
+    color: var(--tinta);
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 99px;
 }
 
-/*=== dicas e entrega ===*/
-
-.tip-card {
+/* Barra de abas fixa na parte de baixo do celular. */
+#menuInferior {
     display: flex;
-    gap: 14px;
-    background: var(--white);
-    border-radius: 18px;
-    padding: 18px;
-    box-shadow: var(--shadow);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--branco);
+    border-top: 1px solid var(--borda);
+    z-index: 30;
+    padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.06);
 }
 
-.tip-card span {
-    font-size: 1.8rem;
-}
-
-.city-option {
-    cursor: pointer;
-    border: 2px solid var(--line);
-    background: var(--white);
-    border-radius: 20px;
-    padding: 18px;
-    text-align: left;
-}
-
-.city-option.active {
-    border-color: var(--leaf);
-    background: var(--sage-soft);
-}
-
-.city-option b {
-    font: 800 1.2rem Fraunces, serif;
-    display: block;
-}
-
-.order-tracker {
-    display: flex;
-    gap: 6px;
-    margin-top: 14px;
-}
-
-.order-tracker div {
+/* Cada aba da barra inferior (ícone + nome). */
+#menuInferior a {
     flex: 1;
-    text-align: center;
-    font-size: 0.8rem;
-    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.68rem;
+    gap: 2px;
+    color: var(--textoSuave);
+    padding: 4px 0;
+    font-weight: 500;
 }
 
-.order-tracker i {
-    display: block;
-    height: 8px;
-    border-radius: 9px;
-    background: var(--line);
-    margin-bottom: 6px;
+/* Ícone da aba. */
+#menuInferior a span {
+    font-size: 1.4rem;
 }
 
-.order-tracker .step-done {
-    color: var(--forest);
+/* Aba da página atual (destacada). */
+#menuInferior a.ativo {
+    color: var(--folha);
     font-weight: 700;
 }
-
-.order-tracker .step-done i {
-    background: var(--leaf);
-}
-
-/*=== vídeos ===*/
-
-.video-grid {
+.vdos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 20px;
 }
 
-.video-grid iframe {
+.vdos iframe {
     width: 100%;
     aspect-ratio: 16 / 9;
     border: 0;
@@ -875,293 +235,461 @@ select:focus {
 #hi:empty {
     display: none;
 }
+.vdos li {
+  background: var(--white);
+  border-radius: 18px;
+  padding: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(44, 62, 28, 0.08),
+              0 6px 18px rgba(44, 62, 28, 0.06);
+  border: 1px solid var(--line);
+}
 
-/*=== usuário ===*/
+@media (min-width: 900px) {
+    /*~~~~ geral barra superior e menu inferior desktop ~~~~*/
 
-.more-icon {
+    /* No computador as duas barras somem (o menu lateral aparece no lugar). */
+    #barraSuperior,
+    #menuInferior {
+        display: none;
+    }
+}
+
+/* ====== geral menu lateral mobile ====== */
+/* Onde: todas as páginas (menos o login), SÓ NO COMPUTADOR. */
+/* O que faz: menu fixo à esquerda, com logo, links e caixa do usuário. No celular ele fica escondido. */
+
+/* Menu lateral: no celular some; no computador fica fixo à esquerda. */
+#menuLateral {
+    display: none;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ geral menu lateral desktop ~~~~*/
+
+    /* Menu lateral: no celular some; no computador fica fixo à esquerda. */
+    #menuLateral {
+        background: var(--floresta);
+        color: #fff;
+        position: sticky;
+        top: 0;
+        align-self: start;
+        height: 100vh; /* reserva para navegadores antigos */
+        height: 100dvh; /* altura realmente visível (não passa por baixo da barra de tarefas/barras do navegador) */
+        max-height: 100%;
+        overflow-y: auto; /* se a janela for baixa, o menu rola e a caixa do usuário continua alcançável */
+        padding: 26px 16px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    /* Itens do menu não encolhem: o que não couber rola dentro do menu. */
+    #menuLateral > * {
+        flex-shrink: 0;
+    }
+
+    /* Logo do menu lateral. */
+    #menuLateral .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font: 800 1.5rem Fraunces, serif;
+        margin-bottom: 22px;
+        padding: 0 8px;
+    }
+
+    /* Tamanho da imagem do logo no menu lateral. */
+    #menuLateral .logo img {
+        width: auto;
+        height: 40px;
+    }
+
+    /* Cada link do menu lateral (ícone + nome). */
+    #menuLateral a {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 11px 14px;
+        border-radius: 12px;
+        font-weight: 500;
+        opacity: 0.85;
+        transition: 0.2s;
+    }
+
+    /* Link do menu quando o mouse passa por cima. */
+    #menuLateral a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        opacity: 1;
+    }
+
+    /* Link da página atual (destacado). */
+    #menuLateral a.ativo {
+        background: var(--salvia);
+        color: var(--tinta);
+        opacity: 1;
+        font-weight: 700;
+    }
+
+    /* Parte de baixo do menu lateral. */
+    #menuLateral .rodapeMenuLateral {
+        margin-top: auto;
+        font-size: 0.8rem;
+        opacity: 0.6;
+        padding: 0 8px;
+    }
+
+    /* Bolinha com o total de itens da sacola, ao lado de "Entrega". */
+    .seloContador {
+        background: var(--ambar);
+        color: var(--tinta);
+        border-radius: 99px;
+        font-size: 0.72rem;
+        padding: 1px 7px;
+        font-weight: 700;
+    }
+
+    /* Caixa com o nome e o e-mail de quem está usando (fica no fim do menu lateral). */
+    .caixaUsuario {
+        margin-top: auto;
+        padding: 12px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.1);
+        font-size: 0.85rem;
+        overflow-wrap: anywhere;
+    }
+
+    /* Nome do usuário. */
+    .caixaUsuario b {
+        display: block;
+    }
+
+    /* Botão Entrar / Sair. */
+    .caixaUsuario button {
+        margin-top: 8px;
+        color: var(--pessego);
+        font-weight: 700;
+    }
+}
+
+/* ====== geral botoes mobile ====== */
+/* Onde: todas as páginas. */
+/* O que faz: botão padrão e suas variações (amarelo, contorno, pequeno), mais os ícones que ficam dentro de botões. */
+
+/* Botão padrão do site (verde). */
+.botao {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--floresta);
+    color: #fff;
+    padding: 13px 24px;
+    border-radius: 99px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+/* Botão quando o mouse passa por cima. */
+.botao:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+
+/* Botão só com contorno branco, para fundo escuro (banner do Início). */
+.botao.botaoContornoClaro {
+    background: transparent;
+    border: 2px solid #fff;
+    margin: 8px 0 0;
+}
+
+/* Botão amarelo (ações de destaque, como "Ver mais"). */
+.botao.botaoAmarelo {
+    background: var(--ambar);
+    color: var(--tinta);
+    box-shadow: 0 4px 12px rgba(254, 186, 79, 0.35);
+}
+
+/* Botão em tamanho menor. */
+.botao.botaoPequeno {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+/* Botão só com contorno (ações secundárias, como "Cancelar"). */
+.botao.botaoContorno {
+    background: var(--branco);
+    color: var(--floresta);
+    border: 2px solid var(--floresta);
+}
+
+/* Tamanho do ícone da sacola na barra superior. */
+.iconeSacolaTopo {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: -0.25em;
+}
+
+/* Tamanho do ícone dentro dos botões "Sacola" e "Sugerir semana". */
+.iconeBotaoSacola {
+    width: 1.1em;
+    height: 1.1em;
+    vertical-align: -0.2em;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ geral botoes desktop ~~~~*/
+
+    /* Botão só com contorno branco, para fundo escuro (banner do Início). */
+    .botao.botaoContornoClaro {
+        margin: 0 0 0 8px;
+    }
+}
+
+/* ====== geral titulos e textos mobile ====== */
+/* Onde: todas as páginas. */
+/* O que faz: título de cada página, subtítulo, texto de apoio e título dos painéis. */
+
+/* Cabeçalho de cada página: título e subtítulo (e botões ao lado, quando há). */
+.tituloPagina {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 20px;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Título principal da página. */
+.tituloPagina h2 {
+    font-size: 1.6rem;
+    color: var(--floresta);
+}
+
+/* Subtítulo da página. */
+.tituloPagina p {
+    color: var(--textoSuave);
+}
+
+/* Títulos de seção (h3). */
+h3 {
+    font-size: 1.4rem;
+    margin: 26px 0 14px;
+    color: var(--floresta);
+}
+
+/* Texto de apoio, em cinza. */
+.textoSecundario {
+    font-size: 0.82rem;
+    color: var(--textoSuave);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Parágrafo de apoio: tamanho do texto. */
+p.textoSecundario {
+    display: block;
+}
+
+/* Destaque em negrito dentro do texto de apoio. */
+.textoSecundario b {
+    color: var(--tinta);
+    background: var(--ambarSuave);
+    border-radius: 99px;
+    padding: 1px 8px;
+}
+
+/* Título dentro de um painel (sem margem em cima). */
+.tituloPainel {
+    margin-top: 0;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ geral titulos e textos desktop ~~~~*/
+
+    /* Título principal da página. */
+    .tituloPagina h2 {
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+    }
+}
+
+/* ====== geral estado vazio mobile ====== */
+/* Onde: Receitas (nenhuma receita encontrada), Vídeos ("Em breve") e janela da sacola vazia. */
+/* O que faz: aviso centralizado quando não há nada para mostrar. */
+
+/* Aviso centralizado quando não há nada para mostrar. */
+.estadoVazio {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--textoSuave);
+}
+
+@media (min-width: 900px) {
+    /*~~~~ geral estado vazio desktop ~~~~*/
+
+    /* Quando o estado vazio também é um painel (aviso da página de vídeos), no desktop vale o
+       espaçamento do estado vazio; no celular vale o do painel (por isso .estadoVazio vem antes de .painel). */
+    /* Vídeos: o aviso "Em breve" também é painel; no computador vale o espaçamento do estado vazio. */
+    .estadoVazio.painel {
+        padding: 50px 20px;
+    }
+}
+
+/* ====== geral paineis e colunas mobile ====== */
+/* Onde: Equilíbrio, Cardápio, Entrega, Sobre nós e várias janelas. */
+/* O que faz: cartão branco (painel) e grades de 2 e 3 colunas. */
+
+/* Cartão branco com cantos arredondados e sombra. */
+.painel {
+    background: var(--branco);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: var(--sombra);
+    margin-bottom: 20px;
+}
+
+/* Duas colunas lado a lado (no celular, uma embaixo da outra). */
+.duasColunas {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+/* Três colunas lado a lado (no celular, uma embaixo da outra). */
+.tresColunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Parágrafos dentro de um painel. */
+.painel p {
+    margin-bottom: 6px;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ geral paineis e colunas desktop ~~~~*/
+
+    /* Cartão branco com cantos arredondados e sombra. */
+    .painel {
+        padding: 24px;
+        border-radius: 22px;
+    }
+
+    /* Duas colunas lado a lado (no celular, uma embaixo da outra). */
+    .duasColunas {
+        grid-template-columns: 1.4fr 1fr;
+    }
+
+    /* Três colunas lado a lado (no celular, uma embaixo da outra). */
+    .tresColunas {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1100px) {
+    /*~~~~ geral paineis e colunas tablet ~~~~*/
+
+    /* Duas colunas lado a lado (no celular, uma embaixo da outra). */
+    .duasColunas {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ====== geral modal mobile ====== */
+/* Onde: todas as páginas (menos o login). */
+/* O que faz: a janela que abre por cima da página (receita, sacola, menu "Mais", escolha de receita e confirmações) e o que fica dentro dela. */
+
+/* Fundo escuro que cobre a tela quando uma janela está aberta (escondido por padrão). */
+.sobreposicao {
+    position: fixed;
+    inset: 0;
+    background: rgba(44, 62, 28, 0.55);
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 50;
+    padding: 0;
+    backdrop-filter: blur(3px);
+}
+
+/* Mostra o fundo escuro e a janela. */
+.sobreposicao.ativo {
+    display: flex;
+}
+
+/* A janela branca em si. */
+.caixaModal {
+    background: var(--branco);
+    border-radius: 26px 26px 0 0;
+    width: min(720px, 100%);
+    max-height: 92vh;
+    overflow: auto;
+    position: relative;
+}
+
+/* Espaçamento do conteúdo dentro da janela. */
+.caixaModal .conteudoModal {
+    padding: 26px;
+}
+
+/* Imagem no topo da janela. */
+.caixaModal > img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Botão "×" que fecha a janela. */
+.botaoFecharModal {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #fff;
+    font-size: 1.3rem;
+    z-index: 2;
+    box-shadow: var(--sombra);
+}
+
+/* Texto dos ingredientes e do modo de preparo, com as quebras de linha preservadas. */
+.caixaModal pre {
+    font: inherit;
+    white-space: pre-wrap;
+    background: var(--fundo);
+    padding: 14px;
+    border-radius: 12px;
+    margin: 8px 0 14px;
+}
+
+/* Ícone das linhas do menu "Mais" (celular). */
+.iconeMais {
     width: 30px;
     height: 30px;
     flex: none;
     display: block;
 }
 
-.user-box {
-    margin-top: auto;
-    padding: 12px;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.1);
-    font-size: 0.85rem;
-    overflow-wrap: anywhere;
-}
-
-.user-box b {
-    display: block;
-}
-
-.user-box button {
-    margin-top: 8px;
-    color: var(--peach);
-    font-weight: 700;
-}
-
-.panel p {
-    margin-bottom: 6px;
-}
-/* Responsivo: tablet (<=1100px) e celular estilo app (<=899px) */
-
-@media (max-width: 1100px) {
-    .feature-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .two-columns {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 899px) {
-    #app {
-        display: block;
-    }
-
-    #sb {
-        display: none;
-    }
-
-    #tb {
-        display: flex;
-        position: sticky;
-        top: 0;
-        z-index: 20;
-        background: var(--forest);
-        color: #fff;
-        padding: 12px 16px;
-        padding-top: calc(12px + env(safe-area-inset-top));
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    #tb .logo {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        font: 800 1.25rem Fraunces, serif;
-    }
-
-    #tb .logo img {
-        width: auto;
-        height: 26px;
-    }
-
-    #tb .city-button {
-        background: rgba(255, 255, 255, 0.15);
-        padding: 7px 13px;
-        border-radius: 99px;
-        font-size: 0.85rem;
-    }
-
-    #tb .cart-button {
-        background: var(--amber);
-        color: var(--ink);
-        font-weight: 700;
-        padding: 8px 14px;
-        border-radius: 99px;
-    }
-
-    body {
-        padding-top: 0;
-    }
-
-    main {
-        padding: 16px 16px calc(96px + env(safe-area-inset-bottom));
-    }
-
-    #tabs {
-        display: flex;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: var(--white);
-        border-top: 1px solid var(--line);
-        z-index: 30;
-        padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
-        box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.06);
-    }
-
-    #tabs a {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: 0.68rem;
-        gap: 2px;
-        color: var(--muted);
-        padding: 4px 0;
-        font-weight: 500;
-    }
-
-    #tabs a span {
-        font-size: 1.4rem;
-    }
-
-    #tabs a.active {
-        color: var(--leaf);
-        font-weight: 700;
-    }
-
-    .hero {
-        min-height: 44vh;
-        padding: 24px;
-        border-radius: 22px;
-        margin-bottom: 20px;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    .btn.btn-outline-light {
-        margin: 8px 0 0;
-    }
-
-    .feature-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .stats div {
-        min-width: 44%;
-        padding: 14px;
-    }
-
-    .stats b {
-        font-size: 1.5rem;
-    }
-
-    .recipe-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    .recipe-card {
-        flex-direction: row;
-        border-radius: 18px;
-        align-items: stretch;
-        min-height: 112px;
-    }
-
-    .recipe-card img {
-        width: 112px;
-        height: auto;
-        min-height: 112px;
-        aspect-ratio: auto;
-        flex: none;
-    }
-
-    .recipe-card-body {
-        padding: 12px 44px 12px 14px;
-        justify-content: center;
-    }
-
-    .recipe-card-body h4 {
-        min-height: 0;
-    }
-
-    .recipe-card-body .muted-text {
-        margin-top: 0;
-    }
-
-    .recipe-card .favorite-button {
-        top: 6px;
-        right: 6px;
-        width: 30px;
-        height: 30px;
-    }
-
-    .three-columns {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .form-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
-
-    .panel {
-        padding: 18px;
-        border-radius: 18px;
-    }
-
-    .page-title h2 {
-        font-size: 1.6rem;
-    }
-
-    .toolbar {
-        flex-wrap: wrap;
-    }
-
-    .toolbar input,
-    .toolbar select {
-        flex: 1 1 100%;
-        width: 100%;
-    }
-
-    .toolbar .btn {
-        flex: 1 1 auto;
-        justify-content: center;
-    }
-
-    .chip-list {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-bottom: 4px;
-    }
-
-    .overlay {
-        align-items: flex-end;
-        padding: 0;
-    }
-
-    .modal-box {
-        border-radius: 26px 26px 0 0;
-        max-height: 92vh;
-    }
-
-    .modal-box > img {
-        height: 200px;
-    }
-
-    .toast {
-        bottom: 100px;
-    }
-
-    .video-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 420px) {
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/* Selo "Conteúdo gerado por IA" na imagem do modal da receita */
-.modal-box > .ai-img {
+/* Foto da receita na janela, com o selo de IA por cima. */
+.caixaModal > .imagemIa {
     position: relative;
     display: block;
 }
 
-.modal-box > .ai-img > img {
+/* Tamanho da foto da receita na janela. */
+.caixaModal > .imagemIa > img {
     width: 100%;
-    height: 260px;
+    height: 200px;
     object-fit: cover;
     display: block;
 }
 
-.ai-badge {
+/* Selo "Conteúdo gerado por IA" sobre a foto. */
+.seloIa {
     position: absolute;
     left: 12px;
     bottom: 12px;
@@ -1177,28 +705,1588 @@ select:focus {
     pointer-events: none;
 }
 
-@media (max-width: 899px) {
-    .modal-box > .ai-img > img {
-        height: 200px;
-    }
-}
-
-/*=== ajustes: esquilo no celular e ícones do "Mais" ===*/
-@media (max-width: 600px) {
-    .hero {
-        background-position: right top;
-        background-size: 90% auto;
-        min-height: 560px;
-    }
-    .hero:before {
-        background: linear-gradient(0deg, rgba(44, 62, 28, 0.94) 38%, rgba(44, 62, 28, 0) 72%);
-    }
-}
-
-.item-row img.more-icon {
+/* Tamanho do ícone nas linhas do menu "Mais". */
+.linhaItem img.iconeMais {
     width: 28px;
     height: 28px;
     border-radius: 0;
     object-fit: contain;
     margin: 0 4px;
 }
+
+/* Texto da janela "Limpar a semana?". */
+.textoSecundario.textoModalConfirmacao {
+    margin: 8px 0 18px;
+    font-size: 1rem;
+}
+
+/* Linha com categoria, kcal e macros da receita aberta. */
+.textoSecundario.resumoNutricionalModal {
+    margin: 8px 0 16px;
+    font-size: 0.95rem;
+}
+
+/* Subtotal, taxa e total na janela da sacola. */
+.resumoSacola {
+    margin: 14px 0;
+}
+
+/* Botão "Finalizar pedido" (largura total). */
+.botao.botaoFinalizarPedido {
+    margin-top: 16px;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Formulário de entrega da sacola: sempre em duas colunas. */
+#formularioPedido {
+    grid-template-columns: 1fr 1fr;
+}
+
+/* Valor total da sacola (número grande, menor que o padrão). */
+.numeroGrande.totalSacola {
+    font-size: 1.6rem;
+}
+
+/* Receita clicável na lista de escolha do Cardápio. */
+.linhaItem.linhaItemSelecionavel {
+    cursor: pointer;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ geral modal desktop ~~~~*/
+
+    /* Fundo escuro que cobre a tela quando uma janela está aberta (escondido por padrão). */
+    .sobreposicao {
+        align-items: center;
+        padding: 20px;
+    }
+
+    /* A janela branca em si. */
+    .caixaModal {
+        border-radius: 26px;
+        max-height: 88vh;
+    }
+
+    /* Imagem no topo da janela. */
+    .caixaModal > img {
+        height: 260px;
+    }
+
+    /* Tamanho da foto da receita na janela. */
+    .caixaModal > .imagemIa > img {
+        height: 260px;
+    }
+}
+
+/* ====== geral aviso mobile ====== */
+/* Onde: todas as páginas. */
+/* O que faz: mensagem rápida que aparece embaixo da tela e some sozinha. */
+
+/* Mensagem rápida na parte de baixo da tela (escondida por padrão). */
+.aviso {
+    position: fixed;
+    left: 50%;
+    bottom: 100px;
+    transform: translateX(-50%);
+    background: var(--floresta);
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 99px;
+    z-index: 99;
+    box-shadow: var(--sombra);
+    font-weight: 500;
+    transition: 0.3s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Mostra a mensagem. */
+.aviso.ativo {
+    opacity: 1;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ geral aviso desktop ~~~~*/
+
+    /* Mensagem rápida na parte de baixo da tela (escondida por padrão). */
+    .aviso {
+        bottom: 90px;
+    }
+}
+
+/* ====== inicio mobile ====== */
+/* Onde: página Início (index.html). O banner também é usado em Sobre nós. */
+/* O que faz: banner de boas-vindas, números do site e cards de atalho. */
+
+/* Banner grande do topo (Início e Sobre nós): fundo verde com a imagem à direita. */
+.bannerPrincipal {
+    position: relative;
+    border-radius: 22px;
+    min-height: 44vh;
+    background: var(--pessego) no-repeat right top / auto 100%;
+    color: #fff;
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+/* Degradê escuro sobre a imagem, à esquerda, para o texto do banner ficar legível. */
+.bannerPrincipal:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, rgba(44, 62, 28, 0.92) 25%, rgba(44, 62, 28, 0) 70%);
+}
+
+/* Conteúdo do banner (largura do texto). */
+.bannerPrincipal > div {
+    position: relative;
+    max-width: 620px;
+}
+
+/* Título do banner. */
+.bannerPrincipal h1 {
+    font-size: clamp(2.3rem, 5vw, 4.2rem);
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+/* Parte do título em destaque (cor diferente, sem itálico). */
+.bannerPrincipal h1 em {
+    color: var(--pessego);
+    font-style: italic;
+}
+
+/* Botão principal do banner. */
+.bannerPrincipal .botao:not(.botaoContornoClaro) {
+    background: var(--ambar);
+    color: var(--tinta);
+}
+
+/* Texto do banner. */
+.bannerPrincipal p {
+    font-size: 1rem;
+    opacity: 0.92;
+    margin-bottom: 24px;
+}
+
+/* Faixa com os 4 números do site (receitas, dias, cidades, favoritas). */
+.estatisticas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: -8px 0 34px;
+}
+
+/* Cada número da faixa. */
+.estatisticas div {
+    flex: 1;
+    min-width: 44%;
+    background: var(--branco);
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow: var(--sombra);
+}
+
+/* O número grande. */
+.estatisticas b {
+    font: 800 1.5rem Fraunces, serif;
+    color: var(--ambarEscuro);
+    display: block;
+}
+
+/* Grade dos 4 cards de atalho (2 por linha no celular e no tablet; 4 por linha no computador). */
+.gradeDestaques {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+/* Card de atalho com imagem de fundo. */
+.cardDestaque {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    color: #fff;
+    background: var(--tinta) center / cover;
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+/* Card de atalho quando o mouse passa por cima. */
+.cardDestaque:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--sombra);
+}
+
+/* Camada escura para o texto ficar legível sobre a imagem. */
+.cardDestaque:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(44, 62, 28, 0.85), transparent 60%);
+}
+
+/* Texto do card. */
+.cardDestaque div {
+    position: relative;
+}
+
+/* Título do card. */
+.cardDestaque b {
+    font: 800 1.4rem Fraunces, serif;
+    display: block;
+}
+
+/* Saudação "Olá, nome" no banner. */
+#saudacaoUsuario {
+    margin-bottom: 8px !important;
+}
+
+/* Esconde a saudação quando está vazia (visitante). */
+#saudacaoUsuario:empty {
+    display: none;
+}
+
+/* Imagem de fundo do banner do Início. */
+.bannerPrincipal.bannerInicio {
+    background-image: url('../Imagens/esquilo-fundo.png');
+}
+
+/* Imagem de fundo do atalho Receitas. */
+.cardDestaque.cardDestaqueReceitas {
+    background-image: url('../Imagens/frutas.jpg');
+}
+
+/* Imagem de fundo do atalho Cardápio. */
+.cardDestaque.cardDestaqueCardapio {
+    background-image: url('../Imagens/mesa.jpg');
+}
+
+/* Imagem de fundo do atalho Equilíbrio. */
+.cardDestaque.cardDestaqueEquilibrio {
+    background-image: url('../Imagens/equilibrio.jpg');
+}
+
+/* Imagem de fundo do atalho Entrega. */
+.cardDestaque.cardDestaqueEntrega {
+    background-image: url('../Imagens/marmitas-row.jpg');
+}
+
+@media (max-width: 600px) {
+    /*~~~~ inicio mobile ate 600px ~~~~*/
+
+    /* Banner grande do topo (Início e Sobre nós): fundo verde com a imagem à direita. */
+    .bannerPrincipal {
+        background-position: right top;
+        background-size: 90% auto;
+        min-height: 560px;
+    }
+
+    /* Degradê escuro sobre a imagem, à esquerda, para o texto do banner ficar legível. */
+    .bannerPrincipal:before {
+        background: linear-gradient(0deg, rgba(44, 62, 28, 0.94) 38%, rgba(44, 62, 28, 0) 72%);
+    }
+}
+
+@media (min-width: 900px) {
+    /*~~~~ inicio desktop ~~~~*/
+
+    /* Banner grande do topo (Início e Sobre nós): fundo verde com a imagem à direita. */
+    .bannerPrincipal {
+        min-height: 58vh;
+        padding: 48px;
+        border-radius: 28px;
+        margin-bottom: 34px;
+    }
+
+    /* Texto do banner. */
+    .bannerPrincipal p {
+        font-size: 1.15rem;
+    }
+
+    /* Cada número da faixa. */
+    .estatisticas div {
+        min-width: 150px;
+        padding: 18px 20px;
+    }
+
+    /* O número grande. */
+    .estatisticas b {
+        font: 800 2rem Fraunces, serif;
+    }
+
+    /* Grade dos 4 cards de atalho (2 por linha no celular e no tablet; 4 por linha no computador). */
+    .gradeDestaques {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1100px) {
+    /*~~~~ inicio tablet ~~~~*/
+
+    /* Grade dos 4 cards de atalho (2 por linha no celular e no tablet; 4 por linha no computador). */
+    .gradeDestaques {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ====== receitas mobile ====== */
+/* Onde: Receitas, Início (recomendadas) e Entrega (pratos). */
+/* O que faz: grade e card de receita. Clicar no card abre a receita; o coração favorita. */
+
+/* Grade que organiza os cards de receita (e os cards de dica). */
+.gradeReceitas {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+/* Card de receita: foto em cima, nome e números embaixo. */
+.cardReceita {
+    background: var(--branco);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    cursor: pointer;
+    position: relative;
+    transition: 0.25s;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 112px;
+}
+
+/* Card levanta um pouco quando o mouse passa por cima. */
+.cardReceita:hover {
+    transform: translateY(-5px);
+}
+
+/* Foto da receita no card. */
+.cardReceita img {
+    width: 112px;
+    aspect-ratio: auto;
+    object-fit: cover;
+    display: block;
+    height: auto;
+    min-height: 112px;
+    flex: none;
+}
+
+/* Parte de texto do card (nome + kcal e macros). */
+.corpoCardReceita {
+    padding: 12px 44px 12px 14px;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+}
+
+/* Nome da receita no card. */
+.corpoCardReceita h4 {
+    font-size: 1rem;
+    line-height: 1.25;
+    min-height: 0;
+    overflow-wrap: anywhere;
+}
+
+/* Linha de kcal e macros no card. */
+.corpoCardReceita .textoSecundario {
+    margin-top: 0;
+    align-items: center;
+}
+
+/* Preço dentro do card (página Entrega). */
+.corpoCardReceita .preco {
+    margin-top: 0;
+}
+
+/* Coração no canto da foto para favoritar. */
+.botaoFavoritar {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.95);
+    font-size: 1.1rem;
+    color: #bbb;
+    display: grid;
+    place-items: center;
+}
+
+/* Coração de uma receita favoritada (vermelho). */
+.botaoFavoritar.ativo {
+    color: var(--perigo);
+}
+
+/* Linha do preço com o botão "+ Sacola" (página Entrega). */
+.preco {
+    font-weight: 700;
+    color: var(--floresta);
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Área do botão "Ver mais" embaixo da lista de receitas. */
+.areaVerMais {
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ receitas desktop ~~~~*/
+
+    /* Grade que organiza os cards de receita (e os cards de dica). */
+    .gradeReceitas {
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 20px;
+    }
+
+    /* Card de receita: foto em cima, nome e números embaixo. */
+    .cardReceita {
+        flex-direction: column;
+        border-radius: 20px;
+        align-items: normal;
+        min-height: auto;
+    }
+
+    /* Foto da receita no card. */
+    .cardReceita img {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        aspect-ratio: 4 / 3;
+        flex: 0 1 auto;
+    }
+
+    /* Parte de texto do card (nome + kcal e macros). */
+    .corpoCardReceita {
+        padding: 14px 16px 16px;
+        justify-content: normal;
+    }
+
+    /* Nome da receita no card. */
+    .corpoCardReceita h4 {
+        min-height: 2.5em;
+    }
+
+    /* Linha de kcal e macros no card. */
+    .corpoCardReceita .textoSecundario {
+        margin-top: auto;
+    }
+
+    /* Coração no canto da foto para favoritar. */
+    .botaoFavoritar {
+        top: 10px;
+        right: 10px;
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* ====== receitas filtros mobile ====== */
+/* Onde: Receitas (busca, categoria e filtros). Também usado em Cardápio (dias), Dicas (objetivos), Login (abas) e nas janelas. */
+/* O que faz: barra de busca, botões de opção ("chips") e a lista que os agrupa. */
+
+/* Linha com campos e botões lado a lado (busca, seletores). */
+.barraFerramentas {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+    align-items: center;
+}
+
+/* Aparência de campos de texto e seletores (barra de ferramentas e formulários). */
+.barraFerramentas input,
+.barraFerramentas select,
+.gradeFormulario input,
+.gradeFormulario select {
+    padding: 12px 16px;
+    border: 2px solid var(--borda);
+    border-radius: 14px;
+    background: var(--branco);
+    outline: 0;
+    min-width: 0;
+}
+
+/* Campo de busca (largura mínima). */
+.barraFerramentas input {
+    flex: 1 1 100%;
+    min-width: 200px;
+    width: 100%;
+}
+
+/* Botões dentro da barra de ferramentas. */
+.barraFerramentas .botao {
+    flex: 1 1 auto;
+    justify-content: center;
+}
+
+/* Seletores dentro da barra de ferramentas. */
+.barraFerramentas select {
+    flex: 1 1 100%;
+    width: 100%;
+}
+
+/* Botão de opção ("chip"): filtros, dias da semana, objetivos, abas do login. */
+.botaoOpcao {
+    padding: 8px 16px;
+    border-radius: 99px;
+    background: var(--branco);
+    border: 2px solid var(--borda);
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Opção selecionada. */
+.botaoOpcao.ativo {
+    background: var(--floresta);
+    color: #fff;
+    border-color: var(--floresta);
+}
+
+/* Filtro "só favoritas" quando está ligado (cor própria). */
+.botaoOpcao.ativo[data-acao='filtroFavoritas'] {
+    background: var(--ambar);
+    border-color: var(--ambar);
+    color: var(--tinta);
+}
+
+/* Linha que agrupa os botões de opção (no celular rola para o lado). */
+.listaOpcoes {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    margin-bottom: 18px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ receitas filtros desktop ~~~~*/
+
+    /* Linha com campos e botões lado a lado (busca, seletores). */
+    .barraFerramentas {
+        flex-wrap: wrap;
+    }
+
+    /* Campo de busca (largura mínima). */
+    .barraFerramentas input {
+        flex: 1;
+        width: auto;
+    }
+
+    /* Botões dentro da barra de ferramentas. */
+    .barraFerramentas .botao {
+        flex: 0 1 auto;
+        justify-content: normal;
+    }
+
+    /* Seletores dentro da barra de ferramentas. */
+    .barraFerramentas select {
+        flex: 0 1 auto;
+        width: auto;
+    }
+
+    /* Linha que agrupa os botões de opção (no celular rola para o lado). */
+    .listaOpcoes {
+        flex-wrap: wrap;
+        overflow-x: visible;
+        padding-bottom: 0;
+    }
+}
+
+/* ====== cardapio mobile ====== */
+/* Onde: Cardápio. Também usado em Equilíbrio (barras) e nas janelas (listas de itens). */
+/* O que faz: refeições do dia, linhas de item, números grandes e barras de progresso. */
+
+/* Trilho da barra de progresso (calorias, proteínas...). */
+.barraProgresso {
+    height: 11px;
+    background: var(--areia);
+    border-radius: 9px;
+    overflow: hidden;
+    margin: 6px 0 14px;
+}
+
+/* Parte preenchida da barra. A largura vem do app.js pela variável --largura. */
+.barraProgresso i {
+    display: block;
+    width: var(--largura, 0%);
+    height: 100%;
+    background: var(--ambar);
+    border-radius: 9px;
+    transition: width 0.5s;
+}
+
+/* Barra que passou da meta (vermelha). */
+.barraProgresso i.acimaDaMeta {
+    background: var(--perigo);
+}
+
+/* Número grande em destaque (calorias do dia, total da sacola). */
+.numeroGrande {
+    font: 800 2.6rem Fraunces, serif;
+    color: var(--ambarEscuro);
+}
+
+/* Linha de item: foto, nome e botão (cardápio, sacola, menu "Mais"). */
+.linhaItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--borda);
+}
+
+/* Foto pequena do item. */
+.linhaItem img {
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Texto do item. */
+.linhaItem div {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Nome do item. */
+.linhaItem b {
+    font-size: 0.95rem;
+    display: block;
+}
+
+/* Botão "×" vermelho que tira um prato do cardápio. */
+.botaoRemover {
+    color: var(--perigo);
+    font-size: 1.3rem;
+    padding: 6px;
+}
+
+/* Título da refeição (Café da manhã...) com o botão "+ Adicionar". */
+.cabecalhoRefeicao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+}
+
+/* Nome da refeição. */
+.cabecalhoRefeicao h4 {
+    color: var(--floresta);
+    font-size: 1.05rem;
+}
+
+/* Texto "Nada planejado" de uma refeição sem pratos. */
+.textoSecundario.refeicaoVazia {
+    padding: 10px 0;
+}
+
+/* Trecho pequeno "/ meta kcal" ao lado das calorias do dia. */
+.metaCaloriasDia {
+    font-size: 1rem;
+    color: var(--textoSuave);
+}
+
+/* Painel "Sua semana" (resumo dos 7 dias, lista de compras e cópia de dia). */
+.painelSemana {
+    margin-top: 20px;
+}
+
+/* Três números no topo do painel: pratos, média diária e dias completos. */
+.estatisticasSemana {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+/* Números das estatísticas (menores que o número grande padrão). */
+.estatisticasSemana .numeroGrande {
+    font-size: 1.7rem;
+}
+
+/* Uma linha da semana: nome do dia, barra de calorias e total. Clicar abre o dia. */
+.linhaDiaSemana {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 12px;
+    text-align: left;
+}
+
+/* Dia que está aberto no momento. */
+.linhaDiaSemana.ativo {
+    background: var(--ambarSuave);
+}
+
+/* Nome do dia (Seg, Ter...). */
+.linhaDiaSemana b {
+    width: 34px;
+    color: var(--floresta);
+}
+
+/* A barra ocupa o espaço que sobra na linha. */
+.linhaDiaSemana .barraProgresso {
+    flex: 1;
+    margin: 0;
+}
+
+/* Total de calorias do dia. */
+.linhaDiaSemana span {
+    width: 80px;
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--textoSuave);
+}
+
+/* Receita dentro da lista de compras. */
+.blocoCompras {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--borda);
+}
+
+/* Nome da receita na lista de compras. */
+.blocoCompras h4 {
+    color: var(--floresta);
+}
+
+/* Ingrediente com caixinha de marcar. */
+.itemCompra {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 5px 0;
+    cursor: pointer;
+}
+
+/* Ingrediente já marcado fica riscado. */
+.itemCompra input:checked + span {
+    text-decoration: line-through;
+    color: var(--textoSuave);
+}
+
+@media (min-width: 900px) {
+    /*~~~~ cardapio desktop ~~~~*/
+
+    /* Barra de calorias um pouco mais larga no computador. */
+    .linhaDiaSemana span {
+        width: 100px;
+    }
+}
+
+/* ====== equilibrio mobile ====== */
+/* Onde: Equilíbrio. O formulário também aparece na janela da sacola (dados de entrega) e no Login. */
+/* O que faz: formulário do perfil, caixas de restrições, gráfico da semana e alertas. */
+
+/* Formulário em grade (perfil, dados da entrega, login). */
+.gradeFormulario {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* Cada item do formulário. */
+.gradeFormulario > * {
+    min-width: 0;
+}
+
+/* Largura dos campos do formulário. */
+.gradeFormulario input,
+.gradeFormulario select {
+    width: 100%;
+}
+
+/* Bloco das restrições alimentares (caixas de marcar). */
+.grupoCheckbox {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Título do bloco de restrições. */
+.grupoCheckbox > b {
+    width: 100%;
+    color: var(--floresta);
+    font-size: 0.85rem;
+}
+
+/* Cada caixa de marcar com seu texto. */
+.gradeFormulario .itemCheckbox {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border: 2px solid var(--borda);
+    border-radius: 99px;
+    background: var(--branco);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* A caixinha de marcar. */
+.gradeFormulario .itemCheckbox input {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    accent-color: var(--ambarEscuro);
+    flex: none;
+}
+
+/* Item marcado (destacado). */
+.gradeFormulario .itemCheckbox:has(input:checked) {
+    border-color: var(--ambar);
+    background: var(--ambarSuave);
+}
+
+/* Rótulo de cada campo. */
+.gradeFormulario label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--floresta);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Campo que ocupa a linha inteira do formulário. */
+.gradeFormulario .larguraTotal {
+    grid-column: 1 / -1;
+}
+
+/* Gráfico de colunas das calorias da semana. */
+.graficoSemanal {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    height: 180px;
+    margin-top: 10px;
+}
+
+/* Cada dia do gráfico. */
+.graficoSemanal div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    font-size: 0.8rem;
+    gap: 6px;
+}
+
+/* Coluna do gráfico. A altura vem do app.js pela variável --altura. */
+.graficoSemanal i {
+    width: 100%;
+    height: var(--altura, 0%);
+    background: var(--folha);
+    border-radius: 10px 10px 4px 4px;
+    min-height: 4px;
+}
+
+/* Coluna de um dia que passou da meta. */
+.graficoSemanal i.acimaDaMeta {
+    background: var(--perigo);
+}
+
+/* Dia que está selecionado. */
+.graficoSemanal .diaAtual {
+    font-weight: 700;
+    color: var(--floresta);
+}
+
+/* Caixa de aviso (metas de referência, passou da meta de calorias). */
+.alerta {
+    background: var(--pessego);
+    border-left: 5px solid var(--folha);
+    padding: 16px 18px;
+    border-radius: 14px;
+    margin-bottom: 16px;
+}
+
+/* Linha "Hoje: X kcal · restam Y". */
+.textoSecundario.resumoDiaEquilibrio {
+    margin-top: 10px;
+}
+
+@media (max-width: 420px) {
+    /*~~~~ equilibrio mobile ate 420px ~~~~*/
+
+    /* Formulário em grade (perfil, dados da entrega, login). */
+    .gradeFormulario {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 900px) {
+    /*~~~~ equilibrio desktop ~~~~*/
+
+    /* Formulário em grade (perfil, dados da entrega, login). */
+    .gradeFormulario {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+}
+
+/* ====== geral foco dos campos de formulario mobile ====== */
+/* Onde: todas as páginas com campos. */
+/* O que faz: cor da borda do campo quando ele está selecionado. Fica depois das regras dos campos para vencer o empate de prioridade. */
+
+/* Borda do campo na cor verde quando está selecionado. */
+input:focus,
+select:focus {
+    border-color: var(--folha);
+}
+
+/* ====== dicas mobile ====== */
+/* Onde: página Dicas. */
+/* O que faz: cards de dica (ícone + título + texto). */
+
+/* Card de dica: ícone + título + texto. */
+.cardDica {
+    display: flex;
+    gap: 14px;
+    background: var(--branco);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: var(--sombra);
+}
+
+/* Ícone (emoji) da dica. */
+.cardDica span {
+    font-size: 1.8rem;
+}
+
+/* Título da dica. */
+.cardDica h3 {
+    margin: 0 0 6px;
+    font-size: 1.1rem;
+}
+
+/* Grade dos cards de dica (colunas mais largas que as de receita). */
+.gradeReceitas.gradeDicas {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* ====== entrega mobile ====== */
+/* Onde: página Entrega. */
+/* O que faz: escolha da cidade e acompanhamento do pedido. */
+
+/* Botão de escolha de cidade (nome, taxa e tempo). */
+.opcaoCidade {
+    cursor: pointer;
+    border: 2px solid var(--borda);
+    background: var(--branco);
+    border-radius: 20px;
+    padding: 18px;
+    text-align: left;
+}
+
+/* Cidade escolhida. */
+.opcaoCidade.ativo {
+    border-color: var(--folha);
+    background: var(--salviaSuave);
+}
+
+/* Nome da cidade. */
+.opcaoCidade b {
+    font: 800 1.2rem Fraunces, serif;
+    display: block;
+}
+
+/* Linha com as etapas do pedido (Confirmado, Preparando, A caminho, Entregue). */
+.etapasPedido {
+    display: flex;
+    gap: 6px;
+    margin-top: 14px;
+}
+
+/* Cada etapa. */
+.etapasPedido div {
+    flex: 1;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--textoSuave);
+}
+
+/* Bolinha da etapa. */
+.etapasPedido i {
+    display: block;
+    height: 8px;
+    border-radius: 9px;
+    background: var(--borda);
+    margin-bottom: 6px;
+}
+
+/* Etapa já concluída. */
+.etapasPedido .etapaConcluida {
+    color: var(--floresta);
+    font-weight: 700;
+}
+
+/* Bolinha preenchida de uma etapa concluída. */
+.etapasPedido .etapaConcluida i {
+    background: var(--folha);
+}
+
+/* Ícone de localização (cidades). */
+.iconeLocalizacao {
+    width: 1.1em;
+    height: 1.1em;
+    vertical-align: -0.2em;
+    filter: brightness(0) opacity(0.7);
+}
+
+/* Espaço embaixo da lista de cidades. */
+.tresColunas.listaCidades {
+    margin-bottom: 24px;
+}
+
+/* Botão "Novo pedido" do acompanhamento. */
+.botao.botaoNovoPedido {
+    margin-top: 14px;
+}
+
+/* ====== videos mobile ====== */
+/* Onde: página Vídeos. */
+/* O que faz: seção e grade dos vídeos. */
+
+/* Seção da página de vídeos (conteúdo centralizado). */
+.secaoVideos {
+    text-align: center;
+}
+
+/* Grade dos vídeos adicionados pelo app.js. */
+.gradeVideos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* Tamanho de cada vídeo. */
+.gradeVideos iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 18px;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ videos desktop ~~~~*/
+
+    /* Grade dos vídeos adicionados pelo app.js. */
+    .gradeVideos {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+}
+
+/* ====== sobre mobile ====== */
+/* Onde: página Sobre nós (sobre.html). */
+/* O que faz: missão e valores lado a lado e um cartão para cada integrante da equipe, com foto, título (nome) e descrição. */
+
+/* Missão e valores (um embaixo do outro no celular). */
+.gradeMissaoValores {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+/* Título da seção "Equipe". */
+.tituloSecao {
+    margin: 8px 0 14px;
+}
+
+.tituloSecao h3 {
+    margin-bottom: 2px;
+}
+
+/* Grade dos cartões da equipe (2 por linha no celular). */
+.gradeEquipe {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* Cartão de um integrante: foto pequena em cima, depois título e descrição (tudo centralizado). */
+.cardMembro {
+    background: var(--branco);
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: var(--sombra);
+    text-align: center;
+}
+
+/* Foto do integrante: redonda e pequena, cortada para preencher sem esticar. */
+.fotoMembro {
+    display: block;
+    width: 112px;
+    height: 112px;
+    object-fit: cover;
+    border-radius: 50%;
+    background: var(--salviaSuave);
+    margin: 0 auto 8px;
+}
+
+/* Título do cartão (nome do integrante). */
+.nomeMembro {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+/* Link do nome (GitHub): mantém a cor do título e sublinha com o mouse por cima. */
+.nomeMembro a {
+    color: inherit;
+}
+
+.nomeMembro a:hover {
+    text-decoration: underline;
+    color: var(--folha);
+}
+
+/* Descrição do integrante. */
+.descricaoMembro {
+    color: var(--textoSuave);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ sobre desktop ~~~~*/
+
+    /* Missão e valores lado a lado. */
+    .gradeMissaoValores {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 8px;
+    }
+
+    /* Grade dos cartões da equipe (3 por linha no computador). */
+    .gradeEquipe {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    /* Cartão de um integrante. */
+    .cardMembro {
+        padding: 16px;
+        border-radius: 18px;
+    }
+
+    /* Foto do integrante. */
+    .fotoMembro {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+/* ====== geral rodape mobile ====== */
+/* Onde: rodapé de todas as páginas (menos o login). */
+/* O que faz: cartão verde no fim do conteúdo, com logo, equipe, navegação, conta e lembrete por e-mail. */
+
+/* Rodapé verde: encosta nas laterais, no menu lateral e no fundo da tela (sem bordas arredondadas). No celular o espaço embaixo fica por trás da barra de abas. */
+.rodape {
+    background: var(--florestaRodape);
+    color: #fff;
+    padding: 28px 22px calc(96px + env(safe-area-inset-bottom));
+    margin: 36px 0 0;
+}
+
+/* Conteúdo do rodapé: blocos em uma coluna (no desktop vira grade). */
+.rodapeConteudo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+}
+
+/* Logo do rodapé. */
+.rodapeLogo {
+    width: auto;
+    height: 40px;
+    margin-bottom: 12px;
+}
+
+/* Texto do projeto (SEPE-IFC 2026). */
+.rodapeMarca p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    opacity: 0.85;
+    margin: 0 0 8px;
+}
+
+/* Títulos "Navegue", "Sua conta" e "Quer lembrete por e-mail?". */
+.rodapeTitulo {
+    font: 800 1.05rem Fraunces, serif;
+    color: var(--pessego);
+    margin: 0 0 12px;
+}
+
+/* Equipe: 2 colunas com 3 nomes em cada (3 de um lado, 3 do outro), cada nome é um link (GitHub). */
+.rodapeEquipe {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto repeat(3, auto);
+    grid-auto-flow: column;
+    gap: 6px 16px;
+    margin-top: 18px;
+    align-content: start;
+}
+
+/* Título ocupando a linha toda, acima das duas colunas. */
+.rodapeEquipe .rodapeTitulo {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 6px;
+}
+
+/* Coluna de links do rodapé. */
+.rodapeNavegacao {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+    align-content: start;
+}
+
+/* Título ocupando a linha toda da coluna de links. */
+.rodapeNavegacao .rodapeTitulo {
+    grid-column: 1 / -1;
+    margin-bottom: 6px;
+}
+
+/* Cada link do rodapé. */
+.rodapeNavegacao a,
+.rodapeEquipe a {
+    font-size: 0.92rem;
+    opacity: 0.85;
+    padding: 4px 0;
+    transition: 0.2s;
+}
+
+/* Link do rodapé com o mouse por cima. */
+.rodapeNavegacao a:hover,
+.rodapeEquipe a:hover {
+    opacity: 1;
+    color: var(--salvia);
+}
+
+/* Bloco da conta: nome, e-mail e botão Entrar / Sair. */
+.rodapeConta {
+    display: grid;
+    gap: 4px;
+    align-content: start;
+    justify-items: start;
+    font-size: 0.92rem;
+    overflow-wrap: anywhere;
+}
+
+.rodapeConta .detalheUsuario {
+    opacity: 0.85;
+}
+
+.rodapeConta .botaoUsuario {
+    margin-top: 8px;
+    color: var(--pessego);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* Bloco do lembrete por e-mail. */
+.rodapeLembrete {
+    align-content: start;
+}
+
+/* Contato (Instagram, e-mail e telefone): fica embaixo do lembrete por e-mail. */
+.rodapeContato {
+    display: grid;
+    gap: 6px;
+    margin-top: 22px;
+    align-content: start;
+    overflow-wrap: anywhere;
+}
+
+.rodapeContato .rodapeTitulo {
+    margin-bottom: 6px;
+}
+
+.rodapeContato a {
+    font-size: 0.92rem;
+    opacity: 0.85;
+    padding: 4px 0;
+    transition: 0.2s;
+}
+
+.rodapeContato a:hover {
+    opacity: 1;
+    color: var(--salvia);
+}
+
+/* Linha final com o ano. */
+.rodapeDireitos {
+    margin: 24px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    opacity: 0.9;
+    text-align: center;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ geral rodape desktop ~~~~*/
+
+    /* Cartão verde do rodapé. */
+    .rodape {
+        padding: 40px 44px 22px;
+        margin: 56px 0 0;
+    }
+
+    /* Conteúdo do rodapé: marca, navegação, conta e lembrete lado a lado. */
+    .rodapeConteudo {
+        grid-template-columns: 1.7fr 1.1fr 1fr 1.3fr;
+        gap: 36px;
+    }
+
+    /* Linha final com o ano. */
+    .rodapeDireitos {
+        text-align: center;
+    }
+}
+
+/* ====== geral logo como link mobile ====== */
+/* Onde: todas as páginas. */
+/* O que faz: a logo (menu lateral, barra superior, rodapé e login) é um link que leva ao início, sem mudar o visual. */
+
+/* Link da logo: só envolve a imagem. */
+.logo a,
+.logoAutenticacao a,
+.rodapeLogoLink {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    background: none;
+    opacity: 1;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+/* Logo com o mouse por cima. */
+.logo a:hover,
+.logoAutenticacao a:hover,
+.rodapeLogoLink:hover {
+    transform: scale(1.04);
+}
+
+/* Anula o estilo dos links do menu lateral na logo. */
+#menuLateral .logo a,
+#menuLateral .logo a:hover {
+    padding: 0;
+    background: none;
+    opacity: 1;
+}
+
+/* ====== contato mobile ====== */
+/* Onde: página Entre em contato (formulário) e lembrete por e-mail do rodapé de todas as páginas. */
+/* O que faz: banner, campo de mensagem, avisos de sucesso/erro e o mini formulário do rodapé. */
+
+/* Campo de mensagem (texto longo). */
+.gradeFormulario textarea,
+.rodapeFormulario input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--borda);
+    border-radius: 14px;
+    background: var(--branco);
+    color: var(--tinta);
+    font: inherit;
+    outline: 0;
+    resize: vertical;
+}
+
+/* Borda verde ao selecionar. */
+.gradeFormulario textarea:focus,
+.rodapeFormulario input:focus {
+    border-color: var(--folha);
+}
+
+/* Botões Enviar e Limpar lado a lado. */
+.botoesFormulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Campo com erro. */
+.campoInvalido {
+    border-color: var(--perigo) !important;
+}
+
+/* Mensagem de sucesso ou erro abaixo do formulário. */
+.retornoFormulario,
+.rodapeFormularioRetorno {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin: 10px 0 0;
+    min-height: 1.2em;
+}
+
+.retornoFormulario.erro {
+    color: var(--perigo);
+}
+
+.retornoFormulario.sucesso {
+    color: var(--folha);
+}
+
+/* Formulário do lembrete: campo de e-mail e botão. */
+.rodapeFormulario {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.rodapeFormulario .botao {
+    justify-self: start;
+}
+
+.rodapeFormularioRetorno {
+    margin: 0;
+    color: var(--pessego);
+}
+
+.rodapeFormularioRetorno.erro {
+    color: #ffb4ab;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ contato desktop ~~~~*/
+
+    /* Formulário e canais lado a lado. */
+    .colunasContato {
+        grid-template-columns: 1.6fr 1fr;
+    }
+
+}
+
+/* ====== contato extras mobile ====== */
+/* Onde: página Entre em contato (canais, perguntas frequentes e apresentação da equipe). */
+
+/* Lista de canais: cada linha tem ícone, título e detalhe. */
+.listaCanais {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.canalContato {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    background: var(--fundo);
+    color: var(--tinta);
+    text-decoration: none;
+}
+
+a.canalContato:hover {
+    background: var(--salviaSuave);
+}
+
+.canalContato b {
+    display: block;
+}
+
+.canalContato small {
+    display: block;
+    color: var(--textoSuave);
+    overflow-wrap: anywhere;
+}
+
+.canalIcone {
+    flex: none;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--branco);
+    font-size: 18px;
+}
+
+/* Ícone SVG dentro do círculo do canal. */
+.canalIcone img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Perguntas frequentes: lista de cartões que abrem e fecham. */
+.gradeFaq {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.itemFaq {
+    background: var(--branco);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: var(--sombra);
+}
+
+.itemFaq summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--floresta);
+}
+
+.itemFaq p {
+    margin: 10px 0 0;
+    color: var(--textoSuave);
+}
+
+.painelEquipeContato a {
+    color: var(--floresta);
+    font-weight: 700;
+}
+
+@media (min-width: 900px) {
+    /*~~~~ contato extras desktop ~~~~*/
+
+    /* Perguntas frequentes em duas colunas. */
+    .gradeFaq {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+}
+
+/* ====== geral atributo hidden mobile ====== */
+/* Onde: todas as páginas. */
+/* O que faz: garante que elementos com o atributo hidden sumam. Fica por último para nenhuma outra regra mostrar o elemento de volta. */
+
+/* Esconde qualquer elemento com o atributo hidden. */
+[hidden] {
+    display: none !important;
+}
+

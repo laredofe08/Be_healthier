@@ -1,3 +1,9 @@
+/* ====== reset.css ======
+   Onde: todas as páginas (é o primeiro CSS carregado).
+   O que faz: nivela as diferenças entre navegadores (tamanhos de título, links, tabelas, campos de formulário...)
+   para o style.css partir de uma base igual em todos. Os comentários abaixo, em inglês, vêm do arquivo-base de reset
+   e explicam cada ajuste. Não tem classes do BeHealthier: quem estiliza o site é o style.css (e o auth.css, no login). */
+
 /*
   1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
   2. Remove default margins and padding

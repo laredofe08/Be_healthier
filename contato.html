@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="pt-BR">
 
-<!-- PÁGINA: Sobre nós (sobre.html)
-     O que é: Missão, valores e equipe do projeto.
+<!-- PÁGINA: Entre em contato (contato.html)
+     O que é: Formulário para enviar mensagem à equipe e canais de contato.
      Cada página do site é um arquivo HTML parecido: menu, conteúdo e rodapé. O app.js preenche os espaços vazios. -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>BeHealthier — Sobre nós</title>
+  <title>BeHealthier — Entre em contato</title>
   <link rel="icon" type="image/svg+xml" href="Imagens/icons/esquilo-logo.svg">
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap"
@@ -23,7 +23,7 @@
 </head>
 
 <!-- CORPO DA PÁGINA: data-pagina diz ao app.js qual é esta página (ele monta só o que ela precisa) -->
-<body data-pagina="sobre">
+<body data-pagina="contato">
   <!-- ESTRUTURA GERAL: menu lateral (computador) + coluna de conteúdo. No celular o menu lateral some e entram a barra superior e a barra inferior -->
   <div id="aplicacao">
     <!-- MENU LATERAL (só no computador): logo, links das páginas e caixa do usuário -->
@@ -38,8 +38,8 @@
       <a href="entrega.html"><span><img src="Imagens/icons/entrega.svg" alt=""></span>Entrega <span
           class="seloContador contadorSacola" hidden></span></a>
       <a href="videos.html"><span><img src="Imagens/icons/Play.svg" alt=""></span>Vídeos</a>
-      <a href="sobre.html" class="ativo"><span><img src="Imagens/icons/sobre.svg" alt=""></span>Sobre nós</a>
-      <a href="contato.html"><span><img src="Imagens/icons/contato.svg" alt=""></span>Contato</a>
+      <a href="sobre.html"><span><img src="Imagens/icons/sobre.svg" alt=""></span>Sobre nós</a>
+      <a href="contato.html" class="ativo"><span><img src="Imagens/icons/contato.svg" alt=""></span>Contato</a>
       <!-- CAIXA DO USUÁRIO: nome, e-mail e botão Entrar/Sair. O app.js preenche (visitante ou conta logada) -->
       <div class="caixaUsuario"><b class="nomeUsuario"></b><span class="detalheUsuario"></span><button data-acao="sair"
           class="botaoUsuario"></button></div>
@@ -52,65 +52,95 @@
         <span class="botaoCidade cidadeAtual" data-acao="irParaEntrega"></span>
         <button class="botaoSacola" data-acao="abrirSacola"><img class="iconeSacolaTopo" src="Imagens/icons/Shopping_Cart_01.svg" alt=""> <span class="contadorSacola">0</span></button>
       </header>
-      <!-- CONTEÚDO PRINCIPAL: tudo o que é próprio da página Sobre nós -->
+      <!-- CONTEÚDO PRINCIPAL: tudo o que é próprio da página Entre em contato -->
       <main id="conteudoPrincipal">
         <!-- TÍTULO DA PÁGINA -->
-        <div class="tituloPagina"><div><h2>Sobre nós</h2><p>O BeHealthier é uma iniciativa escolar para promover a alimentação saudável de forma prática, acessível e gostosa.</p></div></div>
-        <!-- MISSÃO E VALORES: dois painéis lado a lado -->
-        <div class="gradeMissaoValores">
+        <div class="tituloPagina"><div><h2>Entre em contato</h2><p>Dúvidas, sugestões de receitas ou parcerias? Escreva para a equipe do BeHealthier e responderemos o quanto antes.</p></div></div>
+        <div class="duasColunas colunasContato">
+          <!-- FORMULÁRIO: validado e enviado pelo app.js (acaoEnviarContato) -->
           <div class="painel">
-            <h3 class="tituloPainel"> Missão</h3>
-            <p>A missão da BeHealthier é incentivar uma alimentação mais saudável e equilibrada.  
-Buscamos facilitar o acesso a informações e opções de refeições nutritivas.  
-Oferecemos soluções personalizadas de acordo com as necessidades de cada pessoa.  
-Queremos tornar a escolha por uma alimentação saudável mais simples e acessível.  
-Assim, contribuímos para uma melhor qualidade de vida por meio de bons hábitos.</p>
+            <h3 class="tituloPainel">Envie sua mensagem</h3>
+            <form class="gradeFormulario" id="formularioContato" data-formulario="contato" onsubmit="return false" novalidate>
+              <label>Nome<input name="nome" autocomplete="name" required></label>
+              <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
+              <label>Telefone (opcional)<input name="telefone" type="tel" autocomplete="tel" placeholder="(47) 90000-0000"></label>
+              <label>Assunto
+                <select name="assunto">
+                  <option>Dúvida</option>
+                  <option>Sugestão de receita</option>
+                  <option>Problema no site</option>
+                  <option>Entrega</option>
+                  <option>Parceria</option>
+                  <option>Outro</option>
+                </select>
+              </label>
+              <label class="larguraTotal">Mensagem<textarea name="mensagem" rows="6" required></textarea></label>
+              <div class="larguraTotal botoesFormulario">
+                <button class="botao" type="submit" data-acao="enviarContato">Enviar mensagem</button>
+                <button class="botao botaoContorno" type="reset">Limpar</button>
+              </div>
+            </form>
+            <p class="retornoFormulario" id="retornoContato" role="status" aria-live="polite"></p>
           </div>
+          <!-- CANAIS DE CONTATO: Instagram, e-mail, atendimento e cidades -->
           <div class="painel">
-            <h3 class="tituloPainel"> Valores</h3>
-            <p>Os valores da BeHealthier são baseados em saúde, equilíbrio e qualidade de vida.
-Buscamos incentivar escolhas alimentares mais saudáveis e conscientes.
-Valorizamos a acessibilidade, oferecendo opções que cabem em diferentes rotinas e orçamentos.
-Também prezamos pela personalização, respeitando as necessidades e preferências de cada pessoa.</p>
+            <h3 class="tituloPainel">Outros canais</h3>
+            <div class="listaCanais">
+              <a class="canalContato" href="https://www.instagram.com/behealthier_ifc_araquari?stkn=Y2cxam0ybzNzejRj" target="_blank" rel="noopener noreferrer">
+                <span class="canalIcone"><img src="Imagens/icons-preto/instagram.svg" alt=""></span>
+                <span><b>Instagram</b><small>@behealthier_ifc_araquari</small></span>
+              </a>
+              <a class="canalContato" href="mailto:behealthier67@gmail.com">
+                <span class="canalIcone"><img src="Imagens/icons-preto/email.svg" alt=""></span>
+                <span><b>E-mail</b><small>behealthier67@gmail.com</small></span>
+              </a>
+              <div class="canalContato">
+                <span class="canalIcone" aria-hidden="true"><img src="Imagens/icons-preto/relogio.svg" alt=""></span>
+                <span><b>Atendimento</b><small>Segunda a sexta, das 8h às 18h</small></span>
+              </div>
+              <div class="canalContato">
+                <span class="canalIcone" aria-hidden="true"><img src="Imagens/icons-preto/localizacao.svg" alt=""></span>
+                <span><b>Cidades atendidas</b><small>Joinville, São Francisco do Sul e Araquari</small></span>
+              </div>
+            </div>
+            <p class="textoSecundario">O BeHealthier é uma iniciativa escolar; as respostas podem levar até 2 dias úteis.</p>
           </div>
         </div>
 
-        <!-- EQUIPE: um cartão por integrante, com foto, título (nome) e descrição.
-             Para trocar a foto: coloque a imagem em Imagens/equipe/ e mude o src da <img> do integrante.
-             Para o texto: edite o <h3 class="nomeMembro"> (título) e o <p class="descricaoMembro"> (descrição).
-             Para o link do GitHub: troque o href="#" do link dentro do nome. -->
-        <div class="tituloSecao"><h3>Equipe</h3><p>Alunos criadores do projeto.</p></div>
-        <div class="gradeEquipe">
-          <div class="cardMembro">
-            <img class="fotoMembro" src="Imagens/equipe/murilo.jpg" alt="Foto de Murilo Antonio de Almeida">
-            <h3 class="nomeMembro"><a href="https://github.com/murilow-a16" target="_blank" rel="noopener noreferrer">Murilo Antonio de Almeida</a></h3>
-            <p class="descricaoMembro">Escreva aqui a descrição deste integrante.</p>
-          </div>
-          <div class="cardMembro">
-            <img class="fotoMembro" src="Imagens/equipe/lucas.jpg" alt="Foto de Lucas de Amorim Silva">
-            <h3 class="nomeMembro"><a href="https://github.com/lucasdeamorimsilva" target="_blank" rel="noopener noreferrer">Lucas de Amorim Silva</a></h3>
-            <p class="descricaoMembro">Escreva aqui a descrição deste integrante.</p>
-          </div>
-          <div class="cardMembro">
-            <img class="fotoMembro" src="Imagens/equipe/enzo.jpg" alt="Foto de Enzo Melgarejo">
-            <h3 class="nomeMembro"><a href="#" target="_blank" rel="noopener noreferrer">Enzo Melgarejo</a></h3>
-            <p class="descricaoMembro">Escreva aqui a descrição deste integrante.</p>
-          </div>
-          <div class="cardMembro">
-            <img class="fotoMembro" src="Imagens/equipe/laredo.jpg" alt="Foto de Felipe Laredo">
-            <h3 class="nomeMembro"><a href="https://github.com/laredofe08" target="_blank" rel="noopener noreferrer">Felipe Laredo</a></h3>
-            <p class="descricaoMembro">Escreva aqui a descrição deste integrante.</p>
-          </div>
-          <div class="cardMembro">
-            <img class="fotoMembro" src="Imagens/equipe/igor.jpg" alt="Foto de Igor Hayato Sato">
-            <h3 class="nomeMembro"><a href="https://github.com/igorhayatoss-alt" target="_blank" rel="noopener noreferrer">Igor Hayato Sato</a></h3>
-            <p class="descricaoMembro">Escreva aqui a descrição deste integrante.</p>
-          </div>
-          <div class="cardMembro">
-            <img class="fotoMembro" src="Imagens/equipe/henrique.jpg" alt="Foto de Henrique Tironi">
-            <h3 class="nomeMembro"><a href="https://github.com/HTironi" target="_blank" rel="noopener noreferrer">Henrique Tironi</a></h3>
-            <p class="descricaoMembro">Escreva aqui a descrição deste integrante.</p>
-          </div>
+        <!-- PERGUNTAS FREQUENTES: cada pergunta abre e fecha ao clicar (sem JavaScript) -->
+        <div class="tituloSecao"><h3>Perguntas frequentes</h3><p>Talvez a sua dúvida já tenha resposta aqui.</p></div>
+        <div class="gradeFaq">
+          <details class="itemFaq">
+            <summary>O BeHealthier é gratuito?</summary>
+            <p>Sim! O BeHealthier é gratuito e você pode acessar diversas funcionalidades sem precisar pagar nada. Você pode consultar receitas, conhecer diferentes opções de refeições, montar seu cardápio da semana e conferir dicas para melhorar sua alimentação e sua qualidade de vida.</p>
+          </details>
+          <details class="itemFaq">
+            <summary>Como faço o pedido de um prato?</summary>
+            <p>Para fazer um pedido, acesse a página Entrega e escolha os pratos que deseja receber. Depois, adicione os itens à sua sacola, confira o pedido e finalize informando os dados necessários para a entrega. Assim, sua refeição será preparada e encaminhada para o endereço informado.</p>
+          </details>
+          <details class="itemFaq">
+            <summary>Em quais cidades vocês entregam?</summary>
+            <p>Atualmente, realizamos entregas em Joinville, São Francisco do Sul e Araquari. Nosso objetivo é oferecer opções de refeições mais saudáveis e práticas para pessoas dessas regiões. Consulte as informações da página de entrega para verificar as condições e áreas atendidas.</p>
+          </details>
+          <details class="itemFaq">
+            <summary>Posso sugerir uma receita?</summary>
+            <p>Claro! Adoramos receber sugestões. Utilize o formulário disponível acima, selecione o assunto “Sugestão de receita” e conte para nós qual receita você gostaria de ver no BeHealthier. Se quiser, também pode explicar como ela é preparada ou quais ingredientes são utilizados.</p>
+          </details>
+          <details class="itemFaq">
+            <summary>Encontrei um erro no site. E agora?</summary>
+            <p>Se você encontrar algum problema durante a utilização do BeHealthier, avise nossa equipe para que possamos verificar e corrigir a situação. Envie uma mensagem com o assunto “Problema no site” e informe em qual página o erro aconteceu, explicando o que ocorreu. Quanto mais detalhes você fornecer, mais fácil será encontrar uma solução.</p>
+          </details>
+          <details class="itemFaq">
+            <summary>Quanto tempo leva para vocês responderem?</summary>
+            <p>Nossa equipe procura responder às mensagens o mais rápido possível. O prazo de resposta é de até 2 dias úteis, de segunda a sexta-feira. Caso sua mensagem seja enviada durante o fim de semana ou em um feriado, ela poderá ser respondida no próximo dia útil.</p>
+          </details>
+        </div>
+
+        <!-- QUEM RESPONDE: apresentação curta da equipe -->
+        <div class="painel painelEquipeContato">
+          <h3 class="tituloPainel">Quem responde por aqui</h3>
+          <p>Somos alunos do Instituto Federal Catarinense (IFC), Campus Araquari, e desenvolvemos o BeHealthier como parte do nosso projeto para a SEPE-IFC 2026. Nosso objetivo é criar uma plataforma que facilite o acesso a informações sobre alimentação saudável, receitas e opções de refeições.</p>
+          <p>Queremos que o BeHealthier seja simples de utilizar e útil para diferentes pessoas, ajudando na escolha de refeições e na construção de hábitos alimentares mais equilibrados. Para conhecer melhor nossa equipe, nossa proposta e o desenvolvimento do projeto, acesse a página <a href="sobre.html">Sobre nós</a>.</p>
         </div>
 
       </main>
@@ -179,7 +209,7 @@ Também prezamos pela personalização, respeitando as necessidades e preferênc
 
   <!-- BARRA INFERIOR DE ABAS (só no celular): 4 páginas principais + "Mais", que abre uma janela com as outras páginas -->
   <nav id="menuInferior">
-    <a href="index.html" class="ativo"><span><img src="Imagens/icons-preto/casa.svg" alt=""></span>Início</a>
+    <a href="index.html"><span><img src="Imagens/icons-preto/casa.svg" alt=""></span>Início</a>
     <a href="receitas.html"><span><img src="Imagens/icons-preto/receitas.svg" alt=""></span>Receitas</a>
     <a href="cardapio.html"><span><img src="Imagens/icons-preto/Calendar_Event.svg" alt=""></span>Cardápio</a>
     <a href="equilibrio.html"><span><img src="Imagens/icons-preto/equilibrio.svg" alt=""></span>Equilíbrio</a>

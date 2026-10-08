@@ -1,45 +1,66 @@
 <!doctype html>
 <html lang="pt-BR">
+<!-- PÁGINA: Entrar / Criar conta (login.html)
+     O que é: Login, cadastro ou "continuar como visitante". Depois de entrar, vai para o Início (index.html).
+     Cada página do site é um arquivo HTML parecido: menu, conteúdo e rodapé. O app.js preenche os espaços vazios. -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>BeHealthier — Entrar</title>
-<link rel="icon" type="image/svg+xml" href="Imagens/esquilo-logo.svg">
+<link rel="icon" type="image/svg+xml" href="Imagens/icons/esquilo-logo.svg">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- ESTILOS: reset.css (zera os padrões do navegador), style.css (todas as páginas e componentes) e auth.css (só a tela de login) -->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/auth.css">
+<!-- SCRIPTS: receitas-data.js (dados das 151 receitas) e app.js (a lógica de todas as páginas).
+     "defer" faz o navegador carregar os scripts só depois de ler o HTML -->
 <script src="js/receitas-data.js" defer></script>
 <script src="js/app.js" defer></script>
 </head>
-<body data-page="login">
-<div class="auth-page">
-  <div class="auth-hero" style="background-image:url(Imagens/esquilo-fundo.png)">
+<!-- CORPO DA PÁGINA: data-pagina diz ao app.js qual é esta página (ele monta só o que ela precisa) -->
+<body data-pagina="login">
+<!-- TELA DE LOGIN: duas metades lado a lado no computador (banner à esquerda, formulário à direita); só o formulário no celular -->
+<div class="paginaAutenticacao">
+  <!-- BANNER (só no computador): logo e mensagem de boas-vindas -->
+  <div class="bannerAutenticacao">
     <div>
-      <div class="auth-logo"><img src="Imagens/esquilo-logo.svg" alt="BeHealthier"></div>
+      <div class="logoAutenticacao"><a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a></div>
       <h1>Seu progresso,<br><em>salvo na sua conta.</em></h1>
       <p>Entre para guardar cardápio, favoritas e metas em qualquer dispositivo.</p>
     </div>
   </div>
-  <div class="auth-form-area">
-    <div class="auth-box">
-      <h2 id="ttl">Bem-vindo de volta</h2>
-      <div class="chip-list">
-        <button class="chip active" data-a="atab" data-k="login">Entrar</button>
-        <button class="chip" data-a="atab" data-k="reg">Criar conta</button>
+  <!-- ÁREA DO FORMULÁRIO -->
+  <div class="areaFormularioAutenticacao">
+    <!-- CAIXA DE LOGIN: abas, campos, mensagem de erro e botões -->
+    <div class="caixaAutenticacao">
+      <!-- Título: muda entre "Bem-vindo de volta" e "Criar conta" quando a aba é trocada (app.js, acaoAlternarAbaAutenticacao) -->
+      <h2 id="tituloAutenticacao">Bem-vindo de volta</h2>
+      <!-- ABAS "Entrar" e "Criar conta": data-valor diz o modo (entrar ou cadastro); a aba ativa tem a classe "ativo" -->
+      <div class="listaOpcoes">
+        <button class="botaoOpcao ativo" data-acao="alternarAbaAutenticacao" data-valor="entrar">Entrar</button>
+        <button class="botaoOpcao" data-acao="alternarAbaAutenticacao" data-valor="cadastro">Criar conta</button>
       </div>
-      <form class="form-grid" id="af" onsubmit="return false">
-        <label class="only-register">Nome<input name="nome" autocomplete="name"></label>
+      <!-- CAMPOS: o campo "Nome" só aparece na aba "Criar conta" (classe somenteCadastro, controlada pelo CSS).
+           onsubmit="return false" impede o envio da página: quem trata o clique e o Enter é o app.js -->
+      <form class="gradeFormulario" id="formularioAutenticacao" onsubmit="return false">
+        <label class="somenteCadastro">Nome<input name="nome" autocomplete="name"></label>
         <label>E-mail<input name="email" type="email" autocomplete="email"></label>
         <label>Senha<input name="senha" type="password" autocomplete="current-password"></label>
       </form>
-      <p id="ae"></p>
-      <button class="btn" id="go" data-a="auth">Entrar</button>
-      <button class="guest-button" data-a="guest">Continuar como visitante</button>
+      <!-- MENSAGEM DE ERRO: o app.js escreve aqui (ex.: "E-mail ou senha incorretos") -->
+      <p id="erroAutenticacao"></p>
+      <!-- BOTÃO PRINCIPAL: entra ou cria a conta, conforme a aba (app.js, autenticar) -->
+      <button class="botao" id="botaoAutenticar" data-acao="autenticar">Entrar</button>
+      <!-- CONTINUAR COMO VISITANTE: usa o site sem conta; o progresso fica só neste aparelho -->
+      <button class="botaoVisitante" data-acao="continuarVisitante">Continuar como visitante</button>
     </div>
   </div>
 </div>
-<div class="overlay" id="ov"><div class="modal-box" id="mb"></div></div>
-<div class="toast" id="tt"></div>
+<!-- JANELA (MODAL): começa vazia e escondida. O app.js coloca aqui a receita, a sacola, o menu "Mais" e as confirmações.
+     A "sobreposicao" é o fundo escuro: clicar nele fecha a janela -->
+<div class="sobreposicao" id="sobreposicaoModal"><div class="caixaModal" id="caixaModalConteudo"></div></div>
+<!-- AVISO TEMPORÁRIO: mensagem rápida na parte de baixo (ex.: "Adicionado à sacola"). O app.js mostra e some sozinho -->
+<div class="aviso" id="avisoTemporario"></div>
 </body>
 </html>

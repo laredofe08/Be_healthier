@@ -1,48 +1,89 @@
 <!doctype html>
 <html lang="pt-BR">
+<!-- PÁGINA: Vídeos (videos.html)
+     O que é: Vídeos do YouTube sobre alimentação saudável.
+     Cada página do site é um arquivo HTML parecido: menu, conteúdo e rodapé. O app.js preenche os espaços vazios. -->
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>BeHealthier — Vídeos</title>
-<link rel="icon" type="image/svg+xml" href="Imagens/esquilo-logo.svg">
+<link rel="icon" type="image/svg+xml" href="Imagens/icons/esquilo-logo.svg">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- ESTILOS: reset.css (zera os padrões do navegador), style.css (todas as páginas e componentes) e auth.css (só a tela de login) -->
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/style.css">
+<!-- SCRIPTS: receitas-data.js (dados das 151 receitas) e app.js (a lógica de todas as páginas).
+     "defer" faz o navegador carregar os scripts só depois de ler o HTML -->
 <script src="js/receitas-data.js" defer></script>
 <script src="js/app.js" defer></script>
 </head>
-<body data-page="videos">
-<div id="app">
-  <aside id="sb">
-    <div class="logo"><img src="Imagens/esquilo-logo.svg" alt="BeHealthier"></div>
+<!-- CORPO DA PÁGINA: data-pagina diz ao app.js qual é esta página (ele monta só o que ela precisa) -->
+<body data-pagina="videos">
+<!-- ESTRUTURA GERAL: menu lateral (computador) + coluna de conteúdo. No celular o menu lateral some e entram a barra superior e a barra inferior -->
+<div id="aplicacao">
+  <!-- MENU LATERAL (só no computador): logo, links das páginas e caixa do usuário -->
+  <aside id="menuLateral">
+    <div class="logo"><a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a></div>
+    <!-- Links das páginas: a classe "ativo" marca a página em que você está. O número ao lado de Entrega é o total de itens da sacola (app.js) -->
     <a href="index.html"><span><img src="Imagens/icons/casa.svg" alt=""></span>Início</a>
     <a href="receitas.html"><span><img src="Imagens/icons/receitas.svg" alt=""></span>Receitas</a>
     <a href="cardapio.html"><span><img src="Imagens/icons/Calendar_Event.svg" alt=""></span>Cardápio</a>
     <a href="equilibrio.html"><span><img src="Imagens/icons/equilibrio.svg" alt=""></span>Equilíbrio</a>
     <a href="dicas.html"><span><img src="Imagens/icons/lampada.svg" alt=""></span>Dicas</a>
-    <a href="entrega.html"><span><img src="Imagens/icons/entrega.svg" alt=""></span>Entrega <span class="badge cart-count" hidden></span></a>
-    <a href="videos.html" class="active"><span><img src="Imagens/icons/Play.svg" alt=""></span>Vídeos</a>
+    <a href="entrega.html"><span><img src="Imagens/icons/entrega.svg" alt=""></span>Entrega <span class="seloContador contadorSacola" hidden></span></a>
+    <a href="videos.html" class="ativo"><span><img src="Imagens/icons/Play.svg" alt=""></span>Vídeos</a>
     <a href="sobre.html"><span><img src="Imagens/icons/sobre.svg" alt=""></span>Sobre nós</a>
-    <div class="user-box"><b class="user-name"></b><span class="user-detail"></span><button data-a="logout" class="user-button"></button></div>
+    <a href="contato.html"><span><img src="Imagens/icons/contato.svg" alt=""></span>Contato</a>
+    <!-- CAIXA DO USUÁRIO: nome, e-mail e botão Entrar/Sair. O app.js preenche (visitante ou conta logada) -->
+    <div class="caixaUsuario"><b class="nomeUsuario"></b><span class="detalheUsuario"></span><button data-acao="sair" class="botaoUsuario"></button></div>
   </aside>
+  <!-- COLUNA DE CONTEÚDO: barra superior (celular) + conteúdo principal da página -->
   <div>
-    <header id="tb">
-      <div class="logo"><img src="Imagens/esquilo-logo.svg" alt="BeHealthier"></div>
-      <span class="city-button city-now" data-a="citym"></span>
-      <button class="cart-button" data-a="cart"><img src="Imagens/icons/Shopping_Cart_01.svg" alt="" style="width:1.2em;height:1.2em;vertical-align:-.25em"> <span class="cart-count">0</span></button>
+    <!-- BARRA SUPERIOR (só no celular): logo, cidade da entrega (leva para Entrega) e botão da sacola com o contador -->
+    <header id="barraSuperior">
+      <div class="logo"><a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a></div>
+      <span class="botaoCidade cidadeAtual" data-acao="irParaEntrega"></span>
+      <button class="botaoSacola" data-acao="abrirSacola"><img class="iconeSacolaTopo" src="Imagens/icons/Shopping_Cart_01.svg" alt=""> <span class="contadorSacola">0</span></button>
     </header>
-    <main id="v">
+    <!-- CONTEÚDO PRINCIPAL: tudo o que é próprio da página Vídeos -->
+    <main id="conteudoPrincipal">
+      <!-- SEÇÃO DE VÍDEOS -->
       <section class="videos">
                 <div class="page-title"><div><h2>Vídeos</h2><p>Assista aos nossos vídeos.</p></div></div>
             <ul class="vdos">
               <li>
                   <iframe width="560" height="315" src="https://www.youtube.com/embed/ywUuoTJJznA?si=gyOuT57b_FJYivae" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  <p>Explica o que realmente significa comer bem, indo além de dietas da moda e mostrando como escolher alimentos naturais e variados no dia a dia.</p>
               </li>
               <li>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/CWZ8xKNypC4?si=9qWmfAS9os7mvG96" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p>Alerta sobre produtos que passam uma imagem saudável, mas escondem açúcar, sódio e ultraprocessados, e ensina a olhar além da embalagem.</p>
               </li>
               <li>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/zQVPOwN5Pn4?si=-ZwsZJJ0F4kjJxVu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p>Apresenta carboidratos, proteínas e gorduras, explicando para que cada um serve no corpo e quanto precisamos deles.</p>
+              </li>
+              <li>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Huii3YbR6ek?si=kw8j36n22mzj5Z-i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p>Traz dicas para comer bem sem pesar no bolso, como planejar as compras, aproveitar alimentos da estação e evitar desperdício.</p>
+              </li>
+              <li>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/cOCimtPfP5Q?si=EsfYHr4P71LqMJdA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p>
+                  Neste video Vanessa Lino conta como foi o processo de reeducação alimentar dela e passa 5 dicas práticas para criar o hábito, como substituir alimentos e não tratar nenhum alimento isolado como vilão.
+                </p>
+              </li>
+              <li>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/TaebIDKPRVk?si=jyd6Ndq3cAHMIkZR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p>
+                  Mostra como montar um prato de almoço equilibrado, indicando qual alimento deve ter mais espaço e como dividir as porções entre os grupos.
+                </p>
+              </li>
+              <li>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/X71YbXctXeM?si=S2OKZvxHvcMolGYs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p>
+                  Dois fisiculturistas e um médico conversam sobre o que realmente faz diferença para comer melhor, com a visão de quem vive de cuidar do corpo e da saúde.
+                </p>
               </li>
             </ul>
 
@@ -51,17 +92,79 @@
       </section>
 
     </main>
+    <!-- RODAPÉ (igual em todas as páginas, menos no login): logo, equipe, navegação, conta e lembrete por e-mail -->
+    <footer class="rodape">
+      <div class="rodapeConteudo">
+        <!-- Marca: logo (leva ao início), projeto e equipe (3 nomes de cada lado) -->
+        <div class="rodapeMarca">
+          <a class="rodapeLogoLink" href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img class="rodapeLogo" src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a>
+          <p class="rodapeProjeto">Projeto da SEPE-IFC 2026</p>
+          <!-- Equipe: troque cada href="#" pelo link do GitHub da pessoa (o mesmo link vale na página Sobre nós) -->
+          <nav class="rodapeEquipe" aria-label="Equipe">
+            <h4 class="rodapeTitulo">Equipe</h4>
+            <a href="https://github.com/murilow-a16" target="_blank" rel="noopener noreferrer">Murilo Antonio de Almeida</a>
+            <a href="https://github.com/lucasdeamorimsilva" target="_blank" rel="noopener noreferrer">Lucas de Amorim Silva</a>
+            <a href="#" target="_blank" rel="noopener noreferrer">Enzo Melgarejo</a>
+            <a href="https://github.com/laredofe08" target="_blank" rel="noopener noreferrer">Felipe Laredo</a>
+            <a href="https://github.com/igorhayatoss-alt" target="_blank" rel="noopener noreferrer">Igor Hayato Sato</a>
+            <a href="https://github.com/HTironi" target="_blank" rel="noopener noreferrer">Henrique Tironi</a>
+          </nav>
+        </div>
+        <!-- Navegação: links de todas as páginas -->
+        <nav class="rodapeNavegacao" aria-label="Navegação do rodapé">
+          <h4 class="rodapeTitulo">Navegue</h4>
+          <a href="index.html">Início</a>
+          <a href="receitas.html">Receitas</a>
+          <a href="cardapio.html">Cardápio</a>
+          <a href="equilibrio.html">Equilíbrio</a>
+          <a href="dicas.html">Dicas</a>
+          <a href="entrega.html">Entrega</a>
+          <a href="videos.html">Vídeos</a>
+          <a href="sobre.html">Sobre nós</a>
+          <a href="contato.html">Contato</a>
+        </nav>
+        <!-- Conta: o app.js preenche nome, e-mail e botão Entrar/Sair (atualizarElementosComuns) -->
+        <div class="rodapeConta">
+          <h4 class="rodapeTitulo">Sua conta</h4>
+          <b class="nomeUsuario"></b>
+          <span class="detalheUsuario"></span>
+          <button type="button" class="botaoUsuario" data-acao="sair"></button>
+        </div>
+        <!-- Lembrete por e-mail: só pede o e-mail (app.js, acaoEnviarLembrete) -->
+        <div class="rodapeLembrete">
+          <h4 class="rodapeTitulo">Quer lembrete por e-mail?</h4>
+          <form class="rodapeFormulario" data-formulario="lembreteRodape" onsubmit="return false" novalidate>
+            <input name="email" type="email" placeholder="Seu e-mail" aria-label="Seu e-mail" autocomplete="email" required>
+            <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Quero lembrete</button>
+            <p class="rodapeFormularioRetorno" role="status" aria-live="polite"></p>
+          </form>
+          <!-- Contato da equipe: Instagram, e-mail e telefone (WhatsApp) -->
+          <div class="rodapeContato">
+            <h4 class="rodapeTitulo">Fale com a gente</h4>
+            <a href="https://www.instagram.com/behealthier_ifc_araquari?stkn=Y2cxam0ybzNzejRj" target="_blank" rel="noopener noreferrer">Instagram: @behealthier_ifc_araquari</a>
+            <a href="mailto:behealthier67@gmail.com">E-mail: behealthier67@gmail.com</a>
+            <a href="tel:+5547999999999">Telefone: +55 47 99999-9999</a>
+          </div>
+        </div>
+      </div>
+      <!-- Direitos: o ano é preenchido pelo app.js (classe anoAtual) -->
+      <p class="rodapeDireitos">© <span class="anoAtual"></span> BeHealthier</p>
+    </footer>
   </div>
 </div>
-<nav id="tabs">
-  <a href="index.html" class="active"><span><img src="Imagens/icons-preto/casa.svg" alt=""></span>Início</a>
+<!-- BARRA INFERIOR DE ABAS (só no celular): 4 páginas principais + "Mais", que abre uma janela com as outras páginas -->
+<nav id="menuInferior">
+  <a href="index.html" class="ativo"><span><img src="Imagens/icons-preto/casa.svg" alt=""></span>Início</a>
   <a href="receitas.html"><span><img src="Imagens/icons-preto/receitas.svg" alt=""></span>Receitas</a>
   <a href="cardapio.html"><span><img src="Imagens/icons-preto/Calendar_Event.svg" alt=""></span>Cardápio</a>
   <a href="equilibrio.html"><span><img src="Imagens/icons-preto/equilibrio.svg" alt=""></span>Equilíbrio</a>
-  <a href="#" data-a="more"><span><img src="Imagens/icons-preto/mais.svg" alt=""></span>Mais</a>
+  <a href="#" data-acao="mais"><span><img src="Imagens/icons-preto/mais.svg" alt=""></span>Mais</a>
 </nav>
-<div class="overlay" id="ov"><div class="modal-box" id="mb"></div></div>
-<div class="toast" id="tt"></div>
+<!-- JANELA (MODAL): começa vazia e escondida. O app.js coloca aqui a receita, a sacola, o menu "Mais" e as confirmações.
+     A "sobreposicao" é o fundo escuro: clicar nele fecha a janela -->
+<div class="sobreposicao" id="sobreposicaoModal"><div class="caixaModal" id="caixaModalConteudo"></div></div>
+<!-- AVISO TEMPORÁRIO: mensagem rápida na parte de baixo (ex.: "Adicionado à sacola"). O app.js mostra e some sozinho -->
+<div class="aviso" id="avisoTemporario"></div>
 
 </body>
 </html>
