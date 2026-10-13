@@ -1,5 +1,5 @@
-beheathier
-Dia 1 02/06
+# beheathier
+## Dia 1 02/06
 Ausentes: Nenhum
 
 Coordenador: Murilo Antonio de Almeida
@@ -26,7 +26,7 @@ Conclusão:No dia 2 de junho de 2026, Enzo Melgarejo, Felipe Laredo, Henrique Ti
 
 -----------------------------------------
 
-Dia 2 09/06
+## Dia 2 09/06
 Ausentes: Nenhum
 
 Coordenador: Murilo Antonio de Almeida
@@ -67,7 +67,7 @@ Qual é o tipo de atividade física que você faz e Quantos dias por semana voc�
 
 -----------------------------------------
 
-Dia 3 16/06
+## Dia 3 16/06
 Ausentes: Lucas de Amorim Silva (doente)
 
 Coordenador: Murilo Antonio de Almeida
@@ -94,7 +94,7 @@ Estilização da fonte
 
 -----------------------------------------
 
-Dia 4 23/06
+## Dia 4 23/06
 Ausentes: nenhum
 
 Coordenador: Murilo Antonio de Almeida
@@ -111,7 +111,7 @@ Enzo Melgarejo, Murilo Antonio de Almeida: criação do layout do site no figma.
 
 -----------------------------------------
 
-Dia 5 30/06
+## Dia 5 30/06
 Ausentes: nenhum
 
 Coordenador: Murilo Antonio de Almeida
@@ -144,7 +144,7 @@ Todos farão dieta personalizada
 
 -----------------------------------------
 
-Dia 6 07/07
+## Dia 6 07/07
 Ausentes: nenhum
 
 Coordenador: Murilo Antonio de Almeida
@@ -163,7 +163,7 @@ Lucas de Amorin : Desenvolvimento da pagina do instagram.
 
 -----------------------------------------
 
-Dia 7 14/07
+## Dia 7 14/07
 Ausentes: nenhum
 
 Coordenador: Murilo Antonio de Almeida
@@ -182,7 +182,7 @@ Entrega do projeto no figma.
 
 -----------------------------------------
 
-Dia 8 04/08
+## Dia 8 04/08
 Ausentes: Igor Hayato Sato
 
 Coordenador: Murilo Antonio de Almeida
@@ -205,7 +205,7 @@ Murilo Antonio: Desenvolvimento do HTML/CSS da pagina para Mobile/descktop: Card
 
 -----------------------------------------
 
-Dia 9 11/08
+## Dia 9 11/08
 Ausentes: nenhum
 
 Coordenador: Murilo Antonio de Almeida
@@ -228,7 +228,7 @@ Murilo Antonio: Desenvolvimento do HTML/CSS da pagina para Mobile/descktop: Card
 
 -----------------------------------------
 
-Dia 10 18/08
+## Dia 10 18/08
 Ausentes: nenhum
 
 Coordenador: Murilo Antonio de Almeida
@@ -251,7 +251,7 @@ Murilo Antonio: Desenvolvimento do HTML/CSS da pagina para Mobile/descktop: Card
 
 -----------------------------------------
 
-Dia 11 29/08
+## Dia 11 29/08
 Ausentes: nenhum
 
 Coordenador: Murilo Antonio de Almeida
@@ -274,7 +274,7 @@ Murilo Antonio: Desenvolvimento do HTML/CSS da pagina para Mobile/descktop: Card
 
 -----------------------------------------
 
-Dia 12: 22/09
+## Dia 12: 22/09
 Ausentes: Henrique Tironi e Flipe Lredo(Ambos Justificados)
 
 Coordenador: Murilo Antonio de Almeida
@@ -291,3 +291,10 @@ Lucas de Amorin: Desenvolvimento do HTML/CSS da pagina para Mobile/descktop: Rec
 
 Murilo Antonio: Desenvolvimento do HTML/CSS da pagina para Mobile/descktop: Cardápio; Desenvolvimento de Banco de dados.Planejou e executou as primeiras etapas da reformulação.
 
+# ATA BeHealthier Projeto Integrador
+## Dia 1
+Alunos: Enzo Melgarelo, Felipe Laredo, Henrique Tironi,Igor Hayato, Lucas de Amorin, Murilo Antonio
+### Experiencia
+Nossa experiência apresentando no Painel Integrador foi muito legal e interessante, pois nele exercitamos diversas habilidades não só na parte de desenvolvimento do site, mas também em nossa capacidade de comunicação e organização, além de muito trabalho em grupo. Aprendendemos muitas coisas nesse período e somos gratos por participar.
+### Pontos para melhorar
+Temos muitas coisas que poderíamos melhorar, uma delas é com relação a organização, sentimos que faltou mais organização na hora de apresentar com relação na ordem das falas de cada integrante, na parte de organização do nosso estande (decorações, etc).
