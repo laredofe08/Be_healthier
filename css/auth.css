@@ -1,53 +1,33 @@
-/* BeHealthier - estilos da tela de login (login.html)
 
-   Como este arquivo está organizado:
-   - A tela de login tem um bloco "====== nome mobile ======" com a formatação do celular.
-     O celular é a base: vale para toda largura de tela.
-   - Logo depois vem o @media (min-width: 900px) com o comentário "~~~~ nome desktop ~~~~":
-     só o que muda no computador.
-   - Quando existe, "tablet" (900px a 1100px) e "mobile ate 420px / 600px" são ajustes de faixas específicas.
-   Nenhuma regra de estilo é escrita direto no HTML: tudo fica aqui.  Depende de reset.css */
-
-/* ====== login mobile ====== */
-/* Onde: página de login (login.html). */
-/* O que faz: banner à esquerda e formulário à direita no computador; só o formulário no celular. */
-
-/* Estrutura da tela de login (banner + formulário lado a lado no computador). */
 .paginaAutenticacao {
     display: flex;
     min-height: 100vh;
     background: var(--fundo);
 }
 
-/* Mensagem de erro do login, em vermelho. */
 #erroAutenticacao {
     color: var(--perigo);
     min-height: 22px;
     margin: 8px 0;
 }
 
-/* Botão Entrar / Criar conta (largura total). */
 .caixaAutenticacao .botao {
     width: 100%;
     justify-content: center;
 }
 
-/* Espaçamento do formulário do login. */
 .caixaAutenticacao form {
     grid-template-columns: 1fr;
 }
 
-/* Campo "Nome": escondido por padrão (só aparece em Criar conta). */
 .gradeFormulario .somenteCadastro {
     display: none;
 }
 
-/* Mostra o campo "Nome" quando a aba é Criar conta (o app.js põe data-modo no body). */
 [data-modo=cadastro] .gradeFormulario .somenteCadastro {
     display: flex;
 }
 
-/* Botão "Continuar como visitante" (parece um link). */
 .botaoVisitante {
     display: block;
     margin: 14px auto 0;
@@ -55,7 +35,7 @@
     text-decoration: underline;
 }
 
-/* Banner do login (some no celular). */
+
 .bannerAutenticacao {
     flex: 1.1;
     background: var(--pessego) no-repeat center top / min(100%, 640px) auto;
@@ -67,7 +47,7 @@
     padding: 56px;
 }
 
-/* Degradê escuro embaixo do banner, para o texto ficar legível. */
+
 .bannerAutenticacao:before {
     content: "";
     position: absolute;
@@ -75,24 +55,20 @@
     background: linear-gradient(0deg, rgba(44, 62, 28, 0.85), rgba(44, 62, 28, 0) 60%);
 }
 
-/* Texto do banner. */
 .bannerAutenticacao > div {
     position: relative;
     max-width: 520px;
 }
 
-/* Título do banner. */
 .bannerAutenticacao h1 {
     font-size: 3rem;
     margin: 18px 0;
 }
 
-/* Parte do título em destaque. */
 .bannerAutenticacao em {
     color: var(--pessego);
 }
 
-/* Área do logo no banner. */
 .logoAutenticacao {
     display: flex;
     align-items: center;
@@ -100,13 +76,11 @@
     font: 800 1.6rem Fraunces, serif;
 }
 
-/* Tamanho do logo. */
 .logoAutenticacao img {
     width: auto;
     height: 46px;
 }
 
-/* Lado do formulário (centralizado). No celular tem uma faixa verde no topo; no computador o fundo é liso. */
 .areaFormularioAutenticacao {
     flex: 1;
     display: flex;
@@ -118,7 +92,6 @@
     padding-top: 12vh;
 }
 
-/* Caixa que guarda título, abas, campos e botões. */
 .caixaAutenticacao {
     width: min(420px, 100%);
     background: var(--branco);
@@ -127,7 +100,6 @@
     box-shadow: var(--sombra);
 }
 
-/* Título "Bem-vindo de volta" / "Criar conta". */
 .caixaAutenticacao h2 {
     font-size: 2.2rem;
     color: var(--floresta);
@@ -135,21 +107,17 @@
 }
 
 @media (min-width: 900px) {
-    /*~~~~ login desktop ~~~~*/
 
-    /* Banner do login (some no celular). */
     .bannerAutenticacao {
         display: flex;
     }
 
-    /* Lado do formulário (centralizado). No celular tem uma faixa verde no topo; no computador o fundo é liso. */
     .areaFormularioAutenticacao {
         background: none;
         align-items: center;
         padding: 30px;
     }
 
-    /* Caixa que guarda título, abas, campos e botões. */
     .caixaAutenticacao {
         background: none;
         border-radius: 0;
