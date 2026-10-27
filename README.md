@@ -275,7 +275,7 @@ Murilo Antonio: Desenvolvimento do HTML/CSS da pagina para Mobile/descktop: Card
 -----------------------------------------
 
 ## Dia 12: 22/09
-Ausentes: Henrique Tironi e Flipe Lredo(Ambos Justificados)
+Ausentes: Henrique Tironi e Felipe Laredo(Ambos Justificados)
 
 Coordenador: Murilo Antonio de Almeida
 
@@ -301,7 +301,7 @@ Temos muitas coisas que poderíamos melhorar, uma delas é com relação a organ
 
 -----------------------------------------
 
-## Dia 12: 29/09
+## Dia 13: 29/09
 Ausentes: Murilo Antonio de Almeida
 
 Coordenador: Henrique Tironi
@@ -318,3 +318,24 @@ Lucas de Amorim: Finalização de mobile/desktop: Cardápio; Correção dos erro
 
 Murilo Antonio: Finalização de mobile/desktop: Receitas; Correção dos erros do Banco de dados. Executou etapas finais da reformulação.
 
+-----------------------------------------
+
+## Dia 14: 13/10
+Ausentes: Igor Hayato Sato da Silva (Justificado)
+
+Coordenador: Henrique Tironi
+
+Secretário: Lucas de Amorim Silva
+
+Assunto: Conversa sobre como foi a SEPE, junto com outros grupos e professor Mehran.
+
+-----------------------------------------
+
+## Dia 15: 20/10
+Ausentes: Murilo Antonio, Felipe Laredo, Henrique Tironi e Enzo Melgarejo (Todos Justificados)
+
+Coordenador: Lucas de Amorim Silva
+
+Secretário: Igor Hayato Sato da Silva
+
+Assunto: Melhoramos o nossa compreensâo e organizamos nossos arquivos do github.
