@@ -1,46 +1,51 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>BeHealthier — Vídeos</title>
-<link rel="icon" type="image/svg+xml" href="Imagens/icons/esquilo-logo.svg">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/style.css">
-<script src="js/receitas-data.js" defer></script>
-<script src="js/app.js" defer></script>
-</head>
-<body data-pagina="videos">
-<div id="aplicacao">
-  <aside id="menuLateral">
-    <div class="logo"><a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a></div>
-    <a href="index.html"><span><img src="Imagens/icons/casa.svg" alt=""></span>Início</a>
-    <a href="receitas.html"><span><img src="Imagens/icons/receitas.svg" alt=""></span>Receitas</a>
-    <a href="cardapio.html"><span><img src="Imagens/icons/Calendar_Event.svg" alt=""></span>Cardápio</a>
-    <a href="equilibrio.html"><span><img src="Imagens/icons/equilibrio.svg" alt=""></span>Equilíbrio</a>
-    <a href="dicas.html"><span><img src="Imagens/icons/lampada.svg" alt=""></span>Dicas</a>
-    <a href="entrega.html"><span><img src="Imagens/icons/entrega.svg" alt=""></span>Entrega <span class="seloContador contadorSacola" hidden></span></a>
-    <a href="videos.html" class="ativo"><span><img src="Imagens/icons/Play.svg" alt=""></span>Vídeos</a>
-    <a href="sobre.html"><span><img src="Imagens/icons/sobre.svg" alt=""></span>Sobre nós</a>
-    <a href="contato.html"><span><img src="Imagens/icons/contato.svg" alt=""></span>Contato</a>
-    <div class="caixaUsuario"><b class="nomeUsuario"></b><span class="detalheUsuario"></span><button data-acao="sair" class="botaoUsuario"></button></div>
-  </aside>
-  <div>
-    <header id="barraSuperior">
-      <div class="logo"><a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a></div>
-      <span class="botaoCidade cidadeAtual" data-acao="irParaEntrega"></span>
-      <button class="botaoSacola" data-acao="abrirSacola"><img class="iconeSacolaTopo" src="Imagens/icons/Shopping_Cart_01.svg" alt=""> <span class="contadorSacola">0</span></button>
-    </header>
-    <main id="conteudoPrincipal">
-      <section class="Videos">
-                <div class="tituloPagina"><div><h2>Vídeos</h2><p>Assista aos nossos vídeos.</p></div></div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <title>BeHealthier — Vídeos</title>
+    <link rel="icon" type="image/svg+xml" href="Imagens/icons/esquilo-logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/receitas-data.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </head>
+  <body data-pagina="videos">
+    <div id="aplicacao">
+      <aside id="menuLateral">
+        <div class="logo"><a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a></div>
+        <a href="index.html"><span><img src="Imagens/icons/casa.svg" alt=""></span>Início</a>
+        <a href="receitas.html"><span><img src="Imagens/icons/receitas.svg" alt=""></span>Receitas</a>
+        <a href="cardapio.html"><span><img src="Imagens/icons/Calendar_Event.svg" alt=""></span>Cardápio</a>
+        <a href="equilibrio.html"><span><img src="Imagens/icons/equilibrio.svg" alt=""></span>Equilíbrio</a>
+        <a href="dicas.html"><span><img src="Imagens/icons/lampada.svg" alt=""></span>Dicas</a>
+        <a href="entrega.html"><span><img src="Imagens/icons/entrega.svg" alt=""></span>Entrega <span class="seloContador contadorSacola" hidden></span></a>
+        <a href="videos.html" class="ativo"><span><img src="Imagens/icons/Play.svg" alt=""></span>Vídeos</a>
+        <a href="sobre.html"><span><img src="Imagens/icons/sobre.svg" alt=""></span>Sobre nós</a>
+        <a href="contato.html"><span><img src="Imagens/icons/contato.svg" alt=""></span>Contato</a>
+        <div class="caixaUsuario"><b class="nomeUsuario"></b><span class="detalheUsuario"></span><button data-acao="sair" class="botaoUsuario"></button></div>
+      </aside>
+      <div>
+        <header id="barraSuperior">
+          <div class="logo"><a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a></div>
+          <span class="botaoCidade cidadeAtual" data-acao="irParaEntrega"></span>
+          <button class="botaoSacola" data-acao="abrirSacola"><img class="iconeSacolaTopo" src="Imagens/icons/Shopping_Cart_01.svg" alt=""> <span class="contadorSacola">0</span></button>
+        </header>
+        <main id="conteudoPrincipal">
+          <section class="Videos">
+            <div class="tituloPagina">
+              <div>
+                <h2>Vídeos</h2>
+                <p>Assista aos nossos vídeos.</p>
+              </div>
+            </div>
             <ul class="vdos">
               <li>
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/ywUuoTJJznA?si=gyOuT57b_FJYivae" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                  <p>
-                    Explica o que realmente significa comer bem, indo além de dietas da moda e mostrando como escolher alimentos naturais e variados no dia a dia.
-                  </p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ywUuoTJJznA?si=gyOuT57b_FJYivae" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p>
+                  Explica o que realmente significa comer bem, indo além de dietas da moda e mostrando como escolher alimentos naturais e variados no dia a dia.
+                </p>
               </li>
               <li>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/CWZ8xKNypC4?si=9qWmfAS9os7mvG96" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -60,9 +65,10 @@
                   Traz dicas para comer bem sem pesar no bolso, como planejar as compras, aproveitar alimentos da estação e evitar desperdício
                 </p>
               </li>
-              <li><iframe width="560" height="315" src="https://www.youtube.com/embed/cOCimtPfP5Q?si=CO6Fb7NDOzXR66_9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+              <li>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/cOCimtPfP5Q?si=CO6Fb7NDOzXR66_9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 <p>
-                   Neste video Vanessa Lino conta como foi o processo de reeducação alimentar dela e passa 5 dicas práticas para criar o hábito, como substituir alimentos e não tratar nenhum alimento isolado como vilão.
+                  Neste video Vanessa Lino conta como foi o processo de reeducação alimentar dela e passa 5 dicas práticas para criar o hábito, como substituir alimentos e não tratar nenhum alimento isolado como vilão.
                 </p>
               </li>
               <li>
@@ -79,72 +85,71 @@
               </li>
             </ul>
 
-          <div id="areaVideosDinamicos">
+            <div id="areaVideosDinamicos"></div>
+          </section>
+        </main>
+        <footer class="rodape">
+          <div class="rodapeConteudo">
+            <div class="rodapeMarca">
+              <a class="rodapeLogoLink" href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img class="rodapeLogo" src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a>
+              <p class="rodapeProjeto">Projeto da SEPE-IFC 2026</p>
+              <nav class="rodapeEquipe" aria-label="Equipe">
+                <h4 class="rodapeTitulo">Equipe</h4>
+                <a href="https://github.com/murilow-a16" target="_blank" rel="noopener noreferrer">Murilo Antonio de Almeida</a>
+                <a href="https://github.com/lucasdeamorimsilva" target="_blank" rel="noopener noreferrer">Lucas de Amorim Silva</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Enzo Melgarejo</a>
+                <a href="https://github.com/laredofe08" target="_blank" rel="noopener noreferrer">Felipe Laredo</a>
+                <a href="https://github.com/igorhayatoss-alt" target="_blank" rel="noopener noreferrer">Igor Hayato Sato</a>
+                <a href="https://github.com/HTironi" target="_blank" rel="noopener noreferrer">Henrique Tironi</a>
+              </nav>
+            </div>
+            <nav class="rodapeNavegacao" aria-label="Navegação do rodapé">
+              <h4 class="rodapeTitulo">Navegue</h4>
+              <a href="index.html">Início</a>
+              <a href="receitas.html">Receitas</a>
+              <a href="cardapio.html">Cardápio</a>
+              <a href="equilibrio.html">Equilíbrio</a>
+              <a href="dicas.html">Dicas</a>
+              <a href="entrega.html">Entrega</a>
+              <a href="videos.html">Vídeos</a>
+              <a href="sobre.html">Sobre nós</a>
+              <a href="contato.html">Contato</a>
+            </nav>
+            <div class="rodapeConta">
+              <h4 class="rodapeTitulo">Sua conta</h4>
+              <b class="nomeUsuario"></b>
+              <span class="detalheUsuario"></span>
+              <button type="button" class="botaoUsuario" data-acao="sair"></button>
+            </div>
+            <div class="rodapeLembrete">
+              <h4 class="rodapeTitulo">Quer lembrete por e-mail?</h4>
+              <form class="rodapeFormulario" data-formulario="lembreteRodape" onsubmit="return false" novalidate>
+                <input name="email" type="email" placeholder="Seu e-mail" aria-label="Seu e-mail" autocomplete="email" required>
+                <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Quero lembrete</button>
+                <p class="rodapeFormularioRetorno" role="status" aria-live="polite"></p>
+              </form>
+              <div class="rodapeContato">
+                <h4 class="rodapeTitulo">Fale com a gente</h4>
+                <a href="https://www.instagram.com/behealthier_ifc_araquari?stkn=Y2cxam0ybzNzejRj" target="_blank" rel="noopener noreferrer">Instagram: @behealthier_ifc_araquari</a>
+                <p>E-mail: behealthier67@gmail.com</p>
+                <p>Telefone: +55 47 99999-9999</p>
+              </div>
+            </div>
           </div>
-      </section>
-
-    </main>
-    <footer class="rodape">
-      <div class="rodapeConteudo">
-        <div class="rodapeMarca">
-          <a class="rodapeLogoLink" href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img class="rodapeLogo" src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a>
-          <p class="rodapeProjeto">Projeto da SEPE-IFC 2026</p>
-          <nav class="rodapeEquipe" aria-label="Equipe">
-            <h4 class="rodapeTitulo">Equipe</h4>
-            <a href="https://github.com/murilow-a16" target="_blank" rel="noopener noreferrer">Murilo Antonio de Almeida</a>
-            <a href="https://github.com/lucasdeamorimsilva" target="_blank" rel="noopener noreferrer">Lucas de Amorim Silva</a>
-            <a href="#" target="_blank" rel="noopener noreferrer">Enzo Melgarejo</a>
-            <a href="https://github.com/laredofe08" target="_blank" rel="noopener noreferrer">Felipe Laredo</a>
-            <a href="https://github.com/igorhayatoss-alt" target="_blank" rel="noopener noreferrer">Igor Hayato Sato</a>
-            <a href="https://github.com/HTironi" target="_blank" rel="noopener noreferrer">Henrique Tironi</a>
-          </nav>
-        </div>
-        <nav class="rodapeNavegacao" aria-label="Navegação do rodapé">
-          <h4 class="rodapeTitulo">Navegue</h4>
-          <a href="index.html">Início</a>
-          <a href="receitas.html">Receitas</a>
-          <a href="cardapio.html">Cardápio</a>
-          <a href="equilibrio.html">Equilíbrio</a>
-          <a href="dicas.html">Dicas</a>
-          <a href="entrega.html">Entrega</a>
-          <a href="videos.html">Vídeos</a>
-          <a href="sobre.html">Sobre nós</a>
-          <a href="contato.html">Contato</a>
-        </nav>
-        <div class="rodapeConta">
-          <h4 class="rodapeTitulo">Sua conta</h4>
-          <b class="nomeUsuario"></b>
-          <span class="detalheUsuario"></span>
-          <button type="button" class="botaoUsuario" data-acao="sair"></button>
-        </div>
-        <div class="rodapeLembrete">
-          <h4 class="rodapeTitulo">Quer lembrete por e-mail?</h4>
-          <form class="rodapeFormulario" data-formulario="lembreteRodape" onsubmit="return false" novalidate>
-            <input name="email" type="email" placeholder="Seu e-mail" aria-label="Seu e-mail" autocomplete="email" required>
-            <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Quero lembrete</button>
-            <p class="rodapeFormularioRetorno" role="status" aria-live="polite"></p>
-          </form>
-          <div class="rodapeContato">
-            <h4 class="rodapeTitulo">Fale com a gente</h4>
-            <a href="https://www.instagram.com/behealthier_ifc_araquari?stkn=Y2cxam0ybzNzejRj" target="_blank" rel="noopener noreferrer">Instagram: @behealthier_ifc_araquari</a>
-            <p>E-mail: behealthier67@gmail.com</p>
-            <p>Telefone: +55 47 99999-9999</p>
-          </div>
-        </div>
+          <p class="rodapeDireitos">© <span class="anoAtual"></span> BeHealthier</p>
+        </footer>
       </div>
-      <p class="rodapeDireitos">© <span class="anoAtual"></span> BeHealthier</p>
-    </footer>
-  </div>
-</div>
-<nav id="menuInferior">
-  <a href="index.html" class="ativo"><span><img src="Imagens/icons-preto/casa.svg" alt=""></span>Início</a>
-  <a href="receitas.html"><span><img src="Imagens/icons-preto/receitas.svg" alt=""></span>Receitas</a>
-  <a href="cardapio.html"><span><img src="Imagens/icons-preto/Calendar_Event.svg" alt=""></span>Cardápio</a>
-  <a href="equilibrio.html"><span><img src="Imagens/icons-preto/equilibrio.svg" alt=""></span>Equilíbrio</a>
-  <a href="#" data-acao="mais"><span><img src="Imagens/icons-preto/mais.svg" alt=""></span>Mais</a>
-</nav>
-<div class="sobreposicao" id="sobreposicaoModal"><div class="caixaModal" id="caixaModalConteudo"></div></div>
-<div class="aviso" id="avisoTemporario"></div>
-
-</body>
+    </div>
+    <nav id="menuInferior">
+      <a href="index.html" class="ativo"><span><img src="Imagens/icons-preto/casa.svg" alt=""></span>Início</a>
+      <a href="receitas.html"><span><img src="Imagens/icons-preto/receitas.svg" alt=""></span>Receitas</a>
+      <a href="cardapio.html"><span><img src="Imagens/icons-preto/Calendar_Event.svg" alt=""></span>Cardápio</a>
+      <a href="equilibrio.html"><span><img src="Imagens/icons-preto/equilibrio.svg" alt=""></span>Equilíbrio</a>
+      <a href="#" data-acao="mais"><span><img src="Imagens/icons-preto/mais.svg" alt=""></span>Mais</a>
+    </nav>
+    <div class="sobreposicao" id="sobreposicaoModal">
+      <div class="caixaModal" id="caixaModalConteudo"></div>
+    </div>
+    <div class="aviso" id="avisoTemporario"></div>
+  </body>
 </html>

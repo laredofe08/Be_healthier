@@ -1,45 +1,47 @@
 <!doctype html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>BeHealthier — Entrar</title>
-<link rel="icon" type="image/svg+xml" href="Imagens/icons/esquilo-logo.svg">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/auth.css">
-<script src="js/receitas-data.js" defer></script>
-<script src="js/app.js" defer></script>
-</head>
-<body data-pagina="login">
-<div class="paginaAutenticacao">
-  <div class="bannerAutenticacao">
-    <div>
-      <div class="logoAutenticacao"><a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a></div>
-      <h1>Seu progresso,<br><em>salvo na sua conta.</em></h1>
-      <p>Entre para guardar cardápio, favoritas e metas em qualquer dispositivo.</p>
-    </div>
-  </div>
-  <div class="areaFormularioAutenticacao">
-    <div class="caixaAutenticacao">
-      <h2 id="tituloAutenticacao">Bem-vindo de volta</h2>
-      <div class="listaOpcoes">
-        <button class="botaoOpcao ativo" data-acao="alternarAbaAutenticacao" data-valor="entrar">Entrar</button>
-        <button class="botaoOpcao" data-acao="alternarAbaAutenticacao" data-valor="cadastro">Criar conta</button>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <title>BeHealthier — Entrar</title>
+    <link rel="icon" type="image/svg+xml" href="Imagens/icons/esquilo-logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <script src="js/receitas-data.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </head>
+  <body data-pagina="login">
+    <div class="paginaAutenticacao">
+      <div class="bannerAutenticacao">
+        <div>
+          <div class="logoAutenticacao"><a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a></div>
+          <h1>Seu progresso,<br><em>salvo na sua conta.</em></h1>
+          <p>Entre para guardar cardápio, favoritas e metas em qualquer dispositivo.</p>
+        </div>
       </div>
-      <form class="gradeFormulario" id="formularioAutenticacao" onsubmit="return false">
-        <label class="somenteCadastro">Nome<input name="nome" autocomplete="name"></label>
-        <label>E-mail<input name="email" type="email" autocomplete="email"></label>
-        <label>Senha<input name="senha" type="password" autocomplete="current-password"></label>
-      </form>
-      <p id="erroAutenticacao"></p>
-      <button class="botao" id="botaoAutenticar" data-acao="autenticar">Entrar</button>
-      <button class="botaoVisitante" data-acao="continuarVisitante">Continuar como visitante</button>
+      <div class="areaFormularioAutenticacao">
+        <div class="caixaAutenticacao">
+          <h2 id="tituloAutenticacao">Bem-vindo de volta</h2>
+          <div class="listaOpcoes">
+            <button class="botaoOpcao ativo" data-acao="alternarAbaAutenticacao" data-valor="entrar">Entrar</button>
+            <button class="botaoOpcao" data-acao="alternarAbaAutenticacao" data-valor="cadastro">Criar conta</button>
+          </div>
+          <form class="gradeFormulario" id="formularioAutenticacao" onsubmit="return false">
+            <label class="somenteCadastro">Nome<input name="nome" autocomplete="name"></label>
+            <label>E-mail<input name="email" type="email" autocomplete="email"></label>
+            <label>Senha<input name="senha" type="password" autocomplete="current-password"></label>
+          </form>
+          <p id="erroAutenticacao"></p>
+          <button class="botao" id="botaoAutenticar" data-acao="autenticar">Entrar</button>
+          <button class="botaoVisitante" data-acao="continuarVisitante">Continuar como visitante</button>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<div class="sobreposicao" id="sobreposicaoModal"><div class="caixaModal" id="caixaModalConteudo"></div></div>
-<div class="aviso" id="avisoTemporario"></div>
-</body>
+    <div class="sobreposicao" id="sobreposicaoModal">
+      <div class="caixaModal" id="caixaModalConteudo"></div>
+    </div>
+    <div class="aviso" id="avisoTemporario"></div>
+  </body>
 </html>
