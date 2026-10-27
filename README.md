@@ -339,3 +339,24 @@ Coordenador: Lucas de Amorim Silva
 Secretário: Igor Hayato Sato da Silva
 
 Assunto: Melhoramos o nossa compreensâo e organizamos nossos arquivos do github.
+
+-----------------------------------------
+
+## Dia 16: 27/10
+Coordenador: Murilo Antonio
+
+Secretário: Igor Hayato Sato da Silva
+
+Assunto: Refazer o JS inteiro;
+
+Enzo Melgarejo: Revisão e otimização do código do site;
+
+Igor Hayato: Revisão e otimização do código do site;
+
+Lucas de Amorim: Auxílio na correção de código de js, e tirou o atraso de algumas outras atas;
+
+Murilo Antonio: Estudando JSON e JS;
+
+Henrique Tironi: Efetuou a atualização e otimização do JS;
+
+Felipe Laredo: Formatação do HTML.
