@@ -298,3 +298,23 @@ Alunos: Enzo Melgarelo, Felipe Laredo, Henrique Tironi,Igor Hayato, Lucas de Amo
 Nossa experiência apresentando no Painel Integrador foi muito legal e interessante, pois nele exercitamos diversas habilidades não só na parte de desenvolvimento do site, mas também em nossa capacidade de comunicação e organização, além de muito trabalho em grupo. Aprendendemos muitas coisas nesse período e somos gratos por participar.
 ### Pontos para melhorar
 Temos muitas coisas que poderíamos melhorar, uma delas é com relação a organização, sentimos que faltou mais organização na hora de apresentar com relação na ordem das falas de cada integrante, na parte de organização do nosso estande (decorações, etc).
+
+-----------------------------------------
+
+## Dia 12: 29/09
+Ausentes: Murilo Antonio de Almeida
+
+Coordenador: Henrique Tironi
+
+Secretário: Lucas de Amorim Silva
+
+Assunto: Finalização e retoques no site
+
+Enzo Melgarejo: Finalização de mobile/desktop: Sobre Nós;
+
+Igor Hayato: Finalização de mobile/desktop: Home/Inicio, e ajuda na reformulação do header, deixando-o em um sentido diferente.
+
+Lucas de Amorim: Finalização de mobile/desktop: Cardápio; Correção dos erros do Banco de dados. Finalizou a reformulação do layout.
+
+Murilo Antonio: Finalização de mobile/desktop: Receitas; Correção dos erros do Banco de dados. Executou etapas finais da reformulação.
+
