@@ -36,6 +36,12 @@ h2 {
     font-size: 1.9rem;
 }
 
+h3 {
+    font-size: 1.4rem;
+    margin: 26px 0 14px;
+    color: var(--floresta);
+}
+
 h4 {
     font-size: 1.05rem;
     font-weight: 700;
@@ -57,6 +63,15 @@ button {
     cursor: pointer;
     border: 0;
     background: none;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--folha);
+}
+
+[hidden] {
+    display: none !important;
 }
 
 #aplicacao {
@@ -90,6 +105,8 @@ main {
         padding: 34px 44px 0;
     }
 }
+
+/* Navegação */
 
 #barraSuperior {
     display: flex;
@@ -164,30 +181,9 @@ main {
     color: var(--folha);
     font-weight: 700;
 }
-.vdos {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 20px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-.vdos li {
-    background: var(--branco);
-    border: 1px solid var(--borda);
-    border-radius: 18px;
-    padding: 12px;
-    min-width: 0;
-    box-shadow: 0 2px 8px rgba(44, 62, 28, 0.08),
-                0 6px 18px rgba(44, 62, 28, 0.06);
-}
-.vdos iframe {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    border: 0;
-    border-radius: 12px;
+
+#menuLateral {
+    display: none;
 }
 
 @media (min-width: 900px) {
@@ -196,17 +192,6 @@ main {
     #menuInferior {
         display: none;
     }
-    .vdos,
-    .gradeVideos {
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    }
-}
-
-#menuLateral {
-    display: none;
-}
-
-@media (min-width: 900px) {
 
     #menuLateral {
         background: var(--floresta);
@@ -301,6 +286,30 @@ main {
     }
 }
 
+.logo a,
+.logoAutenticacao a,
+.rodapeLogoLink {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    background: none;
+    opacity: 1;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.logo a:hover,
+.logoAutenticacao a:hover,
+.rodapeLogoLink:hover {
+    transform: scale(1.04);
+}
+
+#menuLateral .logo a,
+#menuLateral .logo a:hover {
+    padding: 0;
+    background: none;
+    opacity: 1;
+}
 .botao {
     display: inline-flex;
     align-items: center;
@@ -376,12 +385,6 @@ main {
 
 .tituloPagina p {
     color: var(--textoSuave);
-}
-
-h3 {
-    font-size: 1.4rem;
-    margin: 26px 0 14px;
-    color: var(--floresta);
 }
 
 .textoSecundario {
@@ -568,14 +571,6 @@ p.textoSecundario {
     pointer-events: none;
 }
 
-.linhaItem img.iconeMais {
-    width: 28px;
-    height: 28px;
-    border-radius: 0;
-    object-fit: contain;
-    margin: 0 4px;
-}
-
 .textoSecundario.textoModalConfirmacao {
     margin: 8px 0 18px;
     font-size: 1rem;
@@ -584,28 +579,6 @@ p.textoSecundario {
 .textoSecundario.resumoNutricionalModal {
     margin: 8px 0 16px;
     font-size: 0.95rem;
-}
-
-.resumoSacola {
-    margin: 14px 0;
-}
-
-.botao.botaoFinalizarPedido {
-    margin-top: 16px;
-    width: 100%;
-    justify-content: center;
-}
-
-#formularioPedido {
-    grid-template-columns: 1fr 1fr;
-}
-
-.numeroGrande.totalSacola {
-    font-size: 1.6rem;
-}
-
-.linhaItem.linhaItemSelecionavel {
-    cursor: pointer;
 }
 
 @media (min-width: 900px) {
@@ -657,6 +630,70 @@ p.textoSecundario {
     }
 }
 
+.barraFerramentas input,
+.barraFerramentas select,
+.gradeFormulario input,
+.gradeFormulario select {
+    padding: 12px 16px;
+    border: 2px solid var(--borda);
+    border-radius: 14px;
+    background: var(--branco);
+    outline: 0;
+    min-width: 0;
+}
+
+.gradeFormulario > * {
+    min-width: 0;
+}
+
+.gradeFormulario input,
+.gradeFormulario select {
+    width: 100%;
+}
+
+.gradeFormulario textarea,
+.rodapeFormulario input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--borda);
+    border-radius: 14px;
+    background: var(--branco);
+    color: var(--tinta);
+    font: inherit;
+    outline: 0;
+    resize: vertical;
+}
+
+.gradeFormulario textarea:focus,
+.rodapeFormulario input:focus {
+    border-color: var(--folha);
+}
+
+.campoInvalido {
+    border-color: var(--perigo) !important;
+}
+
+.retornoFormulario,
+.rodapeFormularioRetorno {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin: 10px 0 0;
+    min-height: 1.2em;
+}
+
+.retornoFormulario.erro {
+    color: var(--perigo);
+}
+
+.retornoFormulario.sucesso {
+    color: var(--folha);
+}
+
+.botoesFormulario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 .bannerPrincipal {
     position: relative;
     border-radius: 22px;
@@ -702,6 +739,14 @@ p.textoSecundario {
     font-size: 1rem;
     opacity: 0.92;
     margin-bottom: 24px;
+}
+
+#saudacaoUsuario {
+    margin-bottom: 8px !important;
+}
+
+#saudacaoUsuario:empty {
+    display: none;
 }
 
 .estatisticas {
@@ -765,14 +810,6 @@ p.textoSecundario {
 .cardDestaque b {
     font: 800 1.4rem Fraunces, serif;
     display: block;
-}
-
-#saudacaoUsuario {
-    margin-bottom: 8px !important;
-}
-
-#saudacaoUsuario:empty {
-    display: none;
 }
 
 .bannerPrincipal.bannerInicio {
@@ -903,6 +940,23 @@ p.textoSecundario {
     margin-top: 0;
 }
 
+#dicasPerder{
+    display: none;
+}
+
+#dicasManter{
+    display: none;
+}
+
+#dicasGanhar{
+    display: none;
+}
+
+#dicasMusculo{
+    display: none;
+}
+
+
 .botaoFavoritar {
     position: absolute;
     top: 6px;
@@ -935,67 +989,12 @@ p.textoSecundario {
     margin-top: 20px;
 }
 
-@media (min-width: 900px) {
-
-    .gradeReceitas {
-        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-        gap: 20px;
-    }
-
-    .cardReceita {
-        flex-direction: column;
-        border-radius: 20px;
-        align-items: normal;
-        min-height: auto;
-    }
-
-    .cardReceita img {
-        width: 100%;
-        height: auto;
-        min-height: auto;
-        aspect-ratio: 4 / 3;
-        flex: 0 1 auto;
-    }
-
-    .corpoCardReceita {
-        padding: 14px 16px 16px;
-        justify-content: normal;
-    }
-
-    .corpoCardReceita h4 {
-        min-height: 2.5em;
-    }
-
-    .corpoCardReceita .textoSecundario {
-        margin-top: auto;
-    }
-
-    .botaoFavoritar {
-        top: 10px;
-        right: 10px;
-        width: 36px;
-        height: 36px;
-    }
-}
-
 .barraFerramentas {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
     margin-bottom: 18px;
     align-items: center;
-}
-
-.barraFerramentas input,
-.barraFerramentas select,
-.gradeFormulario input,
-.gradeFormulario select {
-    padding: 12px 16px;
-    border: 2px solid var(--borda);
-    border-radius: 14px;
-    background: var(--branco);
-    outline: 0;
-    min-width: 0;
 }
 
 .barraFerramentas input {
@@ -1047,6 +1046,46 @@ p.textoSecundario {
 
 @media (min-width: 900px) {
 
+    .gradeReceitas {
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 20px;
+    }
+
+    .cardReceita {
+        flex-direction: column;
+        border-radius: 20px;
+        align-items: normal;
+        min-height: auto;
+    }
+
+    .cardReceita img {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        aspect-ratio: 4 / 3;
+        flex: 0 1 auto;
+    }
+
+    .corpoCardReceita {
+        padding: 14px 16px 16px;
+        justify-content: normal;
+    }
+
+    .corpoCardReceita h4 {
+        min-height: 2.5em;
+    }
+
+    .corpoCardReceita .textoSecundario {
+        margin-top: auto;
+    }
+
+    .botaoFavoritar {
+        top: 10px;
+        right: 10px;
+        width: 36px;
+        height: 36px;
+    }
+
     .barraFerramentas {
         flex-wrap: wrap;
     }
@@ -1072,7 +1111,6 @@ p.textoSecundario {
         padding-bottom: 0;
     }
 }
-
 .barraProgresso {
     height: 11px;
     background: var(--areia);
@@ -1124,10 +1162,40 @@ p.textoSecundario {
     display: block;
 }
 
+.linhaItem img.iconeMais {
+    width: 28px;
+    height: 28px;
+    border-radius: 0;
+    object-fit: contain;
+    margin: 0 4px;
+}
+
 .botaoRemover {
     color: var(--perigo);
     font-size: 1.3rem;
     padding: 6px;
+}
+
+.resumoSacola {
+    margin: 14px 0;
+}
+
+.botao.botaoFinalizarPedido {
+    margin-top: 16px;
+    width: 100%;
+    justify-content: center;
+}
+
+#formularioPedido {
+    grid-template-columns: 1fr 1fr;
+}
+
+.numeroGrande.totalSacola {
+    font-size: 1.6rem;
+}
+
+.linhaItem.linhaItemSelecionavel {
+    cursor: pointer;
 }
 
 .cabecalhoRefeicao {
@@ -1230,15 +1298,6 @@ p.textoSecundario {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-}
-
-.gradeFormulario > * {
-    min-width: 0;
-}
-
-.gradeFormulario input,
-.gradeFormulario select {
-    width: 100%;
 }
 
 .grupoCheckbox {
@@ -1354,11 +1413,6 @@ p.textoSecundario {
     }
 }
 
-input:focus,
-select:focus {
-    border-color: var(--folha);
-}
-
 .cardDica {
     display: flex;
     gap: 14px;
@@ -1444,6 +1498,33 @@ select:focus {
 .botao.botaoNovoPedido {
     margin-top: 14px;
 }
+.vdos {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.vdos li {
+    background: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: 18px;
+    padding: 12px;
+    min-width: 0;
+    box-shadow: 0 2px 8px rgba(44, 62, 28, 0.08),
+                0 6px 18px rgba(44, 62, 28, 0.06);
+}
+
+.vdos iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 12px;
+}
 
 .secaoVideos {
     text-align: center;
@@ -1464,6 +1545,7 @@ select:focus {
 
 @media (min-width: 900px) {
 
+    .vdos,
     .gradeVideos {
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     }
@@ -1708,75 +1790,6 @@ select:focus {
     }
 }
 
-.logo a,
-.logoAutenticacao a,
-.rodapeLogoLink {
-    display: inline-flex;
-    align-items: center;
-    padding: 0;
-    background: none;
-    opacity: 1;
-    border-radius: 8px;
-    transition: transform 0.2s;
-}
-
-.logo a:hover,
-.logoAutenticacao a:hover,
-.rodapeLogoLink:hover {
-    transform: scale(1.04);
-}
-
-#menuLateral .logo a,
-#menuLateral .logo a:hover {
-    padding: 0;
-    background: none;
-    opacity: 1;
-}
-
-.gradeFormulario textarea,
-.rodapeFormulario input {
-    width: 100%;
-    padding: 12px 16px;
-    border: 2px solid var(--borda);
-    border-radius: 14px;
-    background: var(--branco);
-    color: var(--tinta);
-    font: inherit;
-    outline: 0;
-    resize: vertical;
-}
-
-.gradeFormulario textarea:focus,
-.rodapeFormulario input:focus {
-    border-color: var(--folha);
-}
-
-.botoesFormulario {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.campoInvalido {
-    border-color: var(--perigo) !important;
-}
-
-.retornoFormulario,
-.rodapeFormularioRetorno {
-    font-size: 0.88rem;
-    font-weight: 700;
-    margin: 10px 0 0;
-    min-height: 1.2em;
-}
-
-.retornoFormulario.erro {
-    color: var(--perigo);
-}
-
-.retornoFormulario.sucesso {
-    color: var(--folha);
-}
-
 .rodapeFormulario {
     display: grid;
     grid-template-columns: 1fr;
@@ -1801,7 +1814,6 @@ select:focus {
     .colunasContato {
         grid-template-columns: 1.6fr 1fr;
     }
-
 }
 
 .listaCanais {
@@ -1888,8 +1900,3 @@ a.canalContato:hover {
         align-items: start;
     }
 }
-
-[hidden] {
-    display: none !important;
-}
-

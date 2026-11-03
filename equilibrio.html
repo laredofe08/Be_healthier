@@ -45,17 +45,17 @@
       <div class="painel">
         <h3 class="tituloPainel">Seu perfil</h3>
         <form class="gradeFormulario" id="formularioPerfil">
-          <label>Peso (kg)<input name="peso" type="number" min="30" max="250"></label>
-          <label>Altura (cm)<input name="altura" type="number" min="120" max="230"></label>
-          <label>Idade<input name="idade" type="number" min="10" max="100"></label>
+          <label>Peso (kg)<input id="peso" name="peso" type="number" min="30" max="250"></label>
+          <label>Altura (cm)<input id="altura" name="altura" type="number" min="120" max="230"></label>
+          <label>Idade<input id="idade" name="idade" type="number" min="10" max="100"></label>
           <label>Sexo
-            <select name="sexo">
+            <select id="sexo" name="sexo">
               <option value="m" selected>Masculino</option>
               <option value="f">Feminino</option>
             </select>
           </label>
           <label>Atividade física
-            <select name="atividade">
+            <select id="atividade" name="atividade">
               <option value="0">Sedentário</option>
               <option value="1" selected>Leve (1-3x/sem)</option>
               <option value="2">Moderada (3-5x/sem)</option>
@@ -63,7 +63,7 @@
             </select>
           </label>
           <label>Objetivo
-            <select name="objetivo">
+            <select id="objetivo" name="objetivo">
               <option value="perder">Perder peso</option>
               <option value="manter" selected>Manter o peso</option>
               <option value="ganhar">Ganhar peso</option>
@@ -80,11 +80,11 @@
           </div>
 
           <label class="larguraTotal">O que você gosta de comer? (separe por vírgula)
-            <input name="gostos" placeholder="ex: frango, banana, aveia">
+            <input id="gostos" name="gostos" placeholder="ex: frango, banana, aveia">
           </label>
 
           <div class="larguraTotal">
-            <button type="button" class="botao" data-acao="salvarPerfil">Salvar perfil</button>
+            <button type="button" id="salvarPerfil" class="botao" data-acao="salvarPerfil">Salvar perfil</button>
           </div>
         </form>
       </div>
