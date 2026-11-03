@@ -241,15 +241,18 @@ function salvarPerfil() {
     );
 }
 
-document.getElementById("salvarPerfil")
-    .addEventListener("click", salvarPerfil);
+const botaoSalvarPerfil = document.getElementById("salvarPerfil");
+
+if (botaoSalvarPerfil) {
+    botaoSalvarPerfil.addEventListener("click", salvarPerfil);
+}
 
 
 /*=== Recuperar perfil do usuário ===*/
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    // Recuperar informações
+    // Recuperar informações do localStorage
     pesoUsuario = localStorage.getItem("pesoUsuario");
     alturaUsuario = localStorage.getItem("alturaUsuario");
     idadeUsuario = localStorage.getItem("idadeUsuario");
@@ -268,6 +271,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Verificar se existe perfil salvo
     if (pesoUsuario === null) {
+        return;
+    }
+
+    if (!document.getElementById("peso")) {
         return;
     }
 
@@ -307,3 +314,29 @@ document.addEventListener("DOMContentLoaded", function() {
     );
 
 });
+
+/*Filtro de Dicas*/
+
+const botoesObjetivo = document.querySelectorAll(
+    '[data-acao="selecionarObjetivo"]'
+);
+
+const gruposDicas = document.querySelectorAll(".dicasDoObjetivo");
+
+for (const botao of botoesObjetivo) {
+    botao.addEventListener("click", function() {
+
+        let objetivoSelecionado = botao.dataset.valor;
+
+        for (const grupo of gruposDicas) {
+
+            if (grupo.dataset.objetivo === objetivoSelecionado) {
+                grupo.style.display = "grid";
+            } else {
+                grupo.style.display = "none";
+            }
+
+        }
+
+    });
+}

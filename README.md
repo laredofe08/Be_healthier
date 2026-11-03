@@ -343,7 +343,7 @@ Assunto: Melhoramos o nossa compreensâo e organizamos nossos arquivos do github
 -----------------------------------------
 
 ## Dia 16: 27/10
-Coordenador: Murilo Antonio
+Coordenador: Murilo Antonio de A.
 
 Secretário: Igor Hayato Sato da Silva
 
@@ -360,3 +360,22 @@ Murilo Antonio: Estudando JSON e JS;
 Henrique Tironi: Efetuou a atualização e otimização do JS;
 
 Felipe Laredo: Formatação do HTML.
+
+-----------------------------------------
+
+## Dia 17: 
+Coordenador: Murilo Antonio
+
+Secretário: Felipe Laredo 
+
+Assunto: Reformulação do JS;
+
+Felipe e Henrique: Java Script e organização css
+
+Enzo Melgarejo:  Revisão e otimização do código da pagina 'Sobre Nós';
+
+Igor Hayato:  Revisão do código do index e o nome das classes e id's;
+
+Lucas de Amorim:  Revisão da página 'Cardápio';
+
+Murilo Antonio: Java Script da Página 'Receitas', e tentativa de incrementação de cards;
