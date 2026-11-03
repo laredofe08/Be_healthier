@@ -1,537 +1,519 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-    <title>BeHealthier — Dicas</title>
-    <link rel="icon" type="image/svg+xml" href="Imagens/icons/esquilo-logo.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/auth.css">
-    <script src="js/receitas-data.js" defer></script>
-    <script src="js/app.js" defer></script>
-  </head>
-  <body data-pagina="dicas">
-    <div id="aplicacao">
-      <aside id="menuLateral">
-        <div class="logo"><a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a></div>
-        <a href="index.html"><span><img src="Imagens/icons/casa.svg" alt=""></span>Início</a>
-        <a href="receitas.html"><span><img src="Imagens/icons/receitas.svg" alt=""></span>Receitas</a>
-        <a href="cardapio.html"><span><img src="Imagens/icons/Calendar_Event.svg" alt=""></span>Cardápio</a>
-        <a href="equilibrio.html"><span><img src="Imagens/icons/equilibrio.svg" alt=""></span>Equilíbrio</a>
-        <a href="dicas.html" class="ativo"><span><img src="Imagens/icons/lampada.svg" alt=""></span>Dicas</a>
-        <a href="entrega.html"><span><img src="Imagens/icons/entrega.svg" alt=""></span>Entrega <span class="seloContador contadorSacola" hidden></span></a>
-        <a href="videos.html"><span><img src="Imagens/icons/Play.svg" alt=""></span>Vídeos</a>
-        <a href="sobre.html"><span><img src="Imagens/icons/sobre.svg" alt=""></span>Sobre nós</a>
-        <a href="contato.html"><span><img src="Imagens/icons/contato.svg" alt=""></span>Contato</a>
-        <div class="caixaUsuario"><b class="nomeUsuario"></b><span class="detalheUsuario"></span><button data-acao="sair" class="botaoUsuario"></button></div>
-      </aside>
-      <div>
-        <header id="barraSuperior">
-          <div class="logo"><a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a></div>
-          <span class="botaoCidade cidadeAtual" data-acao="irParaEntrega"></span>
-          <button class="botaoSacola" data-acao="abrirSacola"><img class="iconeSacolaTopo" src="Imagens/icons/Shopping_Cart_01.svg" alt=""> <span class="contadorSacola">0</span></button>
-        </header>
-        <main id="conteudoPrincipal">
-          <div class="tituloPagina">
-            <div>
-              <h2>Dicas</h2>
-              <p>Escolha seu objetivo para ver as dicas certas.</p>
-            </div>
-          </div>
-          <div class="listaOpcoes">
-            <button class="botaoOpcao" data-acao="selecionarObjetivo" data-valor="perder">Perder peso</button>
-            <button class="botaoOpcao" data-acao="selecionarObjetivo" data-valor="manter">Manter o peso</button>
-            <button class="botaoOpcao" data-acao="selecionarObjetivo" data-valor="ganhar">Ganhar peso</button>
-            <button class="botaoOpcao" data-acao="selecionarObjetivo" data-valor="musculo">Ganhar músculo</button>
-          </div>
-          <div class="gradeReceitas dicasDoObjetivo gradeDicas" data-objetivo="perder">
-            <div class="cardDica">
-              <span>🥗</span>
-              <div>
-                <h3>Déficit moderado</h3>
-                <p class="textoSecundario">Reduza cerca de 300–500 kcal/dia. Cortes radicais causam efeito sanfona.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>💧</span>
-              <div>
-                <h3>Água antes das refeições</h3>
-                <p class="textoSecundario">Ajuda na saciedade e evita confundir sede com fome.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🥦</span>
-              <div>
-                <h3>Metade do prato de vegetais</h3>
-                <p class="textoSecundario">Fibras saciam com poucas calorias.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🍗</span>
-              <div>
-                <h3>Proteína em toda refeição</h3>
-                <p class="textoSecundario">Preserva a massa magra e segura a fome por mais tempo.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🐢</span>
-              <div>
-                <h3>Coma devagar</h3>
-                <p class="textoSecundario">O cérebro leva ~20 minutos para registrar a saciedade.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🛒</span>
-              <div>
-                <h3>Não vá ao mercado com fome</h3>
-                <p class="textoSecundario">Evita levar ultraprocessados para casa.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🚶</span>
-              <div>
-                <h3>Caminhe todo dia</h3>
-                <p class="textoSecundario">30 minutos já fazem diferença, sem exageros.</p>
-              </div>
-            </div>
-          </div>
-          <div class="gradeReceitas dicasDoObjetivo gradeDicas" data-objetivo="manter">
-            <div class="cardDica">
-              <span>⚖️</span>
-              <div>
-                <h3>Equilíbrio no prato</h3>
-                <p class="textoSecundario">Metade vegetais, um quarto proteína, um quarto carboidrato integral.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🕒</span>
-              <div>
-                <h3>Mantenha horários</h3>
-                <p class="textoSecundario">Refeições regulares evitam beliscos e exageros.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🍎</span>
-              <div>
-                <h3>Varie as cores</h3>
-                <p class="textoSecundario">Frutas e legumes diferentes trazem vitaminas diferentes.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>📏</span>
-              <div>
-                <h3>Acompanhe sem obsessão</h3>
-                <p class="textoSecundario">Pese-se ou meça-se 1x por semana, olhando a tendência.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🍽️</span>
-              <div>
-                <h3>Regra 80/20</h3>
-                <p class="textoSecundario">Coma bem 80% do tempo e aproveite o restante sem culpa.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🧂</span>
-              <div>
-                <h3>Atenção ao sal e açúcar</h3>
-                <p class="textoSecundario">Prefira temperos naturais e leia os rótulos.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🏃</span>
-              <div>
-                <h3>Movimente-se</h3>
-                <p class="textoSecundario">Atividade regular ajuda a manter o peso e o humor.</p>
-              </div>
-            </div>
-          </div>
-          <div class="gradeReceitas dicasDoObjetivo gradeDicas" data-objetivo="ganhar">
-            <div class="cardDica">
-              <span>🍚</span>
-              <div>
-                <h3>Superávit saudável</h3>
-                <p class="textoSecundario">Adicione ~300 kcal/dia com comida de verdade, não ultraprocessados.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🥜</span>
-              <div>
-                <h3>Gorduras boas</h3>
-                <p class="textoSecundario">Castanhas, abacate e azeite têm muitas calorias em pouco volume.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🍽️</span>
-              <div>
-                <h3>5 a 6 refeições</h3>
-                <p class="textoSecundario">Lanches entre as refeições ajudam a bater a meta.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🥛</span>
-              <div>
-                <h3>Vitaminas cremosas</h3>
-                <p class="textoSecundario">Leite, banana e aveia batidos são ótimos e fáceis de tomar.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🥔</span>
-              <div>
-                <h3>Carboidrato complexo</h3>
-                <p class="textoSecundario">Arroz, batata-doce e aveia dão energia de longa duração.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>⏰</span>
-              <div>
-                <h3>Não pule refeições</h3>
-                <p class="textoSecundario">Deixe lanches prontos para os dias corridos.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>💪</span>
-              <div>
-                <h3>Um pouco de treino</h3>
-                <p class="textoSecundario">Musculação leve faz o ganho ser mais saudável.</p>
-              </div>
-            </div>
-          </div>
-          <div class="gradeReceitas dicasDoObjetivo gradeDicas" data-objetivo="musculo">
-            <div class="cardDica">
-              <span>🥩</span>
-              <div>
-                <h3>Proteína em todas as refeições</h3>
-                <p class="textoSecundario">Meta de cerca de 1,6 a 2 g por kg de peso.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🏋️</span>
-              <div>
-                <h3>Treino de força</h3>
-                <p class="textoSecundario">Sem estímulo, a proteína não vira músculo.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🍌</span>
-              <div>
-                <h3>Carboidrato pré-treino</h3>
-                <p class="textoSecundario">Energia para treinar pesado (banana, aveia, arroz).</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🥚</span>
-              <div>
-                <h3>Fontes variadas</h3>
-                <p class="textoSecundario">Ovos, frango, peixe, leguminosas e laticínios.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>😴</span>
-              <div>
-                <h3>Descanse 7–9h</h3>
-                <p class="textoSecundario">O músculo cresce no descanso, não no treino.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>📈</span>
-              <div>
-                <h3>Progressão de carga</h3>
-                <p class="textoSecundario">Aumente peso ou repetições aos poucos.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>💧</span>
-              <div>
-                <h3>Hidrate-se</h3>
-                <p class="textoSecundario">Desidratação derruba o desempenho no treino.</p>
-              </div>
-            </div>
-          </div>
-          <h3>Para todos os objetivos</h3>
-          <div class="gradeReceitas gradeDicas">
-            <div class="cardDica">
-              <span>💧</span>
-              <div>
-                <h3>Beba água</h3>
-                <p class="textoSecundario">Cerca de 35 ml por kg de peso ao dia.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🌈</span>
-              <div>
-                <h3>Prato colorido</h3>
-                <p class="textoSecundario">Quanto mais cores, mais nutrientes.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🍳</span>
-              <div>
-                <h3>Café da manhã de verdade</h3>
-                <p class="textoSecundario">Ovos, frutas e grãos integrais começam bem o dia.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🧑‍🍳</span>
-              <div>
-                <h3>Cozinhe em casa</h3>
-                <p class="textoSecundario">Você controla os ingredientes e economiza.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>📵</span>
-              <div>
-                <h3>Sem telas na refeição</h3>
-                <p class="textoSecundario">Comer com atenção reduz exageros.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>😴</span>
-              <div>
-                <h3>Durma bem</h3>
-                <p class="textoSecundario">Sono ruim aumenta a fome e a vontade de doce.</p>
-              </div>
-            </div>
-          </div>
-          <h3>Maleficios de comer mal</h3>
-          <div class="gradeReceitas gradeDicas">
-            <div class="cardDica">
-              <span>⚡</span>
-              <div>
-                <h3>Sono Ruim</h3>
-                <p class="textoSecundario">Uma alimentação desequilibrada pode deixar você mais cansado e sem disposição.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🧠</span>
-              <div>
-                <h3>Dificuldade de concentração</h3>
-                <p class="textoSecundario">O excesso de alimentos pouco nutritivos pode prejudicar a atenção e o desempenho mental.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>❤️</span>
-              <div>
-                <h3> Problemas cardiovasculares</h3>
-                <p class="textoSecundario">O consumo frequente de excesso de gorduras saturadas, sal e açúcar pode aumentar riscos para a saúde do coração.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🩸</span>
-              <div>
-                <h3>Alterações no açúcar do sangue</h3>
-                <p class="textoSecundario">O excesso de alimentos ricos em açúcares pode dificultar o controle da glicose.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🦷</span>
-              <div>
-                <h3>Problemas nos dentes</h3>
-                <p class="textoSecundario">O consumo frequente de açúcar aumenta o risco de cáries.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>😴</span>
-              <div>
-                <h3>Sono prejudicado</h3>
-                <p class="textoSecundario">Refeições muito pesadas ou desequilibradas podem atrapalhar a qualidade do sono.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🤢</span>
-              <div>
-                <h3>Problemas digestivos</h3>
-                <p class="textoSecundario">Uma dieta pobre em fibras pode contribuir para prisão de ventre e desconfortos intestinais.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🛡️</span>
-              <div>
-                <h3>Imunidade comprometida</h3>
-                <p class="textoSecundario">A falta de vitaminas e minerais importantes pode prejudicar o funcionamento adequado do sistema imunológico.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🦴</span>
-              <div>
-                <h3>Ossos mais vulneráveis</h3>
-                <p class="textoSecundario">A baixa ingestão de nutrientes como cálcio e vitamina D pode prejudicar a saúde óssea.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>💧</span>
-              <div>
-                <h3>Retenção de líquidos</h3>
-                <p class="textoSecundario">O excesso de sódio pode favorecer a retenção de líquidos e o inchaço.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>📈</span>
-              <div>
-                <h3>Maior risco de excesso de peso</h3>
-                <p class="textoSecundario">O consumo frequente de alimentos muito calóricos e pouco nutritivos pode contribuir para o ganho de peso.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>⚠️</span>
-              <div>
-                <h3>Maior risco de doenças</h3>
-                <p class="textoSecundario">Mantida por muito tempo, uma alimentação desequilibrada pode aumentar o risco de diversas doenças crônicas.</p>
-              </div>
-            </div>
-          </div>
-          <h3>Benefícios de uma alimentação equilibrada</h3>
-          <div class="gradeReceitas gradeDicas">
-            <div class="cardDica">
-              <span>⚡</span>
-              <div>
-                <h3>Mais energia e disposição</h3>
-                <p class="textoSecundario">Fornece nutrientes e energia para realizar as atividades do dia.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🧠</span>
-              <div>
-                <h3>Melhora da concentração</h3>
-                <p class="textoSecundario">Uma alimentação equilibrada ajuda no funcionamento adequado do cérebro.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>❤️</span>
-              <div>
-                <h3>Saúde do coração</h3>
-                <p class="textoSecundario">Uma dieta variada pode contribuir para a manutenção da saúde cardiovascular.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🛡️</span>
-              <div>
-                <h3>Fortalecimento da imunidade </h3>
-                <p class="textoSecundario">Vitaminas e minerais ajudam o sistema imunológico a funcionar corretamente.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>💪</span>
-              <div>
-                <h3>Manutenção dos músculos </h3>
-                <p class="textoSecundario">Proteínas e outros nutrientes auxiliam na manutenção e recuperação muscular.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🦴</span>
-              <div>
-                <h3>Ossos Mais Fortes</h3>
-                <p class="textoSecundario">Nutrientes como cálcio e vitamina D são importantes para a saúde dos ossos.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🦷</span>
-              <div>
-                <h3>Saúde dos Dentes</h3>
-                <p class="textoSecundario">Uma alimentação adequada contribui para dentes e gengivas mais saudáveis.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🌱</span>
-              <div>
-                <h3>Melhor Funcionamento do Intestino</h3>
-                <p class="textoSecundario">Fibras, água e uma alimentação variada favorecem a saúde intestinal.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>😴</span>
-              <div>
-                <h3>Melhor Qualidade do Sono</h3>
-                <p class="textoSecundario">Hábitos alimentares equilibrados podem contribuir para uma rotina de sono mais saudável.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>💧</span>
-              <div>
-                <h3>Melhor Hidratação</h3>
-                <p class="textoSecundario">O consumo adequado de água e alimentos ricos em água ajuda a manter o organismo hidratado.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>⚖️</span>
-              <div>
-                <h3>Manutenção de um peso saudável</h3>
-                <p class="textoSecundario">Uma alimentação equilibrada ajuda a fornecer os nutrientes necessários sem excessos.</p>
-              </div>
-            </div>
-            <div class="cardDica">
-              <span>🌟</span>
-              <div>
-                <h3>Mais qualidade de vida</h3>
-                <p class="textoSecundario">Comer de forma variada e equilibrada contribui para a saúde e o bem-estar ao longo da vida.</p>
-              </div>
-            </div>
-          </div>
-        </main>
-        <footer class="rodape">
-          <div class="rodapeConteudo">
-            <div class="rodapeMarca">
-              <a class="rodapeLogoLink" href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início"><img class="rodapeLogo" src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier"></a>
-              <p class="rodapeProjeto">Projeto da SEPE-IFC 2026</p>
-              <nav class="rodapeEquipe" aria-label="Equipe">
-                <h4 class="rodapeTitulo">Equipe</h4>
-                <a href="https://github.com/murilow-a16" target="_blank" rel="noopener noreferrer">Murilo Antonio de Almeida</a>
-                <a href="https://github.com/lucasdeamorimsilva" target="_blank" rel="noopener noreferrer">Lucas de Amorim Silva</a>
-                <a href="#" target="_blank" rel="noopener noreferrer">Enzo Melgarejo</a>
-                <a href="https://github.com/laredofe08" target="_blank" rel="noopener noreferrer">Felipe Laredo</a>
-                <a href="https://github.com/igorhayatoss-alt" target="_blank" rel="noopener noreferrer">Igor Hayato Sato</a>
-                <a href="https://github.com/HTironi" target="_blank" rel="noopener noreferrer">Henrique Tironi</a>
-              </nav>
-            </div>
-            <nav class="rodapeNavegacao" aria-label="Navegação do rodapé">
-              <h4 class="rodapeTitulo">Navegue</h4>
-              <a href="index.html">Início</a>
-              <a href="receitas.html">Receitas</a>
-              <a href="cardapio.html">Cardápio</a>
-              <a href="equilibrio.html">Equilíbrio</a>
-              <a href="dicas.html">Dicas</a>
-              <a href="entrega.html">Entrega</a>
-              <a href="videos.html">Vídeos</a>
-              <a href="sobre.html">Sobre nós</a>
-              <a href="contato.html">Contato</a>
-            </nav>
-            <div class="rodapeConta">
-              <h4 class="rodapeTitulo">Sua conta</h4>
-              <b class="nomeUsuario"></b>
-              <span class="detalheUsuario"></span>
-              <button type="button" class="botaoUsuario" data-acao="sair"></button>
-            </div>
-            <div class="rodapeLembrete">
-              <h4 class="rodapeTitulo">Quer lembrete por e-mail?</h4>
-              <form class="rodapeFormulario" data-formulario="lembreteRodape" onsubmit="return false" novalidate>
-                <input name="email" type="email" placeholder="Seu e-mail" aria-label="Seu e-mail" autocomplete="email" required>
-                <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Quero lembrete</button>
-                <p class="rodapeFormularioRetorno" role="status" aria-live="polite"></p>
-              </form>
-              <div class="rodapeContato">
-                <h4 class="rodapeTitulo">Fale com a gente</h4>
-                <a href="https://www.instagram.com/behealthier_ifc_araquari?stkn=Y2cxam0ybzNzejRj" target="_blank" rel="noopener noreferrer">Instagram: @behealthier_ifc_araquari</a>
-                <p>E-mail: behealthier67@gmail.com</p>
-                <p>Telefone: +55 47 99999-9999</p>
-              </div>
-            </div>
-          </div>
-          <p class="rodapeDireitos">© <span class="anoAtual"></span> BeHealthier</p>
-        </footer>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>BeHealthier — Dicas</title>
+
+  <link rel="icon" type="image/svg+xml" href="Imagens/icons/esquilo-logo.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+
+  <script src="js/receitas-data.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+
+<body data-pagina="dicas">
+  <div id="aplicacao">
+    <aside id="menuLateral">
+      <div class="logo">
+        <a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início">
+          <img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier">
+        </a>
       </div>
+
+      <a href="index.html"><span><img src="Imagens/icons/casa.svg" alt=""></span>Início</a>
+      <a href="receitas.html"><span><img src="Imagens/icons/receitas.svg" alt=""></span>Receitas</a>
+      <a href="cardapio.html"><span><img src="Imagens/icons/Calendar_Event.svg" alt=""></span>Cardápio</a>
+      <a href="equilibrio.html"><span><img src="Imagens/icons/equilibrio.svg" alt=""></span>Equilíbrio</a>
+      <a href="dicas.html" class="ativo"><span><img src="Imagens/icons/lampada.svg" alt=""></span>Dicas</a>
+      <a href="entrega.html"><span><img src="Imagens/icons/entrega.svg" alt=""></span>Entrega <span class="seloContador contadorSacola" hidden></span></a>
+      <a href="videos.html"><span><img src="Imagens/icons/Play.svg" alt=""></span>Vídeos</a>
+      <a href="sobre.html"><span><img src="Imagens/icons/sobre.svg" alt=""></span>Sobre nós</a>
+      <a href="contato.html"><span><img src="Imagens/icons/contato.svg" alt=""></span>Contato</a>
+
+      <div class="caixaUsuario">
+        <b class="nomeUsuario"></b>
+        <span class="detalheUsuario"></span>
+        <button data-acao="sair" class="botaoUsuario"></button>
+      </div>
+    </aside>
+
+    <div>
+      <header id="barraSuperior">
+        <div class="logo">
+          <a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início">
+            <img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier">
+          </a>
+        </div>
+        <span class="botaoCidade cidadeAtual" data-acao="irParaEntrega"></span>
+        <button class="botaoSacola" data-acao="abrirSacola">
+          <img class="iconeSacolaTopo" src="Imagens/icons/Shopping_Cart_01.svg" alt=""> 
+          <span class="contadorSacola">0</span>
+        </button>
+      </header>
+
+      <main id="conteudoPrincipal">
+        <div class="tituloPagina">
+          <div>
+            <h2>Dicas</h2>
+            <p>Escolha seu objetivo para ver as dicas certas.</p>
+          </div>
+        </div>
+
+        <div class="listaOpcoes">
+          <button class="botaoOpcao" data-acao="selecionarObjetivo" data-valor="perder">Perder peso</button>
+          <button class="botaoOpcao" data-acao="selecionarObjetivo" data-valor="manter">Manter o peso</button>
+          <button class="botaoOpcao" data-acao="selecionarObjetivo" data-valor="ganhar">Ganhar peso</button>
+          <button class="botaoOpcao" data-acao="selecionarObjetivo" data-valor="musculo">Ganhar músculo</button>
+        </div>
+
+        <div class="gradeReceitas dicasDoObjetivo gradeDicas" data-objetivo="perder">
+          <div class="cardDica">
+            <div>
+              <h3>Déficit moderado</h3>
+              <p class="textoSecundario">Reduza cerca de 300–500 kcal/dia. Cortes radicais causam efeito sanfona.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Água antes das refeições</h3>
+              <p class="textoSecundario">Ajuda na saciedade e evita confundir sede com fome.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Metade do prato de vegetais</h3>
+              <p class="textoSecundario">Fibras saciam com poucas calorias.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Proteína em toda refeição</h3>
+              <p class="textoSecundario">Preserva a massa magra e segura a fome por mais tempo.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Coma devagar</h3>
+              <p class="textoSecundario">O cérebro leva ~20 minutos para registrar a saciedade.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Não vá ao mercado com fome</h3>
+              <p class="textoSecundario">Evita levar ultraprocessados para casa.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Caminhe todo dia</h3>
+              <p class="textoSecundario">30 minutos já fazem diferença, sem exageros.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gradeReceitas dicasDoObjetivo gradeDicas" data-objetivo="manter">
+          <div class="cardDica">
+            <div>
+              <h3>Equilíbrio no prato</h3>
+              <p class="textoSecundario">Metade vegetais, um quarto proteína, um quarto carboidrato integral.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Mantenha horários</h3>
+              <p class="textoSecundario">Refeições regulares evitam beliscos e exageros.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Varie as cores</h3>
+              <p class="textoSecundario">Frutas e legumes diferentes trazem vitaminas diferentes.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Acompanhe sem obsessão</h3>
+              <p class="textoSecundario">Pese-se ou meça-se 1x por semana, olhando a tendência.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Regra 80/20</h3>
+              <p class="textoSecundario">Coma bem 80% do tempo e aproveite o restante sem culpa.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Atenção ao sal e açúcar</h3>
+              <p class="textoSecundario">Prefira temperos naturais e leia os rótulos.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Movimente-se</h3>
+              <p class="textoSecundario">Atividade regular ajuda a manter o peso e o humor.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gradeReceitas dicasDoObjetivo gradeDicas" data-objetivo="ganhar">
+          <div class="cardDica">
+            <div>
+              <h3>Superávit saudável</h3>
+              <p class="textoSecundario">Adicione ~300 kcal/dia com comida de verdade, não ultraprocessados.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Gorduras boas</h3>
+              <p class="textoSecundario">Castanhas, abacate e azeite têm muitas calorias em pouco volume.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>5 a 6 refeições</h3>
+              <p class="textoSecundario">Lanches entre as refeições ajudam a bater a meta.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Vitaminas cremosas</h3>
+              <p class="textoSecundario">Leite, banana e aveia batidos são ótimos e fáceis de tomar.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Carboidrato complexo</h3>
+              <p class="textoSecundario">Arroz, batata-doce e aveia dão energia de longa duração.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Não pule refeições</h3>
+              <p class="textoSecundario">Deixe lanches prontos para os dias corridos.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Um pouco de treino</h3>
+              <p class="textoSecundario">Musculação leve faz o ganho ser mais saudável.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="gradeReceitas dicasDoObjetivo gradeDicas" data-objetivo="musculo">
+          <div class="cardDica">
+            <div>
+              <h3>Proteína em todas as refeições</h3>
+              <p class="textoSecundario">Meta de cerca de 1,6 a 2 g por kg de peso.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Treino de força</h3>
+              <p class="textoSecundario">Sem estímulo, a proteína não vira músculo.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Carboidrato pré-treino</h3>
+              <p class="textoSecundario">Energia para treinar pesado (banana, aveia, arroz).</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Fontes variadas</h3>
+              <p class="textoSecundario">Ovos, frango, peixe, leguminosas e laticínios.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Descanse 7–9h</h3>
+              <p class="textoSecundario">O músculo cresce no descanso, não no treino.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Progressão de carga</h3>
+              <p class="textoSecundario">Aumente peso ou repetições aos poucos.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Hidrate-se</h3>
+              <p class="textoSecundario">Desidratação derruba o desempenho no treino.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>Para todos os objetivos</h3>
+        <div class="gradeReceitas gradeDicas">
+          <div class="cardDica">
+            <div>
+              <h3>Beba água</h3>
+              <p class="textoSecundario">Cerca de 35 ml por kg de peso ao dia.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Prato colorido</h3>
+              <p class="textoSecundario">Quanto mais cores, mais nutrientes.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Café da manhã de verdade</h3>
+              <p class="textoSecundario">Ovos, frutas e grãos integrais começam bem o dia.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Cozinhe em casa</h3>
+              <p class="textoSecundario">Você controla os ingredientes e economiza.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Sem telas na refeição</h3>
+              <p class="textoSecundario">Comer com atenção reduz exageros.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Durma bem</h3>
+              <p class="textoSecundario">Sono ruim aumenta a fome e a vontade de doce.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>Malefícios de comer mal</h3>
+        <div class="gradeReceitas gradeDicas">
+          <div class="cardDica">
+            <div>
+              <h3>Sono Ruim</h3>
+              <p class="textoSecundario">Uma alimentação desequilibrada pode deixar você mais cansado e sem disposição.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Dificuldade de concentração</h3>
+              <p class="textoSecundario">O excesso de alimentos pouco nutritivos pode prejudicar a atenção e o desempenho mental.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Problemas cardiovasculares</h3>
+              <p class="textoSecundario">O consumo frequente de excesso de gorduras saturadas, sal e açúcar pode aumentar riscos para a saúde do coração.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Alterações no açúcar do sangue</h3>
+              <p class="textoSecundario">O excesso de alimentos ricos em açúcares pode dificultar o controle da glicose.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Problemas nos dentes</h3>
+              <p class="textoSecundario">O consumo frequente de açúcar aumenta o risco de cáries.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Sono prejudicado</h3>
+              <p class="textoSecundario">Refeições muito pesadas ou desequilibradas podem atrapalhar a qualidade do sono.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Problemas digestivos</h3>
+              <p class="textoSecundario">Uma dieta pobre em fibras pode contribuir para prisão de ventre e desconfortos intestinais.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Imunidade comprometida</h3>
+              <p class="textoSecundario">A falta de vitaminas e minerais importantes pode prejudicar o funcionamento adequado do sistema imunológico.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Ossos mais vulneráveis</h3>
+              <p class="textoSecundario">A baixa ingestão de nutrientes como cálcio e vitamina D pode prejudicar a saúde óssea.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Retenção de líquidos</h3>
+              <p class="textoSecundario">O excesso de sódio pode favorecer a retenção de líquidos e o inchaço.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Maior risco de excesso de peso</h3>
+              <p class="textoSecundario">O consumo frequente de alimentos muito calóricos e pouco nutritivos pode contribuir para o ganho de peso.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Maior risco de doenças</h3>
+              <p class="textoSecundario">Mantida por muito tempo, uma alimentação desequilibrada pode aumentar o risco de diversas doenças crônicas.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>Benefícios de uma alimentação equilibrada</h3>
+        <div class="gradeReceitas gradeDicas">
+          <div class="cardDica">
+            <div>
+              <h3>Mais energia e disposição</h3>
+              <p class="textoSecundario">Fornece nutrientes e energia para realizar as atividades do dia.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Melhora da concentração</h3>
+              <p class="textoSecundario">Uma alimentação equilibrada ajuda no funcionamento adequado do cérebro.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Saúde do coração</h3>
+              <p class="textoSecundario">Uma dieta variada pode contribuir para a manutenção da saúde cardiovascular.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Fortalecimento da imunidade</h3>
+              <p class="textoSecundario">Vitaminas e minerais ajudam o sistema imunológico a funcionar corretamente.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Manutenção dos músculos</h3>
+              <p class="textoSecundario">Proteínas e outros nutrientes auxiliam na manutenção e recuperação muscular.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Ossos Mais Fortes</h3>
+              <p class="textoSecundario">Nutrientes como cálcio e vitamina D são importantes para a saúde dos ossos.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Saúde dos Dentes</h3>
+              <p class="textoSecundario">Uma alimentação adequada contribui para dentes e gengivas mais saudáveis.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Melhor Funcionamento do Intestino</h3>
+              <p class="textoSecundario">Fibras, água e uma alimentação variada favorecem a saúde intestinal.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Melhor Qualidade do Sono</h3>
+              <p class="textoSecundario">Hábitos alimentares equilibrados podem contribuir para uma rotina de sono mais saudável.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Melhor Hidratação</h3>
+              <p class="textoSecundario">O consumo adequado de água e alimentos ricos em água ajuda a manter o organismo hidratado.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Manutenção de um peso saudável</h3>
+              <p class="textoSecundario">Uma alimentação equilibrada ajuda a fornecer os nutrientes necessários sem excessos.</p>
+            </div>
+          </div>
+          <div class="cardDica">
+            <div>
+              <h3>Mais qualidade de vida</h3>
+              <p class="textoSecundario">Comer de forma variada e equilibrada contribui para a saúde e o bem-estar ao longo da vida.</p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="rodape">
+        <div class="rodapeConteudo">
+          <div class="rodapeMarca">
+            <a class="rodapeLogoLink" href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início">
+              <img class="rodapeLogo" src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier">
+            </a>
+            <p class="rodapeProjeto">Projeto da SEPE-IFC 2026</p>
+            <nav class="rodapeEquipe" aria-label="Equipe">
+              <h4 class="rodapeTitulo">Equipe</h4>
+              <a href="https://github.com/murilow-a16" target="_blank" rel="noopener noreferrer">Murilo Antonio de Almeida</a>
+              <a href="https://github.com/lucasdeamorimsilva" target="_blank" rel="noopener noreferrer">Lucas de Amorim Silva</a>
+              <a href="#" target="_blank" rel="noopener noreferrer">Enzo Melgarejo</a>
+              <a href="https://github.com/laredofe08" target="_blank" rel="noopener noreferrer">Felipe Laredo</a>
+              <a href="https://github.com/igorhayatoss-alt" target="_blank" rel="noopener noreferrer">Igor Hayato Sato</a>
+              <a href="https://github.com/HTironi" target="_blank" rel="noopener noreferrer">Henrique Tironi</a>
+            </nav>
+          </div>
+
+          <nav class="rodapeNavegacao" aria-label="Navegação do rodapé">
+            <h4 class="rodapeTitulo">Navegue</h4>
+            <a href="index.html">Início</a>
+            <a href="receitas.html">Receitas</a>
+            <a href="cardapio.html">Cardápio</a>
+            <a href="equilibrio.html">Equilíbrio</a>
+            <a href="dicas.html">Dicas</a>
+            <a href="entrega.html">Entrega</a>
+            <a href="videos.html">Vídeos</a>
+            <a href="sobre.html">Sobre nós</a>
+            <a href="contato.html">Contato</a>
+          </nav>
+
+          <div class="rodapeConta">
+            <h4 class="rodapeTitulo">Sua conta</h4>
+            <b class="nomeUsuario"></b>
+            <span class="detalheUsuario"></span>
+            <button type="button" class="botaoUsuario" data-acao="sair"></button>
+          </div>
+
+          <div class="rodapeLembrete">
+            <h4 class="rodapeTitulo">Quer lembrete por e-mail?</h4>
+            <form class="rodapeFormulario" data-formulario="lembreteRodape" onsubmit="return false" novalidate>
+              <input name="email" type="email" placeholder="Seu e-mail" aria-label="Seu e-mail" autocomplete="email" required>
+              <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Quero lembrete</button>
+              <p class="rodapeFormularioRetorno" role="status" aria-live="polite"></p>
+            </form>
+            <div class="rodapeContato">
+              <h4 class="rodapeTitulo">Fale com a gente</h4>
+              <a href="https://www.instagram.com/behealthier_ifc_araquari?stkn=Y2cxam0ybzNzejRj" target="_blank" rel="noopener noreferrer">Instagram: @behealthier_ifc_araquari</a>
+              <p>E-mail: behealthier67@gmail.com</p>
+              <p>Telefone: +55 47 99999-9999</p>
+            </div>
+          </div>
+        </div>
+        <p class="rodapeDireitos">© <span class="anoAtual"></span> BeHealthier</p>
+      </footer>
     </div>
-    <nav id="menuInferior">
-      <a href="index.html" class="ativo"><span><img src="Imagens/icons-preto/casa.svg" alt=""></span>Início</a>
-      <a href="receitas.html"><span><img src="Imagens/icons-preto/receitas.svg" alt=""></span>Receitas</a>
-      <a href="cardapio.html"><span><img src="Imagens/icons-preto/Calendar_Event.svg" alt=""></span>Cardápio</a>
-      <a href="equilibrio.html"><span><img src="Imagens/icons-preto/equilibrio.svg" alt=""></span>Equilíbrio</a>
-      <a href="#" data-acao="mais"><span><img src="Imagens/icons-preto/mais.svg" alt=""></span>Mais</a>
-    </nav>
-    <div class="sobreposicao" id="sobreposicaoModal">
-      <div class="caixaModal" id="caixaModalConteudo"></div>
-    </div>
-    <div class="aviso" id="avisoTemporario"></div>
-  </body>
+  </div>
+
+  <nav id="menuInferior">
+    <a href="index.html" class="ativo"><span><img src="Imagens/icons-preto/casa.svg" alt=""></span>Início</a>
+    <a href="receitas.html"><span><img src="Imagens/icons-preto/receitas.svg" alt=""></span>Receitas</a>
+    <a href="cardapio.html"><span><img src="Imagens/icons-preto/Calendar_Event.svg" alt=""></span>Cardápio</a>
+    <a href="equilibrio.html"><span><img src="Imagens/icons-preto/equilibrio.svg" alt=""></span>Equilíbrio</a>
+    <a href="#" data-acao="mais"><span><img src="Imagens/icons-preto/mais.svg" alt=""></span>Mais</a>
+  </nav>
+
+  <div class="sobreposicao" id="sobreposicaoModal">
+    <div class="caixaModal" id="caixaModalConteudo"></div>
+  </div>
+  
+  <div class="aviso" id="avisoTemporario"></div>
+</body>
 </html>
