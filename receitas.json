@@ -468,7 +468,7 @@
     "ingredientes": "1 xícara de grão-de-bico cozido, 1/2 pimentão vermelho em\ncubos, 1/2 cebola roxa picada, azeite, limão e sal.",
     "preparo": "Misture todos os ingredientes em uma tigela e sirva frio.",
     "calorias": 210.0,
-    "proteinas": null,
+    "proteinas": 10.0,
     "carboidratos": 30.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -479,7 +479,7 @@
     "ingredientes": "1 xícara de lentilha cozida e escorrida, 2 colheres (sopa) de\nfarinha de aveia, alho em pó, sal e pimenta.",
     "preparo": "Amasse a lentilha com um garfo, misture a aveia e temperos, molde os hambúrgueres e grelhe na frigideira antiaderente.",
     "calorias": 180.0,
-    "proteinas": null,
+    "proteinas": 11.0,
     "carboidratos": 28.0,
     "restricoes": ["sem lactose", "vegetariano"]
   },
@@ -490,7 +490,7 @@
     "ingredientes": "120g de tofu firme fatiado, 1 colher (sopa) de shoyu, 1 colher\n(café) de óleo de gergelim.",
     "preparo": "Grelhe o tofu até dourar os dois lados e finalize regando com o shoyu e o óleo de gergelim.",
     "calorias": 140.0,
-    "proteinas": null,
+    "proteinas": 14.0,
     "carboidratos": 3.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -501,7 +501,7 @@
     "ingredientes": "1 xícara de grão-de-bico cozido, 100ml de leite de coco light, 1\ncolher (chá) de curry em pó, tomate picado.",
     "preparo": "Refogue o tomate com o curry, adicione o grão-de-bico e o leite de coco. Cozinhe em fogo baixo por 10 minutos.",
     "calorias": 250.0,
-    "proteinas": null,
+    "proteinas": 11.0,
     "carboidratos": 32.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -512,7 +512,7 @@
     "ingredientes": "1 abobrinha grande fatiada em tiras finas, 1 xícara de molho de\ntomate caseiro, manjericão fresco.",
     "preparo": "Refogue a abobrinha rapidamente por 2 minutos, cubra com o molho aquecido e finalize com manjericão.",
     "calorias": 80.0,
-    "proteinas": null,
+    "proteinas": 4.0,
     "carboidratos": 12.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -523,7 +523,7 @@
     "ingredientes": "1 xícara de ervilha seca, 1/2 cebola picada, 1 dente de alho, azeite\ne sal.",
     "preparo": "Cozinhe a ervilha na panela de pressão com água por 15 minutos após pegar pressão. Bata tudo até virar um creme.",
     "calorias": 180.0,
-    "proteinas": null,
+    "proteinas": 11.0,
     "carboidratos": 30.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -534,7 +534,7 @@
     "ingredientes": "1 banana da terra cortada em rodelas, 1/2 pimentão em tiras,\n100ml de leite de coco, azeite de dendê e coentro.",
     "preparo": "Faça camadas com a banana e pimentão, regue com o leite de coco e dendê, e cozinhe com a panela tampada por 15 minutos.",
     "calorias": 220.0,
-    "proteinas": null,
+    "proteinas": 2.0,
     "carboidratos": 36.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -545,7 +545,7 @@
     "ingredientes": "1/2 xícara de quinoa cozida, 1/2 xícara de legumes em cubos\n(cenoura, abobrinha), azeite e ervas finas.",
     "preparo": "Misture a quinoa com os legumes temperados e asse por 20 minutos a 180°C.",
     "calorias": 190.0,
-    "proteinas": null,
+    "proteinas": 6.0,
     "carboidratos": 30.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -556,7 +556,7 @@
     "ingredientes": "1 xícara de grão-de-bico cozido, 1 colher (sopa) de tahine, suco\nde 1/2 limão, alho e azeite.",
     "preparo": "Bata tudo no processador ou liquidificador até formar uma pasta homogênea.",
     "calorias": 160.0,
-    "proteinas": null,
+    "proteinas": 6.0,
     "carboidratos": 18.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -567,7 +567,7 @@
     "ingredientes": "150g de cogumelos shimeji, 1 colher (sopa) de shoyu de coco,\ncebolinha fatiada.",
     "preparo": "Separe os cogumelos e salteie em frigideira quente por 5 minutos. Adicione o shoyu e finalize com cebolinha.",
     "calorias": 65.0,
-    "proteinas": null,
+    "proteinas": 4.0,
     "carboidratos": 8.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -578,7 +578,7 @@
     "ingredientes": "4 colheres (sopa) de quinoa cozida, 1 tomate picado, 1/2 pepino\npicado, hortelã e limão.",
     "preparo": "Misture os ingredientes frios e tempere com suco de limão, azeite e sal.",
     "calorias": 130.0,
-    "proteinas": null,
+    "proteinas": 5.0,
     "carboidratos": 20.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -589,7 +589,7 @@
     "ingredientes": "2 colheres (sopa) de farinha de grão-de-bico (besan), 2 colheres\n(sopa) de água, pitada de sal e açafrão.",
     "preparo": "Misture bem a farinha com a água e temperos. Despeje na frigideira antiaderente e doure dos dois lados.",
     "calorias": 110.0,
-    "proteinas": null,
+    "proteinas": 6.0,
     "carboidratos": 16.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -600,7 +600,7 @@
     "ingredientes": "1 xícara de vagem de edamame, sal grosso a gosto.",
     "preparo": "Ferva a vagem em água salgada por 5 minutos. Drene e salpique sal grosso por cima antes de consumir.",
     "calorias": 120.0,
-    "proteinas": null,
+    "proteinas": 11.0,
     "carboidratos": 9.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -611,7 +611,7 @@
     "ingredientes": "1 mandioquinha grande cozida, 2 colheres (sopa) de leite de\namêndoas sem açúcar, sal e noz-moscada.",
     "preparo": "Amasse a mandioquinha e leve ao fogo misturando com o leite vegetal e os temperos até ficar cremoso.",
     "calorias": 130.0,
-    "proteinas": null,
+    "proteinas": 2.0,
     "carboidratos": 25.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -622,7 +622,7 @@
     "ingredientes": "isolada de ervilha.",
     "preparo": "Bata tudo no liquidificador até obter uma consistência cremosa.",
     "calorias": 220.0,
-    "proteinas": null,
+    "proteinas": 18.0,
     "carboidratos": 27.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -633,7 +633,7 @@
     "ingredientes": "3 colheres (sopa) de aveia em flocos, 150ml de leite de\namêndoas, 1 pitada de canela.",
     "preparo": "Cozinhe a aveia com o leite em fogo baixo até engrossar. Sirva polvilhado com canela.",
     "calorias": 150.0,
-    "proteinas": null,
+    "proteinas": 5.0,
     "carboidratos": 24.0,
     "restricoes": ["sem lactose", "vegetariano"]
   },
@@ -644,7 +644,7 @@
     "ingredientes": "2 cajus firmes cortados em cubos, cebola roxa fatiada, coentro,\npimenta dedo-de-moça e suco de limão.",
     "preparo": "Misture o caju com a cebola e o coentro. Regue com bastante limão e deixe marinar por 15 minutos.",
     "calorias": 70.0,
-    "proteinas": null,
+    "proteinas": 1.0,
     "carboidratos": 14.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -655,7 +655,7 @@
     "ingredientes": "2 xícaras de folhas de couve sem o talo, 1 colher (café) de azeite\ne sal.",
     "preparo": "Misture as folhas com o azeite e sal. Espalhe em uma assadeira e asse a 160°C por 10 minutos até ficarem crocantes.",
     "calorias": 50.0,
-    "proteinas": null,
+    "proteinas": 2.0,
     "carboidratos": 6.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -666,7 +666,7 @@
     "ingredientes": "200g de abóbora cabotiá cozida, 1 pedaço pequeno de gengibre,\nágua e sal.",
     "preparo": "Bata a abóbora cozida com o gengibre e a água do cozimento no liquidificador. Aqueça antes de servir.",
     "calorias": 80.0,
-    "proteinas": null,
+    "proteinas": 2.0,
     "carboidratos": 14.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -677,7 +677,7 @@
     "ingredientes": "2 colheres (sopa) de sementes de chia, 150ml de leite de coco",
     "preparo": "leve, 1 colher (chá) de adoçante ou xarope de bordo. Misture a chia no leite de coco com o adoçante e deixe descansar na geladeira por pelo menos 4 horas. SEM GLÚTEN",
     "calorias": 160.0,
-    "proteinas": null,
+    "proteinas": 4.0,
     "carboidratos": 12.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -688,7 +688,7 @@
     "ingredientes": "1 ovo, 2 colheres (sopa) de farinha de\namêndoas, 1 colher (chá) de fermento, pitada de sal.",
     "preparo": "Misture tudo com um garfo e despeje em frigideira pequena untada. Doure dos dois lados em fogo baixo.",
     "calorias": 180.0,
-    "proteinas": null,
+    "proteinas": 9.0,
     "carboidratos": 4.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -699,7 +699,7 @@
     "ingredientes": "1/2 xícara de quinoa em grãos, 1/2 xícara de\ncogumelos fatiados, 1/2 cebola, caldo de legumes\ncaseiro.",
     "preparo": "Refogue a cebola e os cogumelos. Adicione a quinoa e o caldo aos poucos até cozinhar e ficar cremoso.",
     "calorias": 210.0,
-    "proteinas": null,
+    "proteinas": 7.0,
     "carboidratos": 30.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -710,7 +710,7 @@
     "ingredientes": "1 mandioquinha grande cozida e amassada,\n80g de carne moída refogada.",
     "preparo": "Em um ramequim, monte uma camada de carne moída e cubra com o purê de mandioquinha. Gratine no forno.",
     "calorias": 230.0,
-    "proteinas": null,
+    "proteinas": 17.0,
     "carboidratos": 28.0,
     "restricoes": ["sem lactose", "sem glúten"]
   },
@@ -721,7 +721,7 @@
     "ingredientes": "3 colheres (sopa) de farinha de\ngrão-de-bico, água para dar ponto, sal e orégano.",
     "preparo": "Misture a farinha com água até formar uma massa líquida. Espalhe na frigideira quente e doure os dois lados.",
     "calorias": 120.0,
-    "proteinas": null,
+    "proteinas": 6.0,
     "carboidratos": 18.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -732,7 +732,7 @@
     "ingredientes": "1 batata-doce média cozida e amassada, 2\ncolheres (sopa) de amido de milho, 1/2 xícara de molho\nde tomate.",
     "preparo": "Misture a batata com o amido, molde rolinhos, corte e ferva em água até subirem. Sirva com o molho quente.",
     "calorias": 190.0,
-    "proteinas": null,
+    "proteinas": 3.0,
     "carboidratos": 40.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -743,7 +743,7 @@
     "ingredientes": "100g de mandioca cozida e amassada, 50g\nde frango desfiado temperado.",
     "preparo": "Moldar a massa de mandioca ao redor do recheio de frango em formato de coxinha e assar na Airfryer por 15 min.",
     "calorias": 180.0,
-    "proteinas": null,
+    "proteinas": 12.0,
     "carboidratos": 24.0,
     "restricoes": ["sem lactose", "sem glúten"]
   },
@@ -754,7 +754,7 @@
     "ingredientes": "1 ovo, 2 colheres (sopa) de farinha de arroz,\n1 colher (chá) de cacau em pó, 1 colher (chá) de mel,\nfermento.",
     "preparo": "Misture tudo em uma caneca e leve ao micro-ondas por 1 minuto e 30 segundos.",
     "calorias": 170.0,
-    "proteinas": null,
+    "proteinas": 7.0,
     "carboidratos": 26.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -765,7 +765,7 @@
     "ingredientes": "1/2 lata de milho verde drenado, 1 ovo (clara\nem neve), 1 colher (sopa) de queijo ralado.",
     "preparo": "Bata o milho com a gema no liquidificador, incorpore a clara em neve e o queijo, e asse por 20 minutos.",
     "calorias": 150.0,
-    "proteinas": null,
+    "proteinas": 8.0,
     "carboidratos": 18.0,
     "restricoes": ["sem glúten", "vegetariano"]
   },
@@ -776,7 +776,7 @@
     "ingredientes": "1/2 xícara de trigo sarraceno cozido, tomate\nem cubos, pepino, azeite e limão.",
     "preparo": "Misture o trigo sarraceno frio com os vegetais picados e tempere a gosto.",
     "calorias": 160.0,
-    "proteinas": null,
+    "proteinas": 5.0,
     "carboidratos": 28.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -787,7 +787,7 @@
     "ingredientes": "1 ovo, 2 colheres (sopa) de farinha de\nlinhaça, 2 colheres (sopa) de atum em lata ao natural.",
     "preparo": "Misture o ovo e a linhaça, adicione o atum e doure a massa de ambos os lados na frigideira.",
     "calorias": 210.0,
-    "proteinas": null,
+    "proteinas": 15.0,
     "carboidratos": 3.0,
     "restricoes": ["sem lactose", "sem glúten"]
   },
@@ -798,7 +798,7 @@
     "ingredientes": "2 inhames médios descascados e cozidos,\n1 folha de couve fatiada fina, alho e sal.",
     "preparo": "Bata o inhame com a água do cozimento. Refogue a couve no alho e junte o creme de inhame quente.",
     "calorias": 120.0,
-    "proteinas": null,
+    "proteinas": 3.0,
     "carboidratos": 24.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -809,7 +809,7 @@
     "ingredientes": "1 ovo, 3 colheres (sopa) de tapioca, 1 colher\n(chá) de adoçante culinário, canela em pó.",
     "preparo": "Misture os ingredientes e asse em forminhas de silicone a 180°C por 15 minutos. Polvilhe canela por cima.",
     "calorias": 140.0,
-    "proteinas": null,
+    "proteinas": 6.0,
     "carboidratos": 20.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -820,7 +820,7 @@
     "ingredientes": "50g de macarrão de arroz (bifum ou\nintegral), 1/2 xícara de legumes salteados (cenoura,\npimentão, brócolis), shoyu.",
     "preparo": "Cozinhe o macarrão conforme a embalagem e misture com os legumes quentes salteados no shoyu.",
     "calorias": 200.0,
-    "proteinas": null,
+    "proteinas": 5.0,
     "carboidratos": 42.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -831,7 +831,7 @@
     "ingredientes": "1/2 xícara de purê de mandioca, 1 colher\n(sopa) de polvilho doce, 1 colher (sopa) de queijo ralado.",
     "preparo": "Misture bem até formar uma massa maleável e asse na máquina de waffle untada até dourar.",
     "calorias": 180.0,
-    "proteinas": null,
+    "proteinas": 4.0,
     "carboidratos": 32.0,
     "restricoes": ["sem glúten", "vegetariano"]
   },
@@ -842,7 +842,7 @@
     "ingredientes": "1 batata inglesa média cozida, 2 colheres\n(sopa) de leite, 50g de carne seca dessalgada e desfiada.",
     "preparo": "Amasse a batata com o leite para fazer o purê e sirva com a carne seca acebolada por cima.",
     "calorias": 240.0,
-    "proteinas": null,
+    "proteinas": 18.0,
     "carboidratos": 26.0,
     "restricoes": ["sem glúten"]
   },
@@ -853,7 +853,7 @@
     "ingredientes": "2 colheres (sopa) de amaranto em flocos,\n150ml de leite vegetal, 3 morangos picados.",
     "preparo": "Cozinhe o amaranto no leite vegetal em fogo baixo mexendo sempre até engrossar. Sirva com morangos.",
     "calorias": 140.0,
-    "proteinas": null,
+    "proteinas": 4.0,
     "carboidratos": 22.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -864,7 +864,7 @@
     "ingredientes": "1 banana madura congelada.",
     "preparo": "Processar no liquidificador ou processador até virar um creme cremoso.",
     "calorias": 90.0,
-    "proteinas": null,
+    "proteinas": 1.0,
     "carboidratos": 23.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -875,7 +875,7 @@
     "ingredientes": "1 maçã média, 1 colher (chá) de canela.",
     "preparo": "Retirar o miolo, polvilhar canela e assar por 3 minutos no micro-ondas.",
     "calorias": 80.0,
-    "proteinas": null,
+    "proteinas": 0.5,
     "carboidratos": 20.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -886,7 +886,7 @@
     "ingredientes": "1/2 abacate maduro, 1 colher (sopa) de cacau em\npó 100%, 1 colher (chá) de adoçante natural (eritritol ou\nestévia).",
     "preparo": "Amassar bem o abacate e misturar o cacau e o adoçante até homogeneizar.",
     "calorias": 160.0,
-    "proteinas": null,
+    "proteinas": 3.0,
     "carboidratos": 10.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -897,7 +897,7 @@
     "ingredientes": "1 pera sem casca, 200ml de chá de hibisco\nconcentrado.",
     "preparo": "Cozinhar a pera no chá até que fique macia.",
     "calorias": 80.0,
-    "proteinas": null,
+    "proteinas": 0.5,
     "carboidratos": 18.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -908,7 +908,7 @@
     "ingredientes": "5 morangos grandes, 15g de chocolate 70%\ncacau ou chocolate zero açúcar derretido.",
     "preparo": "Banhar os morangos no chocolate derretido e resfriar.",
     "calorias": 95.0,
-    "proteinas": null,
+    "proteinas": 2.0,
     "carboidratos": 10.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -919,7 +919,7 @@
     "ingredientes": "2 figos frescos cortados ao meio, canela a gosto.",
     "preparo": "Grelhar na frigideira antiaderente por 1 minuto de cada lado e polvilhar canela.",
     "calorias": 70.0,
-    "proteinas": null,
+    "proteinas": 1.0,
     "carboidratos": 18.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -930,7 +930,7 @@
     "ingredientes": "1.5 xícara de melancia congelada em cubos,\nsuco de 1/2 limão.",
     "preparo": "Pulsar no liquidificador até obter consistência de raspadinha.",
     "calorias": 60.0,
-    "proteinas": null,
+    "proteinas": 1.0,
     "carboidratos": 15.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -941,7 +941,7 @@
     "ingredientes": "2 tâmaras secas sem caroço, 1 colher (café) de\ncacau em pó 100%.",
     "preparo": "Amassar as tâmaras até formar uma massa, moldar em bolinha e passar no cacau.",
     "calorias": 75.0,
-    "proteinas": null,
+    "proteinas": 1.0,
     "carboidratos": 17.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -952,7 +952,7 @@
     "ingredientes": "3 damascos secos, 1 colher (sopa) de queijo\ncottage.",
     "preparo": "Abrir as metades dos damascos e rechear com o cottage.",
     "calorias": 80.0,
-    "proteinas": null,
+    "proteinas": 3.0,
     "carboidratos": 15.0,
     "restricoes": ["sem glúten", "vegetariano"]
   },
@@ -963,7 +963,7 @@
     "ingredientes": "1 colher (sopa) de pasta de amendoim integral, 1\ncolher (chá) de cacau em pó, 1 colher (chá) de adoçante\nnatural.",
     "preparo": "Misturar os ingredientes, moldar no formato de bombom e congelar por 20 minutos.",
     "calorias": 110.0,
-    "proteinas": null,
+    "proteinas": 4.0,
     "carboidratos": 5.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -974,7 +974,7 @@
     "ingredientes": "2 colheres (sopa) de biomassa de banana verde,\n1 colher (sopa) de cacau em pó 100%, adoçante a gosto.",
     "preparo": "Cozinhar em fogo baixo mexendo sempre até soltar do fundo da panela.",
     "calorias": 65.0,
-    "proteinas": null,
+    "proteinas": 2.0,
     "carboidratos": 11.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -996,7 +996,7 @@
     "ingredientes": "100g de abóbora cozida, adoçante culinário\n(como xilitol), 2 cravos-da-índia.",
     "preparo": "Amassar a abóbora e apurar na panela com os cravos e o adoçante até secar o líquido.",
     "calorias": 50.0,
-    "proteinas": null,
+    "proteinas": 1.0,
     "carboidratos": 10.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -1007,7 +1007,7 @@
     "ingredientes": "1 pacote de gelatina zero açúcar (sabor morango\nou uva), 1 pote (170g) de iogurte natural desnatado.",
     "preparo": "Preparar a gelatina com metade da água recomendada, bater no liquidificador com o iogurte e levar para gelar.",
     "calorias": 70.0,
-    "proteinas": null,
+    "proteinas": 9.0,
     "carboidratos": 6.0,
     "restricoes": ["sem glúten", "vegetariano"]
   },
@@ -1018,7 +1018,7 @@
     "ingredientes": "1 banana madura, 1 ovo, 1 colher (chá) de cacau\nem pó 100%.",
     "preparo": "Amassar a banana, misturar o ovo e o cacau. Dourar pequenas porções na frigideira antiaderente.",
     "calorias": 160.0,
-    "proteinas": null,
+    "proteinas": 7.0,
     "carboidratos": 26.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -1029,7 +1029,7 @@
     "ingredientes": "200ml de suco de uva integral 100% (sem adição\nde açúcar), 1 colher (chá) de agar-agar em pó.",
     "preparo": "Ferver o suco com o agar-agar por 2 minutos, colocar em um recipiente e levar à geladeira.",
     "calorias": 130.0,
-    "proteinas": null,
+    "proteinas": 1.0,
     "carboidratos": 28.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -1040,7 +1040,7 @@
     "ingredientes": "1 ovo, 2 colheres (sopa) de farinha de aveia, 1\ncolher (chá) de cacau 100%, 2 colheres (sopa) de água.",
     "preparo": "Misturar tudo e asse na máquina de waffle ou em frigideira pequena.",
     "calorias": 165.0,
-    "proteinas": null,
+    "proteinas": 8.0,
     "carboidratos": 18.0,
     "restricoes": ["sem lactose", "vegetariano"]
   },
@@ -1051,7 +1051,7 @@
     "ingredientes": "1/2 xícara de ricota, suco de 1/2 limão, 1 colher\n(sopa) de adoçante natural, raspas de limão.",
     "preparo": "Bater a ricota, o suco de limão e o adoçante até virar um creme homogêneo. Finalizar com as raspas.",
     "calorias": 110.0,
-    "proteinas": null,
+    "proteinas": 10.0,
     "carboidratos": 4.0,
     "restricoes": ["sem glúten", "vegetariano"]
   },
@@ -1062,7 +1062,7 @@
     "ingredientes": "1/2 xícara de farinha de aveia, 1 ovo, 2\nmaçãs fatiadas, canela, adoçante culinário a gosto.",
     "preparo": "Misture a aveia, o ovo e o adoçante para fazer a base. Cubra com as maçãs fatiadas, polvilhe canela e asse por 25 min a 180°C.",
     "calorias": 160.0,
-    "proteinas": null,
+    "proteinas": 5.0,
     "carboidratos": 26.0,
     "restricoes": ["sem lactose", "vegetariano"]
   },
@@ -1073,7 +1073,7 @@
     "ingredientes": "1 xícara de ricota, suco de 2 limões, 1/2\npacote de gelatina sem sabor, adoçante culinário, base de\nbiscoito zero açúcar moído com óleo de coco.",
     "preparo": "Pressione o biscoito no fundo da fôrma. Bata a ricota, limão, adoçante e gelatina dissolvida. Despeje sobre a base e gele por 3h.",
     "calorias": 140.0,
-    "proteinas": null,
+    "proteinas": 7.0,
     "carboidratos": 10.0,
     "restricoes": ["vegetariano"]
   },
@@ -1084,7 +1084,7 @@
     "ingredientes": "1 abacate maduro, 3 colheres (sopa) de\ncacau em pó 100%, adoçante culinário, base de tâmaras e\nnozes trituradas.",
     "preparo": "Forre a fôrma com a mistura de nozes e tâmaras. Bata o abacate com cacau e adoçante até virar um creme homogêneo, coloque sobre a base e gele.",
     "calorias": 210.0,
-    "proteinas": null,
+    "proteinas": 4.0,
     "carboidratos": 18.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -1095,7 +1095,7 @@
     "ingredientes": "Base de aveia e manteiga derretida, 2\nbananas maduras fatiadas, 1/2 xícara de doce de leite\nzero açúcar, chantilly zero açúcar.",
     "preparo": "Asse a base por 10 min. Faça camadas com o doce de leite zero, as bananas e finalize com o chantilly zero por cima.",
     "calorias": 190.0,
-    "proteinas": null,
+    "proteinas": 3.0,
     "carboidratos": 28.0,
     "restricoes": ["vegetariano"]
   },
@@ -1106,7 +1106,7 @@
     "ingredientes": "1 xícara de queijo cottage ou cream cheese\nlight, 1 ovo, adoçante, 1 xícara de morangos cozidos com\nadoçante (geleia rápida).",
     "preparo": "Bata o queijo, o ovo e o adoçante. Asse em forno médio por 30 min. Espere esfriar e cubra com a geleia de morango caseira.",
     "calorias": 130.0,
-    "proteinas": null,
+    "proteinas": 10.0,
     "carboidratos": 8.0,
     "restricoes": ["sem glúten", "vegetariano"]
   },
@@ -1117,7 +1117,7 @@
     "ingredientes": "1 xícara de coco ralado sem açúcar, 1/2\nxícara de farinha de amêndoas, 2 ovos, 100ml de leite de\ncoco, adoçante culinário.",
     "preparo": "Misture todos os ingredientes até formar uma massa cremosa. Despeje em fôrma untada e asse por 30 min a 180°C.",
     "calorias": 220.0,
-    "proteinas": null,
+    "proteinas": 8.0,
     "carboidratos": 6.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -1128,7 +1128,7 @@
     "ingredientes": "2 peras fatiadas finas, 1/2 xícara de\ncastanhas de caju trituradas, 2 ovos, 1/2 xícara de leite\nvegetal, adoçante.",
     "preparo": "Bata os ovos, o leite, o adoçante e a castanha. Despeje em uma fôrma, distribua as fatias de pera por cima e asse a 180°C por 35 min.",
     "calorias": 175.0,
-    "proteinas": null,
+    "proteinas": 6.0,
     "carboidratos": 18.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -1139,7 +1139,7 @@
     "ingredientes": "3 ovos, 1 xícara de leite desnatado, 3\ncolheres (sopa) de amido de milho ou farinha de aveia, 1\ncolher (sopa) de fermento, 1 xícara de frango desfiado.",
     "preparo": "Bata a massa líquida no liquidificador. Em uma assadeira, coloque metade da massa, o recheio de frango e o restante da massa. Asse por 35 min.",
     "calorias": 180.0,
-    "proteinas": null,
+    "proteinas": 15.0,
     "carboidratos": 12.0,
     "restricoes": []
   },
@@ -1150,7 +1150,7 @@
     "ingredientes": "4 ovos, 1/2 xícara de cenoura ralada, 1/2\nxícara de abobrinha em cubos, 1/2 xícara de brócolis\ncozido, 2 colheres de queijo ralado.",
     "preparo": "Bata os ovos com sal e pimenta. Misture os legumes e o queijo, despeje em fôrma untada e asse a 180°C por 25 min.",
     "calorias": 140.0,
-    "proteinas": null,
+    "proteinas": 10.0,
     "carboidratos": 5.0,
     "restricoes": ["sem glúten", "vegetariano"]
   },
@@ -1161,7 +1161,7 @@
     "ingredientes": "1 xícara de grão-de-bico cozido, 1 lata de\natum ao natural, 1 tomate picado, 1 colher (sopa) de\nazeite.",
     "preparo": "Bata o grão-de-bico com o azeite e um pouco de água até virar uma massa. Forre uma fôrma, adicione o atum com tomate e asse por 30 min.",
     "calorias": 210.0,
-    "proteinas": null,
+    "proteinas": 16.0,
     "carboidratos": 22.0,
     "restricoes": ["sem lactose", "sem glúten"]
   },
@@ -1172,7 +1172,7 @@
     "ingredientes": "1 xícara de farinha de grão-de-bico, 2\ncolheres (sopa) de azeite, água para dar ponto, 1 xícara\nde palmito picado refogado.",
     "preparo": "Misture a farinha, o azeite e a água até moldar na fôrma. Coloque o recheio de palmito temperado e asse por 30 min.",
     "calorias": 170.0,
-    "proteinas": null,
+    "proteinas": 7.0,
     "carboidratos": 20.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -1183,7 +1183,7 @@
     "ingredientes": "1 xícara de espinafre refogado, 1 xícara de\nricota amassada, 3 ovos, 2 colheres (sopa) de parmesão.",
     "preparo": "Misture o espinafre, a ricota, os ovos batidos e o queijo. Despeje numa fôrma de silicone e asse por 30 min a 180°C.",
     "calorias": 150.0,
-    "proteinas": null,
+    "proteinas": 12.0,
     "carboidratos": 4.0,
     "restricoes": ["sem glúten", "vegetariano"]
   },
@@ -1194,7 +1194,7 @@
     "ingredientes": "2 xícaras de couve-flor triturada e cozida, 1\novo, 150g de carne moída refogada.",
     "preparo": "Misture a couve-flor com o ovo para fazer a massa. Monte em camadas com a carne moída no meio e asse por 30 min.",
     "calorias": 190.0,
-    "proteinas": null,
+    "proteinas": 24.0,
     "carboidratos": 6.0,
     "restricoes": ["sem lactose", "sem glúten"]
   },
@@ -1205,7 +1205,7 @@
     "ingredientes": "1/2 xícara de farinha de amêndoas, 1 colher\n(sopa) de manteiga, 1 xícara de cogumelos paris/shimeji\nsalteados.",
     "preparo": "Misture a farinha e manteiga com água até formar uma massa. Abra em disco, coloque os cogumelos no centro, dobre as bordas e asse por 20 min.",
     "calorias": 220.0,
-    "proteinas": null,
+    "proteinas": 7.0,
     "carboidratos": 8.0,
     "restricoes": ["sem glúten", "vegetariano"]
   },
@@ -1216,7 +1216,7 @@
     "ingredientes": "Base de aveia em flocos e ovo; Recheio: 1/2\nxícara de alho-poró refogado, 1/2 xícara de queijo minas\nem cubos, 2 ovos batidos com 50ml de leite.",
     "preparo": "Pré-asse a base por 10 min. Adicione o alho-poró, o queijo e a mistura de ovos e leite. Asse por mais 25 min até dourar.",
     "calorias": 185.0,
-    "proteinas": null,
+    "proteinas": 10.0,
     "carboidratos": 14.0,
     "restricoes": ["vegetariano"]
   },
@@ -1227,7 +1227,7 @@
     "ingredientes": "Base: 1/2 xícara de castanhas-do-pará, 4\ntâmaras sem caroço. Recheio: 1/2 xícara de polpa de\nmaracujá, 1/2 xícara de castanha-de-caju hidratada, 2\ncolheres (sopa) de óleo de coco, adoçante natural\n(eritritol ou xilitol).",
     "preparo": "Triture as castanhas e tâmaras no processador e forre o fundo de uma fôrma. Bate a polpa, as castanhas-de-caju hidratadas, o óleo de coco e o adoçante até virar um creme liso. Despeje sobre a base e leve ao congelador por 2 horas.",
     "calorias": 190.0,
-    "proteinas": null,
+    "proteinas": 4.0,
     "carboidratos": 16.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -1238,7 +1238,7 @@
     "ingredientes": "1 xícara de farinha de grão-de-bico, 3\ncolheres (sopa) de azeite, água para dar ponto, 1/2\nabobrinha fatiada, 4 tomates secos picados, temperos\nverdes.",
     "preparo": "Misture a farinha, o azeite, o sal e a água até formar uma massa modelável. Forre a fôrma, distribua a abobrinha e os tomates secos temperados por cima e asse a 180°C por 30 minutos.",
     "calorias": 160.0,
-    "proteinas": null,
+    "proteinas": 6.0,
     "carboidratos": 18.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -1249,7 +1249,7 @@
     "ingredientes": "Base: 1/2 xícara de farinha de amêndoas, 1\ncolher (sopa) de cacau em pó. Recheio: 1/2 xícara de\npasta de amendoim integral, 100ml de leite de coco leve,\nadoçante a gosto.",
     "preparo": "Misture a farinha de amêndoas, o cacau e um fio de água para formar a base e pressione na fôrma. Bate a pasta de amendoim com o leite de coco e adoçante. Cubra a base e leve ao congelador por 1 hora.",
     "calorias": 220.0,
-    "proteinas": null,
+    "proteinas": 8.0,
     "carboidratos": 8.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -1260,7 +1260,7 @@
     "ingredientes": "Base: 1 xícara de farinha de arroz integral, 2\ncolheres (sopa) de azeite, água. Recheio: 150g de tofu\nfirme, 1/2 xícara de cogumelos salteados, 1 colher (sopa)\nde azeite, sal preto e temperos.",
     "preparo": "Faça a massa com a farinha, azeite e água e forre a fôrma. Bata o tofu com o azeite e temperos no processador até ficar cremoso, misture os cogumelos, coloque sobre a massa e asse por 30 minutos.",
     "calorias": 175.0,
-    "proteinas": null,
+    "proteinas": 9.0,
     "carboidratos": 15.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -1271,7 +1271,7 @@
     "ingredientes": "Base: 1/2 xícara de coco ralado sem açúcar,\n2 colheres (sopa) de farinha de linhaça, 2 colheres de\nágua. Recheio: 2 maçãs picadas cozidas com canela e\nadoçante.",
     "preparo": "Misture o coco, a linhaça e a água para formar a crosta e asse por 10 minutos. Cubra com as maçãs cozidas na canela e leve ao forno por mais 15 minutos.",
     "calorias": 145.0,
-    "proteinas": null,
+    "proteinas": 3.0,
     "carboidratos": 18.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
@@ -1282,8 +1282,8 @@
     "ingredientes": "1 xícara de abobrinha ralada e espremida\n1 ovo grande\n1 xícara de farinha de amêndoas\n¼ xícara de nozes picadas\n¼ colher de chá de sal\n½ colher de chá de bicarbonato de sódio",
     "preparo": "Combine a abobrinha, ovo, farinha de amêndoas, nozes, sal e bicarbonato de sódio em uma tigela. Transfira para uma forma pequena de pão. Cozinhe na AirFryer a 160°C por cerca de 20 minutos ou até que um palito inserido saia limpo. Deixe esfriar antes de cortar.",
     "calorias": 720.0,
-    "proteinas": null,
-    "carboidratos": null,
+    "proteinas": 30.0,
+    "carboidratos": 28.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
   {
@@ -1293,8 +1293,8 @@
     "ingredientes": "1 xícara de ricota\n1 ovo grande\nraspas de 1 limão\n1 colher de sopa de adoçantes (apropriado para\ndiabéticos)\n½ xícara de farinha de amêndoas",
     "preparo": "Misture a ricota, ovo, raspas de limão, adoçante e farinha de amêndoas até formar uma massa homogênea. Coloque colheradas da massa em formas de muffin untadas. Cozinhe na AirFryer a 180°C por cerca de 12 minutos ou até que estejam dourados. Deixe esfriar um pouco antes de servir.",
     "calorias": 720.0,
-    "proteinas": null,
-    "carboidratos": null,
+    "proteinas": 38.0,
+    "carboidratos": 20.0,
     "restricoes": ["sem glúten", "vegetariano"]
   },
   {
@@ -1304,8 +1304,8 @@
     "ingredientes": "2 maçãs grandes, fatiadas bem finas\n½ colher de chá de canela em pó\nSpray de óleo ou um pouco de óleo de coco para\nuntar",
     "preparo": "Misture as fatias de maçã com canela Unte levemente a cesta da AirFryer. Distribua as fatias de maçã na cesta, sem sobrepor Cozinhe na AirFryer a 160°C por 8-10 minutos, até ficarem crocantes. Deixe esfriar antes de servir",
     "calorias": 240.0,
-    "proteinas": null,
-    "carboidratos": null,
+    "proteinas": 1.0,
+    "carboidratos": 54.0,
     "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
   },
   {
@@ -1314,9 +1314,9 @@
     "categoria": "Doces, sobremesas e lanches",
     "ingredientes": "1 xícara de aveia em flocos\n½ xícara de mirtilos frescos\n1 banana madura amassada\n1 ovo\n¼ xícara de leite de amêndoas\n1 colher de chá de extrato de baunilha\n½ colher de chá de fermento em pó",
     "preparo": "Misture todos os ingredientes até formar uma massa homogênea Coloque colheradas da massa em formas de muffin untadas. Cozinhe na AirFryer a 180°C por cerca de 15 minutos deixe esfriar antes de servir",
-    "calorias": null,
-    "proteinas": null,
-    "carboidratos": null,
+    "calorias": 535.0,
+    "proteinas": 22.0,
+    "carboidratos": 93.0,
     "restricoes": ["sem lactose", "vegetariano"]
   },
   {
@@ -1326,8 +1326,8 @@
     "ingredientes": "2 peitos de frango\n½ xícara de molho de churrasco\n4 tortilhas de milho(sem glúten)\n½ xícara de repolho roxo ralado\n¼ xícara de coentro fresco picado\n¼ xícara de cebola roxa picada\nLimão para servir",
     "preparo": "Cozinhe o frango na AirFryer a 180°C por cerca de 12 minutos ou até estar totalmente cozido Desfie o frango e misture com o molho de churrasco Aqueça as tortilhas na AirFryer por 2 minutos. Monte os tacos com frango, repolho, coentro e cebola Sirva com limão",
     "calorias": 780.0,
-    "proteinas": null,
-    "carboidratos": null,
+    "proteinas": 72.0,
+    "carboidratos": 90.0,
     "restricoes": ["sem lactose", "sem glúten"]
   },
   {
