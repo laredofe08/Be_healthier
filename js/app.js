@@ -340,3 +340,45 @@ for (const botao of botoesObjetivo) {
 
     });
 }
+
+/*=== Exibir receitas ===*/
+
+document.addEventListener("DOMContentLoaded", function () {
+    const lista = document.getElementById("listaReceitas");
+
+    if (!lista || typeof receitas === "undefined") {
+        return;
+    }
+
+    lista.classList.add("gradeReceitas");
+
+    lista.innerHTML = receitas.map(receita => `
+        <article class="cardReceita">
+            <img
+                src="Imagens/receitas/cards/${receita.id}.jpg"
+                alt="${receita.nome}"
+                loading="lazy"
+            >
+
+            <div class="corpoCardReceita">
+                <h4>${receita.nome}</h4>
+
+                <p class="textoSecundario">
+                    ${receita.categoria}
+                </p>
+
+                <p class="textoSecundario">
+                    ${receita.calorias} kcal ·
+                    ${receita.proteinas}g de proteína
+                </p>
+            </div>
+        </article>
+    `).join("");
+
+    lista.querySelectorAll("img").forEach(imagem => {
+        imagem.addEventListener("error", function () {
+            this.style.display = "none";
+        });
+    });
+});
+
