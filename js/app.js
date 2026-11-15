@@ -381,4 +381,151 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+/*=== Exibir receitas e modal ===*/
 
+document.addEventListener("DOMContentLoaded", function () {
+    const lista = document.getElementById("listaReceitas");
+
+    if (!lista || typeof receitas === "undefined") {
+        return;
+    }
+
+    lista.classList.add("gradeReceitas");
+
+    // 1. Renderiza os cards injetando o data-id correto em cada receita
+    lista.innerHTML = receitas.map(receita => `
+        <article class="cardReceita" data-id="${receita.id}" tabindex="0">
+            <img
+                src="Imagens/receitas/cards/${receita.id}.jpg"
+                alt="${receita.nome}"
+                loading="lazy"
+            >
+
+            <div class="corpoCardReceita">
+                <h4>${receita.nome}</h4>
+
+                <p class="textoSecundario">
+                    ${receita.categoria}
+                </p>
+
+                <p class="textoSecundario">
+                    ${receita.calorias} kcal ·
+                    ${receita.proteinas}g de proteína
+                </p>
+            </div>
+        </article>
+    `).join("");
+
+    // Oculta imagens que falharem ao carregar
+    lista.querySelectorAll("img").forEach(imagem => {
+        imagem.addEventListener("error", function () {
+            this.style.display = "none";
+        });
+    });
+
+    // 2. Função para criar e abrir a janela da receita
+    function abrirReceita(receita) {
+        const modal = document.createElement("div");
+        modal.className = "modalReceita";
+
+        modal.innerHTML = `
+            <div class="conteudoModalReceita">
+
+                <button class="fecharModal" aria-label="Fechar">
+                    &times;
+                </button>
+
+                <img
+                    class="imagemModalReceita"
+                    src="Imagens/receitas/cards/${receita.id}.jpg"
+                    alt="${receita.nome}"
+                >
+
+                <div class="informacoesModalReceita">
+
+                    <p class="textoSecundario">
+                        ${receita.categoria}
+                    </p>
+
+                    <h2>${receita.nome}</h2>
+
+                    <div class="dadosNutricionais">
+                        <div>
+                            <strong>${receita.calorias}</strong>
+                            <span>Calorias</span>
+                        </div>
+
+                        <div>
+                            <strong>${receita.proteinas}g</strong>
+                            <span>Proteínas</span>
+                        </div>
+
+                        <div>
+                            <strong>${receita.carboidratos}g</strong>
+                            <span>Carboidratos</span>
+                        </div>
+                    </div>
+
+                    <h3>Ingredientes</h3>
+                    <p>${receita.ingredientes || "Ingredientes não informados."}</p>
+
+                    <h3>Modo de preparo</h3>
+                    <p>${receita.preparo || "Modo de preparo não informado."}</p>
+
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        // Tira o scroll do fundo da página enquanto o modal estiver aberto
+        document.body.style.overflow = "hidden";
+
+        // Fechar pelo botão de fechar
+        modal.querySelector(".fecharModal").addEventListener("click", () => {
+            modal.remove();
+        });
+
+        // Fechar tocando na área externa do modal
+        modal.addEventListener("click", evento => {
+            if (evento.target === modal) {
+                modal.remove();
+            }
+        });
+
+        // Fechar com a tecla ESC
+        function fecharComEsc(evento) {
+            if (evento.key === "Escape") {
+                modal.remove();
+                document.removeEventListener("keydown", fecharComEsc);
+            }
+        }
+
+        document.addEventListener("keydown", fecharComEsc);
+    }
+
+    // 3. Ouvinte para abrir a receita ao clicar ou tocar no card
+    lista.addEventListener("click", function (evento) {
+        const card = evento.target.closest(".cardReceita");
+
+        if (!card) return;
+
+        const id = Number(card.dataset.id);
+        const receita = receitas.find(item => item.id === id);
+
+        if (receita) {
+            abrirReceita(receita);
+        }
+    });
+
+    // 4. Permitir abrir usando Enter ou Espaço (acessibilidade)
+    lista.addEventListener("keydown", function (evento) {
+        if (
+            evento.target.classList.contains("cardReceita") &&
+            (evento.key === "Enter" || evento.key === " ")
+        ) {
+            evento.preventDefault();
+            evento.target.click();
+        }
+    });
+});
