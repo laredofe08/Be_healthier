@@ -529,3 +529,40 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+/*=== Exibir receitas na página de Entrega ===*/
+
+document.addEventListener("DOMContentLoaded", function () {
+    const lista = document.getElementById("listaPratosEntrega");
+
+    if (!lista || typeof receitas === "undefined") return;
+
+    const receitasEntrega = receitas.slice(0, 8);
+
+    lista.innerHTML = receitasEntrega.map(receita => `
+        <article class="cardReceita">
+            <img
+                src="Imagens/receitas/cards/${receita.id}.jpg"
+                alt="${receita.nome}"
+                loading="lazy"
+            >
+
+            <div class="corpoCardReceita">
+                <h4>${receita.nome}</h4>
+
+                <p class="textoSecundario">
+                    ${receita.categoria}
+                </p>
+
+                <p class="textoSecundario">
+                    ${receita.calorias} kcal ·
+                    ${receita.proteinas}g de proteína
+                </p>
+
+                <p class="textoSecundario">
+                    ${receita.ingredientes}
+                </p>
+            </div>
+        </article>
+    `).join("");
+});
