@@ -380,10 +380,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-/*=== Exibir receitas e modal ===*/
+/*=== Exibir receitas, modal e pesquisa ===*/
 
 document.addEventListener("DOMContentLoaded", function () {
     const lista = document.getElementById("listaReceitas");
+    const campoBusca = document.getElementById("campoBuscaReceitas");
+    const filtroCategoria = document.getElementById("filtroCategoria");
 
     if (!lista || typeof receitas === "undefined") {
         return;
@@ -391,136 +393,123 @@ document.addEventListener("DOMContentLoaded", function () {
 
     lista.classList.add("gradeReceitas");
 
-    // 1. Renderiza os cards injetando o data-id correto em cada receita
-    lista.innerHTML = receitas.map(receita => `
-        <article class="cardReceita" data-id="${receita.id}" tabindex="0">
-            <img
-                src="Imagens/receitas/cards/${receita.id}.jpg"
-                alt="${receita.nome}"
-                loading="lazy"
-            >
+    
+    function normalizarTexto(texto) {
+        return (texto || "")
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+    }
 
-            <div class="corpoCardReceita">
-                <h4>${receita.nome}</h4>
+    function renderizarReceitas(listaParaExibir) {
+        if (listaParaExibir.length === 0) {
+            lista.innerHTML = `<p class="textoSecundario">Nenhuma receita encontrada para esta pesquisa.</p>`;
+            return;
+        }
 
-                <p class="textoSecundario">
-                    ${receita.categoria}
-                </p>
+        lista.innerHTML = listaParaExibir.map(receita => `
+            <article class="cardReceita" data-id="${receita.id}" tabindex="0">
+                <img
+                    src="Imagens/receitas/cards/${receita.id}.jpg"
+                    alt="${receita.nome}"
+                    loading="lazy"
+                >
 
-                <p class="textoSecundario">
-                    ${receita.calorias} kcal ·
-                    ${receita.proteinas}g de proteína
-                </p>
-            </div>
-        </article>
-    `).join("");
+                <div class="corpoCardReceita">
+                    <h4>${receita.nome}</h4>
 
-    // Oculta imagens que falharem ao carregar
-    lista.querySelectorAll("img").forEach(imagem => {
-        imagem.addEventListener("error", function () {
-            this.style.display = "none";
+                    <p class="textoSecundario">
+                        ${receita.categoria}
+                    </p>
+
+                    <p class="textoSecundario">
+                        ${receita.calorias} kcal ·
+                        ${receita.proteinas}g de proteína
+                    </p>
+                </div>
+            </article>
+        `).join("");
+
+        // Oculta imagens que falharem ao carregar
+        lista.querySelectorAll("img").forEach(imagem => {
+            imagem.addEventListener("error", function () {
+                this.style.display = "none";
+            });
         });
-    });
+    }
 
-    // 2. Função para criar e abrir a janela da receita
+    function filtrarReceitas() {
+        const termo = normalizarTexto(campoBusca ? campoBusca.value : "");
+        const categoriaSelecionada = filtroCategoria ? filtroCategoria.value : "";
+
+        const receitasFiltradas = receitas.filter(receita => {
+            const nome = normalizarTexto(receita.nome);
+            const ingredientes = normalizarTexto(receita.ingredientes);
+
+            const correspondeTexto = nome.includes(termo) || ingredientes.includes(termo);
+            const correspondeCategoria = categoriaSelecionada === "" || receita.categoria === categoriaSelecionada;
+
+            return correspondeTexto && correspondeCategoria;
+        });
+
+        renderizarReceitas(receitasFiltradas);
+    }
+
+    if (campoBusca) {
+        campoBusca.addEventListener("input", filtrarReceitas);
+    }
+
+    if (filtroCategoria) {
+        filtroCategoria.addEventListener("change", filtrarReceitas);
+    }
+
+    renderizarReceitas(receitas);
+
     function abrirReceita(receita) {
         const modal = document.createElement("div");
         modal.className = "modalReceita";
 
         modal.innerHTML = `
             <div class="conteudoModalReceita">
-
-                <button class="fecharModal" aria-label="Fechar">
-                    &times;
-                </button>
-
-                <img
-                    class="imagemModalReceita"
-                    src="Imagens/receitas/cards/${receita.id}.jpg"
-                    alt="${receita.nome}"
-                >
-
+                <button class="fecharModal" aria-label="Fechar">&times;</button>
+                <img class="imagemModalReceita" src="Imagens/receitas/cards/${receita.id}.jpg" alt="${receita.nome}">
                 <div class="informacoesModalReceita">
-
-                    <p class="textoSecundario">
-                        ${receita.categoria}
-                    </p>
-
+                    <p class="textoSecundario">${receita.categoria}</p>
                     <h2>${receita.nome}</h2>
-
                     <div class="dadosNutricionais">
-                        <div>
-                            <strong>${receita.calorias}</strong>
-                            <span>Calorias</span>
-                        </div>
-
-                        <div>
-                            <strong>${receita.proteinas}g</strong>
-                            <span>Proteínas</span>
-                        </div>
-
-                        <div>
-                            <strong>${receita.carboidratos}g</strong>
-                            <span>Carboidratos</span>
-                        </div>
+                        <div><strong>${receita.calorias}</strong><span>Calorias</span></div>
+                        <div><strong>${receita.proteinas}g</strong><span>Proteínas</span></div>
+                        <div><strong>${receita.carboidratos}g</strong><span>Carboidratos</span></div>
                     </div>
-
                     <h3>Ingredientes</h3>
                     <p>${receita.ingredientes || "Ingredientes não informados."}</p>
-
                     <h3>Modo de preparo</h3>
                     <p>${receita.preparo || "Modo de preparo não informado."}</p>
-
                 </div>
-
                 <div class="acoesReceita">
-                    <button
-                        type="button"
-                        class="botaoFavoritar"
-                        aria-pressed="${favoritos.includes(receita.id)}"
-                    >
+                    <button type="button" class="botaoFavoritar" aria-pressed="${favoritos.includes(receita.id)}">
                         <span aria-hidden="true">${favoritos.includes(receita.id) ? "♥" : "♡"}</span>
                         <span>${favoritos.includes(receita.id) ? "Curtido" : "Curtir"}</span>
                     </button>
-
-                    <button
-                        type="button"
-                        class="botaoAdicionarCardapio"
-                        aria-expanded="false"
-                        aria-controls="formularioCardapio"
-                    >
+                    <button type="button" class="botaoAdicionarCardapio" aria-expanded="false" aria-controls="formularioCardapio">
                         ＋ Adicionar ao cardápio
                     </button>
                 </div>
-
-                <form
-                    id="formularioCardapio"
-                    class="formularioCardapio"
-                    hidden
-                >
+                <form id="formularioCardapio" class="formularioCardapio" hidden>
                     <label>
                         Dia
                         <select name="dia">
-                            ${Object.entries(nomesDias).map(([valor, nome]) => `
-                                <option value="${valor}">${nome}</option>
-                            `).join("")}
+                            ${Object.entries(nomesDias).map(([valor, nome]) => `<option value="${valor}">${nome}</option>`).join("")}
                         </select>
                     </label>
-
                     <label>
                         Refeição
                         <select name="refeicao">
-                            ${Object.entries(nomesRefeicoes).map(([valor, nome]) => `
-                                <option value="${valor}">${nome}</option>
-                            `).join("")}
+                            ${Object.entries(nomesRefeicoes).map(([valor, nome]) => `<option value="${valor}">${nome}</option>`).join("")}
                         </select>
                     </label>
-
-                    <button type="submit" class="botaoAdicionarCardapio">
-                        Adicionar
-                    </button>
+                    <button type="submit" class="botaoAdicionarCardapio">Adicionar</button>
                 </form>
-
                 <p class="retornoCardapio" role="status"></p>
             </div>
         `;
@@ -528,10 +517,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.appendChild(modal);
 
         const curtir = modal.querySelector(".botaoFavoritar");
-
         curtir.addEventListener("click", () => {
             const ativo = favoritar(receita.id);
-
             curtir.setAttribute("aria-pressed", String(ativo));
             curtir.firstElementChild.textContent = ativo ? "♥" : "♡";
             curtir.lastElementChild.textContent = ativo ? "Curtido" : "Curtir";
@@ -539,23 +526,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const adicionar = modal.querySelector(".botaoAdicionarCardapio");
         const formulario = modal.querySelector("form");
-
         adicionar.addEventListener("click", () => {
             formulario.hidden = !formulario.hidden;
-
-            adicionar.setAttribute(
-                "aria-expanded",
-                String(!formulario.hidden)
-            );
-
-            if (!formulario.hidden) {
-                formulario.elements.dia.focus();
-            }
+            adicionar.setAttribute("aria-expanded", String(!formulario.hidden));
+            if (!formulario.hidden) formulario.elements.dia.focus();
         });
 
         formulario.addEventListener("submit", evento => {
             evento.preventDefault();
-
             const dia = formulario.elements.dia.value;
             const refeicao = formulario.elements.refeicao.value;
             const itens = cardapioSemanal[dia][refeicao];
@@ -563,11 +541,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (!repetida) {
                 itens.push(receita.id);
-
-                localStorage.setItem(
-                    "cardapioSemanal",
-                    JSON.stringify(cardapioSemanal)
-                );
+                localStorage.setItem("cardapioSemanal", JSON.stringify(cardapioSemanal));
             }
 
             modal.querySelector(".retornoCardapio").textContent = repetida
@@ -586,61 +560,37 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const conteudoModal = modal.querySelector(".conteudoModalReceita");
-
         conteudoModal.setAttribute("role", "dialog");
         conteudoModal.setAttribute("aria-modal", "true");
-
         modal.querySelector("h2").id = "tituloReceita";
         conteudoModal.setAttribute("aria-labelledby", "tituloReceita");
-
         modal.querySelector(".fecharModal").focus();
-
-        // Tira o scroll do fundo da página enquanto o modal estiver aberto
         document.body.style.overflow = "hidden";
 
-        // Fechar pelo botão de fechar
-        modal.querySelector(".fecharModal").addEventListener("click", () => {
-            fecharReceita();
-        });
-
-        // Fechar tocando na área externa do modal
+        modal.querySelector(".fecharModal").addEventListener("click", fecharReceita);
         modal.addEventListener("click", evento => {
-            if (evento.target === modal) {
-                fecharReceita();
-            }
+            if (evento.target === modal) fecharReceita();
         });
 
-        // Fechar com a tecla ESC
         function fecharComEsc(evento) {
             if (evento.key === "Escape") {
                 fecharReceita();
                 document.removeEventListener("keydown", fecharComEsc);
             }
         }
-
         document.addEventListener("keydown", fecharComEsc);
     }
 
-    // 3. Ouvinte para abrir a receita ao clicar ou tocar no card
     lista.addEventListener("click", function (evento) {
         const card = evento.target.closest(".cardReceita");
-
         if (!card) return;
-
         const id = Number(card.dataset.id);
         const receita = receitas.find(item => item.id === id);
-
-        if (receita) {
-            abrirReceita(receita);
-        }
+        if (receita) abrirReceita(receita);
     });
 
-    // 4. Permitir abrir usando Enter ou Espaço (acessibilidade)
     lista.addEventListener("keydown", function (evento) {
-        if (
-            evento.target.classList.contains("cardReceita") &&
-            (evento.key === "Enter" || evento.key === " ")
-        ) {
+        if (evento.target.classList.contains("cardReceita") && (evento.key === "Enter" || evento.key === " ")) {
             evento.preventDefault();
             evento.target.click();
         }
@@ -814,3 +764,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     mostrarDia("segunda");
 });
+/*Pesquisa das receitas*/
