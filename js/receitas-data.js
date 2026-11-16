@@ -506,7 +506,7 @@ const receitas = [
         "1 xícara de grão-de-bico cozido, 1/2 pimentão vermelho em\ncubos, 1/2 cebola roxa picada, azeite, limão e sal.",
       preparo: "Misture todos os ingredientes em uma tigela e sirva frio.",
       calorias: 210.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 30.0,
     },
     {
@@ -518,7 +518,7 @@ const receitas = [
       preparo:
         "Amasse a lentilha com um garfo, misture a aveia e temperos, molde os hambúrgueres e grelhe na frigideira antiaderente.",
       calorias: 180.0,
-      proteinas: null,
+      proteinas: 11.0,
       carboidratos: 28.0,
     },
     {
@@ -530,7 +530,7 @@ const receitas = [
       preparo:
         "Grelhe o tofu até dourar os dois lados e finalize regando com o shoyu e o óleo de gergelim.",
       calorias: 140.0,
-      proteinas: null,
+      proteinas: 14.0,
       carboidratos: 3.0,
     },
     {
@@ -542,7 +542,7 @@ const receitas = [
       preparo:
         "Refogue o tomate com o curry, adicione o grão-de-bico e o leite de coco. Cozinhe em fogo baixo por 10 minutos.",
       calorias: 250.0,
-      proteinas: null,
+      proteinas: 11.0,
       carboidratos: 32.0,
     },
     {
@@ -554,7 +554,7 @@ const receitas = [
       preparo:
         "Refogue a abobrinha rapidamente por 2 minutos, cubra com o molho aquecido e finalize com manjericão.",
       calorias: 80.0,
-      proteinas: null,
+      proteinas: 4.0,
       carboidratos: 12.0,
     },
     {
@@ -566,7 +566,7 @@ const receitas = [
       preparo:
         "Cozinhe a ervilha na panela de pressão com água por 15 minutos após pegar pressão. Bata tudo até virar um creme.",
       calorias: 180.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 30.0,
     },
     {
@@ -578,7 +578,7 @@ const receitas = [
       preparo:
         "Faça camadas com a banana e pimentão, regue com o leite de coco e dendê, e cozinhe com a panela tampada por 15 minutos.",
       calorias: 220.0,
-      proteinas: null,
+      proteinas: 4.0,
       carboidratos: 36.0,
     },
     {
@@ -590,7 +590,7 @@ const receitas = [
       preparo:
         "Misture a quinoa com os legumes temperados e asse por 20 minutos a 180°C.",
       calorias: 190.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 30.0,
     },
     {
@@ -602,7 +602,7 @@ const receitas = [
       preparo:
         "Bata tudo no processador ou liquidificador até formar uma pasta homogênea.",
       calorias: 160.0,
-      proteinas: null,
+      proteinas: 12.0,
       carboidratos: 18.0,
     },
     {
@@ -614,7 +614,7 @@ const receitas = [
       preparo:
         "Separe os cogumelos e salteie em frigideira quente por 5 minutos. Adicione o shoyu e finalize com cebolinha.",
       calorias: 65.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 8.0,
     },
     {
@@ -626,7 +626,7 @@ const receitas = [
       preparo:
         "Misture os ingredientes frios e tempere com suco de limão, azeite e sal.",
       calorias: 130.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 20.0,
     },
     {
@@ -638,7 +638,7 @@ const receitas = [
       preparo:
         "Misture bem a farinha com a água e temperos. Despeje na frigideira antiaderente e doure dos dois lados.",
       calorias: 110.0,
-      proteinas: null,
+      proteinas: 11.0,
       carboidratos: 16.0,
     },
     {
@@ -649,7 +649,7 @@ const receitas = [
       preparo:
         "Ferva a vagem em água salgada por 5 minutos. Drene e salpique sal grosso por cima antes de consumir.",
       calorias: 120.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 9.0,
     },
     {
@@ -661,7 +661,7 @@ const receitas = [
       preparo:
         "Amasse a mandioquinha e leve ao fogo misturando com o leite vegetal e os temperos até ficar cremoso.",
       calorias: 130.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 25.0,
     },
     {
@@ -672,7 +672,7 @@ const receitas = [
       preparo:
         "Bata tudo no liquidificador até obter uma consistência cremosa.",
       calorias: 220.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 27.0,
     },
     {
@@ -684,7 +684,7 @@ const receitas = [
       preparo:
         "Cozinhe a aveia com o leite em fogo baixo até engrossar. Sirva polvilhado com canela.",
       calorias: 150.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 24.0,
     },
     {
@@ -696,7 +696,7 @@ const receitas = [
       preparo:
         "Misture o caju com a cebola e o coentro. Regue com bastante limão e deixe marinar por 15 minutos.",
       calorias: 70.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 14.0,
     },
     {
@@ -708,7 +708,7 @@ const receitas = [
       preparo:
         "Misture as folhas com o azeite e sal. Espalhe em uma assadeira e asse a 160°C por 10 minutos até ficarem crocantes.",
       calorias: 50.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 6.0,
     },
     {
@@ -720,7 +720,7 @@ const receitas = [
       preparo:
         "Bata a abóbora cozida com o gengibre e a água do cozimento no liquidificador. Aqueça antes de servir.",
       calorias: 80.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 14.0,
     },
     {
@@ -732,7 +732,7 @@ const receitas = [
       preparo:
         "leve, 1 colher (chá) de adoçante ou xarope de bordo. Misture a chia no leite de coco com o adoçante e deixe descansar na geladeira por pelo menos 4 horas. SEM GLÚTEN",
       calorias: 160.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 12.0,
     },
     {
@@ -744,7 +744,7 @@ const receitas = [
       preparo:
         "Misture tudo com um garfo e despeje em frigideira pequena untada. Doure dos dois lados em fogo baixo.",
       calorias: 180.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 4.0,
     },
     {
@@ -756,7 +756,7 @@ const receitas = [
       preparo:
         "Refogue a cebola e os cogumelos. Adicione a quinoa e o caldo aos poucos até cozinhar e ficar cremoso.",
       calorias: 210.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 30.0,
     },
     {
@@ -768,7 +768,7 @@ const receitas = [
       preparo:
         "Em um ramequim, monte uma camada de carne moída e cubra com o purê de mandioquinha. Gratine no forno.",
       calorias: 230.0,
-      proteinas: null,
+      proteinas: 15.0,
       carboidratos: 28.0,
     },
     {
@@ -780,7 +780,7 @@ const receitas = [
       preparo:
         "Misture a farinha com água até formar uma massa líquida. Espalhe na frigideira quente e doure os dois lados.",
       calorias: 120.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 18.0,
     },
     {
@@ -792,7 +792,7 @@ const receitas = [
       preparo:
         "Misture a batata com o amido, molde rolinhos, corte e ferva em água até subirem. Sirva com o molho quente.",
       calorias: 190.0,
-      proteinas: null,
+      proteinas: 4.0,
       carboidratos: 40.0,
     },
     {
@@ -804,7 +804,7 @@ const receitas = [
       preparo:
         "Moldar a massa de mandioca ao redor do recheio de frango em formato de coxinha e assar na Airfryer por 15 min.",
       calorias: 180.0,
-      proteinas: null,
+      proteinas: 15.0,
       carboidratos: 24.0,
     },
     {
@@ -816,7 +816,7 @@ const receitas = [
       preparo:
         "Misture tudo em uma caneca e leve ao micro-ondas por 1 minuto e 30 segundos.",
       calorias: 170.0,
-      proteinas: null,
+      proteinas: 11.0,
       carboidratos: 26.0,
     },
     {
@@ -828,7 +828,7 @@ const receitas = [
       preparo:
         "Bata o milho com a gema no liquidificador, incorpore a clara em neve e o queijo, e asse por 20 minutos.",
       calorias: 150.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 18.0,
     },
     {
@@ -840,7 +840,7 @@ const receitas = [
       preparo:
         "Misture o trigo sarraceno frio com os vegetais picados e tempere a gosto.",
       calorias: 160.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 28.0,
     },
     {
@@ -852,7 +852,7 @@ const receitas = [
       preparo:
         "Misture o ovo e a linhaça, adicione o atum e doure a massa de ambos os lados na frigideira.",
       calorias: 210.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 3.0,
     },
     {
@@ -864,7 +864,7 @@ const receitas = [
       preparo:
         "Bata o inhame com a água do cozimento. Refogue a couve no alho e junte o creme de inhame quente.",
       calorias: 120.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 24.0,
     },
     {
@@ -876,7 +876,7 @@ const receitas = [
       preparo:
         "Misture os ingredientes e asse em forminhas de silicone a 180°C por 15 minutos. Polvilhe canela por cima.",
       calorias: 140.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 20.0,
     },
     {
@@ -888,7 +888,7 @@ const receitas = [
       preparo:
         "Cozinhe o macarrão conforme a embalagem e misture com os legumes quentes salteados no shoyu.",
       calorias: 200.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 42.0,
     },
     {
@@ -900,7 +900,7 @@ const receitas = [
       preparo:
         "Misture bem até formar uma massa maleável e asse na máquina de waffle untada até dourar.",
       calorias: 180.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 32.0,
     },
     {
@@ -912,7 +912,7 @@ const receitas = [
       preparo:
         "Amasse a batata com o leite para fazer o purê e sirva com a carne seca acebolada por cima.",
       calorias: 240.0,
-      proteinas: null,
+      proteinas: 15.0,
       carboidratos: 26.0,
     },
     {
@@ -924,7 +924,7 @@ const receitas = [
       preparo:
         "Cozinhe o amaranto no leite vegetal em fogo baixo mexendo sempre até engrossar. Sirva com morangos.",
       calorias: 140.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 22.0,
     },
     {
@@ -935,7 +935,7 @@ const receitas = [
       preparo:
         "Processar no liquidificador ou processador até virar um creme cremoso.",
       calorias: 90.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 23.0,
     },
     {
@@ -946,7 +946,7 @@ const receitas = [
       preparo:
         "Retirar o miolo, polvilhar canela e assar por 3 minutos no micro-ondas.",
       calorias: 80.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 20.0,
     },
     {
@@ -958,7 +958,7 @@ const receitas = [
       preparo:
         "Amassar bem o abacate e misturar o cacau e o adoçante até homogeneizar.",
       calorias: 160.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 10.0,
     },
     {
@@ -968,7 +968,7 @@ const receitas = [
       ingredientes: "1 pera sem casca, 200ml de chá de hibisco\nconcentrado.",
       preparo: "Cozinhar a pera no chá até que fique macia.",
       calorias: 80.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 18.0,
     },
     {
@@ -979,7 +979,7 @@ const receitas = [
         "5 morangos grandes, 15g de chocolate 70%\ncacau ou chocolate zero açúcar derretido.",
       preparo: "Banhar os morangos no chocolate derretido e resfriar.",
       calorias: 95.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 10.0,
     },
     {
@@ -990,7 +990,7 @@ const receitas = [
       preparo:
         "Grelhar na frigideira antiaderente por 1 minuto de cada lado e polvilhar canela.",
       calorias: 70.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 18.0,
     },
     {
@@ -1002,7 +1002,7 @@ const receitas = [
       preparo:
         "Pulsar no liquidificador até obter consistência de raspadinha. 🥜 Bombons e Trufas (8 a 12)",
       calorias: 60.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 15.0,
     },
     {
@@ -1014,7 +1014,7 @@ const receitas = [
       preparo:
         "Amassar as tâmaras até formar uma massa, moldar em bolinha e passar no cacau.",
       calorias: 75.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 17.0,
     },
     {
@@ -1024,7 +1024,7 @@ const receitas = [
       ingredientes: "3 damascos secos, 1 colher (sopa) de queijo\ncottage.",
       preparo: "Abrir as metades dos damascos e rechear com o cottage.",
       calorias: 80.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 15.0,
     },
     {
@@ -1036,7 +1036,7 @@ const receitas = [
       preparo:
         "Misturar os ingredientes, moldar no formato de bombom e congelar por 20 minutos.",
       calorias: 110.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 5.0,
     },
     {
@@ -1048,7 +1048,7 @@ const receitas = [
       preparo:
         "Cozinhar em fogo baixo mexendo sempre até soltar do fundo da panela.",
       calorias: 65.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 11.0,
     },
     {
@@ -1072,7 +1072,7 @@ const receitas = [
       preparo:
         "Amassar a abóbora e apurar na panela com os cravos e o adoçante até secar o líquido.",
       calorias: 50.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 10.0,
     },
     {
@@ -1084,7 +1084,7 @@ const receitas = [
       preparo:
         "Preparar a gelatina com metade da água recomendada, bater no liquidificador com o iogurte e levar para gelar.",
       calorias: 70.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 6.0,
     },
     {
@@ -1096,7 +1096,7 @@ const receitas = [
       preparo:
         "Amassar a banana, misturar o ovo e o cacau. Dourar pequenas porções na frigideira antiaderente.",
       calorias: 160.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 26.0,
     },
     {
@@ -1108,7 +1108,7 @@ const receitas = [
       preparo:
         "Ferver o suco com o agar-agar por 2 minutos, colocar em um recipiente e levar à geladeira.",
       calorias: 130.0,
-      proteinas: null,
+      proteinas: 2.0,
       carboidratos: 28.0,
     },
     {
@@ -1120,7 +1120,7 @@ const receitas = [
       preparo:
         "Misturar tudo e asse na máquina de waffle ou em frigideira pequena.",
       calorias: 165.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 18.0,
     },
     {
@@ -1132,7 +1132,7 @@ const receitas = [
       preparo:
         "Bater a ricota, o suco de limão e o adoçante até virar um creme homogêneo. Finalizar com as raspas.",
       calorias: 110.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 4.0,
     },
     {
@@ -1144,7 +1144,7 @@ const receitas = [
       preparo:
         "Misture a aveia, o ovo e o adoçante para fazer a base. Cubra com as maçãs fatiadas, polvilhe canela e asse por 25 min a 180°C.",
       calorias: 160.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 26.0,
     },
     {
@@ -1156,7 +1156,7 @@ const receitas = [
       preparo:
         "Pressione o biscoito no fundo da fôrma. Bata a ricota, limão, adoçante e gelatina dissolvida. Despeje sobre a base e gele por 3h.",
       calorias: 140.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 10.0,
     },
     {
@@ -1168,7 +1168,7 @@ const receitas = [
       preparo:
         "Forre a fôrma com a mistura de nozes e tâmaras. Bata o abacate com cacau e adoçante até virar um creme homogêneo, coloque sobre a base e gele.",
       calorias: 210.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 18.0,
     },
     {
@@ -1180,7 +1180,7 @@ const receitas = [
       preparo:
         "Asse a base por 10 min. Faça camadas com o doce de leite zero, as bananas e finalize com o chantilly zero por cima.",
       calorias: 190.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 28.0,
     },
     {
@@ -1192,7 +1192,7 @@ const receitas = [
       preparo:
         "Bata o queijo, o ovo e o adoçante. Asse em forno médio por 30 min. Espere esfriar e cubra com a geleia de morango caseira.",
       calorias: 130.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 8.0,
     },
     {
@@ -1204,7 +1204,7 @@ const receitas = [
       preparo:
         "Misture todos os ingredientes até formar uma massa cremosa. Despeje em fôrma untada e asse por 30 min a 180°C.",
       calorias: 220.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 6.0,
     },
     {
@@ -1216,7 +1216,7 @@ const receitas = [
       preparo:
         "Bata os ovos, o leite, o adoçante e a castanha. Despeje em uma fôrma, distribua as fatias de pera por cima e asse a 180°C por 35 min. 🥦 Tortas Salgadas (Naturalmente Sem Açúcar)",
       calorias: 175.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 18.0,
     },
     {
@@ -1228,7 +1228,7 @@ const receitas = [
       preparo:
         "Bata a massa líquida no liquidificador. Em uma assadeira, coloque metade da massa, o recheio de frango e o restante da massa. Asse por 35 min.",
       calorias: 180.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 12.0,
     },
     {
@@ -1240,7 +1240,7 @@ const receitas = [
       preparo:
         "Bata os ovos com sal e pimenta. Misture os legumes e o queijo, despeje em fôrma untada e asse a 180°C por 25 min.",
       calorias: 140.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 5.0,
     },
     {
@@ -1252,7 +1252,7 @@ const receitas = [
       preparo:
         "Bata o grão-de-bico com o azeite e um pouco de água até virar uma massa. Forre uma fôrma, adicione o atum com tomate e asse por 30 min.",
       calorias: 210.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 22.0,
     },
     {
@@ -1264,7 +1264,7 @@ const receitas = [
       preparo:
         "Misture a farinha, o azeite e a água até moldar na fôrma. Coloque o recheio de palmito temperado e asse por 30 min.",
       calorias: 170.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 20.0,
     },
     {
@@ -1276,7 +1276,7 @@ const receitas = [
       preparo:
         "Misture o espinafre, a ricota, os ovos batidos e o queijo. Despeje numa fôrma de silicone e asse por 30 min a 180°C.",
       calorias: 150.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 4.0,
     },
     {
@@ -1288,7 +1288,7 @@ const receitas = [
       preparo:
         "Misture a couve-flor com o ovo para fazer a massa. Monte em camadas com a carne moída no meio e asse por 30 min.",
       calorias: 190.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 6.0,
     },
     {
@@ -1300,7 +1300,7 @@ const receitas = [
       preparo:
         "Misture a farinha e manteiga com água até formar uma massa. Abra em disco, coloque os cogumelos no centro, dobre as bordas e asse por 20 min.",
       calorias: 220.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 8.0,
     },
     {
@@ -1312,7 +1312,7 @@ const receitas = [
       preparo:
         "Pré-asse a base por 10 min. Adicione o alho-poró, o queijo e a mistura de ovos e leite. Asse por mais 25 min até dourar.",
       calorias: 185.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 14.0,
     },
     {
@@ -1324,7 +1324,7 @@ const receitas = [
       preparo:
         "Triture as castanhas e tâmaras no processador e forre o fundo de uma fôrma. Bate a polpa, as castanhas-de-caju hidratadas, o óleo de coco e o adoçante até virar um creme liso. Despeje sobre a base e leve ao congelador por 2 horas.",
       calorias: 190.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 16.0,
     },
     {
@@ -1336,7 +1336,7 @@ const receitas = [
       preparo:
         "Misture a farinha, o azeite, o sal e a água até formar uma massa modelável. Forre a fôrma, distribua a abobrinha e os tomates secos temperados por cima e asse a 180°C por 30 minutos.",
       calorias: 160.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 18.0,
     },
     {
@@ -1348,7 +1348,7 @@ const receitas = [
       preparo:
         "Misture a farinha de amêndoas, o cacau e um fio de água para formar a base e pressione na fôrma. Bate a pasta de amendoim com o leite de coco e adoçante. Cubra a base e leve ao congelador por 1 hora.",
       calorias: 220.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 8.0,
     },
     {
@@ -1360,7 +1360,7 @@ const receitas = [
       preparo:
         "Faça a massa com a farinha, azeite e água e forre a fôrma. Bata o tofu com o azeite e temperos no processador até ficar cremoso, misture os cogumelos, coloque sobre a massa e asse por 30 minutos.",
       calorias: 175.0,
-      proteinas: null,
+      proteinas: 10.0,
       carboidratos: 15.0,
     },
     {
@@ -1372,7 +1372,7 @@ const receitas = [
       preparo:
         "Misture o coco, a linhaça e a água para formar a crosta e asse por 10 minutos. Cubra com as maçãs cozidas na canela e leve ao forno por mais 15 minutos.",
       calorias: 145.0,
-      proteinas: null,
+      proteinas: 5.0,
       carboidratos: 18.0,
     },
     {
@@ -1384,8 +1384,8 @@ const receitas = [
       preparo:
         "Cozinhe na AirFryer a 160°C por cerca de 20 minutos ou até que um palito inserido saia limpo. Deixe esfriar antes de cortar",
       calorias: 720.0,
-      proteinas: null,
-      carboidratos: null,
+      proteinas: 10.0,
+      carboidratos: 15.0,
     },
     {
       id: 118,
@@ -1396,8 +1396,8 @@ const receitas = [
       preparo:
         "Misture a ricota, ovo, raspas de limão, adoçante e farinha de amêndoas até formar uma massa homogênea. Coloque colheradas da massa em formas de muffin untadas. Cozinhe na AirFryer a 180°C por cerca de 12 minutos ou até que estejam dourados. Deixe esfriar um pouco antes de servir.",
       calorias: 720.0,
-      proteinas: null,
-      carboidratos: null,
+      proteinas: 10.0,
+      carboidratos: 15.0,
     },
     {
       id: 119,
@@ -1408,8 +1408,8 @@ const receitas = [
       preparo:
         "Misture as fatias de maçã com canela Unte levemente a cesta da AirFryer. Distribua as fatias de maçã na cesta, sem sobrepor Cozinhe na AirFryer a 160°C por 8-10 minutos, até ficarem crocantes. Deixe esfriar antes de servir Valor nutricional",
       calorias: 240.0,
-      proteinas: null,
-      carboidratos: null,
+      proteinas: 5.0,
+      carboidratos: 15.0,
     },
     {
       id: 120,
@@ -1419,9 +1419,9 @@ const receitas = [
         "1 xícara de aveia em flocos\n½ xícara de mirtilos frescos\n1 banana madura amassada\n1 ovo\n¼ xícara de leite de amêndoas\n1 colher de chá de extrato de baunilha\n½ colher de chá de fermento em pó\nModo de preparo",
       preparo:
         "Misture todos os ingredientes até formar uma massa homogênea Coloque colheradas da massa em formas de muffin untadas. Cozinhe na AirFryer a 180°C por cerca de 15 minutos deixe esfriar antes de servir",
-      calorias: null,
-      proteinas: null,
-      carboidratos: null,
+      calorias: 535.0,
+      proteinas: 10.0,
+      carboidratos: 15.0,
     },
     {
       id: 121,
@@ -1432,8 +1432,8 @@ const receitas = [
       preparo:
         "Cozinhe o frango na AirFryer a 180°C por cerca de 12 minutos ou até estar totalmente cozido Desfie o frango e misture com o molho de churrasco Aqueça as tortilhas na AirFryer por 2 minutos. Monte os tacos com frango, repolho, coentro e cebola Sirva com limão",
       calorias: 780.0,
-      proteinas: null,
-      carboidratos: null,
+      proteinas: 5.0,
+      carboidratos: 15.0,
     },
     {
       id: 122,

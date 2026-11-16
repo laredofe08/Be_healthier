@@ -1900,3 +1900,115 @@ a.canalContato:hover {
         align-items: start;
     }
 }
+
+/* Janela da receita */
+
+.modalReceita {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 9999;
+    overflow-y: auto;
+}
+
+.conteudoModalReceita {
+    position: relative;
+    background: white;
+    width: 100%;
+    max-width: 650px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 18px;
+    animation: aparecerModal 0.25s ease;
+}
+
+.imagemModalReceita {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+.informacoesModalReceita {
+    padding: 25px;
+}
+
+.informacoesModalReceita h2 {
+    margin: 10px 0 20px;
+}
+
+.informacoesModalReceita h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.informacoesModalReceita p {
+    line-height: 1.6;
+}
+
+.fecharModal {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.dadosNutricionais {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.dadosNutricionais div {
+    background: #f1f7f2;
+    padding: 15px 5px;
+    border-radius: 10px;
+}
+
+.dadosNutricionais strong,
+.dadosNutricionais span {
+    display: block;
+}
+
+.dadosNutricionais strong {
+    font-size: 20px;
+}
+
+.dadosNutricionais span {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.cardReceita {
+    cursor: pointer;
+}
+
+.cardReceita:focus-visible {
+    outline: 3px solid #4caf50;
+    outline-offset: 3px;
+}
+
+@keyframes aparecerModal {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
