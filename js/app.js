@@ -1,4 +1,3 @@
-
 /*=== Entregas ===*/
 
 let nomeCidade;
@@ -473,30 +472,148 @@ document.addEventListener("DOMContentLoaded", function () {
                     <p>${receita.preparo || "Modo de preparo não informado."}</p>
 
                 </div>
+
+                <div class="acoesReceita">
+                    <button
+                        type="button"
+                        class="botaoFavoritar"
+                        aria-pressed="${favoritos.includes(receita.id)}"
+                    >
+                        <span aria-hidden="true">${favoritos.includes(receita.id) ? "♥" : "♡"}</span>
+                        <span>${favoritos.includes(receita.id) ? "Curtido" : "Curtir"}</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="botaoAdicionarCardapio"
+                        aria-expanded="false"
+                        aria-controls="formularioCardapio"
+                    >
+                        ＋ Adicionar ao cardápio
+                    </button>
+                </div>
+
+                <form
+                    id="formularioCardapio"
+                    class="formularioCardapio"
+                    hidden
+                >
+                    <label>
+                        Dia
+                        <select name="dia">
+                            ${Object.entries(nomesDias).map(([valor, nome]) => `
+                                <option value="${valor}">${nome}</option>
+                            `).join("")}
+                        </select>
+                    </label>
+
+                    <label>
+                        Refeição
+                        <select name="refeicao">
+                            ${Object.entries(nomesRefeicoes).map(([valor, nome]) => `
+                                <option value="${valor}">${nome}</option>
+                            `).join("")}
+                        </select>
+                    </label>
+
+                    <button type="submit" class="botaoAdicionarCardapio">
+                        Adicionar
+                    </button>
+                </form>
+
+                <p class="retornoCardapio" role="status"></p>
             </div>
         `;
 
         document.body.appendChild(modal);
+
+        const curtir = modal.querySelector(".botaoFavoritar");
+
+        curtir.addEventListener("click", () => {
+            const ativo = favoritar(receita.id);
+
+            curtir.setAttribute("aria-pressed", String(ativo));
+            curtir.firstElementChild.textContent = ativo ? "♥" : "♡";
+            curtir.lastElementChild.textContent = ativo ? "Curtido" : "Curtir";
+        });
+
+        const adicionar = modal.querySelector(".botaoAdicionarCardapio");
+        const formulario = modal.querySelector("form");
+
+        adicionar.addEventListener("click", () => {
+            formulario.hidden = !formulario.hidden;
+
+            adicionar.setAttribute(
+                "aria-expanded",
+                String(!formulario.hidden)
+            );
+
+            if (!formulario.hidden) {
+                formulario.elements.dia.focus();
+            }
+        });
+
+        formulario.addEventListener("submit", evento => {
+            evento.preventDefault();
+
+            const dia = formulario.elements.dia.value;
+            const refeicao = formulario.elements.refeicao.value;
+            const itens = cardapioSemanal[dia][refeicao];
+            const repetida = itens.includes(receita.id);
+
+            if (!repetida) {
+                itens.push(receita.id);
+
+                localStorage.setItem(
+                    "cardapioSemanal",
+                    JSON.stringify(cardapioSemanal)
+                );
+            }
+
+            modal.querySelector(".retornoCardapio").textContent = repetida
+                ? "Esta receita já está nesta refeição."
+                : `Adicionado: ${nomesDias[dia]}, ${nomesRefeicoes[refeicao].toLowerCase()}.`;
+        });
+
+        const scrollAnterior = document.body.style.overflow;
+        const focoAnterior = document.activeElement;
+
+        function fecharReceita() {
+            modal.remove();
+            document.body.style.overflow = scrollAnterior;
+            document.removeEventListener("keydown", fecharComEsc);
+            focoAnterior?.focus();
+        }
+
+        const conteudoModal = modal.querySelector(".conteudoModalReceita");
+
+        conteudoModal.setAttribute("role", "dialog");
+        conteudoModal.setAttribute("aria-modal", "true");
+
+        modal.querySelector("h2").id = "tituloReceita";
+        conteudoModal.setAttribute("aria-labelledby", "tituloReceita");
+
+        modal.querySelector(".fecharModal").focus();
 
         // Tira o scroll do fundo da página enquanto o modal estiver aberto
         document.body.style.overflow = "hidden";
 
         // Fechar pelo botão de fechar
         modal.querySelector(".fecharModal").addEventListener("click", () => {
-            modal.remove();
+            fecharReceita();
         });
 
         // Fechar tocando na área externa do modal
         modal.addEventListener("click", evento => {
             if (evento.target === modal) {
-                modal.remove();
+                fecharReceita();
             }
         });
 
         // Fechar com a tecla ESC
         function fecharComEsc(evento) {
             if (evento.key === "Escape") {
-                modal.remove();
+                fecharReceita();
                 document.removeEventListener("keydown", fecharComEsc);
             }
         }
@@ -528,4 +645,172 @@ document.addEventListener("DOMContentLoaded", function () {
             evento.target.click();
         }
     });
+});
+
+/*=== favoritar ===*/
+
+function lerListaSalva(chave) {
+    try {
+        return JSON.parse(localStorage.getItem(chave));
+    } catch {
+        return null;
+    }
+}
+
+let favoritos = lerListaSalva("favoritos");
+
+if (!Array.isArray(favoritos)) {
+    favoritos = [];
+}
+
+function favoritar(id) {
+    favoritos = favoritos.includes(id)
+        ? favoritos.filter(item => item !== id)
+        : [...favoritos, id];
+
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
+    return favoritos.includes(id);
+}
+
+const nomesDias = {
+    segunda: "Segunda-feira",
+    terca: "Terça-feira",
+    quarta: "Quarta-feira",
+    quinta: "Quinta-feira",
+    sexta: "Sexta-feira",
+    sabado: "Sábado",
+    domingo: "Domingo"
+};
+
+const nomesRefeicoes = {
+    cafeDaManha: "Café da manhã",
+    almoco: "Almoço",
+    lancheDaTarde: "Lanche da tarde",
+    jantar: "Jantar"
+};
+
+const cardapioSemanal = {
+    segunda: {
+        cafeDaManha: [],
+        almoco: [],
+        lancheDaTarde: [],
+        jantar: []
+    },
+    terca: {
+        cafeDaManha: [],
+        almoco: [],
+        lancheDaTarde: [],
+        jantar: []
+    },
+    quarta: {
+        cafeDaManha: [],
+        almoco: [],
+        lancheDaTarde: [],
+        jantar: []
+    },
+    quinta: {
+        cafeDaManha: [],
+        almoco: [],
+        lancheDaTarde: [],
+        jantar: []
+    },
+    sexta: {
+        cafeDaManha: [],
+        almoco: [],
+        lancheDaTarde: [],
+        jantar: []
+    },
+    sabado: {
+        cafeDaManha: [],
+        almoco: [],
+        lancheDaTarde: [],
+        jantar: []
+    },
+    domingo: {
+        cafeDaManha: [],
+        almoco: [],
+        lancheDaTarde: [],
+        jantar: []
+    }
+};
+
+const semanaSalva = lerListaSalva("cardapioSemanal");
+
+for (const dia of Object.keys(cardapioSemanal)) {
+    for (const refeicao of Object.keys(nomesRefeicoes)) {
+        const itens = semanaSalva?.[dia]?.[refeicao];
+
+        if (Array.isArray(itens)) {
+            cardapioSemanal[dia][refeicao] = itens.filter(Number.isInteger);
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    const lista = document.getElementById("listaRefeicoes");
+
+    if (!lista || typeof receitas === "undefined") {
+        return;
+    }
+
+    function mostrarDia(dia) {
+        document.getElementById("nomeDiaSelecionado").textContent =
+            nomesDias[dia];
+
+        let calorias = 0;
+
+        lista.replaceChildren();
+
+        for (const [refeicao, nome] of Object.entries(nomesRefeicoes)) {
+            const bloco = document.createElement("section");
+            const titulo = document.createElement("h3");
+
+            titulo.textContent = nome;
+            bloco.append(titulo);
+
+            const itens = cardapioSemanal[dia][refeicao]
+                .map(id => receitas.find(receita => receita.id === id))
+                .filter(Boolean);
+
+            const texto = document.createElement("p");
+
+            texto.textContent = itens.length
+                ? itens.map(item => item.nome).join(" • ")
+                : "Nenhuma receita adicionada.";
+
+            bloco.append(texto);
+            lista.append(bloco);
+
+            calorias += itens.reduce(
+                (total, item) => total + Number(item.calorias || 0),
+                0
+            );
+        }
+
+        document.getElementById("resumoDoDia").textContent =
+            `${calorias.toFixed(0)} kcal nas receitas adicionadas.`;
+
+        document.querySelectorAll(
+            '[data-acao="selecionarDia"]'
+        ).forEach(botao => {
+            const ativo =
+                Object.keys(nomesDias)[Number(botao.dataset.indice)] === dia;
+
+            botao.classList.toggle("ativo", ativo);
+            botao.setAttribute("aria-pressed", String(ativo));
+        });
+    }
+
+    document.querySelectorAll(
+        '[data-acao="selecionarDia"]'
+    ).forEach(botao => {
+        botao.addEventListener("click", () => {
+            mostrarDia(
+                Object.keys(nomesDias)[Number(botao.dataset.indice)]
+            );
+        });
+    });
+
+    mostrarDia("segunda");
 });
