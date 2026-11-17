@@ -1,3 +1,5 @@
+/*=== Cores e estilos globais ===*/
+
 :root {
     --floresta: #395224;
     --florestaRodape: #2f4620;
@@ -74,13 +76,15 @@ select:focus {
     display: none !important;
 }
 
+/*=== Estrutura da página ===*/
+
 #aplicacao {
     display: block;
     min-height: 100vh;
     width: 100%;
 }
 
-#aplicacao > div {
+#aplicacao>div {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -209,7 +213,7 @@ main {
         gap: 6px;
     }
 
-    #menuLateral > * {
+    #menuLateral>* {
         flex-shrink: 0;
     }
 
@@ -310,6 +314,9 @@ main {
     background: none;
     opacity: 1;
 }
+
+/*=== Botões ===*/
+
 .botao {
     display: inline-flex;
     align-items: center;
@@ -369,6 +376,8 @@ main {
     }
 }
 
+/*=== Títulos e textos ===*/
+
 .tituloPagina {
     display: flex;
     justify-content: space-between;
@@ -416,6 +425,8 @@ p.textoSecundario {
         font-size: clamp(1.7rem, 3vw, 2.4rem);
     }
 }
+
+/*=== Painéis e colunas ===*/
 
 .estadoVazio {
     text-align: center;
@@ -478,6 +489,8 @@ p.textoSecundario {
     }
 }
 
+/*=== Modais ===*/
+
 .sobreposicao {
     position: fixed;
     inset: 0;
@@ -507,7 +520,7 @@ p.textoSecundario {
     padding: 26px;
 }
 
-.caixaModal > img {
+.caixaModal>img {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -543,12 +556,12 @@ p.textoSecundario {
     display: block;
 }
 
-.caixaModal > .imagemIa {
+.caixaModal>.imagemIa {
     position: relative;
     display: block;
 }
 
-.caixaModal > .imagemIa > img {
+.caixaModal>.imagemIa>img {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -593,14 +606,16 @@ p.textoSecundario {
         max-height: 88vh;
     }
 
-    .caixaModal > img {
+    .caixaModal>img {
         height: 260px;
     }
 
-    .caixaModal > .imagemIa > img {
+    .caixaModal>.imagemIa>img {
         height: 260px;
     }
 }
+
+/*=== Avisos ===*/
 
 .aviso {
     position: fixed;
@@ -630,6 +645,8 @@ p.textoSecundario {
     }
 }
 
+/*=== Campos de formulário ===*/
+
 .barraFerramentas input,
 .barraFerramentas select,
 .gradeFormulario input,
@@ -642,7 +659,7 @@ p.textoSecundario {
     min-width: 0;
 }
 
-.gradeFormulario > * {
+.gradeFormulario>* {
     min-width: 0;
 }
 
@@ -694,6 +711,9 @@ p.textoSecundario {
     flex-wrap: wrap;
     gap: 10px;
 }
+
+/*=== Página inicial ===*/
+
 .bannerPrincipal {
     position: relative;
     border-radius: 22px;
@@ -714,7 +734,7 @@ p.textoSecundario {
     background: linear-gradient(100deg, rgba(44, 62, 28, 0.92) 25%, rgba(44, 62, 28, 0) 70%);
 }
 
-.bannerPrincipal > div {
+.bannerPrincipal>div {
     position: relative;
     max-width: 620px;
 }
@@ -880,6 +900,8 @@ p.textoSecundario {
     }
 }
 
+/*=== Receitas ===*/
+
 .gradeReceitas {
     display: grid;
     grid-template-columns: 1fr;
@@ -940,19 +962,10 @@ p.textoSecundario {
     margin-top: 0;
 }
 
-#dicasPerder{
-    display: none;
-}
-
-#dicasManter{
-    display: none;
-}
-
-#dicasGanhar{
-    display: none;
-}
-
-#dicasMusculo{
+#dicasPerder,
+#dicasManter,
+#dicasGanhar,
+#dicasMusculo {
     display: none;
 }
 
@@ -1111,6 +1124,9 @@ p.textoSecundario {
         padding-bottom: 0;
     }
 }
+
+/*=== Progresso e resumos ===*/
+
 .barraProgresso {
     height: 11px;
     background: var(--areia);
@@ -1198,6 +1214,8 @@ p.textoSecundario {
     cursor: pointer;
 }
 
+/*=== Cardápio semanal ===*/
+
 .cabecalhoRefeicao {
     display: flex;
     justify-content: space-between;
@@ -1282,7 +1300,7 @@ p.textoSecundario {
     cursor: pointer;
 }
 
-.itemCompra input:checked + span {
+.itemCompra input:checked+span {
     text-decoration: line-through;
     color: var(--textoSuave);
 }
@@ -1293,6 +1311,8 @@ p.textoSecundario {
         width: 100px;
     }
 }
+
+/*=== Perfil do usuário ===*/
 
 .gradeFormulario {
     display: grid;
@@ -1306,7 +1326,7 @@ p.textoSecundario {
     gap: 8px;
 }
 
-.grupoCheckbox > b {
+.grupoCheckbox>b {
     width: 100%;
     color: var(--floresta);
     font-size: 0.85rem;
@@ -1413,6 +1433,8 @@ p.textoSecundario {
     }
 }
 
+/*=== Dicas ===*/
+
 .cardDica {
     display: flex;
     gap: 14px;
@@ -1435,6 +1457,8 @@ p.textoSecundario {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
+/*=== Cidades de entrega ===*/
+
 .opcaoCidade {
     cursor: pointer;
     border: 2px solid var(--borda);
@@ -1447,6 +1471,15 @@ p.textoSecundario {
 .opcaoCidade.ativo {
     border-color: var(--folha);
     background: var(--salviaSuave);
+}
+
+.opcaoCidade.selecionado {
+    background-color: var(--folha);
+    color: var(--branco);
+}
+
+.opcaoCidade.selecionado .textoSecundario {
+    color: var(--branco);
 }
 
 .opcaoCidade b {
@@ -1498,6 +1531,9 @@ p.textoSecundario {
 .botao.botaoNovoPedido {
     margin-top: 14px;
 }
+
+/*=== Vídeos ===*/
+
 .vdos {
     list-style: none;
     padding: 0;
@@ -1514,7 +1550,7 @@ p.textoSecundario {
     padding: 12px;
     min-width: 0;
     box-shadow: 0 2px 8px rgba(44, 62, 28, 0.08),
-                0 6px 18px rgba(44, 62, 28, 0.06);
+        0 6px 18px rgba(44, 62, 28, 0.06);
 }
 
 .vdos iframe {
@@ -1550,6 +1586,8 @@ p.textoSecundario {
         grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     }
 }
+
+/*=== Sobre a equipe ===*/
 
 .gradeMissaoValores {
     display: grid;
@@ -1633,6 +1671,8 @@ p.textoSecundario {
         height: 150px;
     }
 }
+
+/*=== Rodapé ===*/
 
 .rodape {
     background: var(--florestaRodape);
@@ -1816,6 +1856,8 @@ p.textoSecundario {
     }
 }
 
+/*=== Contato ===*/
+
 .listaCanais {
     display: grid;
     gap: 10px;
@@ -1992,10 +2034,6 @@ a.canalContato:hover {
     margin-top: 5px;
 }
 
-.cardReceita {
-    cursor: pointer;
-}
-
 .cardReceita:focus-visible {
     outline: 3px solid #4caf50;
     outline-offset: 3px;
@@ -2013,46 +2051,126 @@ a.canalContato:hover {
     }
 }
 
+/*=== Ações das receitas ===*/
+
 .acoesReceita {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    padding: 0 25px 20px;
-}
-.acoesReceita .botaoFavoritar,
-.botaoAdicionarCardapio {
-    position: static;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
     gap: 8px;
-    width: auto;
-    min-height: 46px;
-    height: auto;
-    padding: 10px 18px;
+    margin-top: 14px;
+}
+
+.acoesReceita [aria-pressed="true"] {
+    background: var(--salviaSuave);
+    color: var(--floresta);
+}
+
+/*=== Seleção de refeição ===*/
+
+.seletorCardapio {
+    margin: auto;
+    padding: 24px;
     border: 1px solid var(--areia);
-    border-radius: 12px;
+    border-radius: 18px;
+    width: min(440px, calc(100% - 32px));
+    max-height: 85vh;
+    overflow: auto;
+    color: var(--tinta);
+    background: var(--fundo);
+}
+
+.seletorCardapio::backdrop {
+    background: rgb(0 0 0 / 65%);
+}
+
+.seletorCardapio label {
+    display: block;
+    margin-top: 16px;
+}
+
+.seletorCardapio select {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+}
+
+.seletorCardapio [role="status"] {
+    margin-top: 12px;
+}
+
+/*=== Sacola de entrega ===*/
+
+.sacolaConteudo {
+    padding-top: 28px;
+}
+
+.sacolaConteudo h2 {
+    padding-right: 42px;
+}
+
+.sacolaVazia {
+    padding: 24px 0;
+}
+
+.quantidadeSacola {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.linhaItem .valorItemSacola {
+    flex: 0 0 auto;
+    text-align: right;
+}
+
+.valorItemSacola .botaoRemover {
+    font-size: 0.85rem;
+}
+
+.resumoSacola p {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 10px 0;
+}
+
+.resumoSacola p:last-child {
+    border-top: 1px solid var(--borda);
+    padding-top: 12px;
+    font-size: 1.15rem;
+}
+
+.cidadeSacola {
+    display: grid;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.cidadeSacola select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
     background: var(--fundo);
     color: var(--tinta);
     font: inherit;
-    font-weight: 700;
-    cursor: pointer;
 }
-.acoesReceita .botaoFavoritar span:first-child { font-size: 24px; line-height: 1; }
-.acoesReceita .botaoFavoritar[aria-pressed="true"] { background: #fff0ed; border-color: var(--perigo); color: var(--perigo); }
-.botaoAdicionarCardapio { background: var(--floresta); color: white; border-color: var(--floresta); }
-.acoesReceita button:hover, .formularioCardapio button:hover { filter: brightness(.94); }
-.acoesReceita button:focus-visible, .formularioCardapio :focus-visible { outline: 3px solid var(--ambar); outline-offset: 3px; }
-.formularioCardapio:not([hidden]) { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; padding: 0 25px 20px; }
-.formularioCardapio label { display: grid; gap: 6px; flex: 1 1 170px; font-weight: 700; color: var(--tinta); }
-.formularioCardapio select { width: 100%; min-height: 44px; padding: 8px; background: white; border: 1px solid var(--areia); border-radius: 8px; font: inherit; }
-.retornoCardapio { padding: 0 25px; color: var(--floresta); }
-.retornoCardapio:not(:empty) { padding-bottom: 20px; }
-#listaRefeicoes section + section { margin-top: 24px; }
-#listaRefeicoes section p { margin-top: 8px; }
-@media (max-width: 480px) {
-    .acoesReceita > button { flex: 1 1 100%; }
+
+.botaoFinalizarPedido:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
 }
-@media (prefers-reduced-motion: reduce) {
-    .conteudoModalReceita { animation: none; }
+
+#areaRastreioPedido:not(:empty) {
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    background: var(--salviaSuave);
+}
+
+.sacolaConteudo button:focus-visible,
+.cidadeSacola select:focus-visible {
+    outline: 3px solid var(--ambar);
+    outline-offset: 3px;
 }

@@ -1,3 +1,14 @@
+/*  animação de seleção  */
+
+function mudarCor(botao) {
+    for (const opcao of document.querySelectorAll(".opcaoCidade")) {
+        const selecionada = opcao === botao;
+
+        opcao.classList.toggle("selecionado", selecionada);
+        opcao.setAttribute("aria-pressed", selecionada);
+    }
+}
+
 /*=== Entregas ===*/
 
 let nomeCidade;
@@ -24,21 +35,18 @@ function calcularEntrega(cidadeSelecionada) {
     return null;
 }
 
-const botoesCidade = document.querySelectorAll(".opcaoCidade");
+function iniciarCidades() {
+    for (const botao of document.querySelectorAll(".opcaoCidade")) {
+        botao.addEventListener("click", function () {
+            const entrega = calcularEntrega(botao.dataset.valor);
 
-for (const botao of botoesCidade) {
-    botao.onclick = function () {
-        let cidadeSelecionada = botao.dataset.valor;
-        let entrega = calcularEntrega(cidadeSelecionada);
-
-        if (entrega) {
-            console.log(entrega.nomeCidade);
-            console.log(entrega.taxaEntrega);
-            console.log(entrega.tempoEntrega);
-        }
-    };
+            if (entrega) {
+                salvarDadosSacola("cidadeEntrega", entrega.nomeCidade);
+                atualizarCidadeEntrega();
+            }
+        });
+    }
 }
-
 
 /*=== Perfil do usuário ===*/
 
@@ -50,7 +58,10 @@ const listaObjetivos = [
 ];
 
 const listaRestricoesAlimentares = [
-    "glúten", "lactose", "vegetariano", "ovo"
+    "glúten",
+    "lactose",
+    "vegetariano",
+    "ovo"
 ];
 
 const listaNiveisAtividadeFisica = [
@@ -75,7 +86,6 @@ let nivelAtividadeFisicaUsuario;
 let objetivoUsuario;
 let restricaoAlimentarUsuario = [];
 
-
 /*=== Cálculos do perfil ===*/
 
 function calcularCalorias() {
@@ -91,11 +101,11 @@ function calcularCalorias() {
     }
 
     let atividade = listaNiveisAtividadeFisica.find(
-        nivel => nivel.nome === nivelAtividadeFisicaUsuario
+        (nivel) => nivel.nome === nivelAtividadeFisicaUsuario
     );
 
     let objetivo = listaObjetivos.find(
-        item => item.nome === objetivoUsuario
+        (item) => item.nome === objetivoUsuario
     );
 
     if (!atividade || !objetivo) {
@@ -111,7 +121,7 @@ function calcularProteina() {
     let peso = Number(pesoUsuario);
 
     let objetivo = listaObjetivos.find(
-        item => item.nome === objetivoUsuario
+        (item) => item.nome === objetivoUsuario
     );
 
     if (!objetivo) {
@@ -130,7 +140,6 @@ function calcularAgua() {
 
     return agua;
 }
-
 
 /*=== Cálculo das metas ===*/
 
@@ -152,12 +161,12 @@ function calcularMetaProteina() {
 }
 
 function calcularMetaCarboidrato() {
-    metaCarboidrato = (metaCalorias * 0.50) / 4;
+    metaCarboidrato = (metaCalorias * 0.5) / 4;
     return metaCarboidrato;
 }
 
 function calcularMetaGordura() {
-    metaGordura = (metaCalorias * 0.30) / 9;
+    metaGordura = (metaCalorias * 0.3) / 9;
     return metaGordura;
 }
 
@@ -171,7 +180,6 @@ function calcularMetaSodio() {
     return metaSodio;
 }
 
-
 /*=== Capturar informações do formulário ===*/
 
 function calcularPerfilUsuario() {
@@ -184,29 +192,31 @@ function calcularPerfilUsuario() {
         document.getElementById("atividade").value
     );
 
-    const objetivoSelecionado =
-        document.getElementById("objetivo").value;
+    const objetivoSelecionado = document.getElementById("objetivo").value;
 
     nivelAtividadeFisicaUsuario =
-        listaNiveisAtividadeFisica[atividadeSelecionada].nome;
+        listaNiveisAtividadeFisica[atividadeSelecionada]?.nome;
 
     objetivoUsuario = objetivosPorValor[objetivoSelecionado];
 
     restricaoAlimentarUsuario = Array.from(
-        document.querySelectorAll(
-            'input[name="restricoes"]:checked'
-        )
-    ).map(input => input.value);
+        document.querySelectorAll('input[name="restricoes"]:checked')
+    ).map((input) => input.value);
 }
-
 
 /*=== Salvar perfil ===*/
 
 function salvarPerfil() {
     calcularPerfilUsuario();
 
-    if (!pesoUsuario || !alturaUsuario || !idadeUsuario) {
-        alert("Preencha todos os campos obrigatórios!");
+    if (
+        !Number.isFinite(Number(pesoUsuario)) || Number(pesoUsuario) <= 0 ||
+        !Number.isFinite(Number(alturaUsuario)) || Number(alturaUsuario) <= 0 ||
+        !Number.isFinite(Number(idadeUsuario)) || Number(idadeUsuario) <= 0 ||
+        !nivelAtividadeFisicaUsuario || !objetivoUsuario ||
+        (sexoUsuario !== "m" && sexoUsuario !== "f")
+    ) {
+        alert("Preencha todos os campos obrigatórios com valores válidos!");
         return;
     }
 
@@ -240,31 +250,26 @@ function salvarPerfil() {
     );
 }
 
-const botaoSalvarPerfil = document.getElementById("salvarPerfil");
-
-if (botaoSalvarPerfil) {
-    botaoSalvarPerfil.addEventListener("click", salvarPerfil);
-}
-
-
 /*=== Recuperar perfil do usuário ===*/
 
-document.addEventListener("DOMContentLoaded", function() {
-
+function recuperarPerfilUsuario() {
     // Recuperar informações do localStorage
     pesoUsuario = localStorage.getItem("pesoUsuario");
     alturaUsuario = localStorage.getItem("alturaUsuario");
     idadeUsuario = localStorage.getItem("idadeUsuario");
     sexoUsuario = localStorage.getItem("sexoUsuario");
 
-    nivelAtividadeFisicaUsuario =
-        localStorage.getItem("nivelAtividadeFisicaUsuario");
+    nivelAtividadeFisicaUsuario = localStorage.getItem(
+        "nivelAtividadeFisicaUsuario"
+    );
 
     objetivoUsuario = localStorage.getItem("objetivoUsuario");
 
-    restricaoAlimentarUsuario = JSON.parse(
-        localStorage.getItem("restricaoAlimentarUsuario") || "[]"
-    );
+    restricaoAlimentarUsuario = lerEscolhas("restricaoAlimentarUsuario", []);
+
+    if (!Array.isArray(restricaoAlimentarUsuario)) {
+        restricaoAlimentarUsuario = [];
+    }
 
     const gostosUsuario = localStorage.getItem("gostosUsuario");
 
@@ -287,7 +292,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Recuperar atividade física
     const indiceAtividade = listaNiveisAtividadeFisica.findIndex(
-        nivel => nivel.nome === nivelAtividadeFisicaUsuario
+        (nivel) => nivel.nome === nivelAtividadeFisicaUsuario
     );
 
     if (indiceAtividade !== -1) {
@@ -296,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Recuperar objetivo
     const valorObjetivo = Object.keys(objetivosPorValor).find(
-        key => objetivosPorValor[key] === objetivoUsuario
+        (key) => objetivosPorValor[key] === objetivoUsuario
     );
 
     if (valorObjetivo) {
@@ -304,40 +309,33 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Recuperar restrições alimentares
-    document.querySelectorAll('input[name="restricoes"]').forEach(
-        checkbox => {
-            checkbox.checked = restricaoAlimentarUsuario.includes(
-                checkbox.value
-            );
-        }
+    document.querySelectorAll('input[name="restricoes"]').forEach((checkbox) => {
+        checkbox.checked = restricaoAlimentarUsuario.includes(checkbox.value);
+    });
+}
+
+/*=== Filtro de Dicas ===*/
+
+function iniciarFiltroDicas() {
+    const botoesObjetivo = document.querySelectorAll(
+        '[data-acao="selecionarObjetivo"]'
     );
 
-});
+    const gruposDicas = document.querySelectorAll(".dicasDoObjetivo");
 
-/*Filtro de Dicas*/
+    for (const botao of botoesObjetivo) {
+        botao.addEventListener("click", function () {
+            let objetivoSelecionado = botao.dataset.valor;
 
-const botoesObjetivo = document.querySelectorAll(
-    '[data-acao="selecionarObjetivo"]'
-);
-
-const gruposDicas = document.querySelectorAll(".dicasDoObjetivo");
-
-for (const botao of botoesObjetivo) {
-    botao.addEventListener("click", function() {
-
-        let objetivoSelecionado = botao.dataset.valor;
-
-        for (const grupo of gruposDicas) {
-
-            if (grupo.dataset.objetivo === objetivoSelecionado) {
-                grupo.style.display = "grid";
-            } else {
-                grupo.style.display = "none";
+            for (const grupo of gruposDicas) {
+                if (grupo.dataset.objetivo === objetivoSelecionado) {
+                    grupo.style.display = "grid";
+                } else {
+                    grupo.style.display = "none";
+                }
             }
-
-        }
-
-    });
+        });
+    }
 }
 
 /*=== Exibir receitas ===*/
@@ -382,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 /*=== Exibir receitas, modal e pesquisa ===*/
 
-document.addEventListener("DOMContentLoaded", function () {
+function exibirReceitas() {
     const lista = document.getElementById("listaReceitas");
     const campoBusca = document.getElementById("campoBuscaReceitas");
     const filtroCategoria = document.getElementById("filtroCategoria");
@@ -576,6 +574,11 @@ document.addEventListener("DOMContentLoaded", function () {
             if (evento.key === "Escape") {
                 fecharReceita();
                 document.removeEventListener("keydown", fecharComEsc);
+            if (
+                evento.key === "Escape" &&
+                !document.querySelector(".seletorCardapio[open]")
+            ) {
+                fecharReceita();
             }
         }
         document.addEventListener("keydown", fecharComEsc);
