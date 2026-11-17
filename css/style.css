@@ -2043,3 +2043,78 @@ a.canalContato:hover {
 .seletorCardapio label { display: block; margin-top: 16px; }
 .seletorCardapio select { display: block; width: 100%; margin-top: 6px; }
 .seletorCardapio [role="status"] { margin-top: 12px; }
+
+.sacolaConteudo {
+    padding-top: 28px;
+}
+
+.sacolaConteudo h2 {
+    padding-right: 42px;
+}
+
+.sacolaVazia {
+    padding: 24px 0;
+}
+
+.quantidadeSacola {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.linhaItem .valorItemSacola {
+    flex: 0 0 auto;
+    text-align: right;
+}
+
+.valorItemSacola .botaoRemover {
+    font-size: 0.85rem;
+}
+
+.resumoSacola p {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 10px 0;
+}
+
+.resumoSacola p:last-child {
+    border-top: 1px solid var(--borda);
+    padding-top: 12px;
+    font-size: 1.15rem;
+}
+
+.cidadeSacola {
+    display: grid;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.cidadeSacola select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: var(--fundo);
+    color: var(--tinta);
+    font: inherit;
+}
+
+.botaoFinalizarPedido:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+#areaRastreioPedido:not(:empty) {
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    background: var(--salviaSuave);
+}
+
+.sacolaConteudo button:focus-visible,
+.cidadeSacola select:focus-visible {
+    outline: 3px solid var(--ambar);
+    outline-offset: 3px;
+}

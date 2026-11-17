@@ -1,10 +1,18 @@
 /*  animação de seleção  */
 function mudarCor(botao) {
-  botao.style.backgroundColor = "#5e7745";
-  botao.style.color = "#FFFFFF";
-  botao.querySelector(".textoSecundario").style.color = "#FFFFFF";
-}
+    for (const opcao of document.querySelectorAll(".opcaoCidade")) {
+        opcao.style.backgroundColor = "";
+        opcao.style.color = "";
+        opcao.querySelector(".textoSecundario").style.color = "";
+        opcao.setAttribute("aria-pressed", String(opcao === botao));
+    }
 
+    if (!botao) return;
+
+    botao.style.backgroundColor = "#5e7745";
+    botao.style.color = "#FFFFFF";
+    botao.querySelector(".textoSecundario").style.color = "#FFFFFF";
+}
 /*=== Entregas ===*/
 
 let nomeCidade;
@@ -36,12 +44,10 @@ for (const botao of botoesCidade) {
   botao.addEventListener("click", function () {
     let cidadeSelecionada = botao.dataset.valor;
     let entrega = calcularEntrega(cidadeSelecionada);
-
-    if (entrega) {
-      console.log(entrega.nomeCidade);
-      console.log(entrega.taxaEntrega);
-      console.log(entrega.tempoEntrega);
-    }
+if (entrega) {
+    salvarDadosSacola("cidadeEntrega", entrega.nomeCidade);
+    atualizarCidadeEntrega();
+}
   });
 }
 
@@ -608,7 +614,6 @@ function buscarReceita(id) {
         }
     }
 }
-
 function exibirReceitasEntrega() {
     const lista = document.querySelector("#listaPratosEntrega");
 
@@ -642,6 +647,19 @@ function exibirReceitasEntrega() {
                     <p class="textoSecundario">
                         ${receita.ingredientes}
                     </p>
+
+                    <p class="preco">
+                        ${formatarDinheiro(precoPratoEntrega)}
+                    </p>
+
+                    <button
+                        type="button"
+                        class="botao"
+                        data-sacola-acao="adicionar"
+                        data-id="${receita.id}"
+                    >
+                        + Adicionar à sacola
+                    </button>
                 </div>
             </article>
         `;
@@ -1085,4 +1103,485 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.addEventListener("click", tratarCliqueReceitas, true);
+});
+
+
+const precoPratoEntrega = 20;
+
+let sacola = [];
+let focoAntesSacola;
+let rolagemAntesSacola = "";
+let temporizadorAviso;
+
+function formatarDinheiro(valor) {
+    return valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+    });
+}
+
+function avisarSacola(texto) {
+    const aviso = document.getElementById("avisoTemporario");
+
+    if (!aviso) return;
+
+    aviso.setAttribute("role", "status");
+    aviso.textContent = texto;
+    aviso.classList.add("ativo");
+
+    clearTimeout(temporizadorAviso);
+
+    temporizadorAviso = setTimeout(() => {
+        aviso.classList.remove("ativo");
+    }, 3500);
+}
+
+function salvarDadosSacola(chave, valor) {
+    try {
+        localStorage.setItem(chave, JSON.stringify(valor));
+    } catch {
+        avisarSacola(
+            "Não foi possível salvar neste navegador. " +
+            "As alterações valem apenas enquanto esta página estiver aberta."
+        );
+    }
+}
+
+function pratoDisponivel(id) {
+    return (
+        typeof receitas !== "undefined" &&
+        receitas.slice(0, 8).some(receita => Number(receita.id) === id)
+    );
+}
+
+function calcularTotalSacola() {
+    let quantidade = 0;
+
+    for (const item of sacola) {
+        quantidade += item.quantidade;
+    }
+
+    const subtotal =
+        Math.round(quantidade * precoPratoEntrega * 100) / 100;
+
+    const frete = quantidade > 0 && nomeCidade ? taxaEntrega : 0;
+
+    return {
+        quantidade,
+        subtotal,
+        frete,
+        total: subtotal + frete
+    };
+}
+
+function atualizarContadoresSacola() {
+    const total = calcularTotalSacola();
+
+    for (const contador of document.querySelectorAll(".contadorSacola")) {
+        contador.textContent = total.quantidade;
+
+        contador.hidden =
+            contador.classList.contains("seloContador") &&
+            total.quantidade === 0;
+    }
+}
+
+function atualizarCidadeEntrega() {
+    for (const elemento of document.querySelectorAll(".cidadeAtual")) {
+        elemento.textContent = nomeCidade || "Selecione a cidade";
+    }
+
+    const selecionado = Array.from(botoesCidade).find(
+        botao => botao.dataset.valor === nomeCidade
+    );
+
+    mudarCor(selecionado);
+}
+
+function alterarSacola(id, acao) {
+    if (!pratoDisponivel(id)) return;
+
+    const item = sacola.find(prato => prato.id === id);
+
+    if (acao === "adicionar") {
+        if (item && item.quantidade >= 99) {
+            avisarSacola("O limite é de 99 unidades por prato.");
+            return;
+        }
+
+        if (item) {
+            item.quantidade++;
+        } else {
+            sacola.push({
+                id,
+                quantidade: 1
+            });
+        }
+    } else if (acao === "diminuir" && item) {
+        item.quantidade--;
+    } else if (acao === "remover" && item) {
+        item.quantidade = 0;
+    } else {
+        return;
+    }
+
+    sacola = sacola.filter(prato => prato.quantidade > 0);
+
+    salvarDadosSacola("sacolaEntrega", sacola);
+    atualizarContadoresSacola();
+
+    const sobreposicao = document.getElementById("sobreposicaoModal");
+
+    if (sobreposicao?.classList.contains("ativo")) {
+        exibirSacola();
+    }
+}
+
+function exibirSacola() {
+    const modal = document.getElementById("caixaModalConteudo");
+    const total = calcularTotalSacola();
+
+    const linhas = sacola.map(item => {
+        const receita = buscarReceita(item.id);
+
+        return `
+            <div class="linhaItem">
+                <div>
+                    <b>${receita.nome}</b>
+
+                    <div class="quantidadeSacola">
+                        <button
+                            type="button"
+                            class="botao botaoPequeno"
+                            data-sacola-acao="diminuir"
+                            data-id="${item.id}"
+                            aria-label="Diminuir quantidade de ${receita.nome}"
+                        >
+                            −
+                        </button>
+
+                        <span>${item.quantidade}</span>
+
+                        <button
+                            type="button"
+                            class="botao botaoPequeno"
+                            data-sacola-acao="adicionar"
+                            data-id="${item.id}"
+                            aria-label="Aumentar quantidade de ${receita.nome}"
+                        >
+                            +
+                        </button>
+                    </div>
+                </div>
+
+                <div class="valorItemSacola">
+                    <b>
+                        ${formatarDinheiro(
+                            precoPratoEntrega * item.quantidade
+                        )}
+                    </b>
+
+                    <button
+                        type="button"
+                        class="botaoRemover"
+                        data-sacola-acao="remover"
+                        data-id="${item.id}"
+                        aria-label="Remover ${receita.nome}"
+                    >
+                        Remover
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join("");
+
+    modal.innerHTML = `
+        <div class="conteudoModal sacolaConteudo">
+            <button
+                type="button"
+                class="botaoFecharModal"
+                data-sacola-acao="fechar"
+                aria-label="Fechar sacola"
+            >
+                ×
+            </button>
+
+            <h2 id="tituloSacola">Sua sacola</h2>
+
+            <p class="textoSecundario">
+                Compra simulada · sem cobrança
+            </p>
+
+            ${
+                linhas ||
+                `<p class="sacolaVazia">
+                    Sua sacola está vazia.
+                    Adicione um prato para começar.
+                </p>`
+            }
+
+            <div class="resumoSacola" aria-live="polite">
+                <p>
+                    Subtotal
+                    <b>${formatarDinheiro(total.subtotal)}</b>
+                </p>
+
+                <p>
+                    Entrega
+
+                    <b>
+                        ${
+                            nomeCidade
+                                ? formatarDinheiro(total.frete)
+                                : "Selecione a cidade"
+                        }
+                    </b>
+                </p>
+
+                <p>
+                    Total
+                    <b>${formatarDinheiro(total.total)}</b>
+                </p>
+            </div>
+
+            ${
+                total.quantidade
+                    ? `
+                        <label class="cidadeSacola">
+                            Cidade de entrega
+
+                            <select id="cidadeSacola">
+                                <option value="">Selecione</option>
+
+                                ${listaCidades.map(cidade => `
+                                    <option
+                                        value="${cidade.nome}"
+                                        ${
+                                            cidade.nome === nomeCidade
+                                                ? "selected"
+                                                : ""
+                                        }
+                                    >
+                                        ${cidade.nome} —
+                                        ${formatarDinheiro(
+                                            cidade.taxaEntrega
+                                        )}
+                                    </option>
+                                `).join("")}
+                            </select>
+                        </label>
+
+                        <p class="textoSecundario">
+                            ${
+                                nomeCidade
+                                    ? `Previsão: ${tempoEntrega} minutos.`
+                                    : "Escolha a cidade para calcular " +
+                                      "o total com entrega."
+                            }
+                        </p>
+
+                        <button
+                            type="button"
+                            class="botao botaoFinalizarPedido"
+                            data-sacola-acao="finalizar"
+                            ${nomeCidade ? "" : "disabled"}
+                        >
+                            Finalizar simulação
+                        </button>
+                    `
+                    : ""
+            }
+        </div>
+    `;
+}
+
+function abrirSacola() {
+    const sobreposicao = document.getElementById("sobreposicaoModal");
+    const modal = document.getElementById("caixaModalConteudo");
+
+    if (!sobreposicao || !modal) return;
+    if (sobreposicao.classList.contains("ativo")) return;
+
+    focoAntesSacola = document.activeElement;
+    rolagemAntesSacola = document.body.style.overflow;
+
+    exibirSacola();
+
+    modal.setAttribute("role", "dialog");
+    modal.setAttribute("aria-modal", "true");
+    modal.setAttribute("aria-labelledby", "tituloSacola");
+
+    sobreposicao.classList.add("ativo");
+    document.body.style.overflow = "hidden";
+
+    modal.querySelector("button").focus();
+}
+
+function fecharSacola() {
+    const sobreposicao = document.getElementById("sobreposicaoModal");
+
+    if (!sobreposicao?.classList.contains("ativo")) return;
+
+    sobreposicao.classList.remove("ativo");
+    document.body.style.overflow = rolagemAntesSacola;
+
+    focoAntesSacola?.focus();
+}
+
+function finalizarSimulacao() {
+    const total = calcularTotalSacola();
+
+    if (!total.quantidade || !nomeCidade) return;
+
+    const area = document.getElementById("areaRastreioPedido");
+
+    if (area) {
+        area.setAttribute("role", "status");
+
+        area.textContent =
+            `Simulação concluída! ${total.quantidade} prato(s) ` +
+            `para ${nomeCidade}. ` +
+            `Total: ${formatarDinheiro(total.total)}. ` +
+            `Previsão simulada: ${tempoEntrega} minutos. ` +
+            "Nenhum pedido real foi enviado.";
+    }
+
+    sacola = [];
+
+    salvarDadosSacola("sacolaEntrega", sacola);
+    atualizarContadoresSacola();
+    fecharSacola();
+
+    avisarSacola("Simulação concluída, sem cobrança.");
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const dados = lerEscolhas("sacolaEntrega", []);
+
+    if (Array.isArray(dados)) {
+        for (const item of dados) {
+            if (
+                !item ||
+                !Number.isInteger(item.id) ||
+                !pratoDisponivel(item.id) ||
+                !Number.isInteger(item.quantidade) ||
+                item.quantidade < 1
+            ) {
+                continue;
+            }
+
+            const existente = sacola.find(
+                prato => prato.id === item.id
+            );
+
+            if (existente) {
+                existente.quantidade = Math.min(
+                    99,
+                    existente.quantidade + item.quantidade
+                );
+            } else {
+                sacola.push({
+                    id: item.id,
+                    quantidade: Math.min(99, item.quantidade)
+                });
+            }
+        }
+    }
+
+    calcularEntrega(lerEscolhas("cidadeEntrega", null));
+
+    atualizarCidadeEntrega();
+    atualizarContadoresSacola();
+
+    const sobreposicao = document.getElementById("sobreposicaoModal");
+
+    sobreposicao?.addEventListener("click", function (evento) {
+        if (evento.target === sobreposicao) {
+            fecharSacola();
+        }
+    });
+});
+
+document.addEventListener("click", function (evento) {
+    const botao = evento.target.closest(
+        "[data-sacola-acao], [data-acao='abrirSacola']"
+    );
+
+    if (!botao) return;
+
+    const acao = botao.dataset.sacolaAcao;
+
+    if (botao.dataset.acao === "abrirSacola") {
+        abrirSacola();
+    } else if (acao === "fechar") {
+        fecharSacola();
+    } else if (acao === "finalizar") {
+        finalizarSimulacao();
+    } else {
+        const id = Number(botao.dataset.id);
+
+        alterarSacola(id, acao);
+
+        const modal = document.getElementById("caixaModalConteudo");
+        const sobreposicao = document.getElementById(
+            "sobreposicaoModal"
+        );
+
+        if (sobreposicao?.classList.contains("ativo")) {
+            const proximo = modal.querySelector(
+                `[data-sacola-acao="${acao}"][data-id="${id}"]`
+            );
+
+            (proximo || modal.querySelector("button"))?.focus();
+        }
+    }
+});
+
+document.addEventListener("change", function (evento) {
+    if (evento.target.id !== "cidadeSacola") return;
+
+    const cidade = calcularEntrega(evento.target.value);
+
+    if (!cidade) {
+        nomeCidade = undefined;
+        taxaEntrega = undefined;
+        tempoEntrega = undefined;
+    }
+
+    salvarDadosSacola("cidadeEntrega", nomeCidade || null);
+
+    atualizarCidadeEntrega();
+    exibirSacola();
+
+    document.getElementById("cidadeSacola")?.focus();
+});
+
+document.addEventListener("keydown", function (evento) {
+    const sobreposicao = document.getElementById("sobreposicaoModal");
+
+    if (!sobreposicao?.classList.contains("ativo")) return;
+
+    if (evento.key === "Escape") {
+        fecharSacola();
+    }
+
+    if (evento.key === "Tab") {
+        const controles = sobreposicao.querySelectorAll(
+            "button:not([disabled]), select"
+        );
+
+        const primeiro = controles[0];
+        const ultimo = controles[controles.length - 1];
+
+        if (evento.shiftKey && document.activeElement === primeiro) {
+            evento.preventDefault();
+            ultimo?.focus();
+        } else if (
+            !evento.shiftKey &&
+            document.activeElement === ultimo
+        ) {
+            evento.preventDefault();
+            primeiro?.focus();
+        }
+    }
 });
