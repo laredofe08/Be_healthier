@@ -249,7 +249,121 @@ function salvarPerfil() {
         document.getElementById("gostos").value
     );
 }
+/*=== Painel da página Equilíbrio ===*/
 
+function obterIndiceHoje() {
+    const diaSemana = new Date().getDay(); // 0 = Dom, 1 = Seg...
+    return diaSemana === 0 ? 6 : diaSemana - 1;
+}
+
+function exibirEquilibrio() {
+    const painel = document.getElementById("painelEquilibrio");
+
+    if (!painel) {
+        return;
+    }
+
+    if (!pesoUsuario || !(metaCalorias > 0)) {
+        painel.innerHTML = `
+            <div class="alerta">
+                <b>Preencha seu perfil acima</b>
+                <p>Informe seu peso, altura, idade e objetivo e clique em <b>Salvar perfil</b> para calcular suas metas diárias de calorias, macros e água.</p>
+            </div>
+        `;
+        return;
+    }
+
+    const hoje = obterIndiceHoje();
+    const consumidoHoje = calcularResumo(hoje);
+
+    // Recupera a água consumida hoje no localStorage (em ml)
+    const chaveAgua = `aguaConsumida_${hoje}`;
+    const aguaMl = Number(localStorage.getItem(chaveAgua)) || 0;
+    const metaAguaMl = calcularAgua();
+
+    function criarBarraEquilibrio(rotulo, atual, meta, unidade, formatarLitros = false) {
+        const textoAtual = formatarLitros
+            ? (atual / 1000).toFixed(2).replace(".", ",")
+            : Math.round(atual);
+        const textoMeta = formatarLitros
+            ? (meta / 1000).toFixed(2).replace(".", ",")
+            : Math.round(meta);
+
+        const porcentagem = meta > 0 ? (atual / meta) * 100 : 0;
+        const larguraVisual = Math.min(porcentagem, 100);
+        const ultrapassou = atual > meta;
+
+        return `
+            <div class="itemProgresso">
+                <div class="textoSecundario" style="justify-content: space-between;">
+                    <span>${rotulo}</span>
+                    <span><b>${textoAtual}</b> / ${textoMeta} ${unidade}</span>
+                </div>
+                <div class="barraProgresso">
+                    <i
+                        class="${ultrapassou ? "acimaDaMeta" : ""}"
+                        style="--largura: ${larguraVisual}%"
+                    ></i>
+                </div>
+            </div>
+        `;
+    }
+
+    // Monta as colunas do gráfico semanal usando a classe .graficoSemanal do CSS
+    let barrasSemana = "";
+    for (let dia = 0; dia < diasCardapio.length; dia++) {
+        const resumo = calcularResumo(dia);
+        const pct = metaCalorias > 0 ? (resumo.calorias / metaCalorias) * 100 : 0;
+        const altura = Math.min(pct, 100);
+        const passou = resumo.calorias > metaCalorias;
+        const ehHoje = dia === hoje;
+
+        barrasSemana += `
+            <div class="${ehHoje ? "diaAtual" : ""}">
+                <span>${Math.round(resumo.calorias)}</span>
+                <i
+                    class="${passou ? "acimaDaMeta" : ""}"
+                    style="--altura: ${altura}%"
+                    title="${diasCardapio[dia]}: ${Math.round(resumo.calorias)} kcal"
+                ></i>
+                <span>${diasCardapio[dia].slice(0, 3)}</span>
+            </div>
+        `;
+    }
+
+    painel.innerHTML = `
+        <div class="duasColunas">
+            <div class="painel">
+                <h3 class="tituloPainel">Progresso de hoje (${diasCardapio[hoje]})</h3>
+
+                ${criarBarraEquilibrio("Calorias", consumidoHoje.calorias, metaCalorias, "kcal")}
+                ${criarBarraEquilibrio("Proteínas", consumidoHoje.proteinas, metaProteina, "g")}
+                ${criarBarraEquilibrio("Carboidratos", consumidoHoje.carboidratos, metaCarboidrato, "g")}
+                ${criarBarraEquilibrio("Água", aguaMl, metaAguaMl, "L", true)}
+
+                <div class="acoesReceita" style="margin-top: 10px;">
+                    <button type="button" class="botao botaoPequeno" data-agua="250">+ 250 ml</button>
+                    <button type="button" class="botao botaoPequeno" data-agua="500">+ 500 ml</button>
+                    <button type="button" class="botao botaoPequeno botaoContorno" data-agua="zerar">Zerar água</button>
+                </div>
+
+                <p class="textoSecundario resumoDiaEquilibrio">
+                    Outras metas diárias: <b>${Math.round(metaGordura)}g</b> de gorduras ·
+                    <b>${Math.round(metaFibras)}g</b> de fibras ·
+                    até <b>${metaSodio}mg</b> de sódio
+                </p>
+            </div>
+
+            <div class="painel">
+                <h3 class="tituloPainel">Calorias na semana</h3>
+                <p class="textoSecundario">Meta diária: ${Math.round(metaCalorias)} kcal</p>
+                <div class="graficoSemanal">
+                    ${barrasSemana}
+                </div>
+            </div>
+        </div>
+    `;
+}
 /*=== Recuperar perfil do usuário ===*/
 
 function recuperarPerfilUsuario() {
@@ -280,6 +394,10 @@ function recuperarPerfilUsuario() {
     calcularMetaCalorias();
     calcularMetaProteina();
     calcularMetaCarboidrato();
+    calcularMetaGordura();
+    calcularMetaFibras();
+    calcularMetaSodio();
+
     if (!document.getElementById("peso")) {
         return;
     }
@@ -1653,6 +1771,7 @@ function iniciarPagina() {
     exibirReceitasEntrega();
     iniciarCardapio();
     recuperarSacola();
+    exibirEquilibrio(); 
 
     const botaoSalvarPerfil = document.getElementById("salvarPerfil");
 
@@ -1660,10 +1779,30 @@ function iniciarPagina() {
         botaoSalvarPerfil.addEventListener("click", function (evento) {
             evento.preventDefault();
             salvarPerfil();
+            exibirEquilibrio();
+        });
+    }
+
+   
+    const painelEquilibrio = document.getElementById("painelEquilibrio");
+
+    if (painelEquilibrio) {
+        painelEquilibrio.addEventListener("click", function (evento) {
+            const botaoAgua = evento.target.closest("[data-agua]");
+            if (!botaoAgua) return;
+
+            const hoje = obterIndiceHoje();
+            const chaveAgua = `aguaConsumida_${hoje}`;
+            const atual = Number(localStorage.getItem(chaveAgua)) || 0;
+            const acao = botaoAgua.dataset.agua;
+
+            const novoValor = acao === "zerar" ? 0 : atual + Number(acao);
+            localStorage.setItem(chaveAgua, String(novoValor));
+
+            exibirEquilibrio();
         });
     }
 }
-
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", iniciarPagina, {
         once: true
