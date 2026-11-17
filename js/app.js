@@ -277,7 +277,9 @@ function recuperarPerfilUsuario() {
     if (pesoUsuario === null) {
         return;
     }
-
+    calcularMetaCalorias();
+    calcularMetaProteina();
+    calcularMetaCarboidrato();
     if (!document.getElementById("peso")) {
         return;
     }
@@ -817,10 +819,60 @@ function exibirCardapio() {
     const resumoDia = document.querySelector("#resumoDoDia");
 
     if (resumoDia) {
-        resumoDia.textContent =
-            `${Math.round(total.calorias)} kcal · ` +
-            `${Math.round(total.proteinas)} g de proteínas · ` +
-            `${Math.round(total.carboidratos)} g de carboidratos`;
+        const temMetas = metaCalorias > 0;
+
+        function criarBarra(rotulo, consumido, meta, unidade) {
+            const valorConsumido = Math.round(consumido);
+
+            if (!temMetas || !meta) {
+                return `
+                    <div class="itemProgresso">
+                        <div class="textoSecundario">
+                            <span>${rotulo}</span>
+                            <b>${valorConsumido} ${unidade}</b>
+                        </div>
+                        <div class="barraProgresso">
+                            <i style="--largura: 0%"></i>
+                        </div>
+                    </div>
+                `;
+            }
+
+            const valorMeta = Math.round(meta);
+            const porcentagem = (consumido / meta) * 100;
+            const larguraVisual = Math.min(porcentagem, 100);
+            const ultrapassou = consumido > meta;
+
+            return `
+                <div class="itemProgresso">
+                    <div class="textoSecundario" style="justify-content: space-between;">
+                        <span>${rotulo}</span>
+                        <span>
+                            <b>${valorConsumido}</b> / ${valorMeta} ${unidade}
+                        </span>
+                    </div>
+                    <div class="barraProgresso">
+                        <i 
+                            class="${ultrapassou ? "acimaDaMeta" : ""}" 
+                            style="--largura: ${larguraVisual}%"
+                        ></i>
+                    </div>
+                </div>
+            `;
+        }
+
+        const avisoPerfil = !temMetas
+            ? `<p class="textoSecundario" style="margin-bottom: 12px;">
+                 Preencha seu perfil em <b>Equilíbrio</b> para ver suas metas diárias.
+               </p>`
+            : "";
+
+        resumoDia.innerHTML = `
+            ${avisoPerfil}
+            ${criarBarra("Calorias", total.calorias, metaCalorias, "kcal")}
+            ${criarBarra("Proteínas", total.proteinas, metaProteina, "g")}
+            ${criarBarra("Carboidratos", total.carboidratos, metaCarboidrato, "g")}
+        `;
     }
 
     const resumoSemana = document.querySelector("#resumoDaSemana");
@@ -841,7 +893,7 @@ function exibirCardapio() {
 
         resumoSemana.innerHTML = conteudoSemana;
     }
-}
+} 
 
 function salvarCardapio() {
     localStorage.setItem(
