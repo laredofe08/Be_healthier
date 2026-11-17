@@ -356,11 +356,14 @@ function exibirReceitas() {
         .map(
             (receita) => `
                 <article class="cardReceita" data-id="${receita.id}" tabindex="0">
-                    <img
-                        src="Imagens/receitas/cards/${receita.id}.jpg"
-                        alt="${receita.nome}"
-                        loading="lazy"
-                    >
+                    <div class="imagemReceitaComCredito">
+                        <img
+                            src="Imagens/receitas/cards/${receita.id}.jpg"
+                            alt="${receita.nome}"
+                            loading="lazy"
+                        >
+                        <span class="creditoImagemIa">Midia gerada por I.A.</span>
+                    </div>
 
                     <div class="corpoCardReceita">
                         <h4>${receita.nome}</h4>
@@ -399,11 +402,14 @@ function exibirReceitas() {
                     &times;
                 </button>
 
-                <img
-                    class="imagemModalReceita"
-                    src="Imagens/receitas/cards/${receita.id}.jpg"
-                    alt="${receita.nome}"
-                >
+                <div class="imagemModalComCredito">
+                    <img
+                        class="imagemModalReceita"
+                        src="Imagens/receitas/cards/${receita.id}.jpg"
+                        alt="${receita.nome}"
+                    >
+                    <span class="creditoImagemIa">Midia gerada por I.A.</span>
+                </div>
 
                 <div class="informacoesModalReceita">
                     <p class="textoSecundario">
@@ -595,11 +601,14 @@ function exibirReceitasEntrega() {
     for (const receita of receitasEntrega) {
         conteudo += `
             <article class="cardReceita">
-                <img
-                    src="Imagens/receitas/cards/${receita.id}.jpg"
-                    alt="${receita.nome}"
-                    loading="lazy"
-                >
+                <div class="imagemReceitaComCredito">
+                    <img
+                        src="Imagens/receitas/cards/${receita.id}.jpg"
+                        alt="${receita.nome}"
+                        loading="lazy"
+                    >
+                    <span class="creditoImagemIa">Midia gerada por I.A.</span>
+                </div>
 
                 <div class="corpoCardReceita">
                     <h4>${receita.nome}</h4>
@@ -817,10 +826,38 @@ function exibirCardapio() {
     const resumoDia = document.querySelector("#resumoDoDia");
 
     if (resumoDia) {
-        resumoDia.textContent =
-            `${Math.round(total.calorias)} kcal · ` +
-            `${Math.round(total.proteinas)} g de proteínas · ` +
-            `${Math.round(total.carboidratos)} g de carboidratos`;
+        const calorias = Math.round(total.calorias);
+        const proteinas = Math.round(total.proteinas);
+        const carboidratos = Math.round(total.carboidratos);
+        const percentualCalorias = Math.min((calorias / 2000) * 100, 100);
+        const percentualProteinas = Math.min((proteinas / 100) * 100, 100);
+        const percentualCarboidratos = Math.min((carboidratos / 250) * 100, 100);
+
+        resumoDia.innerHTML = `
+            <div class="resumoCalorias">
+                <strong>${calorias}</strong>
+                <span>/ 2000 kcal</span>
+            </div>
+            <div class="barraProgresso" role="progressbar" aria-label="Calorias" aria-valuenow="${calorias}" aria-valuemin="0" aria-valuemax="2000">
+                <i style="--largura: ${percentualCalorias}%"></i>
+            </div>
+            <div class="resumoNutriente">
+                <span>Proteínas ${proteinas}g</span>
+                <div class="barraProgresso" role="progressbar" aria-label="Proteínas" aria-valuenow="${proteinas}" aria-valuemin="0" aria-valuemax="100">
+                    <i style="--largura: ${percentualProteinas}%"></i>
+                </div>
+            </div>
+            <div class="resumoNutriente">
+                <span>Carboidratos ${carboidratos}g</span>
+                <div class="barraProgresso" role="progressbar" aria-label="Carboidratos" aria-valuenow="${carboidratos}" aria-valuemin="0" aria-valuemax="250">
+                    <i style="--largura: ${percentualCarboidratos}%"></i>
+                </div>
+            </div>
+            <div class="resumoNutriente resumoSemDados">
+                <span>Gorduras sem dados disponíveis</span>
+                <div class="barraProgresso" aria-hidden="true"><i></i></div>
+            </div>
+        `;
     }
 
     const resumoSemana = document.querySelector("#resumoDaSemana");
