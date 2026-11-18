@@ -251,7 +251,6 @@ function salvarPerfil() {
         !nivelAtividadeFisicaUsuario || !objetivoUsuario ||
         (sexoUsuario !== "m" && sexoUsuario !== "f")
     ) {
-        alert("Preencha todos os campos obrigatórios com valores válidos!");
         return;
     }
 
