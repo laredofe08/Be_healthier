@@ -355,7 +355,7 @@ function exibirReceitas() {
     lista.innerHTML = receitas
         .map(
             (receita) => `
-                <article class="cardReceita" data-id="${receita.id}" tabindex="0">
+                <li class="cardReceita" data-id="${receita.id}" tabindex="0">
                     <div class="imagemReceitaComCredito">
                         <img
                             src="Imagens/receitas/cards/${receita.id}.jpg"
@@ -366,7 +366,7 @@ function exibirReceitas() {
                     </div>
 
                     <div class="corpoCardReceita">
-                        <h4>${receita.nome}</h4>
+                        <h3>${receita.nome}</h3>
 
                         <p class="textoSecundario">
                             ${receita.categoria}
@@ -379,7 +379,7 @@ function exibirReceitas() {
 
                         ${botoesDaReceita(Number(receita.id))}
                     </div>
-                </article>
+                </li>
             `
         )
         .join("");
@@ -600,7 +600,7 @@ function exibirReceitasEntrega() {
 
     for (const receita of receitasEntrega) {
         conteudo += `
-            <article class="cardReceita">
+            <li class="cardReceita">
                 <div class="imagemReceitaComCredito">
                     <img
                         src="Imagens/receitas/cards/${receita.id}.jpg"
@@ -611,7 +611,7 @@ function exibirReceitasEntrega() {
                 </div>
 
                 <div class="corpoCardReceita">
-                    <h4>${receita.nome}</h4>
+                    <h3>${receita.nome}</h3>
 
                     <p class="textoSecundario">
                         ${receita.categoria}
@@ -639,7 +639,7 @@ function exibirReceitasEntrega() {
                         + Adicionar à sacola
                     </button>
                 </div>
-            </article>
+            </li>
         `;
     }
 
@@ -777,7 +777,7 @@ function exibirCardapio() {
     for (let indice = 0; indice < refeicoesCardapio.length; indice++) {
         conteudo += `
             <div class="cabecalhoRefeicao">
-                <h4>${refeicoesCardapio[indice]}</h4>
+                <h3>${refeicoesCardapio[indice]}</h3>
 
                 <a class="botao botaoPequeno" href="receitas.html">
                     + Receita
@@ -792,7 +792,7 @@ function exibirCardapio() {
 
             if (receita) {
                 itens += `
-                    <div class="linhaItem">
+                    <li class="linhaItem">
                         <b>${receita.nome}</b>
 
                         <button
@@ -804,7 +804,7 @@ function exibirCardapio() {
                         >
                             ×
                         </button>
-                    </div>
+                    </li>
                 `;
             }
         }
@@ -815,6 +815,8 @@ function exibirCardapio() {
                     Nenhuma receita adicionada.
                 </p>
             `;
+        } else {
+            itens = `<ul>${itens}</ul>`;
         }
 
         conteudo += itens;
