@@ -8,9 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/auth.css">
     <script src="js/receitas-data.js" defer></script>
     <script src="js/app.js" defer></script>
+    <script src="js/conta.js" defer></script>
   </head>
   <body data-pagina="inicio">
     <div id="aplicacao">
@@ -65,9 +65,9 @@
             <p>O projeto também oferece opções de marmitas saudáveis, buscando unir praticidade e uma boa alimentação. Desenvolvido para a SEPE-IFC 2026, o BeHealthier combina programação e desenvolvimento web para criar uma ferramenta simples e útil, ajudando as pessoas a fazer escolhas alimentares mais conscientes no dia a dia.</p>
           </section>
           <section>
-            <header class="tituloPagina">
+            <div class="tituloPagina">
               <h2>Explore o BeHealthier</h2>
-            </header>
+            </div>
             <ul class="gradeDestaques">
               <li><a class="cardDestaque cardDestaqueReceitas" href="receitas.html">
                   <div>
@@ -133,10 +133,10 @@
               <a class="botaoUsuario" href="login.html">Acessar conta</a>
             </div>
             <div class="rodapeLembrete">
-              <h2 class="rodapeTitulo">Quer lembrete por e-mail?</h2>
-              <form class="rodapeFormulario" data-formulario="lembreteRodape" onsubmit="return false" novalidate>
+              <h2 class="rodapeTitulo">E-mail para lembretes locais</h2>
+              <form class="rodapeFormulario" data-formulario="lembreteRodape">
                 <input name="email" type="email" placeholder="Seu e-mail" aria-label="Seu e-mail" autocomplete="email" required>
-                <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Quero lembrete</button>
+                <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Salvar e-mail</button>
                 <output class="rodapeFormularioRetorno" role="status" aria-live="polite"></output>
               </form>
               <div class="rodapeContato">

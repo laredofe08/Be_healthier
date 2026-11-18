@@ -8,9 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/auth.css">
     <script src="js/receitas-data.js" defer></script>
     <script src="js/app.js" defer></script>
+    <script src="js/conta.js" defer></script>
   </head>
   <body data-pagina="contato">
     <div id="aplicacao">
@@ -52,16 +52,16 @@
           </button>
         </header>
         <main id="conteudoPrincipal">
-          <header class="tituloPagina">
+          <div class="tituloPagina">
             <div>
               <h1>Entre em contato</h1>
               <p>Dúvidas, comentários ou parcerias? Escreva para a equipe do BeHealthier e responderemos o quanto antes.</p>
             </div>
-          </header>
+          </div>
           <div class="duasColunas colunasContato">
             <section class="painel">
               <h2 class="tituloPainel">Envie sua mensagem</h2>
-              <form class="gradeFormulario" id="formularioContato" data-formulario="contato" onsubmit="return false" novalidate>
+              <form class="gradeFormulario" id="formularioContato" data-formulario="contato">
                 <label>Nome<input name="nome" autocomplete="name" required></label>
                 <label>E-mail<input name="email" type="email" autocomplete="email" required></label>
                 <label>Telefone (opcional)<input name="telefone" type="tel" autocomplete="tel" placeholder="(47) 90000-0000"></label>
@@ -76,7 +76,7 @@
                 </label>
                 <label class="larguraTotal">Mensagem<textarea name="mensagem" rows="6" required></textarea></label>
                 <div class="larguraTotal botoesFormulario">
-                  <button class="botao" type="submit" data-acao="enviarContato">Enviar mensagem</button>
+                  <button class="botao" type="submit" data-acao="enviarContato">Abrir no meu e-mail</button>
                   <button class="botao botaoContorno" type="reset">Limpar</button>
                 </div>
               </form>
@@ -106,10 +106,10 @@
             </section>
           </div>
           <section>
-            <header class="tituloSecao">
+            <div class="tituloSecao">
               <h2>Perguntas frequentes</h2>
               <p>Talvez a sua dúvida já tenha resposta aqui.</p>
-            </header>
+            </div>
             <div class="gradeFaq">
               <details class="itemFaq">
                 <summary>O BeHealthier é gratuito?</summary>
@@ -178,10 +178,10 @@
               <a class="botaoUsuario" href="login.html">Acessar conta</a>
             </div>
             <div class="rodapeLembrete">
-              <h2 class="rodapeTitulo">Quer lembrete por e-mail?</h2>
-              <form class="rodapeFormulario" data-formulario="lembreteRodape" onsubmit="return false" novalidate>
+              <h2 class="rodapeTitulo">E-mail para lembretes locais</h2>
+              <form class="rodapeFormulario" data-formulario="lembreteRodape">
                 <input name="email" type="email" placeholder="Seu e-mail" aria-label="Seu e-mail" autocomplete="email" required>
-                <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Quero lembrete</button>
+                <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Salvar e-mail</button>
                 <output class="rodapeFormularioRetorno" role="status" aria-live="polite"></output>
               </form>
               <div class="rodapeContato">

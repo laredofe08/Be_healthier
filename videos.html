@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="js/receitas-data.js" defer></script>
     <script src="js/app.js" defer></script>
+    <script src="js/conta.js" defer></script>
   </head>
   <body data-pagina="videos">
     <div id="aplicacao">
@@ -45,12 +46,12 @@
         </header>
         <main id="conteudoPrincipal">
           <section class="Videos">
-            <header class="tituloPagina">
+            <div class="tituloPagina">
               <div>
                 <h1>Vídeos</h1>
                 <p>Assista aos nossos vídeos.</p>
               </div>
-            </header>
+            </div>
             <ul class="vdos">
               <li>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/ywUuoTJJznA?si=gyOuT57b_FJYivae" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -135,10 +136,10 @@
               <a class="botaoUsuario" href="login.html">Acessar conta</a>
             </div>
             <div class="rodapeLembrete">
-              <h2 class="rodapeTitulo">Quer lembrete por e-mail?</h2>
-              <form class="rodapeFormulario" data-formulario="lembreteRodape" onsubmit="return false" novalidate>
+              <h2 class="rodapeTitulo">E-mail para lembretes locais</h2>
+              <form class="rodapeFormulario" data-formulario="lembreteRodape">
                 <input name="email" type="email" placeholder="Seu e-mail" aria-label="Seu e-mail" autocomplete="email" required>
-                <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Quero lembrete</button>
+                <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Salvar e-mail</button>
                 <output class="rodapeFormularioRetorno" role="status" aria-live="polite"></output>
               </form>
               <div class="rodapeContato">
