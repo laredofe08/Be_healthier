@@ -633,28 +633,101 @@ function favoritarReceita(id) {
     atualizarFavoritas();
     filtrarReceitas();
 }
-
 /*=== Filtros das receitas ===*/
+
+const restricoesPorId = new Map();
+const restricoesSelecionadas = new Set();
+
+function normalizarTexto(texto) {
+    return (texto || "")
+        .trim()
+        .toLocaleLowerCase("pt-BR")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+}
+
+async function iniciarFiltrosAlimentares() {
+    const botoes = document.querySelectorAll('[data-acao="filtroRestricao"]');
+
+    if (botoes.length === 0) return;
+
+    const nomesRestricoes = {
+        lactose: "sem lactose",
+        gluten: "sem gluten",
+        ovo: "sem ovo",
+        vegetariano: "vegetariano"
+    };
+
+    for (const botao of botoes) {
+        botao.disabled = true;
+        botao.setAttribute("aria-pressed", "false");
+    }
+
+    try {
+        const resposta = await fetch("receitas.json");
+
+        if (!resposta.ok) {
+            throw new Error("Não foi possível carregar receitas.json");
+        }
+
+        const catalogo = await resposta.json();
+        const restricoesDisponiveis = new Set();
+
+        for (const receita of catalogo) {
+            const restricoes = (receita.restricoes || []).map(normalizarTexto);
+
+            restricoesPorId.set(Number(receita.id), restricoes);
+
+            for (const restricao of restricoes) {
+                restricoesDisponiveis.add(restricao);
+            }
+        }
+
+        for (const botao of botoes) {
+            const restricao = nomesRestricoes[botao.dataset.valor];
+
+            if (!restricoesDisponiveis.has(restricao)) {
+                botao.title = "Nenhuma receita cadastrada com esse filtro";
+                continue;
+            }
+
+            botao.disabled = false;
+
+            botao.addEventListener("click", function () {
+                if (restricoesSelecionadas.has(restricao)) {
+                    restricoesSelecionadas.delete(restricao);
+                } else {
+                    restricoesSelecionadas.add(restricao);
+                }
+
+                const ativo = restricoesSelecionadas.has(restricao);
+
+                botao.classList.toggle("ativo", ativo);
+                botao.setAttribute("aria-pressed", String(ativo));
+
+                filtrarReceitas();
+            });
+        }
+    } catch (erro) {
+        console.error("Falha ao carregar os filtros alimentares.", erro);
+
+        for (const botao of botoes) {
+            botao.title = "Filtros alimentares indisponíveis";
+        }
+    }
+}
 
 function filtrarReceitas() {
     const campoBusca = document.querySelector("#campoBuscaReceitas");
     const filtroCategoria = document.querySelector("#filtroCategoria");
-
-    let busca = "";
-    let categoria = "";
-
-    if (campoBusca) {
-        busca = campoBusca.value.trim().toLocaleLowerCase("pt-BR");
-    }
-
-    if (filtroCategoria) {
-        categoria = filtroCategoria.value;
-    }
-
     const cards = document.querySelectorAll("#listaReceitas .cardReceita");
 
+    const termo = normalizarTexto(campoBusca?.value);
+    const categoria = filtroCategoria?.value || "";
+    const filtrosAtivos = Array.from(restricoesSelecionadas);
+
     for (const card of cards) {
-        const id = Number(card.dataset.id);
+        const id = Number(card.dataset.id);  
         const receita = buscarReceita(id);
 
         if (!receita) {
@@ -662,24 +735,23 @@ function filtrarReceitas() {
             continue;
         }
 
-        const texto = `${receita.nome} ${receita.ingredientes}`
-            .toLocaleLowerCase("pt-BR");
+        const nome = normalizarTexto(receita.nome);
+        const ingredientes = normalizarTexto(receita.ingredientes);
+        const restricoes = restricoesPorId.get(id) || [];
 
-        let mostrar = true;
+        const correspondeTexto = nome.includes(termo) || ingredientes.includes(termo);
+        const correspondeCategoria = categoria === "" || receita.categoria === categoria;
+        const correspondeFavoritas = !somenteFavoritas || favoritas.includes(id);
+        const correspondeRestricoes = filtrosAtivos.every(
+            restricao => restricoes.includes(restricao)
+        );
 
-        if (somenteFavoritas && !favoritas.includes(id)) {
-            mostrar = false;
-        }
-
-        if (categoria !== "" && receita.categoria !== categoria) {
-            mostrar = false;
-        }
-
-        if (!texto.includes(busca)) {
-            mostrar = false;
-        }
-
-        card.hidden = !mostrar;
+        card.hidden = !(
+            correspondeTexto &&
+            correspondeCategoria &&
+            correspondeFavoritas &&
+            correspondeRestricoes
+        );
     }
 }
 
@@ -1642,7 +1714,9 @@ function iniciarPagina() {
     exibirReceitasEntrega();
     iniciarCardapio();
     recuperarSacola();
-
+    exibirReceitas();
+    iniciarFiltrosAlimentares();
+    exibirReceitasEntrega();
     const botaoSalvarPerfil = document.getElementById("salvarPerfil");
 
     if (botaoSalvarPerfil) {
