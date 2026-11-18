@@ -41,10 +41,17 @@ function calcularEntrega(cidadeSelecionada) {
 }
 
 function mudarCor(botao) {
-    for (const opcao of document.querySelectorAll(".opcaoCidade")) {
+    if (!botao) return;
+
+    const ehFiltroDicas = botao.matches('[data-acao="selecionarObjetivo"]');
+    const opcoes = document.querySelectorAll(
+        ehFiltroDicas ? '[data-acao="selecionarObjetivo"]' : ".opcaoCidade"
+    );
+
+    for (const opcao of opcoes) {
         const selecionada = opcao === botao;
 
-        opcao.classList.toggle("selecionado", selecionada);
+        opcao.classList.toggle(ehFiltroDicas ? "ativo" : "selecionado", selecionada);
         opcao.setAttribute("aria-pressed", selecionada);
     }
 }

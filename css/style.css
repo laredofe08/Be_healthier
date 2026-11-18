@@ -1884,6 +1884,10 @@ main .painel > h2.tituloPainel {
     align-content: start;
 }
 
+.rodapeLembrete .botaoAmarelo {
+    box-shadow: none;
+}
+
 .rodapeContato {
     display: grid;
     gap: 6px;
