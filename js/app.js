@@ -1835,7 +1835,42 @@ document.addEventListener("keydown", function (evento) {
 
 /*=== Inicialização da página ===*/
 
+function iniciarFormularios() {
+    const lembrete = document.querySelector('[data-formulario="lembreteRodape"]');
+    if (lembrete) {
+        lembrete.elements.email.value = localStorage.getItem("emailLembrete") || "";
+        lembrete.addEventListener("submit", function (evento) {
+            evento.preventDefault();
+            const aviso = lembrete.querySelector("output");
+            try {
+                localStorage.setItem("emailLembrete", lembrete.elements.email.value.trim());
+                aviso.textContent = "E-mail salvo neste navegador para a demonstração.";
+            } catch {
+                aviso.textContent = "Não foi possível salvar o e-mail neste navegador.";
+            }
+        });
+    }
+
+    const contato = document.getElementById("formularioContato");
+    if (contato) {
+        contato.addEventListener("submit", function (evento) {
+            evento.preventDefault();
+            const campos = contato.elements;
+            const corpo = [
+                campos.mensagem.value, campos.nome.value,
+                campos.email.value, campos.telefone.value
+            ].filter(Boolean).join("\n");
+            const assunto = encodeURIComponent(campos.assunto.value);
+            const mensagem = encodeURIComponent(corpo);
+            document.getElementById("retornoContato").textContent =
+                "Conclua o envio no seu aplicativo de e-mail. Se ele não abrir, escreva para behealthier67@gmail.com.";
+            window.location.href = `mailto:behealthier67@gmail.com?subject=${assunto}&body=${mensagem}`;
+        });
+    }
+}
+
 function iniciarPagina() {
+    iniciarFormularios();
     if (typeof receitas !== "undefined") {
         for (const receita of receitas) {
             receitasPorId.set(Number(receita.id), receita);
@@ -1854,10 +1889,10 @@ function iniciarPagina() {
     recuperarSacola();
     exibirEquilibrio(); 
 
-    const botaoSalvarPerfil = document.getElementById("salvarPerfil");
+    const formularioPerfil = document.getElementById("formularioPerfil");
 
-    if (botaoSalvarPerfil) {
-        botaoSalvarPerfil.addEventListener("click", function (evento) {
+    if (formularioPerfil) {
+        formularioPerfil.addEventListener("submit", function (evento) {
             evento.preventDefault();
             salvarPerfil();
             exibirEquilibrio();

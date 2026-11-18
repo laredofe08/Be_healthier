@@ -8,9 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/auth.css">
     <script src="js/receitas-data.js" defer></script>
     <script src="js/app.js" defer></script>
+    <script src="js/conta.js" defer></script>
   </head>
   <body data-pagina="receitas">
     <div id="aplicacao">
@@ -45,12 +45,12 @@
           <button class="botaoSacola" data-acao="abrirSacola" aria-label="Abrir sacola"><img class="iconeSacolaTopo" src="Imagens/icons/Shopping_Cart_01.svg" alt=""> <span class="contadorSacola">0</span></button>
         </header>
         <main id="conteudoPrincipal">
-          <header class="tituloPagina">
+          <div class="tituloPagina">
             <div>
               <h1>Receitas</h1>
               <p>Filtre por restrições, categoria e favoritas. Toque em uma receita para ver detalhes.</p>
             </div>
-          </header>
+          </div>
           <div class="barraFerramentas">
             <input id="campoBuscaReceitas" placeholder="Buscar receita ou ingrediente" aria-label="Buscar receita ou ingrediente">
             <select id="filtroCategoria" aria-label="Categoria da receita">
@@ -116,10 +116,10 @@
               <a class="botaoUsuario" href="login.html">Acessar conta</a>
             </div>
             <div class="rodapeLembrete">
-              <h2 class="rodapeTitulo">Quer lembrete por e-mail?</h2>
-              <form class="rodapeFormulario" data-formulario="lembreteRodape" onsubmit="return false" novalidate>
+              <h2 class="rodapeTitulo">E-mail para lembretes locais</h2>
+              <form class="rodapeFormulario" data-formulario="lembreteRodape">
                 <input name="email" type="email" placeholder="Seu e-mail" aria-label="Seu e-mail" autocomplete="email" required>
-                <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Quero lembrete</button>
+                <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Salvar e-mail</button>
                 <output class="rodapeFormularioRetorno" role="status" aria-live="polite"></output>
               </form>
               <div class="rodapeContato">

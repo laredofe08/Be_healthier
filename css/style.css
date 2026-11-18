@@ -76,6 +76,21 @@ select:focus {
     display: none !important;
 }
 
+:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 2px;
+}
+
+.somenteLeitores {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
 /*=== Estrutura da página ===*/
 
 #aplicacao {
@@ -96,18 +111,6 @@ main {
     padding: 16px 16px 0;
     min-width: 0;
     width: 100%;
-}
-
-@media (min-width: 900px) {
-
-    #aplicacao {
-        display: grid;
-        grid-template-columns: 240px 1fr;
-    }
-
-    main {
-        padding: 34px 44px 0;
-    }
 }
 
 /*=== Navegação ===*/
@@ -188,105 +191,6 @@ main {
 
 #menuLateral {
     display: none;
-}
-
-@media (min-width: 900px) {
-
-    #barraSuperior,
-    #menuInferior {
-        display: none;
-    }
-
-    #menuLateral {
-        background: var(--floresta);
-        color: #fff;
-        position: sticky;
-        top: 0;
-        align-self: start;
-        height: 100vh;
-        height: 100dvh;
-        max-height: 100%;
-        overflow-y: auto;
-        padding: 26px 16px 32px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    #menuLateral>* {
-        flex-shrink: 0;
-    }
-
-    #menuLateral .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font: 800 1.5rem Fraunces, serif;
-        margin-bottom: 22px;
-        padding: 0 8px;
-    }
-
-    #menuLateral .logo img {
-        width: auto;
-        height: 40px;
-    }
-
-    #menuLateral a {
-        display: flex;
-        gap: 12px;
-        align-items: center;
-        padding: 11px 14px;
-        border-radius: 12px;
-        font-weight: 500;
-        opacity: 0.85;
-    }
-
-    #menuLateral a:hover {
-        background: rgba(255, 255, 255, 0.1);
-        opacity: 1;
-    }
-
-    #menuLateral a.ativo {
-        background: var(--salvia);
-        color: var(--tinta);
-        opacity: 1;
-        font-weight: 700;
-    }
-
-    #menuLateral .rodapeMenuLateral {
-        margin-top: auto;
-        font-size: 0.8rem;
-        opacity: 0.6;
-        padding: 0 8px;
-    }
-
-    .seloContador {
-        background: var(--ambar);
-        color: var(--tinta);
-        border-radius: 99px;
-        font-size: 0.72rem;
-        padding: 1px 7px;
-        font-weight: 700;
-    }
-
-    .caixaUsuario {
-        margin-top: auto;
-        padding: 12px;
-        border-radius: 14px;
-        background: rgba(255, 255, 255, 0.1);
-        font-size: 0.85rem;
-        overflow-wrap: anywhere;
-    }
-
-    .caixaUsuario b {
-        display: block;
-    }
-
-    .caixaUsuario button {
-        margin-top: 8px;
-        color: var(--pessego);
-        font-weight: 700;
-    }
 }
 
 .logo a,
@@ -411,13 +315,6 @@ main {
     vertical-align: -0.2em;
 }
 
-@media (min-width: 900px) {
-
-    .botao.botaoContornoClaro {
-        margin: 0 0 0 8px;
-    }
-}
-
 /*=== Títulos e textos ===*/
 
 .tituloPagina {
@@ -461,13 +358,6 @@ p.textoSecundario {
     margin-top: 0;
 }
 
-@media (min-width: 900px) {
-
-    .tituloPagina :is(h1, h2) {
-        font-size: clamp(1.7rem, 3vw, 2.4rem);
-    }
-}
-
 main section > h2:not(.somenteLeitores), .tituloSecao h2, .tituloPainel {
     margin: 26px 0 14px;
     color: var(--floresta);
@@ -484,13 +374,6 @@ main .painel > h2.tituloPainel {
     text-align: center;
     padding: 50px 20px;
     color: var(--textoSuave);
-}
-
-@media (min-width: 900px) {
-
-    .estadoVazio.painel {
-        padding: 50px 20px;
-    }
 }
 
 .painel {
@@ -516,29 +399,6 @@ main .painel > h2.tituloPainel {
 
 .painel p {
     margin-bottom: 6px;
-}
-
-@media (min-width: 900px) {
-
-    .painel {
-        padding: 18px;
-        border-radius: 12px;
-    }
-
-    .duasColunas {
-        grid-template-columns: 1.4fr 1fr;
-    }
-
-    .tresColunas {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (min-width: 900px) and (max-width: 1100px) {
-
-    .duasColunas {
-        grid-template-columns: 1fr;
-    }
 }
 
 /*=== Modais ===*/
@@ -646,27 +506,6 @@ main .painel > h2.tituloPainel {
     font-size: 0.95rem;
 }
 
-@media (min-width: 900px) {
-
-    .sobreposicao {
-        align-items: center;
-        padding: 20px;
-    }
-
-    .caixaModal {
-        border-radius: 26px;
-        max-height: 88vh;
-    }
-
-    .caixaModal>img {
-        height: 260px;
-    }
-
-    .caixaModal>.imagemIa>img {
-        height: 260px;
-    }
-}
-
 /*=== Avisos ===*/
 
 .aviso {
@@ -687,13 +526,6 @@ main .painel > h2.tituloPainel {
 
 .aviso.ativo {
     opacity: 1;
-}
-
-@media (min-width: 900px) {
-
-    .aviso {
-        bottom: 90px;
-    }
 }
 
 /*=== Campos de formulário ===*/
@@ -763,13 +595,175 @@ main .painel > h2.tituloPainel {
     gap: 10px;
 }
 
+/*=== Rodapé ===*/
+
+.rodape {
+    background: var(--florestaRodape);
+    color: #fff;
+    padding: 28px 22px calc(96px + env(safe-area-inset-bottom));
+    margin: 36px 0 0;
+}
+
+.rodapeConteudo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 26px;
+}
+
+.rodapeLogo {
+    width: auto;
+    height: 40px;
+    margin-bottom: 12px;
+}
+
+.rodapeMarca p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    opacity: 0.85;
+    margin: 0 0 8px;
+}
+
+.rodapeTitulo {
+    font: 800 1.05rem Fraunces, serif;
+    color: var(--pessego);
+    margin: 0 0 12px;
+}
+
+.rodapeEquipe ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    gap: 6px 16px;
+    margin-top: 18px;
+    align-content: start;
+}
+
+.rodapeEquipe .rodapeTitulo {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    margin-bottom: 6px;
+}
+
+.rodapeNavegacao ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 16px;
+    align-content: start;
+}
+
+.rodapeNavegacao .rodapeTitulo {
+    grid-column: 1 / -1;
+    margin-bottom: 6px;
+}
+
+.rodapeNavegacao a,
+.rodapeEquipe a {
+    font-size: 0.92rem;
+    opacity: 0.85;
+    padding: 4px 0;
+}
+
+.rodapeNavegacao a:hover,
+.rodapeEquipe a:hover {
+    opacity: 1;
+    color: var(--salvia);
+}
+
+.rodapeConta {
+    display: grid;
+    gap: 4px;
+    align-content: start;
+    justify-items: start;
+    font-size: 0.92rem;
+    overflow-wrap: anywhere;
+}
+
+.rodapeConta .detalheUsuario {
+    opacity: 0.85;
+}
+
+.rodapeConta .botaoUsuario {
+    margin-top: 8px;
+    color: var(--pessego);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.rodapeLembrete {
+    align-content: start;
+}
+
+.rodapeLembrete .botaoAmarelo {
+    box-shadow: none;
+}
+
+.rodapeContato {
+    display: grid;
+    gap: 6px;
+    margin-top: 22px;
+    align-content: start;
+    overflow-wrap: anywhere;
+}
+
+.rodapeContato .rodapeTitulo {
+    margin-bottom: 6px;
+}
+
+.rodapeContato a {
+    font-size: 0.92rem;
+    opacity: 0.85;
+    padding: 4px 0;
+}
+
+.rodapeContato a:hover {
+    opacity: 1;
+    color: var(--salvia);
+}
+
+.rodapeContato p {
+    margin: 0;
+    font-size: 0.92rem;
+    opacity: 0.85;
+    padding: 4px 0;
+}
+
+.rodapeDireitos {
+    margin: 24px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    opacity: 0.9;
+    text-align: center;
+}
+
+.rodapeFormulario {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.rodapeFormulario .botao {
+    justify-self: start;
+}
+
+.rodapeFormularioRetorno {
+    margin: 0;
+    color: var(--pessego);
+}
+
+.rodapeFormularioRetorno.erro {
+    color: #ffb4ab;
+}
+
 /*=== Página inicial ===*/
 
 .bannerPrincipal {
     position: relative;
     border-radius: 22px;
-    min-height: 44vh;
-    background: var(--pessego) no-repeat right top / auto 100%;
+    min-height: clamp(390px, calc(900px - 60vw), 560px);
+    background: var(--pessego) no-repeat right top / clamp(70%, 90vw, 100%) auto;
     color: #fff;
     display: flex;
     align-items: flex-end;
@@ -782,7 +776,7 @@ main .painel > h2.tituloPainel {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(100deg, rgba(44, 62, 28, 0.92) 25%, rgba(44, 62, 28, 0) 70%);
+    background: linear-gradient(0deg, rgba(44, 62, 28, 0.94) 30%, transparent 74%);
 }
 
 .bannerPrincipal>div {
@@ -899,54 +893,6 @@ main .painel > h2.tituloPainel {
 
 .cardDestaque.cardDestaqueEntrega {
     background-image: url('../Imagens/marmitas-row.jpg');
-}
-
-@media (max-width: 600px) {
-
-    .bannerPrincipal {
-        background-position: right top;
-        background-size: 90% auto;
-        min-height: 560px;
-    }
-
-    .bannerPrincipal:before {
-        background: linear-gradient(0deg, rgba(44, 62, 28, 0.94) 38%, rgba(44, 62, 28, 0) 72%);
-    }
-}
-
-@media (min-width: 900px) {
-
-    .bannerPrincipal {
-        min-height: 58vh;
-        padding: 48px;
-        border-radius: 28px;
-        margin-bottom: 34px;
-    }
-
-    .bannerPrincipal p {
-        font-size: 1.15rem;
-    }
-
-    .estatisticas li {
-        min-width: 150px;
-        padding: 18px 20px;
-    }
-
-    .estatisticas b {
-        font: 800 2rem Fraunces, serif;
-    }
-
-    .gradeDestaques {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
-    }
-}
-
-@media (min-width: 900px) and (max-width: 1100px) {
-
-    .gradeDestaques {
-        grid-template-columns: repeat(2, 1fr);
-    }
 }
 
 /*=== Receitas ===*/
@@ -1119,76 +1065,6 @@ main .painel > h2.tituloPainel {
     padding-bottom: 4px;
 }
 
-@media (min-width: 900px) {
-
-    .gradeReceitas {
-        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-        gap: 20px;
-    }
-
-    .cardReceita {
-        flex-direction: column;
-        border-radius: 12px;
-        align-items: normal;
-        min-height: auto;
-    }
-
-    .imagemReceitaComCredito {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-        min-height: 0;
-    }
-
-    .cardReceita img {
-        height: 100%;
-    }
-
-    .corpoCardReceita {
-        padding: 14px 16px 16px;
-        justify-content: normal;
-    }
-
-    .corpoCardReceita h3 {
-        min-height: 2.5em;
-    }
-
-    .corpoCardReceita .textoSecundario {
-        margin-top: auto;
-    }
-
-    .botaoFavoritar {
-        top: 10px;
-        right: 10px;
-        width: 36px;
-        height: 36px;
-    }
-
-    .barraFerramentas {
-        flex-wrap: wrap;
-    }
-
-    .barraFerramentas input {
-        flex: 1;
-        width: auto;
-    }
-
-    .barraFerramentas .botao {
-        flex: 0 1 auto;
-        justify-content: normal;
-    }
-
-    .barraFerramentas select {
-        flex: 0 1 auto;
-        width: auto;
-    }
-
-    .listaOpcoes {
-        flex-wrap: wrap;
-        overflow-x: visible;
-        padding-bottom: 0;
-    }
-}
-
 .corpoCardReceita h3, .cabecalhoRefeicao h3 {
     margin: 0;
     font-family: inherit;
@@ -1197,6 +1073,172 @@ main .painel > h2.tituloPainel {
 
 .corpoCardReceita h3 {
     color: inherit;
+}
+
+/*=== Janela da receita ===*/
+
+.modalReceita {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 9999;
+    overflow-y: auto;
+}
+
+.conteudoModalReceita {
+    position: relative;
+    background: white;
+    width: 100%;
+    max-width: 650px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 18px;
+}
+
+.imagemModalReceita {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+}
+
+.imagemModalComCredito {
+    position: relative;
+    height: 260px;
+}
+
+.imagemModalComCredito .creditoImagemIa {
+    left: 25px;
+}
+
+.informacoesModalReceita {
+    padding: 25px;
+}
+
+.informacoesModalReceita h2 {
+    margin: 10px 0 20px;
+}
+
+.informacoesModalReceita h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.informacoesModalReceita p {
+    line-height: 1.6;
+}
+
+.fecharModal {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.dadosNutricionais {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.dadosNutricionais div {
+    background: #f1f7f2;
+    padding: 15px 5px;
+    border-radius: 10px;
+}
+
+.dadosNutricionais strong,
+.dadosNutricionais span {
+    display: block;
+}
+
+.dadosNutricionais strong {
+    font-size: 20px;
+}
+
+.dadosNutricionais span {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.cardReceita:focus-visible {
+    outline: 3px solid #4caf50;
+    outline-offset: 3px;
+}
+
+/*=== Ações das receitas ===*/
+
+.acoesReceita {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.acoesReceita .botao {
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: center;
+    padding: 8px 6px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+}
+
+.acoesReceita [aria-pressed="true"] {
+    background: var(--salviaSuave);
+    color: var(--floresta);
+}
+
+/*=== Seleção de refeição ===*/
+
+.seletorCardapio {
+    margin: auto;
+    padding: 24px;
+    border: 1px solid var(--areia);
+    border-radius: 18px;
+    width: min(440px, calc(100% - 32px));
+    max-height: 85vh;
+    overflow: auto;
+    color: var(--tinta);
+    background: var(--fundo);
+}
+
+.seletorCardapio::backdrop {
+    background: rgb(0 0 0 / 65%);
+}
+
+.seletorCardapio h2 {
+    margin: 26px 0 14px;
+    color: var(--floresta);
+    font-size: 1.4rem;
+}
+
+.seletorCardapio label {
+    display: block;
+    margin-top: 16px;
+}
+
+.seletorCardapio select {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+}
+
+.seletorCardapio [role="status"] {
+    margin-top: 12px;
 }
 
 /*=== Progresso e resumos ===*/
@@ -1413,18 +1455,11 @@ main .painel > h2.tituloPainel {
     color: var(--textoSuave);
 }
 
-@media (min-width: 900px) {
-
-    .linhaDiaSemana span {
-        width: 100px;
-    }
-}
-
 /*=== Perfil do usuário ===*/
 
 .gradeFormulario {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, max(185px, 45%)), 1fr));
     gap: 12px;
 }
 
@@ -1524,21 +1559,6 @@ main .painel > h2.tituloPainel {
 
 .textoSecundario.resumoDiaEquilibrio {
     margin-top: 10px;
-}
-
-@media (max-width: 420px) {
-
-    .gradeFormulario {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (min-width: 900px) {
-
-    .gradeFormulario {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-    }
 }
 
 /*=== Dicas ===*/
@@ -1645,6 +1665,83 @@ main .painel > h2.tituloPainel {
     height: 100%;
 }
 
+/*=== Sacola de entrega ===*/
+
+.sacolaConteudo {
+    padding-top: 28px;
+}
+
+.sacolaConteudo h2 {
+    padding-right: 42px;
+}
+
+.sacolaVazia {
+    padding: 24px 0;
+}
+
+.quantidadeSacola {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.linhaItem .valorItemSacola {
+    flex: 0 0 auto;
+    text-align: right;
+}
+
+.valorItemSacola .botaoRemover {
+    font-size: 0.85rem;
+}
+
+.resumoSacola p {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 10px 0;
+}
+
+.resumoSacola p:last-child {
+    border-top: 1px solid var(--borda);
+    padding-top: 12px;
+    font-size: 1.15rem;
+}
+
+.cidadeSacola {
+    display: grid;
+    gap: 8px;
+    margin: 16px 0;
+}
+
+.cidadeSacola select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    background: var(--fundo);
+    color: var(--tinta);
+    font: inherit;
+}
+
+.botaoFinalizarPedido:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+#areaRastreioPedido:not(:empty) {
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 14px;
+    background: var(--salviaSuave);
+}
+
+.sacolaConteudo button:focus-visible,
+.cidadeSacola select:focus-visible {
+    outline: 3px solid var(--ambar);
+    outline-offset: 3px;
+}
+
 /*=== Vídeos ===*/
 
 .vdos {
@@ -1690,14 +1787,6 @@ main .painel > h2.tituloPainel {
     aspect-ratio: 16 / 9;
     border: 0;
     border-radius: 18px;
-}
-
-@media (min-width: 900px) {
-
-    .vdos,
-    .gradeVideos {
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    }
 }
 
 /*=== Sobre a equipe ===*/
@@ -1759,216 +1848,6 @@ main .painel > h2.tituloPainel {
     color: var(--textoSuave);
     font-size: 0.85rem;
     line-height: 1.4;
-}
-
-@media (min-width: 900px) {
-
-    .gradeMissaoValores {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-bottom: 8px;
-    }
-
-    .gradeEquipe {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-    }
-
-    .cardMembro {
-        padding: 16px;
-        border-radius: 18px;
-    }
-
-    .fotoMembro {
-        width: 150px;
-        height: 150px;
-    }
-}
-
-/*=== Rodapé ===*/
-
-.rodape {
-    background: var(--florestaRodape);
-    color: #fff;
-    padding: 28px 22px calc(96px + env(safe-area-inset-bottom));
-    margin: 36px 0 0;
-}
-
-.rodapeConteudo {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 26px;
-}
-
-.rodapeLogo {
-    width: auto;
-    height: 40px;
-    margin-bottom: 12px;
-}
-
-.rodapeMarca p {
-    font-size: 0.9rem;
-    line-height: 1.55;
-    opacity: 0.85;
-    margin: 0 0 8px;
-}
-
-.rodapeTitulo {
-    font: 800 1.05rem Fraunces, serif;
-    color: var(--pessego);
-    margin: 0 0 12px;
-}
-
-.rodapeEquipe ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(3, auto);
-    grid-auto-flow: column;
-    gap: 6px 16px;
-    margin-top: 18px;
-    align-content: start;
-}
-
-.rodapeEquipe .rodapeTitulo {
-    grid-column: 1 / -1;
-    grid-row: 1;
-    margin-bottom: 6px;
-}
-
-.rodapeNavegacao ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px 16px;
-    align-content: start;
-}
-
-.rodapeNavegacao .rodapeTitulo {
-    grid-column: 1 / -1;
-    margin-bottom: 6px;
-}
-
-.rodapeNavegacao a,
-.rodapeEquipe a {
-    font-size: 0.92rem;
-    opacity: 0.85;
-    padding: 4px 0;
-}
-
-.rodapeNavegacao a:hover,
-.rodapeEquipe a:hover {
-    opacity: 1;
-    color: var(--salvia);
-}
-
-.rodapeConta {
-    display: grid;
-    gap: 4px;
-    align-content: start;
-    justify-items: start;
-    font-size: 0.92rem;
-    overflow-wrap: anywhere;
-}
-
-.rodapeConta .detalheUsuario {
-    opacity: 0.85;
-}
-
-.rodapeConta .botaoUsuario {
-    margin-top: 8px;
-    color: var(--pessego);
-    font-weight: 700;
-    text-decoration: underline;
-}
-
-.rodapeLembrete {
-    align-content: start;
-}
-
-.rodapeLembrete .botaoAmarelo {
-    box-shadow: none;
-}
-
-.rodapeContato {
-    display: grid;
-    gap: 6px;
-    margin-top: 22px;
-    align-content: start;
-    overflow-wrap: anywhere;
-}
-
-.rodapeContato .rodapeTitulo {
-    margin-bottom: 6px;
-}
-
-.rodapeContato a {
-    font-size: 0.92rem;
-    opacity: 0.85;
-    padding: 4px 0;
-}
-
-.rodapeContato a:hover {
-    opacity: 1;
-    color: var(--salvia);
-}
-
-.rodapeContato p {
-    margin: 0;
-    font-size: 0.92rem;
-    opacity: 0.85;
-    padding: 4px 0;
-}
-
-.rodapeDireitos {
-    margin: 24px 0 0;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    font-size: 0.85rem;
-    line-height: 1.5;
-    opacity: 0.9;
-    text-align: center;
-}
-
-@media (min-width: 900px) {
-
-    .rodape {
-        padding: 40px 44px 22px;
-        margin: 56px 0 0;
-    }
-
-    .rodapeConteudo {
-        grid-template-columns: 1.7fr 1.1fr 1fr 1.3fr;
-        gap: 36px;
-    }
-
-    .rodapeDireitos {
-        text-align: center;
-    }
-}
-
-.rodapeFormulario {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-}
-
-.rodapeFormulario .botao {
-    justify-self: start;
-}
-
-.rodapeFormularioRetorno {
-    margin: 0;
-    color: var(--pessego);
-}
-
-.rodapeFormularioRetorno.erro {
-    color: #ffb4ab;
-}
-
-@media (min-width: 900px) {
-
-    .colunasContato {
-        grid-template-columns: 1.6fr 1fr;
-    }
 }
 
 /*=== Contato ===*/
@@ -2050,268 +1929,441 @@ a.canalContato:hover {
     font-weight: 700;
 }
 
+.paginaAutenticacao {
+    display: flex;
+    min-height: 100vh;
+    padding: 0;
+    background: var(--fundo);
+}
+
+.bannerAutenticacao {
+    flex: 1.1;
+    background: var(--pessego) no-repeat center top / min(100%, 640px) auto;
+    background-image: url('../Imagens/esquilo-fundo.png');
+    position: relative;
+    color: #fff;
+    display: none;
+    align-items: flex-end;
+    padding: 56px;
+}
+
+.bannerAutenticacao:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(44, 62, 28, 0.85), rgba(44, 62, 28, 0) 60%);
+}
+
+.bannerAutenticacao > div {
+    position: relative;
+    max-width: 520px;
+}
+
+.chamadaAutenticacao {
+    font-family: Fraunces, Georgia, serif;
+    font-weight: 800;
+    line-height: 1.1;
+    font-size: 3rem;
+    margin: 18px 0;
+}
+
+.bannerAutenticacao em {
+    color: var(--pessego);
+}
+
+.logoAutenticacao {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font: 800 1.6rem Fraunces, serif;
+}
+
+.logoAutenticacao img {
+    width: auto;
+    height: 46px;
+}
+
+.areaFormularioAutenticacao {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 30px;
+    overflow: auto;
+    background: linear-gradient(var(--floresta) 0 26%, var(--fundo) 26%);
+    padding-top: 12vh;
+}
+
+.caixaAutenticacao {
+    width: min(420px, 100%);
+    background: var(--branco);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: var(--sombra);
+}
+
+.caixaAutenticacao h1 {
+    font-size: 2.2rem;
+    color: var(--floresta);
+    margin-bottom: 16px;
+}
+
+#erroAutenticacao {
+    color: var(--perigo);
+    min-height: 22px;
+    margin: 8px 0;
+}
+
+.caixaAutenticacao .botao {
+    width: 100%;
+    justify-content: center;
+}
+
+.caixaAutenticacao form {
+    grid-template-columns: 1fr;
+}
+
+.gradeFormulario .somenteCadastro {
+    display: none;
+}
+
+[data-modo=cadastro] .gradeFormulario .somenteCadastro {
+    display: flex;
+}
+
+.botaoVisitante {
+    display: block;
+    margin: 14px auto 0;
+    color: var(--textoSuave);
+    text-decoration: underline;
+}
+
+.caixaAutenticacao [hidden] {
+    display: none;
+}
+
 @media (min-width: 900px) {
+    #aplicacao {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+    }
+
+    main {
+        padding: 34px 44px 0;
+    }
+
+    #barraSuperior,
+    #menuInferior {
+        display: none;
+    }
+
+    #menuLateral {
+        background: var(--floresta);
+        color: #fff;
+        position: sticky;
+        top: 0;
+        align-self: start;
+        height: 100vh;
+        height: 100dvh;
+        max-height: 100%;
+        overflow-y: auto;
+        padding: 26px 16px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    #menuLateral>* {
+        flex-shrink: 0;
+    }
+
+    #menuLateral .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font: 800 1.5rem Fraunces, serif;
+        margin-bottom: 22px;
+        padding: 0 8px;
+    }
+
+    #menuLateral .logo img {
+        width: auto;
+        height: 40px;
+    }
+
+    #menuLateral a {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 11px 14px;
+        border-radius: 12px;
+        font-weight: 500;
+        opacity: 0.85;
+    }
+
+    #menuLateral a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        opacity: 1;
+    }
+
+    #menuLateral a.ativo {
+        background: var(--salvia);
+        color: var(--tinta);
+        opacity: 1;
+        font-weight: 700;
+    }
+
+    #menuLateral .rodapeMenuLateral {
+        margin-top: auto;
+        font-size: 0.8rem;
+        opacity: 0.6;
+        padding: 0 8px;
+    }
+
+    .seloContador {
+        background: var(--ambar);
+        color: var(--tinta);
+        border-radius: 99px;
+        font-size: 0.72rem;
+        padding: 1px 7px;
+        font-weight: 700;
+    }
+
+    .caixaUsuario {
+        margin-top: auto;
+        padding: 12px;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.1);
+        font-size: 0.85rem;
+        overflow-wrap: anywhere;
+    }
+
+    .caixaUsuario b {
+        display: block;
+    }
+
+    .caixaUsuario button {
+        margin-top: 8px;
+        color: var(--pessego);
+        font-weight: 700;
+    }
+
+    .botao.botaoContornoClaro {
+        margin: 0 0 0 8px;
+    }
+
+    .tituloPagina :is(h1, h2) {
+        font-size: clamp(1.7rem, 3vw, 2.4rem);
+    }
+
+    .estadoVazio.painel {
+        padding: 50px 20px;
+    }
+
+    .painel {
+        padding: 18px;
+        border-radius: 12px;
+    }
+
+    .duasColunas {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 365px), 1fr));
+    }
+
+    .tresColunas {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .sobreposicao {
+        align-items: center;
+        padding: 20px;
+    }
+
+    .caixaModal {
+        border-radius: 26px;
+        max-height: 88vh;
+    }
+
+    .caixaModal>img {
+        height: 260px;
+    }
+
+    .caixaModal>.imagemIa>img {
+        height: 260px;
+    }
+
+    .aviso {
+        bottom: 90px;
+    }
+
+    .rodape {
+        padding: 40px 44px 22px;
+        margin: 56px 0 0;
+    }
+
+    .rodapeConteudo {
+        grid-template-columns: 1.7fr 1.1fr 1fr 1.3fr;
+        gap: 36px;
+    }
+
+    .rodapeDireitos {
+        text-align: center;
+    }
+
+    .colunasContato {
+        grid-template-columns: 1.6fr 1fr;
+    }
+
+    .bannerPrincipal {
+        background-size: auto 100%;
+        min-height: 58vh;
+        padding: 48px;
+        border-radius: 28px;
+        margin-bottom: 34px;
+    }
+
+    .bannerPrincipal p {
+        font-size: 1.15rem;
+    }
+
+    .estatisticas li {
+        min-width: 150px;
+        padding: 18px 20px;
+    }
+
+    .estatisticas b {
+        font: 800 2rem Fraunces, serif;
+    }
+
+    .gradeDestaques {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 175px), 1fr));
+        gap: 18px;
+    }
+
+    .gradeReceitas {
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 20px;
+    }
+
+    .cardReceita {
+        flex-direction: column;
+        border-radius: 12px;
+        align-items: normal;
+        min-height: auto;
+    }
+
+    .imagemReceitaComCredito {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        min-height: 0;
+    }
+
+    .cardReceita img {
+        height: 100%;
+    }
+
+    .corpoCardReceita {
+        padding: 14px 16px 16px;
+        justify-content: normal;
+    }
+
+    .corpoCardReceita h3 {
+        min-height: 2.5em;
+    }
+
+    .corpoCardReceita .textoSecundario {
+        margin-top: auto;
+    }
+
+    .botaoFavoritar {
+        top: 10px;
+        right: 10px;
+        width: 36px;
+        height: 36px;
+    }
+
+    .barraFerramentas {
+        flex-wrap: wrap;
+    }
+
+    .barraFerramentas input {
+        flex: 1;
+        width: auto;
+    }
+
+    .barraFerramentas .botao {
+        flex: 0 1 auto;
+        justify-content: normal;
+    }
+
+    .barraFerramentas select {
+        flex: 0 1 auto;
+        width: auto;
+    }
+
+    .listaOpcoes {
+        flex-wrap: wrap;
+        overflow-x: visible;
+        padding-bottom: 0;
+    }
+
+    .linhaDiaSemana span {
+        width: 100px;
+    }
+
+    .gradeFormulario {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+    }
+
+    .vdos,
+    .gradeVideos {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+
+    .gradeMissaoValores {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-bottom: 8px;
+    }
+
+    .gradeEquipe {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .cardMembro {
+        padding: 16px;
+        border-radius: 18px;
+    }
+
+    .fotoMembro {
+        width: 150px;
+        height: 150px;
+    }
 
     .gradeFaq {
         grid-template-columns: 1fr 1fr;
         align-items: start;
     }
-}
 
-/*=== Janela da receita ===*/
+    .bannerAutenticacao {
+        display: flex;
+    }
 
-.modalReceita {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    z-index: 9999;
-    overflow-y: auto;
-}
+    .areaFormularioAutenticacao {
+        background: none;
+        align-items: center;
+        padding: 30px;
+    }
 
-.conteudoModalReceita {
-    position: relative;
-    background: white;
-    width: 100%;
-    max-width: 650px;
-    max-height: 90vh;
-    overflow-y: auto;
-    border-radius: 18px;
-}
+    .caixaAutenticacao {
+        background: none;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+    }
 
-.imagemModalReceita {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    display: block;
-}
-
-.imagemModalComCredito {
-    position: relative;
-    height: 260px;
-}
-
-.imagemModalComCredito .creditoImagemIa {
-    left: 25px;
-}
-
-.informacoesModalReceita {
-    padding: 25px;
-}
-
-.informacoesModalReceita h2 {
-    margin: 10px 0 20px;
-}
-
-.informacoesModalReceita h3 {
-    margin-top: 25px;
-    margin-bottom: 10px;
-}
-
-.informacoesModalReceita p {
-    line-height: 1.6;
-}
-
-.fecharModal {
-    position: absolute;
-    top: 12px;
-    right: 15px;
-    width: 38px;
-    height: 38px;
-    border: none;
-    border-radius: 50%;
-    background: white;
-    font-size: 28px;
-    cursor: pointer;
-    z-index: 2;
-}
-
-.dadosNutricionais {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.dadosNutricionais div {
-    background: #f1f7f2;
-    padding: 15px 5px;
-    border-radius: 10px;
-}
-
-.dadosNutricionais strong,
-.dadosNutricionais span {
-    display: block;
-}
-
-.dadosNutricionais strong {
-    font-size: 20px;
-}
-
-.dadosNutricionais span {
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-.cardReceita:focus-visible {
-    outline: 3px solid #4caf50;
-    outline-offset: 3px;
-}
-
-/*=== Ações das receitas ===*/
-
-.acoesReceita {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 8px;
-    margin-top: 14px;
-}
-
-.acoesReceita .botao {
-    flex: 1 1 0;
-    min-width: 0;
-    justify-content: center;
-    padding: 8px 6px;
-    font-size: 0.78rem;
-    white-space: nowrap;
-}
-
-.acoesReceita [aria-pressed="true"] {
-    background: var(--salviaSuave);
-    color: var(--floresta);
-}
-
-/*=== Seleção de refeição ===*/
-
-.seletorCardapio {
-    margin: auto;
-    padding: 24px;
-    border: 1px solid var(--areia);
-    border-radius: 18px;
-    width: min(440px, calc(100% - 32px));
-    max-height: 85vh;
-    overflow: auto;
-    color: var(--tinta);
-    background: var(--fundo);
-}
-
-.seletorCardapio::backdrop {
-    background: rgb(0 0 0 / 65%);
-}
-
-.seletorCardapio h2 {
-    margin: 26px 0 14px;
-    color: var(--floresta);
-    font-size: 1.4rem;
-}
-
-.seletorCardapio label {
-    display: block;
-    margin-top: 16px;
-}
-
-.seletorCardapio select {
-    display: block;
-    width: 100%;
-    margin-top: 6px;
-}
-
-.seletorCardapio [role="status"] {
-    margin-top: 12px;
-}
-
-/*=== Sacola de entrega ===*/
-
-.sacolaConteudo {
-    padding-top: 28px;
-}
-
-.sacolaConteudo h2 {
-    padding-right: 42px;
-}
-
-.sacolaVazia {
-    padding: 24px 0;
-}
-
-.quantidadeSacola {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 10px;
-}
-
-.linhaItem .valorItemSacola {
-    flex: 0 0 auto;
-    text-align: right;
-}
-
-.valorItemSacola .botaoRemover {
-    font-size: 0.85rem;
-}
-
-.resumoSacola p {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    margin: 10px 0;
-}
-
-.resumoSacola p:last-child {
-    border-top: 1px solid var(--borda);
-    padding-top: 12px;
-    font-size: 1.15rem;
-}
-
-.cidadeSacola {
-    display: grid;
-    gap: 8px;
-    margin: 16px 0;
-}
-
-.cidadeSacola select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--borda);
-    border-radius: 10px;
-    background: var(--fundo);
-    color: var(--tinta);
-    font: inherit;
-}
-
-.botaoFinalizarPedido:disabled {
-    opacity: 0.55;
-    cursor: not-allowed;
-}
-
-#areaRastreioPedido:not(:empty) {
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 14px;
-    background: var(--salviaSuave);
-}
-
-.sacolaConteudo button:focus-visible,
-.cidadeSacola select:focus-visible {
-    outline: 3px solid var(--ambar);
-    outline-offset: 3px;
-}
-
-:focus-visible {
-    outline: 3px solid currentColor;
-    outline-offset: 2px;
-}
-
-.somenteLeitores {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
+    .bannerPrincipal:before {
+        background: linear-gradient(100deg, rgba(44, 62, 28, 0.92) 25%, transparent 70%);
+    }
 }
