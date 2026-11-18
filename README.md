@@ -379,3 +379,20 @@ Igor Hayato:  Revisão do código do index e o nome das classes e id's;
 Lucas de Amorim:  Revisão da página 'Cardápio';
 
 Murilo Antonio: Java Script da Página 'Receitas', e tentativa de incrementação de cards;
+
+-----------------------------------------
+
+## Dia 18: 
+Coordenador: Murilo Antonio
+
+Secretário: Felipe Laredo 
+
+Ausentes: Enzo Megarejo(não justificado)
+
+Assunto: Reformulação do JS e resolução de bugs;
+
+Felipe,Henrique e Murilo Antonio: Java Script e organização css de todas as páginas e revisão;
+
+Igor Hayato:  Reformulação do código do index e o css geral;
+
+Lucas de Amorim:  Reformulação da página 'Cardápio';
