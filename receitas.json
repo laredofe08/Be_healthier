@@ -118,7 +118,7 @@
     "calorias": 205.0,
     "proteinas": 35.0,
     "carboidratos": 5.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 12,
@@ -129,7 +129,7 @@
     "calorias": 230.0,
     "proteinas": 37.0,
     "carboidratos": 6.0,
-    "restricoes": ["sem glúten"]
+    "restricoes": ["sem glúten", "sem ovo"]
   },
   {
     "id": 13,
@@ -140,7 +140,7 @@
     "calorias": 270.0,
     "proteinas": 46.0,
     "carboidratos": 12.0,
-    "restricoes": ["sem lactose"]
+    "restricoes": ["sem lactose", "sem ovo"]
   },
   {
     "id": 14,
@@ -151,7 +151,7 @@
     "calorias": 205.0,
     "proteinas": 35.0,
     "carboidratos": 1.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 15,
@@ -162,7 +162,7 @@
     "calorias": 275.0,
     "proteinas": 27.0,
     "carboidratos": 28.0,
-    "restricoes": ["sem glúten"]
+    "restricoes": ["sem glúten", "sem ovo"]
   },
   {
     "id": 16,
@@ -173,7 +173,7 @@
     "calorias": 200.0,
     "proteinas": 36.0,
     "carboidratos": 6.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 17,
@@ -184,7 +184,7 @@
     "calorias": 225.0,
     "proteinas": 36.0,
     "carboidratos": 12.0,
-    "restricoes": ["sem glúten"]
+    "restricoes": ["sem glúten", "sem ovo"]
   },
   {
     "id": 18,
@@ -195,7 +195,7 @@
     "calorias": 145.0,
     "proteinas": 26.0,
     "carboidratos": 4.0,
-    "restricoes": ["sem glúten"]
+    "restricoes": ["sem glúten", "sem ovo"]
   },
   {
     "id": 19,
@@ -206,7 +206,7 @@
     "calorias": 255.0,
     "proteinas": 45.0,
     "carboidratos": 6.0,
-    "restricoes": ["sem lactose"]
+    "restricoes": ["sem lactose", "sem ovo"]
   },
   {
     "id": 20,
@@ -217,7 +217,7 @@
     "calorias": 380.0,
     "proteinas": 34.0,
     "carboidratos": 38.0,
-    "restricoes": ["sem glúten"]
+    "restricoes": ["sem glúten", "sem ovo"]
   },
   {
     "id": 21,
@@ -228,7 +228,7 @@
     "calorias": 280.0,
     "proteinas": 42.0,
     "carboidratos": 5.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 22,
@@ -239,7 +239,7 @@
     "calorias": 250.0,
     "proteinas": 43.0,
     "carboidratos": 8.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 23,
@@ -250,7 +250,7 @@
     "calorias": 330.0,
     "proteinas": 44.0,
     "carboidratos": 12.0,
-    "restricoes": ["sem lactose"]
+    "restricoes": ["sem lactose", "sem ovo"]
   },
   {
     "id": 24,
@@ -261,7 +261,7 @@
     "calorias": 280.0,
     "proteinas": 40.0,
     "carboidratos": 8.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 25,
@@ -272,7 +272,7 @@
     "calorias": 325.0,
     "proteinas": 50.0,
     "carboidratos": 1.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 26,
@@ -283,7 +283,7 @@
     "calorias": 260.0,
     "proteinas": 33.0,
     "carboidratos": 15.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 27,
@@ -294,7 +294,7 @@
     "calorias": 240.0,
     "proteinas": 39.0,
     "carboidratos": 5.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 28,
@@ -305,7 +305,7 @@
     "calorias": 310.0,
     "proteinas": 42.0,
     "carboidratos": 15.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 29,
@@ -316,7 +316,7 @@
     "calorias": 270.0,
     "proteinas": 39.0,
     "carboidratos": 7.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 30,
@@ -327,7 +327,7 @@
     "calorias": 275.0,
     "proteinas": 40.0,
     "carboidratos": 6.0,
-    "restricoes": ["sem glúten"]
+    "restricoes": ["sem glúten", "sem ovo"]
   },
   {
     "id": 31,
@@ -349,7 +349,7 @@
     "calorias": 210.0,
     "proteinas": 3.0,
     "carboidratos": 45.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 33,
@@ -360,7 +360,7 @@
     "calorias": 120.0,
     "proteinas": 8.0,
     "carboidratos": 8.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 34,
@@ -371,7 +371,7 @@
     "calorias": 380.0,
     "proteinas": 20.0,
     "carboidratos": 45.0,
-    "restricoes": ["sem glúten"]
+    "restricoes": ["sem glúten", "sem ovo"]
   },
   {
     "id": 35,
@@ -382,7 +382,7 @@
     "calorias": 380.0,
     "proteinas": 35.0,
     "carboidratos": 32.0,
-    "restricoes": ["sem lactose"]
+    "restricoes": ["sem lactose", "sem ovo"]
   },
   {
     "id": 36,
@@ -393,7 +393,7 @@
     "calorias": 200.0,
     "proteinas": 8.0,
     "carboidratos": 32.0,
-    "restricoes": ["sem glúten", "vegetariano"]
+    "restricoes": ["sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 37,
@@ -404,7 +404,7 @@
     "calorias": 230.0,
     "proteinas": 8.0,
     "carboidratos": 42.0,
-    "restricoes": ["vegetariano"]
+    "restricoes": ["vegetariano", "sem ovo"]
   },
   {
     "id": 38,
@@ -415,7 +415,7 @@
     "calorias": 25.0,
     "proteinas": 1.0,
     "carboidratos": 6.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 39,
@@ -426,7 +426,7 @@
     "calorias": 140.0,
     "proteinas": 2.0,
     "carboidratos": 32.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 40,
@@ -437,7 +437,7 @@
     "calorias": 260.0,
     "proteinas": 30.0,
     "carboidratos": 25.0,
-    "restricoes": ["vegetariano"]
+    "restricoes": ["vegetariano", "sem ovo"]
   },
   {
     "id": 41,
@@ -459,7 +459,7 @@
     "calorias": 290.0,
     "proteinas": 11.0,
     "carboidratos": 37.0,
-    "restricoes": ["sem glúten", "vegetariano"]
+    "restricoes": ["sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 43,
@@ -470,7 +470,7 @@
     "calorias": 210.0,
     "proteinas": 10.0,
     "carboidratos": 30.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 44,
@@ -481,7 +481,7 @@
     "calorias": 180.0,
     "proteinas": 11.0,
     "carboidratos": 28.0,
-    "restricoes": ["sem lactose", "vegetariano"]
+    "restricoes": ["sem lactose", "vegetariano", "sem ovo"]
   },
   {
     "id": 45,
@@ -492,7 +492,7 @@
     "calorias": 140.0,
     "proteinas": 14.0,
     "carboidratos": 3.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 46,
@@ -503,7 +503,7 @@
     "calorias": 250.0,
     "proteinas": 11.0,
     "carboidratos": 32.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 47,
@@ -514,7 +514,7 @@
     "calorias": 80.0,
     "proteinas": 4.0,
     "carboidratos": 12.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 48,
@@ -525,7 +525,7 @@
     "calorias": 180.0,
     "proteinas": 11.0,
     "carboidratos": 30.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 49,
@@ -536,7 +536,7 @@
     "calorias": 220.0,
     "proteinas": 2.0,
     "carboidratos": 36.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 50,
@@ -547,7 +547,7 @@
     "calorias": 190.0,
     "proteinas": 6.0,
     "carboidratos": 30.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 51,
@@ -558,7 +558,7 @@
     "calorias": 160.0,
     "proteinas": 6.0,
     "carboidratos": 18.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 52,
@@ -569,7 +569,7 @@
     "calorias": 65.0,
     "proteinas": 4.0,
     "carboidratos": 8.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 53,
@@ -580,7 +580,7 @@
     "calorias": 130.0,
     "proteinas": 5.0,
     "carboidratos": 20.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 54,
@@ -591,7 +591,7 @@
     "calorias": 110.0,
     "proteinas": 6.0,
     "carboidratos": 16.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 55,
@@ -602,7 +602,7 @@
     "calorias": 120.0,
     "proteinas": 11.0,
     "carboidratos": 9.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 56,
@@ -613,7 +613,7 @@
     "calorias": 130.0,
     "proteinas": 2.0,
     "carboidratos": 25.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 57,
@@ -635,7 +635,7 @@
     "calorias": 150.0,
     "proteinas": 5.0,
     "carboidratos": 24.0,
-    "restricoes": ["sem lactose", "vegetariano"]
+    "restricoes": ["sem lactose", "vegetariano", "sem ovo"]
   },
   {
     "id": 59,
@@ -646,7 +646,7 @@
     "calorias": 70.0,
     "proteinas": 1.0,
     "carboidratos": 14.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 60,
@@ -657,7 +657,7 @@
     "calorias": 50.0,
     "proteinas": 2.0,
     "carboidratos": 6.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 61,
@@ -668,7 +668,7 @@
     "calorias": 80.0,
     "proteinas": 2.0,
     "carboidratos": 14.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 62,
@@ -679,7 +679,7 @@
     "calorias": 160.0,
     "proteinas": 4.0,
     "carboidratos": 12.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 63,
@@ -701,7 +701,7 @@
     "calorias": 210.0,
     "proteinas": 7.0,
     "carboidratos": 30.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 65,
@@ -712,7 +712,7 @@
     "calorias": 230.0,
     "proteinas": 17.0,
     "carboidratos": 28.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 66,
@@ -723,7 +723,7 @@
     "calorias": 120.0,
     "proteinas": 6.0,
     "carboidratos": 18.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 67,
@@ -734,7 +734,7 @@
     "calorias": 190.0,
     "proteinas": 3.0,
     "carboidratos": 40.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 68,
@@ -745,7 +745,7 @@
     "calorias": 180.0,
     "proteinas": 12.0,
     "carboidratos": 24.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 69,
@@ -778,7 +778,7 @@
     "calorias": 160.0,
     "proteinas": 5.0,
     "carboidratos": 28.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 72,
@@ -800,7 +800,7 @@
     "calorias": 120.0,
     "proteinas": 3.0,
     "carboidratos": 24.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 74,
@@ -833,7 +833,7 @@
     "calorias": 180.0,
     "proteinas": 4.0,
     "carboidratos": 32.0,
-    "restricoes": ["sem glúten", "vegetariano"]
+    "restricoes": ["sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 77,
@@ -844,7 +844,7 @@
     "calorias": 240.0,
     "proteinas": 18.0,
     "carboidratos": 26.0,
-    "restricoes": ["sem glúten"]
+    "restricoes": ["sem glúten", "sem ovo"]
   },
   {
     "id": 78,
@@ -855,7 +855,7 @@
     "calorias": 140.0,
     "proteinas": 4.0,
     "carboidratos": 22.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 79,
@@ -866,7 +866,7 @@
     "calorias": 90.0,
     "proteinas": 1.0,
     "carboidratos": 23.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 80,
@@ -877,7 +877,7 @@
     "calorias": 80.0,
     "proteinas": 0.5,
     "carboidratos": 20.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 81,
@@ -888,7 +888,7 @@
     "calorias": 160.0,
     "proteinas": 3.0,
     "carboidratos": 10.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 82,
@@ -899,7 +899,7 @@
     "calorias": 80.0,
     "proteinas": 0.5,
     "carboidratos": 18.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 83,
@@ -910,7 +910,7 @@
     "calorias": 95.0,
     "proteinas": 2.0,
     "carboidratos": 10.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 84,
@@ -921,7 +921,7 @@
     "calorias": 70.0,
     "proteinas": 1.0,
     "carboidratos": 18.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 85,
@@ -932,7 +932,7 @@
     "calorias": 60.0,
     "proteinas": 1.0,
     "carboidratos": 15.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 86,
@@ -943,7 +943,7 @@
     "calorias": 75.0,
     "proteinas": 1.0,
     "carboidratos": 17.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 87,
@@ -954,7 +954,7 @@
     "calorias": 80.0,
     "proteinas": 3.0,
     "carboidratos": 15.0,
-    "restricoes": ["sem glúten", "vegetariano"]
+    "restricoes": ["sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 88,
@@ -965,7 +965,7 @@
     "calorias": 110.0,
     "proteinas": 4.0,
     "carboidratos": 5.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 89,
@@ -976,7 +976,7 @@
     "calorias": 65.0,
     "proteinas": 2.0,
     "carboidratos": 11.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 90,
@@ -998,7 +998,7 @@
     "calorias": 50.0,
     "proteinas": 1.0,
     "carboidratos": 10.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 92,
@@ -1009,7 +1009,7 @@
     "calorias": 70.0,
     "proteinas": 9.0,
     "carboidratos": 6.0,
-    "restricoes": ["sem glúten", "vegetariano"]
+    "restricoes": ["sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 93,
@@ -1031,7 +1031,7 @@
     "calorias": 130.0,
     "proteinas": 1.0,
     "carboidratos": 28.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 95,
@@ -1053,7 +1053,7 @@
     "calorias": 110.0,
     "proteinas": 10.0,
     "carboidratos": 4.0,
-    "restricoes": ["sem glúten", "vegetariano"]
+    "restricoes": ["sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 97,
@@ -1086,7 +1086,7 @@
     "calorias": 210.0,
     "proteinas": 4.0,
     "carboidratos": 18.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 100,
@@ -1163,7 +1163,7 @@
     "calorias": 210.0,
     "proteinas": 16.0,
     "carboidratos": 22.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 107,
@@ -1174,7 +1174,7 @@
     "calorias": 170.0,
     "proteinas": 7.0,
     "carboidratos": 20.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 108,
@@ -1207,7 +1207,7 @@
     "calorias": 220.0,
     "proteinas": 7.0,
     "carboidratos": 8.0,
-    "restricoes": ["sem glúten", "vegetariano"]
+    "restricoes": ["sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 111,
@@ -1229,7 +1229,7 @@
     "calorias": 190.0,
     "proteinas": 4.0,
     "carboidratos": 16.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 113,
@@ -1240,7 +1240,7 @@
     "calorias": 160.0,
     "proteinas": 6.0,
     "carboidratos": 18.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 114,
@@ -1251,7 +1251,7 @@
     "calorias": 220.0,
     "proteinas": 8.0,
     "carboidratos": 8.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 115,
@@ -1262,7 +1262,7 @@
     "calorias": 175.0,
     "proteinas": 9.0,
     "carboidratos": 15.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 116,
@@ -1273,7 +1273,7 @@
     "calorias": 145.0,
     "proteinas": 3.0,
     "carboidratos": 18.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 117,
@@ -1306,7 +1306,7 @@
     "calorias": 240.0,
     "proteinas": 1.0,
     "carboidratos": 54.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 120,
@@ -1394,7 +1394,7 @@
     "calorias": 195.0,
     "proteinas": 36.0,
     "carboidratos": 4.0,
-    "restricoes": ["sem glúten"]
+    "restricoes": ["sem glúten", "sem ovo"]
   },
   {
     "id": 128,
@@ -1405,7 +1405,7 @@
     "calorias": 240.0,
     "proteinas": 40.0,
     "carboidratos": 8.0,
-    "restricoes": ["sem lactose"]
+    "restricoes": ["sem lactose", "sem ovo"]
   },
   {
     "id": 129,
@@ -1416,7 +1416,7 @@
     "calorias": 200.0,
     "proteinas": 35.0,
     "carboidratos": 2.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 130,
@@ -1427,7 +1427,7 @@
     "calorias": 250.0,
     "proteinas": 28.0,
     "carboidratos": 22.0,
-    "restricoes": ["sem glúten"]
+    "restricoes": ["sem glúten", "sem ovo"]
   },
   {
     "id": 131,
@@ -1438,7 +1438,7 @@
     "calorias": 210.0,
     "proteinas": 35.0,
     "carboidratos": 7.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 132,
@@ -1449,7 +1449,7 @@
     "calorias": 160.0,
     "proteinas": 28.0,
     "carboidratos": 4.0,
-    "restricoes": ["sem glúten"]
+    "restricoes": ["sem glúten", "sem ovo"]
   },
   {
     "id": 133,
@@ -1460,7 +1460,7 @@
     "calorias": 250.0,
     "proteinas": 42.0,
     "carboidratos": 10.0,
-    "restricoes": ["sem lactose"]
+    "restricoes": ["sem lactose", "sem ovo"]
   },
   {
     "id": 134,
@@ -1471,7 +1471,7 @@
     "calorias": 230.0,
     "proteinas": 32.0,
     "carboidratos": 6.0,
-    "restricoes": ["sem glúten"]
+    "restricoes": ["sem glúten", "sem ovo"]
   },
   {
     "id": 135,
@@ -1482,7 +1482,7 @@
     "calorias": 270.0,
     "proteinas": 40.0,
     "carboidratos": 5.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 136,
@@ -1493,7 +1493,7 @@
     "calorias": 240.0,
     "proteinas": 40.0,
     "carboidratos": 8.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 137,
@@ -1504,7 +1504,7 @@
     "calorias": 290.0,
     "proteinas": 42.0,
     "carboidratos": 7.0,
-    "restricoes": ["sem lactose"]
+    "restricoes": ["sem lactose", "sem ovo"]
   },
   {
     "id": 138,
@@ -1515,7 +1515,7 @@
     "calorias": 260.0,
     "proteinas": 38.0,
     "carboidratos": 7.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 139,
@@ -1526,7 +1526,7 @@
     "calorias": 300.0,
     "proteinas": 45.0,
     "carboidratos": 1.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 140,
@@ -1537,7 +1537,7 @@
     "calorias": 240.0,
     "proteinas": 30.0,
     "carboidratos": 14.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 141,
@@ -1548,7 +1548,7 @@
     "calorias": 280.0,
     "proteinas": 38.0,
     "carboidratos": 12.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 142,
@@ -1559,7 +1559,7 @@
     "calorias": 260.0,
     "proteinas": 40.0,
     "carboidratos": 5.0,
-    "restricoes": ["sem glúten"]
+    "restricoes": ["sem glúten", "sem ovo"]
   },
   {
     "id": 143,
@@ -1570,7 +1570,7 @@
     "calorias": 220.0,
     "proteinas": 25.0,
     "carboidratos": 1.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 144,
@@ -1592,7 +1592,7 @@
     "calorias": 160.0,
     "proteinas": 16.0,
     "carboidratos": 8.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 146,
@@ -1603,7 +1603,7 @@
     "calorias": 190.0,
     "proteinas": 10.0,
     "carboidratos": 28.0,
-    "restricoes": ["sem lactose", "vegetariano"]
+    "restricoes": ["sem lactose", "vegetariano", "sem ovo"]
   },
   {
     "id": 147,
@@ -1614,7 +1614,7 @@
     "calorias": 230.0,
     "proteinas": 12.0,
     "carboidratos": 30.0,
-    "restricoes": ["sem lactose", "sem glúten", "vegetariano"]
+    "restricoes": ["sem lactose", "sem glúten", "vegetariano", "sem ovo"]
   },
   {
     "id": 148,
@@ -1625,7 +1625,7 @@
     "calorias": 180.0,
     "proteinas": 28.0,
     "carboidratos": 10.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 149,
@@ -1636,7 +1636,7 @@
     "calorias": 180.0,
     "proteinas": 20.0,
     "carboidratos": 16.0,
-    "restricoes": ["sem lactose", "sem glúten"]
+    "restricoes": ["sem lactose", "sem glúten", "sem ovo"]
   },
   {
     "id": 150,
@@ -1647,7 +1647,7 @@
     "calorias": 280.0,
     "proteinas": 32.0,
     "carboidratos": 28.0,
-    "restricoes": ["vegetariano"]
+    "restricoes": ["vegetariano", "sem ovo"]
   },
   {
     "id": 151,

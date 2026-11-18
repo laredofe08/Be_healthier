@@ -110,7 +110,7 @@ main {
     }
 }
 
-/* Navegação */
+/*=== Navegação ===*/
 
 #barraSuperior {
     display: flex;
@@ -239,7 +239,6 @@ main {
         border-radius: 12px;
         font-weight: 500;
         opacity: 0.85;
-        transition: 0.2s;
     }
 
     #menuLateral a:hover {
@@ -299,13 +298,6 @@ main {
     background: none;
     opacity: 1;
     border-radius: 8px;
-    transition: transform 0.2s;
-}
-
-.logo a:hover,
-.logoAutenticacao a:hover,
-.rodapeLogoLink:hover {
-    transform: scale(1.04);
 }
 
 #menuLateral .logo a,
@@ -313,6 +305,58 @@ main {
     padding: 0;
     background: none;
     opacity: 1;
+}
+
+#menuLateral nav ul {
+    display: grid;
+    gap: 6px;
+}
+
+#menuInferior > ul {
+    display: flex;
+    width: 100%;
+}
+
+#menuInferior > ul > li {
+    flex: 1;
+}
+
+#menuInferior summary {
+    display: grid;
+    justify-items: center;
+    gap: 2px;
+    padding: 4px 0;
+    color: var(--textoSuave);
+    font-size: 0.68rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+#menuInferior summary img {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+#menuInferior .subMenu {
+    position: absolute;
+    right: 6px;
+    bottom: 100%;
+    min-width: 10rem;
+    padding: 8px;
+    border-radius: 12px;
+    background: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+#menuInferior .subMenu a {
+    flex-direction: row;
+    gap: 8px;
+    padding: 8px;
+    font-size: 1rem;
+}
+
+#menuInferior .subMenu img {
+    display: none;
 }
 
 /*=== Botões ===*/
@@ -326,11 +370,9 @@ main {
     padding: 13px 24px;
     border-radius: 99px;
     font-weight: 700;
-    transition: 0.2s;
 }
 
 .botao:hover {
-    transform: translateY(-2px);
     filter: brightness(1.05);
 }
 
@@ -387,7 +429,7 @@ main {
     flex-wrap: wrap;
 }
 
-.tituloPagina h2 {
+.tituloPagina :is(h1, h2) {
     font-size: 1.6rem;
     color: var(--floresta);
 }
@@ -421,9 +463,19 @@ p.textoSecundario {
 
 @media (min-width: 900px) {
 
-    .tituloPagina h2 {
+    .tituloPagina :is(h1, h2) {
         font-size: clamp(1.7rem, 3vw, 2.4rem);
     }
+}
+
+main section > h2:not(.somenteLeitores), .tituloSecao h2, .tituloPainel {
+    margin: 26px 0 14px;
+    color: var(--floresta);
+    font-size: 1.4rem;
+}
+
+main .painel > h2.tituloPainel {
+    margin-top: 0;
 }
 
 /*=== Painéis e colunas ===*/
@@ -443,8 +495,8 @@ p.textoSecundario {
 
 .painel {
     background: var(--branco);
-    border-radius: 18px;
-    padding: 18px;
+    border-radius: 12px;
+    padding: 16px;
     box-shadow: var(--sombra);
     margin-bottom: 20px;
 }
@@ -469,8 +521,8 @@ p.textoSecundario {
 @media (min-width: 900px) {
 
     .painel {
-        padding: 24px;
-        border-radius: 22px;
+        padding: 18px;
+        border-radius: 12px;
     }
 
     .duasColunas {
@@ -629,7 +681,6 @@ p.textoSecundario {
     z-index: 99;
     box-shadow: var(--sombra);
     font-weight: 500;
-    transition: 0.3s;
     opacity: 0;
     pointer-events: none;
 }
@@ -776,12 +827,12 @@ p.textoSecundario {
     margin: -8px 0 34px;
 }
 
-.estatisticas div {
+.estatisticas li {
     flex: 1;
     min-width: 44%;
     background: var(--branco);
-    border-radius: 18px;
-    padding: 14px;
+    border-radius: 12px;
+    padding: 12px;
     box-shadow: var(--sombra);
 }
 
@@ -800,19 +851,17 @@ p.textoSecundario {
 
 .cardDestaque {
     position: relative;
-    border-radius: 22px;
+    border-radius: 12px;
     overflow: hidden;
     aspect-ratio: 3 / 4;
     color: #fff;
     background: var(--tinta) center / cover;
     display: flex;
     align-items: flex-end;
-    padding: 20px;
-    transition: 0.3s;
+    padding: 16px;
 }
 
 .cardDestaque:hover {
-    transform: translateY(-6px);
     box-shadow: var(--sombra);
 }
 
@@ -878,7 +927,7 @@ p.textoSecundario {
         font-size: 1.15rem;
     }
 
-    .estatisticas div {
+    .estatisticas li {
         min-width: 150px;
         padding: 18px 20px;
     }
@@ -910,34 +959,48 @@ p.textoSecundario {
 
 .cardReceita {
     background: var(--branco);
-    border-radius: 18px;
+    border-radius: 12px;
     overflow: hidden;
     box-shadow: var(--sombra);
     cursor: pointer;
     position: relative;
-    transition: 0.25s;
     display: flex;
     flex-direction: row;
     align-items: stretch;
     min-height: 112px;
 }
 
-.cardReceita:hover {
-    transform: translateY(-5px);
-}
-
 .cardReceita img {
-    width: 112px;
+    width: 100%;
     aspect-ratio: auto;
     object-fit: cover;
     display: block;
-    height: auto;
+    height: 100%;
+}
+
+.imagemReceitaComCredito {
+    position: relative;
+    display: block;
+    width: 112px;
     min-height: 112px;
     flex: none;
 }
 
+.creditoImagemIa {
+    position: absolute;
+    left: 12px;
+    bottom: 7px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.78);
+    color: rgba(75, 75, 75, 0.95);
+    font-size: 12px;
+    line-height: 1.2;
+    pointer-events: none;
+}
+
 .corpoCardReceita {
-    padding: 12px 44px 12px 14px;
+    padding: 10px 40px 10px 12px;
     flex: 1;
     min-width: 0;
     display: flex;
@@ -946,7 +1009,7 @@ p.textoSecundario {
     justify-content: center;
 }
 
-.corpoCardReceita h4 {
+.corpoCardReceita h3 {
     font-size: 1rem;
     line-height: 1.25;
     min-height: 0;
@@ -968,7 +1031,6 @@ p.textoSecundario {
 #dicasMusculo {
     display: none;
 }
-
 
 .botaoFavoritar {
     position: absolute;
@@ -1066,17 +1128,19 @@ p.textoSecundario {
 
     .cardReceita {
         flex-direction: column;
-        border-radius: 20px;
+        border-radius: 12px;
         align-items: normal;
         min-height: auto;
     }
 
-    .cardReceita img {
+    .imagemReceitaComCredito {
         width: 100%;
-        height: auto;
-        min-height: auto;
         aspect-ratio: 4 / 3;
-        flex: 0 1 auto;
+        min-height: 0;
+    }
+
+    .cardReceita img {
+        height: 100%;
     }
 
     .corpoCardReceita {
@@ -1084,7 +1148,7 @@ p.textoSecundario {
         justify-content: normal;
     }
 
-    .corpoCardReceita h4 {
+    .corpoCardReceita h3 {
         min-height: 2.5em;
     }
 
@@ -1125,6 +1189,16 @@ p.textoSecundario {
     }
 }
 
+.corpoCardReceita h3, .cabecalhoRefeicao h3 {
+    margin: 0;
+    font-family: inherit;
+    font-weight: 700;
+}
+
+.corpoCardReceita h3 {
+    color: inherit;
+}
+
 /*=== Progresso e resumos ===*/
 
 .barraProgresso {
@@ -1141,11 +1215,45 @@ p.textoSecundario {
     height: 100%;
     background: var(--ambar);
     border-radius: 9px;
-    transition: width 0.5s;
 }
 
 .barraProgresso i.acimaDaMeta {
     background: var(--perigo);
+}
+
+.resumoCardapio .tituloPainel {
+    margin-bottom: 12px;
+}
+
+.resumoCalorias {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-top: 2px;
+}
+
+.resumoCalorias strong {
+    color: var(--folha);
+    font: 800 2.6rem Fraunces, serif;
+}
+
+.resumoCalorias span {
+    color: var(--textoSuave);
+    font: 700 1rem Fraunces, serif;
+}
+
+.resumoCardapio .barraProgresso {
+    margin: 6px 0 12px;
+}
+
+.resumoNutriente span {
+    display: block;
+    color: var(--textoSuave);
+    font-size: 0.85rem;
+}
+
+.resumoSemDados .barraProgresso {
+    margin-bottom: 12px;
 }
 
 .numeroGrande {
@@ -1223,7 +1331,7 @@ p.textoSecundario {
     margin-top: 16px;
 }
 
-.cabecalhoRefeicao h4 {
+.cabecalhoRefeicao h3 {
     color: var(--floresta);
     font-size: 1.05rem;
 }
@@ -1436,11 +1544,11 @@ p.textoSecundario {
 /*=== Dicas ===*/
 
 .cardDica {
-    display: flex;
+    display: block;
     gap: 14px;
     background: var(--branco);
-    border-radius: 18px;
-    padding: 18px;
+    border-radius: 10px;
+    padding: 14px;
     box-shadow: var(--sombra);
 }
 
@@ -1454,7 +1562,7 @@ p.textoSecundario {
 }
 
 .gradeReceitas.gradeDicas {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
 }
 
 /*=== Cidades de entrega ===*/
@@ -1532,6 +1640,11 @@ p.textoSecundario {
     margin-top: 14px;
 }
 
+.listaCidades .opcaoCidade {
+    width: 100%;
+    height: 100%;
+}
+
 /*=== Vídeos ===*/
 
 .vdos {
@@ -1599,7 +1712,7 @@ p.textoSecundario {
     margin: 8px 0 14px;
 }
 
-.tituloSecao h3 {
+.tituloSecao h2 {
     margin-bottom: 2px;
 }
 
@@ -1612,8 +1725,8 @@ p.textoSecundario {
 
 .cardMembro {
     background: var(--branco);
-    border-radius: 16px;
-    padding: 12px;
+    border-radius: 12px;
+    padding: 10px;
     box-shadow: var(--sombra);
     text-align: center;
 }
@@ -1706,10 +1819,10 @@ p.textoSecundario {
     margin: 0 0 12px;
 }
 
-.rodapeEquipe {
+.rodapeEquipe ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto repeat(3, auto);
+    grid-template-rows: repeat(3, auto);
     grid-auto-flow: column;
     gap: 6px 16px;
     margin-top: 18px;
@@ -1722,7 +1835,7 @@ p.textoSecundario {
     margin-bottom: 6px;
 }
 
-.rodapeNavegacao {
+.rodapeNavegacao ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 6px 16px;
@@ -1739,7 +1852,6 @@ p.textoSecundario {
     font-size: 0.92rem;
     opacity: 0.85;
     padding: 4px 0;
-    transition: 0.2s;
 }
 
 .rodapeNavegacao a:hover,
@@ -1772,6 +1884,10 @@ p.textoSecundario {
     align-content: start;
 }
 
+.rodapeLembrete .botaoAmarelo {
+    box-shadow: none;
+}
+
 .rodapeContato {
     display: grid;
     gap: 6px;
@@ -1788,7 +1904,6 @@ p.textoSecundario {
     font-size: 0.92rem;
     opacity: 0.85;
     padding: 4px 0;
-    transition: 0.2s;
 }
 
 .rodapeContato a:hover {
@@ -1868,9 +1983,9 @@ p.textoSecundario {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 12px;
+    padding: 8px 10px;
     border: 1px solid var(--borda);
-    border-radius: 14px;
+    border-radius: 10px;
     background: var(--fundo);
     color: var(--tinta);
     text-decoration: none;
@@ -1914,8 +2029,8 @@ a.canalContato:hover {
 
 .itemFaq {
     background: var(--branco);
-    border-radius: 14px;
-    padding: 14px 16px;
+    border-radius: 10px;
+    padding: 12px 14px;
     box-shadow: var(--sombra);
 }
 
@@ -1943,7 +2058,7 @@ a.canalContato:hover {
     }
 }
 
-/* Janela da receita */
+/*=== Janela da receita ===*/
 
 .modalReceita {
     position: fixed;
@@ -1965,7 +2080,6 @@ a.canalContato:hover {
     max-height: 90vh;
     overflow-y: auto;
     border-radius: 18px;
-    animation: aparecerModal 0.25s ease;
 }
 
 .imagemModalReceita {
@@ -1973,6 +2087,15 @@ a.canalContato:hover {
     height: 260px;
     object-fit: cover;
     display: block;
+}
+
+.imagemModalComCredito {
+    position: relative;
+    height: 260px;
+}
+
+.imagemModalComCredito .creditoImagemIa {
+    left: 25px;
 }
 
 .informacoesModalReceita {
@@ -2039,25 +2162,22 @@ a.canalContato:hover {
     outline-offset: 3px;
 }
 
-@keyframes aparecerModal {
-    from {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
 /*=== Ações das receitas ===*/
 
 .acoesReceita {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 8px;
     margin-top: 14px;
+}
+
+.acoesReceita .botao {
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: center;
+    padding: 8px 6px;
+    font-size: 0.78rem;
+    white-space: nowrap;
 }
 
 .acoesReceita [aria-pressed="true"] {
@@ -2081,6 +2201,12 @@ a.canalContato:hover {
 
 .seletorCardapio::backdrop {
     background: rgb(0 0 0 / 65%);
+}
+
+.seletorCardapio h2 {
+    margin: 26px 0 14px;
+    color: var(--floresta);
+    font-size: 1.4rem;
 }
 
 .seletorCardapio label {
@@ -2173,4 +2299,19 @@ a.canalContato:hover {
 .cidadeSacola select:focus-visible {
     outline: 3px solid var(--ambar);
     outline-offset: 3px;
+}
+
+:focus-visible {
+    outline: 3px solid currentColor;
+    outline-offset: 2px;
+}
+
+.somenteLeitores {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }

@@ -1,15 +1,20 @@
-/*  animação de seleção  */
+/*=== Armazenamento local ===*/
 
-function mudarCor(botao) {
-    for (const opcao of document.querySelectorAll(".opcaoCidade")) {
-        const selecionada = opcao === botao;
+function lerEscolhas(chave, padrao) {
+    try {
+        const dados = JSON.parse(localStorage.getItem(chave));
 
-        opcao.classList.toggle("selecionado", selecionada);
-        opcao.setAttribute("aria-pressed", selecionada);
+        if (dados === null) {
+            return padrao;
+        }
+
+        return dados;
+    } catch {
+        return padrao;
     }
 }
 
-/*=== Entregas ===*/
+/*=== Cidades de entrega ===*/
 
 let nomeCidade;
 let taxaEntrega;
@@ -35,6 +40,22 @@ function calcularEntrega(cidadeSelecionada) {
     return null;
 }
 
+function mudarCor(botao) {
+    if (!botao) return;
+
+    const ehFiltroDicas = botao.matches('[data-acao="selecionarObjetivo"]');
+    const opcoes = document.querySelectorAll(
+        ehFiltroDicas ? '[data-acao="selecionarObjetivo"]' : ".opcaoCidade"
+    );
+
+    for (const opcao of opcoes) {
+        const selecionada = opcao === botao;
+
+        opcao.classList.toggle(ehFiltroDicas ? "ativo" : "selecionado", selecionada);
+        opcao.setAttribute("aria-pressed", selecionada);
+    }
+}
+
 function iniciarCidades() {
     for (const botao of document.querySelectorAll(".opcaoCidade")) {
         botao.addEventListener("click", function () {
@@ -46,6 +67,20 @@ function iniciarCidades() {
             }
         });
     }
+}
+
+function atualizarCidadeEntrega() {
+    for (const elemento of document.querySelectorAll(".cidadeAtual")) {
+        elemento.textContent = nomeCidade || "Selecione a cidade";
+    }
+
+    const selecionado = Array.from(
+        document.querySelectorAll(".opcaoCidade")
+    ).find(
+        botao => botao.dataset.valor === nomeCidade
+    );
+
+    mudarCor(selecionado);
 }
 
 /*=== Perfil do usuário ===*/
@@ -180,7 +215,7 @@ function calcularMetaSodio() {
     return metaSodio;
 }
 
-/*=== Capturar informações do formulário ===*/
+/*=== Dados do formulário ===*/
 
 function calcularPerfilUsuario() {
     pesoUsuario = document.getElementById("peso").value;
@@ -204,7 +239,7 @@ function calcularPerfilUsuario() {
     ).map((input) => input.value);
 }
 
-/*=== Salvar perfil ===*/
+/*=== Gravação do perfil ===*/
 
 function salvarPerfil() {
     calcularPerfilUsuario();
@@ -216,7 +251,6 @@ function salvarPerfil() {
         !nivelAtividadeFisicaUsuario || !objetivoUsuario ||
         (sexoUsuario !== "m" && sexoUsuario !== "f")
     ) {
-        alert("Preencha todos os campos obrigatórios com valores válidos!");
         return;
     }
 
@@ -367,7 +401,7 @@ function exibirEquilibrio() {
 /*=== Recuperar perfil do usuário ===*/
 
 function recuperarPerfilUsuario() {
-    // Recuperar informações do localStorage
+    // Dados salvos
     pesoUsuario = localStorage.getItem("pesoUsuario");
     alturaUsuario = localStorage.getItem("alturaUsuario");
     idadeUsuario = localStorage.getItem("idadeUsuario");
@@ -387,7 +421,7 @@ function recuperarPerfilUsuario() {
 
     const gostosUsuario = localStorage.getItem("gostosUsuario");
 
-    // Verificar se existe perfil salvo
+    // Disponibilidade do perfil
     if (pesoUsuario === null) {
         return;
     }
@@ -402,7 +436,7 @@ function recuperarPerfilUsuario() {
         return;
     }
 
-    // Preencher campos do formulário
+    // Campos do perfil
     document.getElementById("peso").value = pesoUsuario;
     document.getElementById("altura").value = alturaUsuario;
     document.getElementById("idade").value = idadeUsuario;
@@ -410,7 +444,7 @@ function recuperarPerfilUsuario() {
 
     document.getElementById("gostos").value = gostosUsuario || "";
 
-    // Recuperar atividade física
+    // Atividade física
     const indiceAtividade = listaNiveisAtividadeFisica.findIndex(
         (nivel) => nivel.nome === nivelAtividadeFisicaUsuario
     );
@@ -419,7 +453,7 @@ function recuperarPerfilUsuario() {
         document.getElementById("atividade").value = indiceAtividade;
     }
 
-    // Recuperar objetivo
+    // Objetivo
     const valorObjetivo = Object.keys(objetivosPorValor).find(
         (key) => objetivosPorValor[key] === objetivoUsuario
     );
@@ -428,13 +462,13 @@ function recuperarPerfilUsuario() {
         document.getElementById("objetivo").value = valorObjetivo;
     }
 
-    // Recuperar restrições alimentares
+    // Restrições alimentares
     document.querySelectorAll('input[name="restricoes"]').forEach((checkbox) => {
         checkbox.checked = restricaoAlimentarUsuario.includes(checkbox.value);
     });
 }
 
-/*=== Filtro de Dicas ===*/
+/*=== Dicas por objetivo ===*/
 
 function iniciarFiltroDicas() {
     const botoesObjetivo = document.querySelectorAll(
@@ -458,9 +492,15 @@ function iniciarFiltroDicas() {
     }
 }
 
-/*=== Exibir receitas ===*/
+/*=== Catálogo de receitas ===*/
 
-/*=== Exibir receitas e modal ===*/
+const receitasPorId = new Map();
+
+function buscarReceita(id) {
+    return receitasPorId.get(Number(id));
+}
+
+/*=== Receitas e detalhes ===*/
 
 function exibirReceitas() {
     const lista = document.getElementById("listaReceitas");
@@ -471,19 +511,22 @@ function exibirReceitas() {
 
     lista.classList.add("gradeReceitas");
 
-    // 1. Renderiza os cards injetando o data-id correto em cada receita
+    // Cards das receitas
     lista.innerHTML = receitas
         .map(
             (receita) => `
-                <article class="cardReceita" data-id="${receita.id}" tabindex="0">
-                    <img
-                        src="Imagens/receitas/cards/${receita.id}.jpg"
-                        alt="${receita.nome}"
-                        loading="lazy"
-                    >
+                <li class="cardReceita" data-id="${receita.id}" tabindex="0">
+                    <div class="imagemReceitaComCredito">
+                        <img
+                            src="Imagens/receitas/cards/${receita.id}.jpg"
+                            alt="${receita.nome}"
+                            loading="lazy"
+                        >
+                        <span class="creditoImagemIa">Midia gerada por I.A.</span>
+                    </div>
 
                     <div class="corpoCardReceita">
-                        <h4>${receita.nome}</h4>
+                        <h3>${receita.nome}</h3>
 
                         <p class="textoSecundario">
                             ${receita.categoria}
@@ -496,108 +539,19 @@ function exibirReceitas() {
 
                         ${botoesDaReceita(Number(receita.id))}
                     </div>
-                </article>
+                </li>
             `
         )
         .join("");
 
-    // Oculta imagens que falharem ao carregar
+    // Falhas nas imagens
     lista.querySelectorAll("img").forEach((imagem) => {
         imagem.addEventListener("error", function () {
             this.style.display = "none";
         });
     });
 
-    // 2. Função para criar e abrir a janela da receita
-    function abrirReceita(receita) {
-        const modal = document.createElement("div");
-        modal.className = "modalReceita";
-
-        modal.innerHTML = `
-            <div class="conteudoModalReceita">
-                <button class="fecharModal" aria-label="Fechar">
-                    &times;
-                </button>
-
-                <img
-                    class="imagemModalReceita"
-                    src="Imagens/receitas/cards/${receita.id}.jpg"
-                    alt="${receita.nome}"
-                >
-
-                <div class="informacoesModalReceita">
-                    <p class="textoSecundario">
-                        ${receita.categoria}
-                    </p>
-
-                    <h2>${receita.nome}</h2>
-
-                    ${botoesDaReceita(receita.id)}
-
-                    <div class="dadosNutricionais">
-                        <div>
-                            <strong>${receita.calorias}</strong>
-                            <span>Calorias</span>
-                        </div>
-
-                        <div>
-                            <strong>${receita.proteinas}g</strong>
-                            <span>Proteínas</span>
-                        </div>
-
-                        <div>
-                            <strong>${receita.carboidratos}g</strong>
-                            <span>Carboidratos</span>
-                        </div>
-                    </div>
-
-                    <h3>Ingredientes</h3>
-                    <p>${receita.ingredientes || "Ingredientes não informados."}</p>
-
-                    <h3>Modo de preparo</h3>
-                    <p>${receita.preparo || "Modo de preparo não informado."}</p>
-                </div>
-            </div>
-        `;
-
-        document.body.appendChild(modal);
-
-        // Tira o scroll do fundo da página enquanto o modal estiver aberto
-        const rolagemAnterior = document.body.style.overflow;
-        document.body.style.overflow = "hidden";
-
-        function fecharReceita() {
-            modal.remove();
-            document.body.style.overflow = rolagemAnterior;
-            document.removeEventListener("keydown", fecharComEsc);
-        }
-
-        // Fechar pelo botão de fechar
-        modal.querySelector(".fecharModal").addEventListener("click", () => {
-            fecharReceita();
-        });
-
-        // Fechar tocando na área externa do modal
-        modal.addEventListener("click", (evento) => {
-            if (evento.target === modal) {
-                fecharReceita();
-            }
-        });
-
-        // Fechar com a tecla ESC
-        function fecharComEsc(evento) {
-            if (
-                evento.key === "Escape" &&
-                !document.querySelector(".seletorCardapio[open]")
-            ) {
-                fecharReceita();
-            }
-        }
-
-        document.addEventListener("keydown", fecharComEsc);
-    }
-
-    // 3. Ouvinte para abrir a receita ao clicar ou tocar no card
+    // Seleção do card
     lista.addEventListener("click", function (evento) {
         const card = evento.target.closest(".cardReceita");
 
@@ -611,7 +565,7 @@ function exibirReceitas() {
         }
     });
 
-    // 4. Permitir abrir usando Enter ou Espaço (acessibilidade)
+    // Seleção pelo teclado
     lista.addEventListener("keydown", function (evento) {
         if (
             evento.target.classList.contains("cardReceita") &&
@@ -623,45 +577,102 @@ function exibirReceitas() {
     });
 }
 
-/*=== Exibir receitas na página de Entrega ===*/
+/*=== Janela da receita ===*/
 
-/*=== Dias e refeições do cardápio ===*/
+function abrirReceita(receita) {
+    const modal = document.createElement("div");
+    modal.className = "modalReceita";
 
-const diasCardapio = [
-    "Segunda",
-    "Terça",
-    "Quarta",
-    "Quinta",
-    "Sexta",
-    "Sábado",
-    "Domingo"
-];
+    modal.innerHTML = `
+        <div class="conteudoModalReceita">
+            <button class="fecharModal" aria-label="Fechar">
+                &times;
+            </button>
 
-const refeicoesCardapio = [
-    "Café da manhã",
-    "Almoço",
-    "Lanche",
-    "Jantar"
-];
+            <div class="imagemModalComCredito">
+                <img
+                    class="imagemModalReceita"
+                    src="Imagens/receitas/cards/${receita.id}.jpg"
+                    alt="${receita.nome}"
+                >
+                <span class="creditoImagemIa">Midia gerada por I.A.</span>
+            </div>
 
-let diaCardapio = 0;
-let somenteFavoritas = false;
+            <div class="informacoesModalReceita">
+                <p class="textoSecundario">
+                    ${receita.categoria}
+                </p>
 
-/*=== Leitura dos dados salvos ===*/
+                <h2>${receita.nome}</h2>
 
-function lerEscolhas(chave, padrao) {
-    try {
-        const dados = JSON.parse(localStorage.getItem(chave));
+                ${botoesDaReceita(receita.id)}
 
-        if (dados === null) {
-            return padrao;
-        }
+                <div class="dadosNutricionais">
+                    <div>
+                        <strong>${receita.calorias}</strong>
+                        <span>Calorias</span>
+                    </div>
 
-        return dados;
-    } catch {
-        return padrao;
+                    <div>
+                        <strong>${receita.proteinas}g</strong>
+                        <span>Proteínas</span>
+                    </div>
+
+                    <div>
+                        <strong>${receita.carboidratos}g</strong>
+                        <span>Carboidratos</span>
+                    </div>
+                </div>
+
+                <h3>Ingredientes</h3>
+                <p>${receita.ingredientes || "Ingredientes não informados."}</p>
+
+                <h3>Modo de preparo</h3>
+                <p>${receita.preparo || "Modo de preparo não informado."}</p>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Rolagem da página
+    const rolagemAnterior = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    function fecharReceita() {
+        modal.remove();
+        document.body.style.overflow = rolagemAnterior;
+        document.removeEventListener("keydown", fecharComEsc);
     }
+
+    // Botão de fechar
+    modal.querySelector(".fecharModal").addEventListener("click", () => {
+        fecharReceita();
+    });
+
+    // Clique fora da janela
+    modal.addEventListener("click", (evento) => {
+        if (evento.target === modal) {
+            fecharReceita();
+        }
+    });
+
+    // Tecla Escape
+    function fecharComEsc(evento) {
+        if (
+            evento.key === "Escape" &&
+            !document.querySelector(".seletorCardapio[open]")
+        ) {
+            fecharReceita();
+        }
+    }
+
+    document.addEventListener("keydown", fecharComEsc);
 }
+
+/*=== Receitas favoritas ===*/
+
+let somenteFavoritas = false;
 
 let favoritas = lerEscolhas("receitasFavoritas", []);
 
@@ -672,92 +683,6 @@ if (!Array.isArray(favoritas)) {
 for (let indice = 0; indice < favoritas.length; indice++) {
     favoritas[indice] = Number(favoritas[indice]);
 }
-
-const cardapioSalvo = lerEscolhas("cardapioSemanal", []);
-let semanaCardapio = [];
-
-for (let dia = 0; dia < diasCardapio.length; dia++) {
-    semanaCardapio[dia] = [];
-
-    for (let refeicao = 0; refeicao < refeicoesCardapio.length; refeicao++) {
-        let itens = cardapioSalvo?.[dia]?.[refeicao];
-
-        if (!Array.isArray(itens)) {
-            itens = [];
-        }
-
-        semanaCardapio[dia][refeicao] = [];
-
-        for (const id of itens) {
-            semanaCardapio[dia][refeicao].push(Number(id));
-        }
-    }
-}
-
-/*=== Consulta de receitas ===*/
-
-const receitasPorId = new Map();
-let receitasEntrega = [];
-
-function buscarReceita(id) {
-    return receitasPorId.get(Number(id));
-}
-
-function exibirReceitasEntrega() {
-    const lista = document.querySelector("#listaPratosEntrega");
-
-    if (!lista || typeof receitas === "undefined") {
-        return;
-    }
-
-    let conteudo = "";
-
-    for (const receita of receitasEntrega) {
-        conteudo += `
-            <article class="cardReceita">
-                <img
-                    src="Imagens/receitas/cards/${receita.id}.jpg"
-                    alt="${receita.nome}"
-                    loading="lazy"
-                >
-
-                <div class="corpoCardReceita">
-                    <h4>${receita.nome}</h4>
-
-                    <p class="textoSecundario">
-                        ${receita.categoria}
-                    </p>
-
-                    <p class="textoSecundario">
-                        ${receita.calorias} kcal ·
-                        ${receita.proteinas}g de proteína
-                    </p>
-
-                    <p class="textoSecundario">
-                        ${receita.ingredientes}
-                    </p>
-
-                    <p class="preco">
-                        ${formatarDinheiro(precoPratoEntrega)}
-                    </p>
-
-                    <button
-                        type="button"
-                        class="botao"
-                        data-sacola-acao="adicionar"
-                        data-id="${receita.id}"
-                    >
-                        + Adicionar à sacola
-                    </button>
-                </div>
-            </article>
-        `;
-    }
-
-    lista.innerHTML = conteudo;
-}
-
-/*=== Favoritos e ações das receitas ===*/
 
 function botoesDaReceita(id) {
     const favorita = favoritas.includes(id);
@@ -835,6 +760,158 @@ function favoritarReceita(id) {
     filtrarReceitas();
 }
 
+/*=== Filtros das receitas ===*/
+
+const restricoesPorId = new Map();
+const restricoesSelecionadas = new Set();
+
+async function iniciarFiltrosAlimentares() {
+    const botoes = document.querySelectorAll('[data-acao="filtroRestricao"]');
+
+    if (!botoes.length) return;
+
+    const nomes = {
+        lactose: "sem lactose",
+        gluten: "sem gluten",
+        ovo: "sem ovo",
+        vegetariano: "vegetariano"
+    };
+
+    for (const botao of botoes) {
+        botao.disabled = true;
+        botao.setAttribute("aria-pressed", "false");
+    }
+
+    try {
+        const resposta = await fetch("receitas.json");
+
+        if (!resposta.ok) throw new Error("Falha ao carregar receitas.json");
+
+        const catalogo = await resposta.json();
+        const disponiveis = new Set();
+
+        for (const receita of catalogo) {
+            const restricoes = (receita.restricoes || []).map(normalizarTexto);
+            restricoesPorId.set(Number(receita.id), restricoes);
+
+            for (const restricao of restricoes) {
+                disponiveis.add(restricao);
+            }
+        }
+
+        for (const botao of botoes) {
+            const restricao = nomes[botao.dataset.valor];
+
+            if (!disponiveis.has(restricao)) {
+                botao.title = "Nenhuma receita cadastrada com esse filtro";
+                continue;
+            }
+
+            botao.disabled = false;
+            botao.addEventListener("click", function () {
+                const ativo = !restricoesSelecionadas.has(restricao);
+
+                if (ativo) {
+                    restricoesSelecionadas.add(restricao);
+                } else {
+                    restricoesSelecionadas.delete(restricao);
+                }
+
+                botao.classList.toggle("ativo", ativo);
+                botao.setAttribute("aria-pressed", String(ativo));
+                filtrarReceitas();
+            });
+        }
+    } catch (erro) {
+        console.error("Falha ao carregar os filtros alimentares.", erro);
+        for (const botao of botoes) {
+            botao.title = "Filtros alimentares indisponíveis";
+        }
+    }
+}
+
+function normalizarTexto(texto) {
+    return (texto || "")
+        .trim()
+        .toLocaleLowerCase("pt-BR")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+}
+
+function filtrarReceitas() {
+    const campoBusca = document.querySelector("#campoBuscaReceitas");
+    const filtroCategoria = document.querySelector("#filtroCategoria");
+    const filtrosAtivos = Array.from(restricoesSelecionadas);
+    const termo = normalizarTexto(campoBusca?.value);
+    const categoria = filtroCategoria?.value || "";
+    const cards = document.querySelectorAll("#listaReceitas .cardReceita");
+
+    for (const card of cards) {
+        const id = Number(card.dataset.id);
+        const receita = buscarReceita(id);
+
+        if (!receita) {
+            card.hidden = true;
+            continue;
+        }
+
+        const correspondeTexto = normalizarTexto(receita.nome).includes(termo) ||
+            normalizarTexto(receita.ingredientes).includes(termo);
+        const correspondeCategoria = categoria === "" || receita.categoria === categoria;
+        const correspondeFavoritas = !somenteFavoritas || favoritas.includes(id);
+
+        const restricoes = restricoesPorId.get(id) || [];
+        const correspondeRestricoes = filtrosAtivos.every(
+            restricao => restricoes.includes(restricao)
+        );
+
+        card.hidden = !(correspondeTexto && correspondeCategoria &&
+            correspondeFavoritas && correspondeRestricoes);
+    }
+}
+
+/*=== Dias e refeições do cardápio ===*/
+
+const diasCardapio = [
+    "Segunda",
+    "Terça",
+    "Quarta",
+    "Quinta",
+    "Sexta",
+    "Sábado",
+    "Domingo"
+];
+
+const refeicoesCardapio = [
+    "Café da manhã",
+    "Almoço",
+    "Lanche",
+    "Jantar"
+];
+
+let diaCardapio = 0;
+
+const cardapioSalvo = lerEscolhas("cardapioSemanal", []);
+let semanaCardapio = [];
+
+for (let dia = 0; dia < diasCardapio.length; dia++) {
+    semanaCardapio[dia] = [];
+
+    for (let refeicao = 0; refeicao < refeicoesCardapio.length; refeicao++) {
+        let itens = cardapioSalvo?.[dia]?.[refeicao];
+
+        if (!Array.isArray(itens)) {
+            itens = [];
+        }
+
+        semanaCardapio[dia][refeicao] = [];
+
+        for (const id of itens) {
+            semanaCardapio[dia][refeicao].push(Number(id));
+        }
+    }
+}
+
 /*=== Resumo e exibição do cardápio ===*/
 
 function calcularResumo(dia) {
@@ -888,7 +965,7 @@ function exibirCardapio() {
     for (let indice = 0; indice < refeicoesCardapio.length; indice++) {
         conteudo += `
             <div class="cabecalhoRefeicao">
-                <h4>${refeicoesCardapio[indice]}</h4>
+                <h3>${refeicoesCardapio[indice]}</h3>
 
                 <a class="botao botaoPequeno" href="receitas.html">
                     + Receita
@@ -903,7 +980,7 @@ function exibirCardapio() {
 
             if (receita) {
                 itens += `
-                    <div class="linhaItem">
+                    <li class="linhaItem">
                         <b>${receita.nome}</b>
 
                         <button
@@ -915,7 +992,7 @@ function exibirCardapio() {
                         >
                             ×
                         </button>
-                    </div>
+                    </li>
                 `;
             }
         }
@@ -926,6 +1003,8 @@ function exibirCardapio() {
                     Nenhuma receita adicionada.
                 </p>
             `;
+        } else {
+            itens = `<ul>${itens}</ul>`;
         }
 
         conteudo += itens;
@@ -1050,10 +1129,11 @@ function escolherRefeicao(id) {
 
     const modal = document.createElement("dialog");
     modal.className = "seletorCardapio";
+    modal.setAttribute("aria-labelledby", "tituloAdicionarCardapio");
 
     modal.innerHTML = `
         <form>
-            <h3>Adicionar ao cardápio</h3>
+            <h2 id="tituloAdicionarCardapio">Adicionar ao cardápio</h2>
 
             <p>${receita.nome}</p>
 
@@ -1116,55 +1196,6 @@ function escolherRefeicao(id) {
     };
 
     modal.showModal();
-}
-
-/*=== Filtros das receitas ===*/
-
-function filtrarReceitas() {
-    const campoBusca = document.querySelector("#campoBuscaReceitas");
-    const filtroCategoria = document.querySelector("#filtroCategoria");
-
-    let busca = "";
-    let categoria = "";
-
-    if (campoBusca) {
-        busca = campoBusca.value.trim().toLocaleLowerCase("pt-BR");
-    }
-
-    if (filtroCategoria) {
-        categoria = filtroCategoria.value;
-    }
-
-    const cards = document.querySelectorAll("#listaReceitas .cardReceita");
-
-    for (const card of cards) {
-        const id = Number(card.dataset.id);
-        const receita = buscarReceita(id);
-
-        if (!receita) {
-            card.hidden = true;
-            continue;
-        }
-
-        const texto = `${receita.nome} ${receita.ingredientes}`
-            .toLocaleLowerCase("pt-BR");
-
-        let mostrar = true;
-
-        if (somenteFavoritas && !favoritas.includes(id)) {
-            mostrar = false;
-        }
-
-        if (categoria !== "" && receita.categoria !== categoria) {
-            mostrar = false;
-        }
-
-        if (!texto.includes(busca)) {
-            mostrar = false;
-        }
-
-        card.hidden = !mostrar;
-    }
 }
 
 /*=== Eventos das receitas e do cardápio ===*/
@@ -1251,6 +1282,67 @@ function iniciarCardapio() {
     }
 
     document.addEventListener("click", tratarCliqueReceitas, true);
+}
+
+/*=== Pratos para entrega ===*/
+
+let receitasEntrega = [];
+
+function exibirReceitasEntrega() {
+    const lista = document.querySelector("#listaPratosEntrega");
+
+    if (!lista || typeof receitas === "undefined") {
+        return;
+    }
+
+    let conteudo = "";
+
+    for (const receita of receitasEntrega) {
+        conteudo += `
+            <li class="cardReceita">
+                <div class="imagemReceitaComCredito">
+                    <img
+                        src="Imagens/receitas/cards/${receita.id}.jpg"
+                        alt="${receita.nome}"
+                        loading="lazy"
+                    >
+                    <span class="creditoImagemIa">Midia gerada por I.A.</span>
+                </div>
+
+                <div class="corpoCardReceita">
+                    <h3>${receita.nome}</h3>
+
+                    <p class="textoSecundario">
+                        ${receita.categoria}
+                    </p>
+
+                    <p class="textoSecundario">
+                        ${receita.calorias} kcal ·
+                        ${receita.proteinas}g de proteína
+                    </p>
+
+                    <p class="textoSecundario">
+                        ${receita.ingredientes}
+                    </p>
+
+                    <p class="preco">
+                        ${formatarDinheiro(precoPratoEntrega)}
+                    </p>
+
+                    <button
+                        type="button"
+                        class="botao"
+                        data-sacola-acao="adicionar"
+                        data-id="${receita.id}"
+                    >
+                        + Adicionar à sacola
+                    </button>
+                </div>
+            </li>
+        `;
+    }
+
+    lista.innerHTML = conteudo;
 }
 
 /*=== Configuração da sacola ===*/
@@ -1342,21 +1434,7 @@ function atualizarContadoresSacola() {
     }
 }
 
-function atualizarCidadeEntrega() {
-    for (const elemento of document.querySelectorAll(".cidadeAtual")) {
-        elemento.textContent = nomeCidade || "Selecione a cidade";
-    }
-
-    const selecionado = Array.from(
-        document.querySelectorAll(".opcaoCidade")
-    ).find(
-        botao => botao.dataset.valor === nomeCidade
-    );
-
-    mudarCor(selecionado);
-}
-
-/*=== Adicionar e remover pratos ===*/
+/*=== Itens da sacola ===*/
 
 function alterarSacola(id, acao) {
     if (!pratoDisponivel(id)) return;
@@ -1622,7 +1700,7 @@ function finalizarSimulacao() {
     avisarSacola("Simulação concluída, sem cobrança.");
 }
 
-/*=== Recuperar sacola salva ===*/
+/*=== Sacola salva ===*/
 
 function recuperarSacola() {
     const dados = lerEscolhas("sacolaEntrega", []);
@@ -1670,6 +1748,8 @@ function recuperarSacola() {
         }
     });
 }
+
+/*=== Eventos da sacola ===*/
 
 document.addEventListener("click", function (evento) {
     const botao = evento.target.closest(
@@ -1768,6 +1848,7 @@ function iniciarPagina() {
     recuperarPerfilUsuario();
     iniciarFiltroDicas();
     exibirReceitas();
+    iniciarFiltrosAlimentares();
     exibirReceitasEntrega();
     iniciarCardapio();
     recuperarSacola();
