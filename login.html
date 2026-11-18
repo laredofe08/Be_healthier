@@ -18,30 +18,30 @@
         <div>
           <div class="logoAutenticacao">
             <a href="index.html" title="Ir para o início" aria-label="BeHealthier — ir para o início">
-          <img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier">
-        </a>
+              <img src="Imagens/icons/esquilo-logo.svg" alt="BeHealthier">
+            </a>
           </div>
-          <h1>Seu progresso,<br><em>salvo na sua conta.</em></h1>
+          <p class="chamadaAutenticacao">Seu progresso,<br><em>salvo na sua conta.</em></p>
           <p>Entre para guardar cardápio, favoritas e metas em qualquer dispositivo.</p>
         </div>
       </header>
       <div class="areaFormularioAutenticacao">
         <section class="caixaAutenticacao">
-          <h2 id="tituloAutenticacao">Bem-vindo de volta</h2>
+          <h1 id="tituloAutenticacao">Bem-vindo de volta</h1>
           <div class="listaOpcoes">
             <button class="botaoOpcao ativo" data-acao="alternarAbaAutenticacao" data-valor="entrar">Entrar</button>
             <button class="botaoOpcao" data-acao="alternarAbaAutenticacao" data-valor="cadastro">Criar conta</button>
           </div>
           <form class="gradeFormulario" id="formularioAutenticacao" onsubmit="return false">
             <label class="somenteCadastro">Nome
-          <input name="nome" autocomplete="name">
-        </label>
+              <input name="nome" autocomplete="name">
+            </label>
             <label>E-mail
-          <input name="email" type="email" autocomplete="email">
-        </label>
+              <input name="email" type="email" autocomplete="email">
+            </label>
             <label>Senha
-          <input name="senha" type="password" autocomplete="current-password">
-        </label>
+              <input name="senha" type="password" autocomplete="current-password">
+            </label>
           </form>
           <output id="erroAutenticacao"></output>
           <button class="botao" id="botaoAutenticar" data-acao="autenticar">Entrar</button>

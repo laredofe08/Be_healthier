@@ -110,7 +110,7 @@ main {
     }
 }
 
-/* Navegação */
+/*=== Navegação ===*/
 
 #barraSuperior {
     display: flex;
@@ -307,6 +307,58 @@ main {
     opacity: 1;
 }
 
+#menuLateral nav ul {
+    display: grid;
+    gap: 6px;
+}
+
+#menuInferior > ul {
+    display: flex;
+    width: 100%;
+}
+
+#menuInferior > ul > li {
+    flex: 1;
+}
+
+#menuInferior summary {
+    display: grid;
+    justify-items: center;
+    gap: 2px;
+    padding: 4px 0;
+    color: var(--textoSuave);
+    font-size: 0.68rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+#menuInferior summary img {
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+#menuInferior .subMenu {
+    position: absolute;
+    right: 6px;
+    bottom: 100%;
+    min-width: 10rem;
+    padding: 8px;
+    border-radius: 12px;
+    background: var(--branco);
+    box-shadow: var(--sombra);
+}
+
+#menuInferior .subMenu a {
+    flex-direction: row;
+    gap: 8px;
+    padding: 8px;
+    font-size: 1rem;
+}
+
+#menuInferior .subMenu img {
+    display: none;
+}
+
 /*=== Botões ===*/
 
 .botao {
@@ -414,6 +466,16 @@ p.textoSecundario {
     .tituloPagina :is(h1, h2) {
         font-size: clamp(1.7rem, 3vw, 2.4rem);
     }
+}
+
+main section > h2:not(.somenteLeitores), .tituloSecao h2, .tituloPainel {
+    margin: 26px 0 14px;
+    color: var(--floresta);
+    font-size: 1.4rem;
+}
+
+main .painel > h2.tituloPainel {
+    margin-top: 0;
 }
 
 /*=== Painéis e colunas ===*/
@@ -970,7 +1032,6 @@ p.textoSecundario {
     display: none;
 }
 
-
 .botaoFavoritar {
     position: absolute;
     top: 6px;
@@ -1126,6 +1187,16 @@ p.textoSecundario {
         overflow-x: visible;
         padding-bottom: 0;
     }
+}
+
+.corpoCardReceita h3, .cabecalhoRefeicao h3 {
+    margin: 0;
+    font-family: inherit;
+    font-weight: 700;
+}
+
+.corpoCardReceita h3 {
+    color: inherit;
 }
 
 /*=== Progresso e resumos ===*/
@@ -1569,6 +1640,11 @@ p.textoSecundario {
     margin-top: 14px;
 }
 
+.listaCidades .opcaoCidade {
+    width: 100%;
+    height: 100%;
+}
+
 /*=== Vídeos ===*/
 
 .vdos {
@@ -1978,7 +2054,7 @@ a.canalContato:hover {
     }
 }
 
-/* Janela da receita */
+/*=== Janela da receita ===*/
 
 .modalReceita {
     position: fixed;
@@ -2123,6 +2199,12 @@ a.canalContato:hover {
     background: rgb(0 0 0 / 65%);
 }
 
+.seletorCardapio h2 {
+    margin: 26px 0 14px;
+    color: var(--floresta);
+    font-size: 1.4rem;
+}
+
 .seletorCardapio label {
     display: block;
     margin-top: 16px;
@@ -2213,91 +2295,6 @@ a.canalContato:hover {
 .cidadeSacola select:focus-visible {
     outline: 3px solid var(--ambar);
     outline-offset: 3px;
-}
-
-#menuLateral nav ul {
-    display: grid;
-    gap: 6px;
-}
-
-#menuInferior > ul {
-    display: flex;
-    width: 100%;
-}
-
-#menuInferior > ul > li {
-    flex: 1;
-}
-
-#menuInferior summary {
-    display: grid;
-    justify-items: center;
-    gap: 2px;
-    padding: 4px 0;
-    color: var(--textoSuave);
-    font-size: 0.68rem;
-    cursor: pointer;
-    list-style: none;
-}
-
-#menuInferior summary img {
-    width: 1.4rem;
-    height: 1.4rem;
-}
-
-#menuInferior .subMenu {
-    position: absolute;
-    right: 6px;
-    bottom: 100%;
-    min-width: 10rem;
-    padding: 8px;
-    border-radius: 12px;
-    background: var(--branco);
-    box-shadow: var(--sombra);
-}
-
-#menuInferior .subMenu a {
-    flex-direction: row;
-    gap: 8px;
-    padding: 8px;
-    font-size: 1rem;
-}
-
-#menuInferior .subMenu img {
-    display: none;
-}
-
-main section > h2:not(.somenteLeitores), .tituloSecao h2, .tituloPainel {
-    margin: 26px 0 14px;
-    color: var(--floresta);
-    font-size: 1.4rem;
-}
-
-main .painel > h2.tituloPainel {
-    margin-top: 0;
-}
-
-.corpoCardReceita h3, .cabecalhoRefeicao h3 {
-    margin: 0;
-    font-family: inherit;
-    font-weight: 700;
-}
-
-.corpoCardReceita h3 {
-    color: inherit;
-}
-
-.tituloSecao h2 {
-    margin-bottom: 2px;
-}
-
-.listaCidades .opcaoCidade {
-    width: 100%;
-    height: 100%;
-}
-
-.paginaAutenticacao {
-    padding: 0;
 }
 
 :focus-visible {
