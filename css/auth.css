@@ -1,40 +1,9 @@
-
 .paginaAutenticacao {
     display: flex;
     min-height: 100vh;
+    padding: 0;
     background: var(--fundo);
 }
-
-#erroAutenticacao {
-    color: var(--perigo);
-    min-height: 22px;
-    margin: 8px 0;
-}
-
-.caixaAutenticacao .botao {
-    width: 100%;
-    justify-content: center;
-}
-
-.caixaAutenticacao form {
-    grid-template-columns: 1fr;
-}
-
-.gradeFormulario .somenteCadastro {
-    display: none;
-}
-
-[data-modo=cadastro] .gradeFormulario .somenteCadastro {
-    display: flex;
-}
-
-.botaoVisitante {
-    display: block;
-    margin: 14px auto 0;
-    color: var(--textoSuave);
-    text-decoration: underline;
-}
-
 
 .bannerAutenticacao {
     flex: 1.1;
@@ -46,7 +15,6 @@
     align-items: flex-end;
     padding: 56px;
 }
-
 
 .bannerAutenticacao:before {
     content: "";
@@ -60,7 +28,10 @@
     max-width: 520px;
 }
 
-.bannerAutenticacao h1 {
+.chamadaAutenticacao {
+    font-family: Fraunces, Georgia, serif;
+    font-weight: 800;
+    line-height: 1.1;
     font-size: 3rem;
     margin: 18px 0;
 }
@@ -100,10 +71,40 @@
     box-shadow: var(--sombra);
 }
 
-.caixaAutenticacao h2 {
+.caixaAutenticacao h1 {
     font-size: 2.2rem;
     color: var(--floresta);
     margin-bottom: 16px;
+}
+
+#erroAutenticacao {
+    color: var(--perigo);
+    min-height: 22px;
+    margin: 8px 0;
+}
+
+.caixaAutenticacao .botao {
+    width: 100%;
+    justify-content: center;
+}
+
+.caixaAutenticacao form {
+    grid-template-columns: 1fr;
+}
+
+.gradeFormulario .somenteCadastro {
+    display: none;
+}
+
+[data-modo=cadastro] .gradeFormulario .somenteCadastro {
+    display: flex;
+}
+
+.botaoVisitante {
+    display: block;
+    margin: 14px auto 0;
+    color: var(--textoSuave);
+    text-decoration: underline;
 }
 
 @media (min-width: 900px) {
@@ -125,4 +126,3 @@
         box-shadow: none;
     }
 }
-
