@@ -797,6 +797,97 @@ for (let dia = 0; dia < diasCardapio.length; dia++) {
     }
 }
 
+/*=== Filtros das receitas ===*/
+
+function filtrarReceitas() {
+    const campoBusca = document.querySelector("#campoBuscaReceitas");
+    const filtroCategoria = document.querySelector("#filtroCategoria");
+
+    let busca = "";
+    let categoria = "";
+
+    if (campoBusca) {
+        busca = campoBusca.value.trim().toLocaleLowerCase("pt-BR");
+    }
+
+    if (filtroCategoria) {
+        categoria = filtroCategoria.value;
+    }
+
+    const cards = document.querySelectorAll("#listaReceitas .cardReceita");
+
+    for (const card of cards) {
+        const id = Number(card.dataset.id);
+        const receita = buscarReceita(id);
+
+        if (!receita) {
+            card.hidden = true;
+            continue;
+        }
+
+        const texto = `${receita.nome} ${receita.ingredientes}`
+            .toLocaleLowerCase("pt-BR");
+
+        let mostrar = true;
+
+        if (somenteFavoritas && !favoritas.includes(id)) {
+            mostrar = false;
+        }
+
+        if (categoria !== "" && receita.categoria !== categoria) {
+            mostrar = false;
+        }
+
+        if (!texto.includes(busca)) {
+            mostrar = false;
+        }
+
+        card.hidden = !mostrar;
+    }
+}
+
+/*=== Dias e refeições do cardápio ===*/
+
+const diasCardapio = [
+    "Segunda",
+    "Terça",
+    "Quarta",
+    "Quinta",
+    "Sexta",
+    "Sábado",
+    "Domingo"
+];
+
+const refeicoesCardapio = [
+    "Café da manhã",
+    "Almoço",
+    "Lanche",
+    "Jantar"
+];
+
+let diaCardapio = 0;
+
+const cardapioSalvo = lerEscolhas("cardapioSemanal", []);
+let semanaCardapio = [];
+
+for (let dia = 0; dia < diasCardapio.length; dia++) {
+    semanaCardapio[dia] = [];
+
+    for (let refeicao = 0; refeicao < refeicoesCardapio.length; refeicao++) {
+        let itens = cardapioSalvo?.[dia]?.[refeicao];
+
+        if (!Array.isArray(itens)) {
+            itens = [];
+        }
+
+        semanaCardapio[dia][refeicao] = [];
+
+        for (const id of itens) {
+            semanaCardapio[dia][refeicao].push(Number(id));
+        }
+    }
+}
+
 /*=== Resumo e exibição do cardápio ===*/
 
 function calcularResumo(dia) {
