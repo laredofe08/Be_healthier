@@ -633,25 +633,18 @@ function favoritarReceita(id) {
     atualizarFavoritas();
     filtrarReceitas();
 }
+
 /*=== Filtros das receitas ===*/
 
 const restricoesPorId = new Map();
 const restricoesSelecionadas = new Set();
 
-function normalizarTexto(texto) {
-    return (texto || "")
-        .trim()
-        .toLocaleLowerCase("pt-BR")
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-}
-
 async function iniciarFiltrosAlimentares() {
     const botoes = document.querySelectorAll('[data-acao="filtroRestricao"]');
 
-    if (botoes.length === 0) return;
+    if (!botoes.length) return;
 
-    const nomesRestricoes = {
+    const nomes = {
         lactose: "sem lactose",
         gluten: "sem gluten",
         ovo: "sem ovo",
@@ -666,154 +659,65 @@ async function iniciarFiltrosAlimentares() {
     try {
         const resposta = await fetch("receitas.json");
 
-        if (!resposta.ok) {
-            throw new Error("Não foi possível carregar receitas.json");
-        }
+        if (!resposta.ok) throw new Error("Falha ao carregar receitas.json");
 
         const catalogo = await resposta.json();
-        const restricoesDisponiveis = new Set();
+        const disponiveis = new Set();
 
         for (const receita of catalogo) {
             const restricoes = (receita.restricoes || []).map(normalizarTexto);
-
             restricoesPorId.set(Number(receita.id), restricoes);
 
             for (const restricao of restricoes) {
-                restricoesDisponiveis.add(restricao);
+                disponiveis.add(restricao);
             }
         }
 
         for (const botao of botoes) {
-            const restricao = nomesRestricoes[botao.dataset.valor];
+            const restricao = nomes[botao.dataset.valor];
 
-            if (!restricoesDisponiveis.has(restricao)) {
+            if (!disponiveis.has(restricao)) {
                 botao.title = "Nenhuma receita cadastrada com esse filtro";
                 continue;
             }
 
             botao.disabled = false;
-
             botao.addEventListener("click", function () {
-                if (restricoesSelecionadas.has(restricao)) {
-                    restricoesSelecionadas.delete(restricao);
-                } else {
-                    restricoesSelecionadas.add(restricao);
-                }
+                const ativo = !restricoesSelecionadas.has(restricao);
 
-                const ativo = restricoesSelecionadas.has(restricao);
+                if (ativo) {
+                    restricoesSelecionadas.add(restricao);
+                } else {
+                    restricoesSelecionadas.delete(restricao);
+                }
 
                 botao.classList.toggle("ativo", ativo);
                 botao.setAttribute("aria-pressed", String(ativo));
-
                 filtrarReceitas();
             });
         }
     } catch (erro) {
         console.error("Falha ao carregar os filtros alimentares.", erro);
-
         for (const botao of botoes) {
             botao.title = "Filtros alimentares indisponíveis";
         }
     }
 }
 
+function normalizarTexto(texto) {
+    return (texto || "")
+        .trim()
+        .toLocaleLowerCase("pt-BR")
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+}
+
 function filtrarReceitas() {
     const campoBusca = document.querySelector("#campoBuscaReceitas");
     const filtroCategoria = document.querySelector("#filtroCategoria");
-    const cards = document.querySelectorAll("#listaReceitas .cardReceita");
-
+    const filtrosAtivos = Array.from(restricoesSelecionadas);
     const termo = normalizarTexto(campoBusca?.value);
     const categoria = filtroCategoria?.value || "";
-    const filtrosAtivos = Array.from(restricoesSelecionadas);
-
-    for (const card of cards) {
-        const id = Number(card.dataset.id);  
-        const receita = buscarReceita(id);
-
-        if (!receita) {
-            card.hidden = true;
-            continue;
-        }
-
-        const nome = normalizarTexto(receita.nome);
-        const ingredientes = normalizarTexto(receita.ingredientes);
-        const restricoes = restricoesPorId.get(id) || [];
-
-        const correspondeTexto = nome.includes(termo) || ingredientes.includes(termo);
-        const correspondeCategoria = categoria === "" || receita.categoria === categoria;
-        const correspondeFavoritas = !somenteFavoritas || favoritas.includes(id);
-        const correspondeRestricoes = filtrosAtivos.every(
-            restricao => restricoes.includes(restricao)
-        );
-
-        card.hidden = !(
-            correspondeTexto &&
-            correspondeCategoria &&
-            correspondeFavoritas &&
-            correspondeRestricoes
-        );
-    }
-}
-
-/*=== Dias e refeições do cardápio ===*/
-
-const diasCardapio = [
-    "Segunda",
-    "Terça",
-    "Quarta",
-    "Quinta",
-    "Sexta",
-    "Sábado",
-    "Domingo"
-];
-
-const refeicoesCardapio = [
-    "Café da manhã",
-    "Almoço",
-    "Lanche",
-    "Jantar"
-];
-
-let diaCardapio = 0;
-
-const cardapioSalvo = lerEscolhas("cardapioSemanal", []);
-let semanaCardapio = [];
-
-for (let dia = 0; dia < diasCardapio.length; dia++) {
-    semanaCardapio[dia] = [];
-
-    for (let refeicao = 0; refeicao < refeicoesCardapio.length; refeicao++) {
-        let itens = cardapioSalvo?.[dia]?.[refeicao];
-
-        if (!Array.isArray(itens)) {
-            itens = [];
-        }
-
-        semanaCardapio[dia][refeicao] = [];
-
-        for (const id of itens) {
-            semanaCardapio[dia][refeicao].push(Number(id));
-        }
-    }
-}
-
-/*=== Filtros das receitas ===*/
-
-function filtrarReceitas() {
-    const campoBusca = document.querySelector("#campoBuscaReceitas");
-    const filtroCategoria = document.querySelector("#filtroCategoria");
-
-    let busca = "";
-    let categoria = "";
-
-    if (campoBusca) {
-        busca = campoBusca.value.trim().toLocaleLowerCase("pt-BR");
-    }
-
-    if (filtroCategoria) {
-        categoria = filtroCategoria.value;
-    }
-
     const cards = document.querySelectorAll("#listaReceitas .cardReceita");
 
     for (const card of cards) {
@@ -825,24 +729,18 @@ function filtrarReceitas() {
             continue;
         }
 
-        const texto = `${receita.nome} ${receita.ingredientes}`
-            .toLocaleLowerCase("pt-BR");
+        const correspondeTexto = normalizarTexto(receita.nome).includes(termo) ||
+            normalizarTexto(receita.ingredientes).includes(termo);
+        const correspondeCategoria = categoria === "" || receita.categoria === categoria;
+        const correspondeFavoritas = !somenteFavoritas || favoritas.includes(id);
 
-        let mostrar = true;
+        const restricoes = restricoesPorId.get(id) || [];
+        const correspondeRestricoes = filtrosAtivos.every(
+            restricao => restricoes.includes(restricao)
+        );
 
-        if (somenteFavoritas && !favoritas.includes(id)) {
-            mostrar = false;
-        }
-
-        if (categoria !== "" && receita.categoria !== categoria) {
-            mostrar = false;
-        }
-
-        if (!texto.includes(busca)) {
-            mostrar = false;
-        }
-
-        card.hidden = !mostrar;
+        card.hidden = !(correspondeTexto && correspondeCategoria &&
+            correspondeFavoritas && correspondeRestricoes);
     }
 }
 
@@ -1802,12 +1700,11 @@ function iniciarPagina() {
     recuperarPerfilUsuario();
     iniciarFiltroDicas();
     exibirReceitas();
+    iniciarFiltrosAlimentares();
     exibirReceitasEntrega();
     iniciarCardapio();
     recuperarSacola();
-    exibirReceitas();
-    iniciarFiltrosAlimentares();
-    exibirReceitasEntrega();
+
     const botaoSalvarPerfil = document.getElementById("salvarPerfil");
 
     if (botaoSalvarPerfil) {
