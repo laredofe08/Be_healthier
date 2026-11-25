@@ -746,7 +746,12 @@ main .painel > h2.tituloPainel {
     overflow-wrap: anywhere;
 }
 
-.rodapeReferencias .rodapeTitulo {
+.rodapeReferencias > .rodapeTitulo {
+    font-size: 1.3rem;
+    margin-bottom: 0;
+}
+
+.rodapeReferencias section > .rodapeTitulo {
     margin-bottom: 5px;
 }
 
@@ -808,7 +813,7 @@ main .painel > h2.tituloPainel {
 
 .rodapeFormulario {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 10px;
 }
 
@@ -2273,11 +2278,13 @@ a.canalContato:hover {
     }
 
     .rodapeConteudo {
-        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1.4fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         grid-template-areas:
-            "marca navegacao conta lembrete"
-            "marca topo conta lembrete";
-        grid-template-rows: auto 1fr;
+            "marca lembrete"
+            "navegacao lembrete"
+            "topo lembrete"
+            "conta lembrete";
+        grid-template-rows: auto auto auto 1fr;
         gap: 12px 24px;
         align-items: start;
     }
@@ -2462,5 +2469,15 @@ a.canalContato:hover {
 
     .bannerPrincipal:before {
         background: linear-gradient(100deg, rgba(44, 62, 28, 0.92) 25%, transparent 70%);
+    }
+}
+
+@media (min-width: 1250px) {
+    .rodapeConteudo {
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1.4fr);
+        grid-template-areas:
+            "marca navegacao conta lembrete"
+            "marca topo conta lembrete";
+        grid-template-rows: auto 1fr;
     }
 }
