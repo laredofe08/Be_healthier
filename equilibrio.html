@@ -12,7 +12,7 @@
     <script src="js/app.js" defer></script>
     <script src="js/conta.js" defer></script>
   </head>
-  <body data-pagina="equilibrio">
+  <body id="topo" data-pagina="equilibrio">
     <div id="aplicacao">
       <aside id="menuLateral">
         <div class="logo">
@@ -32,7 +32,7 @@
           </ul>
         </nav>
         <div class="caixaUsuario">
-          <b class="nomeUsuario">Visitante</b>
+          <span class="nomeUsuario">Visitante</span>
           <a class="botaoUsuario" href="login.html">Acessar conta</a>
         </div>
       </aside>
@@ -53,7 +53,8 @@
           </div>
           <section class="painel">
             <h2 class="tituloPainel">Seu perfil</h2>
-            <form class="gradeFormulario" id="formularioPerfil">
+            <p class="textoSecundario notaPerfil" id="notaPerfil">Estimativas de calorias e macros disponíveis de 19 a 78 anos.</p>
+            <form class="gradeFormulario" id="formularioPerfil" aria-describedby="notaPerfil">
               <label>Peso (kg)<input id="peso" name="peso" step="0.1" type="number" required min="30" max="250"></label>
               <label>Altura (cm)<input id="altura" name="altura" step="0.1" type="number" required min="120" max="230"></label>
               <label>Idade<input id="idade" name="idade" type="number" required min="10" max="100"></label>
@@ -69,6 +70,7 @@
                   <option value="1" selected>Leve (1-3x/sem)</option>
                   <option value="2">Moderada (3-5x/sem)</option>
                   <option value="3">Intensa (6-7x/sem)</option>
+                  <option value="4">Muito intensa (treino diário intenso ou trabalho físico)</option>
                 </select>
               </label>
               <label>Objetivo
@@ -79,13 +81,13 @@
                   <option value="musculo">Ganhar músculo</option>
                 </select>
               </label>
-              <div class="larguraTotal grupoCheckbox">
-                <b>Restrições e tolerâncias</b>
+              <fieldset class="larguraTotal grupoCheckbox">
+                <legend>Restrições e tolerâncias</legend>
                 <label class="itemCheckbox"><input type="checkbox" name="restricoes" value="lactose"> Sem lactose</label>
                 <label class="itemCheckbox"><input type="checkbox" name="restricoes" value="gluten"> Sem glúten</label>
                 <label class="itemCheckbox"><input type="checkbox" name="restricoes" value="ovo"> Sem ovo</label>
                 <label class="itemCheckbox"><input type="checkbox" name="restricoes" value="vegetariano"> Vegetariano</label>
-              </div>
+              </fieldset>
               <label class="larguraTotal">O que você gosta de comer? (separe por vírgula)
                 <input id="gostos" name="gostos" placeholder="ex: frango, banana, aveia">
               </label>
@@ -127,9 +129,10 @@
                 <li><a href="contato.html">Contato</a></li>
               </ul>
             </nav>
+            <a class="linkTopo" href="#topo">Ir para o topo</a>
             <div class="rodapeConta">
               <h2 class="rodapeTitulo">Sua conta</h2>
-              <b class="nomeUsuario">Visitante</b>
+              <span class="nomeUsuario">Visitante</span>
               <a class="botaoUsuario" href="login.html">Acessar conta</a>
             </div>
             <div class="rodapeLembrete">
@@ -139,6 +142,34 @@
                 <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Salvar e-mail</button>
                 <output class="rodapeFormularioRetorno" role="status" aria-live="polite"></output>
               </form>
+              <div class="rodapeReferencias">
+                <section>
+                  <h2 class="rodapeTitulo">Créditos</h2>
+                  <ul>
+                    <li><a href="https://www.figma.com/community/file/800815864899415771/coolicons-1-900-free-icons" target="_blank" rel="noopener noreferrer">Ícones de Kryston Schwarze</a></li>
+                  </ul>
+                </section>
+                <section>
+                  <h2 class="rodapeTitulo">Fontes</h2>
+                  <ul>
+                    <li><a href="https://brasilescola.uol.com.br/saude-na-escola/alimentacao-saudavel.htm" target="_blank" rel="noopener noreferrer">Brasil Escola</a></li>
+                    <li><a href="https://www.tuasaude.com/alimentacao-e-saude/" target="_blank" rel="noopener noreferrer">Tua Saúde</a></li>
+                    <li><a href="https://calculabrasilonline.com.br/br/calculadora-macros/" target="_blank" rel="noopener noreferrer">Calcula Brasil</a></li>
+                    <li><a href="https://www.gov.br/saude/pt-br/composicao/saps/promocao-da-saude/guias-alimentares" target="_blank" rel="noopener noreferrer">Guias Alimentares do Ministério da Saúde</a></li>
+                  </ul>
+                </section>
+                <section>
+                  <h2 class="rodapeTitulo">Referências</h2>
+                  <ul>
+                    <li><a href="https://gramstocalories.com/pt/" target="_blank" rel="noopener noreferrer">Grams to Calories</a></li>
+                    <li><a href="https://viverbem.unimed.coop.br/mude-1-habito/alimentacao-saudavel/dez-dicas-para-uma-alimentacao-saudavel/" target="_blank" rel="noopener noreferrer">Unimed</a></li>
+                    <li><a href="https://www.tudogostoso.com.br/" target="_blank" rel="noopener noreferrer">Tudo Gostoso</a></li>
+                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/2305711/" target="_blank" rel="noopener noreferrer">Estudo de Mifflin–St Jeor</a></li>
+                    <li><a href="https://www.who.int/tools/elena/interventions/sodium-cvd-adults" target="_blank" rel="noopener noreferrer">OMS · Sódio na alimentação</a></li>
+                    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7551906/" target="_blank" rel="noopener noreferrer">Consenso sobre fibras alimentares</a></li>
+                  </ul>
+                </section>
+              </div>
               <div class="rodapeContato">
                 <h2 class="rodapeTitulo">Fale com a gente</h2>
                 <a href="https://www.instagram.com/behealthier_ifc_araquari?stkn=Y2cxam0ybzNzejRj" target="_blank" rel="noopener noreferrer">Instagram: @behealthier_ifc_araquari</a>

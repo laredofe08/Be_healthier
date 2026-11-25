@@ -86,10 +86,10 @@ function atualizarCidadeEntrega() {
 /*=== Perfil do usuário ===*/
 
 const listaObjetivos = [
-    { nome: "Perder peso", objKal: 0.8, objProteina: 1 },
-    { nome: "Manter peso", objKal: 1, objProteina: 1 },
-    { nome: "Ganhar peso", objKal: 1.4, objProteina: 1 },
-    { nome: "Ganhar musculo", objKal: 1.2, objProteina: 1.3 }
+    { nome: "Perder peso", ajusteCalorias: -400, proteina: 0.30, carboidrato: 0.40 },
+    { nome: "Manter peso", ajusteCalorias: 0, proteina: 0.20, carboidrato: 0.50 },
+    { nome: "Ganhar peso", ajusteCalorias: 300, proteina: 0.25, carboidrato: 0.50 },
+    { nome: "Ganhar musculo", ajusteCalorias: 300, proteina: 0.25, carboidrato: 0.50 }
 ];
 
 const listaRestricoesAlimentares = [
@@ -100,10 +100,11 @@ const listaRestricoesAlimentares = [
 ];
 
 const listaNiveisAtividadeFisica = [
-    { nome: "Sedentário", fatorAtividade: 1 },
-    { nome: "Leve", fatorAtividade: 1.2 },
-    { nome: "Moderada", fatorAtividade: 1.325 },
-    { nome: "Intensa", fatorAtividade: 1.5 }
+    { nome: "Sedentário", fatorAtividade: 1.2 },
+    { nome: "Leve", fatorAtividade: 1.375 },
+    { nome: "Moderada", fatorAtividade: 1.55 },
+    { nome: "Intensa", fatorAtividade: 1.725 },
+    { nome: "Muito intensa", fatorAtividade: 1.9 }
 ];
 
 const objetivosPorValor = {
@@ -123,49 +124,31 @@ let restricaoAlimentarUsuario = [];
 
 /*=== Cálculos do perfil ===*/
 
-function calcularCalorias() {
-    let peso = Number(pesoUsuario);
-    let altura = Number(alturaUsuario);
-    let idade = Number(idadeUsuario);
-    let metabolismo;
-
-    if (sexoUsuario === "m") {
-        metabolismo = 10 * peso + 6.25 * altura - 5 * idade + 5;
-    } else {
-        metabolismo = 10 * peso + 6.25 * altura - 5 * idade - 161;
-    }
-
-    let atividade = listaNiveisAtividadeFisica.find(
-        (nivel) => nivel.nome === nivelAtividadeFisicaUsuario
-    );
-
-    let objetivo = listaObjetivos.find(
-        (item) => item.nome === objetivoUsuario
-    );
-
-    if (!atividade || !objetivo) {
-        return 0;
-    }
-
-    let calorias = metabolismo * atividade.fatorAtividade * objetivo.objKal;
-
-    return calorias;
+function idadeNaFaixaDaFormula() {
+    const idade = Number(idadeUsuario);
+    return Number.isInteger(idade) && idade >= 19 && idade <= 78;
 }
 
-function calcularProteina() {
-    let peso = Number(pesoUsuario);
+function calcularCalorias(atividade, objetivo) {
+    const peso = Number(pesoUsuario);
+    const altura = Number(alturaUsuario);
+    const idade = Number(idadeUsuario);
 
-    let objetivo = listaObjetivos.find(
-        (item) => item.nome === objetivoUsuario
-    );
-
-    if (!objetivo) {
+    if (
+        !idadeNaFaixaDaFormula() ||
+        !Number.isFinite(peso) || peso <= 0 ||
+        !Number.isFinite(altura) || altura <= 0 ||
+        (sexoUsuario !== "m" && sexoUsuario !== "f") ||
+        !atividade || !objetivo
+    ) {
         return 0;
     }
 
-    let proteina = peso * 1.2 * objetivo.objProteina;
+    const ajusteSexo = sexoUsuario === "m" ? 5 : -161;
+    const metabolismo = 10 * peso + 6.25 * altura - 5 * idade + ajusteSexo;
+    const calorias = metabolismo * atividade.fatorAtividade + objetivo.ajusteCalorias;
 
-    return proteina;
+    return Math.max(0, calorias);
 }
 
 function calcularAgua() {
@@ -185,34 +168,25 @@ let metaCalorias;
 let metaFibras;
 let metaSodio;
 
-function calcularMetaCalorias() {
-    metaCalorias = calcularCalorias();
-    return metaCalorias;
-}
+function calcularMetasPerfil() {
+    const atividade = listaNiveisAtividadeFisica.find(
+        (nivel) => nivel.nome === nivelAtividadeFisicaUsuario
+    );
+    const objetivo = listaObjetivos.find(
+        (item) => item.nome === objetivoUsuario
+    );
 
-function calcularMetaProteina() {
-    metaProteina = calcularProteina();
-    return metaProteina;
-}
+    metaCalorias = calcularCalorias(atividade, objetivo);
 
-function calcularMetaCarboidrato() {
-    metaCarboidrato = (metaCalorias * 0.5) / 4;
-    return metaCarboidrato;
-}
+    const kcalProteina = metaCalorias * (objetivo?.proteina ?? 0);
+    const kcalCarboidrato = metaCalorias * (objetivo?.carboidrato ?? 0);
+    const kcalGordura = metaCalorias - kcalProteina - kcalCarboidrato;
 
-function calcularMetaGordura() {
-    metaGordura = (metaCalorias * 0.3) / 9;
-    return metaGordura;
-}
-
-function calcularMetaFibras() {
+    metaProteina = kcalProteina / 4;
+    metaCarboidrato = kcalCarboidrato / 4;
+    metaGordura = kcalGordura / 9;
     metaFibras = (metaCalorias / 1000) * 14;
-    return metaFibras;
-}
-
-function calcularMetaSodio() {
     metaSodio = 2000;
-    return metaSodio;
 }
 
 /*=== Dados do formulário ===*/
@@ -254,12 +228,7 @@ function salvarPerfil() {
         return;
     }
 
-    calcularMetaCalorias();
-    calcularMetaProteina();
-    calcularMetaCarboidrato();
-    calcularMetaGordura();
-    calcularMetaFibras();
-    calcularMetaSodio();
+    calcularMetasPerfil();
 
     localStorage.setItem("pesoUsuario", pesoUsuario);
     localStorage.setItem("alturaUsuario", alturaUsuario);
@@ -297,11 +266,11 @@ function exibirEquilibrio() {
         return;
     }
 
-    if (!pesoUsuario || !(metaCalorias > 0)) {
+    if (!pesoUsuario) {
         painel.innerHTML = `
             <div class="alerta">
-                <b>Preencha seu perfil acima</b>
-                <p>Informe seu peso, altura, idade e objetivo e clique em <b>Salvar perfil</b> para calcular suas metas diárias de calorias, macros e água.</p>
+                <strong>Preencha seu perfil acima</strong>
+                <p>Informe seu peso, altura, idade e objetivo e clique em <span class="rotuloAcao">Salvar perfil</span> para acompanhar os totais e ver as estimativas disponíveis.</p>
             </div>
         `;
         return;
@@ -309,11 +278,12 @@ function exibirEquilibrio() {
 
     const hoje = obterIndiceHoje();
     const consumidoHoje = calcularResumo(hoje);
+    const temMetas = metaCalorias > 0;
 
     // Recupera a água consumida hoje no localStorage (em ml)
     const chaveAgua = `aguaConsumida_${hoje}`;
     const aguaMl = Number(localStorage.getItem(chaveAgua)) || 0;
-    const metaAguaMl = calcularAgua();
+    const metaAguaMl = temMetas ? calcularAgua() : 0;
 
     function criarBarraEquilibrio(rotulo, atual, meta, unidade, formatarLitros = false) {
         const textoAtual = formatarLitros
@@ -331,34 +301,37 @@ function exibirEquilibrio() {
             <div class="itemProgresso">
                 <div class="textoSecundario" style="justify-content: space-between;">
                     <span>${rotulo}</span>
-                    <span><b>${textoAtual}</b> / ${textoMeta} ${unidade}</span>
+                    <span><strong>${textoAtual}</strong>${meta > 0 ? ` / ${textoMeta}` : ""} ${unidade}</span>
                 </div>
-                <div class="barraProgresso">
-                    <i
-                        class="${ultrapassou ? "acimaDaMeta" : ""}"
-                        style="--largura: ${larguraVisual}%"
-                    ></i>
-                </div>
+                ${meta > 0 ? `
+                    <div class="barraProgresso">
+                        <i
+                            class="${ultrapassou ? "acimaDaMeta" : ""}"
+                            style="--largura: ${larguraVisual}%"
+                        ></i>
+                    </div>
+                ` : ""}
             </div>
         `;
     }
 
     // Monta as colunas do gráfico semanal usando a classe .graficoSemanal do CSS
     let barrasSemana = "";
+    const caloriasSemana = diasCardapio.map((_, dia) => calcularResumo(dia).calorias);
+    const escalaGrafico = temMetas ? metaCalorias : Math.max(1, ...caloriasSemana);
     for (let dia = 0; dia < diasCardapio.length; dia++) {
-        const resumo = calcularResumo(dia);
-        const pct = metaCalorias > 0 ? (resumo.calorias / metaCalorias) * 100 : 0;
-        const altura = Math.min(pct, 100);
-        const passou = resumo.calorias > metaCalorias;
+        const caloriasDia = caloriasSemana[dia];
+        const altura = Math.min((caloriasDia / escalaGrafico) * 100, 100);
+        const passou = temMetas && caloriasDia > metaCalorias;
         const ehHoje = dia === hoje;
 
         barrasSemana += `
             <div class="${ehHoje ? "diaAtual" : ""}">
-                <span>${Math.round(resumo.calorias)}</span>
+                <span>${Math.round(caloriasDia)}</span>
                 <i
                     class="${passou ? "acimaDaMeta" : ""}"
                     style="--altura: ${altura}%"
-                    title="${diasCardapio[dia]}: ${Math.round(resumo.calorias)} kcal"
+                    title="${diasCardapio[dia]}: ${Math.round(caloriasDia)} kcal"
                 ></i>
                 <span>${diasCardapio[dia].slice(0, 3)}</span>
             </div>
@@ -381,16 +354,20 @@ function exibirEquilibrio() {
                     <button type="button" class="botao botaoPequeno botaoContorno" data-agua="zerar">Zerar água</button>
                 </div>
 
-                <p class="textoSecundario resumoDiaEquilibrio">
-                    Outras metas diárias: <b>${Math.round(metaGordura)}g</b> de gorduras ·
-                    <b>${Math.round(metaFibras)}g</b> de fibras ·
-                    até <b>${metaSodio}mg</b> de sódio
-                </p>
+                ${temMetas ? `
+                    <p class="textoSecundario resumoDiaEquilibrio">
+                        Outras metas diárias: <strong>${Math.round(metaGordura)} g</strong> de gorduras ·
+                        <strong>${Math.round(metaFibras)} g</strong> de fibras ·
+                        menos de <strong>${metaSodio} mg</strong> de sódio
+                    </p>
+                ` : ""}
             </div>
 
             <div class="painel">
                 <h3 class="tituloPainel">Calorias na semana</h3>
-                <p class="textoSecundario">Meta diária: ${Math.round(metaCalorias)} kcal</p>
+                <p class="textoSecundario">${temMetas
+                    ? `Meta diária estimada: ${Math.round(metaCalorias)} kcal`
+                    : "Totais registrados no cardápio."}</p>
                 <div class="graficoSemanal">
                     ${barrasSemana}
                 </div>
@@ -425,12 +402,7 @@ function recuperarPerfilUsuario() {
     if (pesoUsuario === null) {
         return;
     }
-    calcularMetaCalorias();
-    calcularMetaProteina();
-    calcularMetaCarboidrato();
-    calcularMetaGordura();
-    calcularMetaFibras();
-    calcularMetaSodio();
+    calcularMetasPerfil();
 
     if (!document.getElementById("peso")) {
         return;
@@ -981,7 +953,7 @@ function exibirCardapio() {
             if (receita) {
                 itens += `
                     <li class="linhaItem">
-                        <b>${receita.nome}</b>
+                        <span class="nomeItem">${receita.nome}</span>
 
                         <button
                             type="button"
@@ -1026,7 +998,7 @@ function exibirCardapio() {
                     <div class="itemProgresso">
                         <div class="textoSecundario">
                             <span>${rotulo}</span>
-                            <b>${valorConsumido} ${unidade}</b>
+                            <strong>${valorConsumido} ${unidade}</strong>
                         </div>
                         <div class="barraProgresso">
                             <i style="--largura: 0%"></i>
@@ -1045,7 +1017,7 @@ function exibirCardapio() {
                     <div class="textoSecundario" style="justify-content: space-between;">
                         <span>${rotulo}</span>
                         <span>
-                            <b>${valorConsumido}</b> / ${valorMeta} ${unidade}
+                            <strong>${valorConsumido}</strong> / ${valorMeta} ${unidade}
                         </span>
                     </div>
                     <div class="barraProgresso">
@@ -1060,7 +1032,9 @@ function exibirCardapio() {
 
         const avisoPerfil = !temMetas
             ? `<p class="textoSecundario" style="margin-bottom: 12px;">
-                 Preencha seu perfil em <b>Equilíbrio</b> para ver suas metas diárias.
+                 ${pesoUsuario
+                    ? "Estimativas de calorias e macros disponíveis de 19 a 78 anos."
+                    : `Preencha seu perfil em <span class="rotuloAcao">Equilíbrio</span> para ver as estimativas disponíveis.`}
                </p>`
             : "";
 
@@ -1490,7 +1464,7 @@ function exibirSacola() {
         return `
             <div class="linhaItem">
                 <div>
-                    <b>${receita.nome}</b>
+                    <span class="nomeItem">${receita.nome}</span>
 
                     <div class="quantidadeSacola">
                         <button
@@ -1518,11 +1492,11 @@ function exibirSacola() {
                 </div>
 
                 <div class="valorItemSacola">
-                    <b>
+                    <strong>
                         ${formatarDinheiro(
                             precoPratoEntrega * item.quantidade
                         )}
-                    </b>
+                    </strong>
 
                     <button
                         type="button"
@@ -1566,24 +1540,24 @@ function exibirSacola() {
             <div class="resumoSacola" aria-live="polite">
                 <p>
                     Subtotal
-                    <b>${formatarDinheiro(total.subtotal)}</b>
+                    <strong>${formatarDinheiro(total.subtotal)}</strong>
                 </p>
 
                 <p>
                     Entrega
 
-                    <b>
+                    <strong>
                         ${
                             nomeCidade
                                 ? formatarDinheiro(total.frete)
                                 : "Selecione a cidade"
                         }
-                    </b>
+                    </strong>
                 </p>
 
                 <p>
                     Total
-                    <b>${formatarDinheiro(total.total)}</b>
+                    <strong>${formatarDinheiro(total.total)}</strong>
                 </p>
             </div>
 

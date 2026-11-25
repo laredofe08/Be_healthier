@@ -12,7 +12,7 @@
     <script src="js/app.js" defer></script>
     <script src="js/conta.js" defer></script>
   </head>
-  <body data-pagina="inicio">
+  <body id="topo" data-pagina="inicio">
     <div id="aplicacao">
       <aside id="menuLateral">
         <div class="logo">
@@ -32,7 +32,7 @@
           </ul>
         </nav>
         <div class="caixaUsuario">
-          <b class="nomeUsuario">Visitante</b>
+          <span class="nomeUsuario">Visitante</span>
           <a class="botaoUsuario" href="login.html">Acessar conta</a>
         </div>
       </aside>
@@ -54,10 +54,10 @@
             </div>
           </section>
           <ul class="estatisticas">
-            <li><b>151</b>receitas saudáveis</li>
-            <li><b>7</b>dias de cardápio</li>
-            <li><b>3</b>cidades atendidas</li>
-            <li><b id="totalFavoritas">0</b>favoritas suas</li>
+            <li><strong>151</strong>receitas saudáveis</li>
+            <li><strong>7</strong>dias de cardápio</li>
+            <li><strong>3</strong>cidades atendidas</li>
+            <li><strong id="totalFavoritas">0</strong>favoritas suas</li>
           </ul>
           <section class="painel painelSobreInicio">
             <h2 class="tituloPainel">Sobre o BeHealthier</h2>
@@ -71,25 +71,25 @@
             <ul class="gradeDestaques">
               <li><a class="cardDestaque cardDestaqueReceitas" href="receitas.html">
                   <div>
-                    <b>Receitas</b>
+                    <h3>Receitas</h3>
                     Filtre por restrições e gostos
                   </div>
               </a></li>
               <li><a class="cardDestaque cardDestaqueCardapio" href="cardapio.html">
                   <div>
-                    <b>Cardápio</b>
+                    <h3>Cardápio</h3>
                     Monte sua semana
                   </div>
               </a></li>
               <li><a class="cardDestaque cardDestaqueEquilibrio" href="equilibrio.html">
                   <div>
-                    <b>Equilíbrio</b>
+                    <h3>Equilíbrio</h3>
                     Acompanhe calorias e macros
                   </div>
               </a></li>
               <li><a class="cardDestaque cardDestaqueEntrega" href="entrega.html">
                   <div>
-                    <b>Entrega</b>
+                    <h3>Entrega</h3>
                     Pratos na sua porta
                   </div>
               </a></li>
@@ -127,9 +127,10 @@
                 <li><a href="contato.html">Contato</a></li>
               </ul>
             </nav>
+            <a class="linkTopo" href="#topo">Ir para o topo</a>
             <div class="rodapeConta">
               <h2 class="rodapeTitulo">Sua conta</h2>
-              <b class="nomeUsuario">Visitante</b>
+              <span class="nomeUsuario">Visitante</span>
               <a class="botaoUsuario" href="login.html">Acessar conta</a>
             </div>
             <div class="rodapeLembrete">
@@ -139,6 +140,34 @@
                 <button class="botao botaoPequeno botaoAmarelo" type="submit" data-acao="enviarLembrete">Salvar e-mail</button>
                 <output class="rodapeFormularioRetorno" role="status" aria-live="polite"></output>
               </form>
+              <div class="rodapeReferencias">
+                <section>
+                  <h2 class="rodapeTitulo">Créditos</h2>
+                  <ul>
+                    <li><a href="https://www.figma.com/community/file/800815864899415771/coolicons-1-900-free-icons" target="_blank" rel="noopener noreferrer">Ícones de Kryston Schwarze</a></li>
+                  </ul>
+                </section>
+                <section>
+                  <h2 class="rodapeTitulo">Fontes</h2>
+                  <ul>
+                    <li><a href="https://brasilescola.uol.com.br/saude-na-escola/alimentacao-saudavel.htm" target="_blank" rel="noopener noreferrer">Brasil Escola</a></li>
+                    <li><a href="https://www.tuasaude.com/alimentacao-e-saude/" target="_blank" rel="noopener noreferrer">Tua Saúde</a></li>
+                    <li><a href="https://calculabrasilonline.com.br/br/calculadora-macros/" target="_blank" rel="noopener noreferrer">Calcula Brasil</a></li>
+                    <li><a href="https://www.gov.br/saude/pt-br/composicao/saps/promocao-da-saude/guias-alimentares" target="_blank" rel="noopener noreferrer">Guias Alimentares do Ministério da Saúde</a></li>
+                  </ul>
+                </section>
+                <section>
+                  <h2 class="rodapeTitulo">Referências</h2>
+                  <ul>
+                    <li><a href="https://gramstocalories.com/pt/" target="_blank" rel="noopener noreferrer">Grams to Calories</a></li>
+                    <li><a href="https://viverbem.unimed.coop.br/mude-1-habito/alimentacao-saudavel/dez-dicas-para-uma-alimentacao-saudavel/" target="_blank" rel="noopener noreferrer">Unimed</a></li>
+                    <li><a href="https://www.tudogostoso.com.br/" target="_blank" rel="noopener noreferrer">Tudo Gostoso</a></li>
+                    <li><a href="https://pubmed.ncbi.nlm.nih.gov/2305711/" target="_blank" rel="noopener noreferrer">Estudo de Mifflin–St Jeor</a></li>
+                    <li><a href="https://www.who.int/tools/elena/interventions/sodium-cvd-adults" target="_blank" rel="noopener noreferrer">OMS · Sódio na alimentação</a></li>
+                    <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7551906/" target="_blank" rel="noopener noreferrer">Consenso sobre fibras alimentares</a></li>
+                  </ul>
+                </section>
+              </div>
               <div class="rodapeContato">
                 <h2 class="rodapeTitulo">Fale com a gente</h2>
                 <a href="https://www.instagram.com/behealthier_ifc_araquari?stkn=Y2cxam0ybzNzejRj" target="_blank" rel="noopener noreferrer">Instagram: @behealthier_ifc_araquari</a>

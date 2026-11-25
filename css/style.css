@@ -276,8 +276,25 @@ main {
     font-weight: 700;
 }
 
-.botao:hover {
-    filter: brightness(1.05);
+.nomeUsuario,
+.nomeItem,
+.rotuloAcao {
+    font-weight: 700;
+}
+
+@media (hover: hover) {
+    :is(button:enabled, a.botao, summary):hover {
+        box-shadow: inset 0 0 0 100vmax rgba(0, 0, 0, 0.12);
+    }
+
+    :is(.botaoContorno, .botaoOpcao:not(.ativo), .opcaoCidade:not(.selecionado)):not(:disabled):hover {
+        background-color: var(--salviaSuave);
+    }
+}
+
+:is(button:enabled, a.botao, summary):focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
 }
 
 .botao.botaoContornoClaro {
@@ -347,7 +364,7 @@ p.textoSecundario {
     display: block;
 }
 
-.textoSecundario b {
+.textoSecundario strong {
     color: var(--tinta);
     background: var(--ambarSuave);
     border-radius: 99px;
@@ -600,14 +617,16 @@ main .painel > h2.tituloPainel {
 .rodape {
     background: var(--florestaRodape);
     color: #fff;
-    padding: 28px 22px calc(96px + env(safe-area-inset-bottom));
+    padding: 32px 22px calc(96px + env(safe-area-inset-bottom));
     margin: 36px 0 0;
 }
 
 .rodapeConteudo {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 26px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    max-width: 1240px;
+    margin-inline: auto;
 }
 
 .rodapeLogo {
@@ -664,12 +683,6 @@ main .painel > h2.tituloPainel {
     padding: 4px 0;
 }
 
-.rodapeNavegacao a:hover,
-.rodapeEquipe a:hover {
-    opacity: 1;
-    color: var(--salvia);
-}
-
 .rodapeConta {
     display: grid;
     gap: 4px;
@@ -716,16 +729,71 @@ main .painel > h2.tituloPainel {
     padding: 4px 0;
 }
 
-.rodapeContato a:hover {
-    opacity: 1;
-    color: var(--salvia);
-}
-
 .rodapeContato p {
     margin: 0;
     font-size: 0.92rem;
     opacity: 0.85;
     padding: 4px 0;
+}
+
+.rodapeReferencias {
+    display: grid;
+    gap: 14px;
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow-wrap: anywhere;
+}
+
+.rodapeReferencias .rodapeTitulo {
+    margin-bottom: 5px;
+}
+
+.rodapeReferencias ul {
+    display: grid;
+    gap: 5px;
+}
+
+.rodapeReferencias a {
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+.rodape a:hover {
+    opacity: 1;
+    color: var(--pessego);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.rodape a:focus-visible {
+    outline: 2px solid var(--pessego);
+    outline-offset: 3px;
+}
+
+.linkTopo {
+    align-self: start;
+    justify-self: start;
+    padding: 8px 13px;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--pessego);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.linkTopo:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+[data-pagina="login"] .rodape {
+    margin-top: 0;
+    padding-bottom: 22px;
+}
+
+.notaPerfil {
+    margin-bottom: 12px;
 }
 
 .rodapeDireitos {
@@ -830,7 +898,7 @@ main .painel > h2.tituloPainel {
     box-shadow: var(--sombra);
 }
 
-.estatisticas b {
+.estatisticas strong {
     font: 800 1.5rem Fraunces, serif;
     color: var(--ambarEscuro);
     display: block;
@@ -870,7 +938,9 @@ main .painel > h2.tituloPainel {
     position: relative;
 }
 
-.cardDestaque b {
+.cardDestaque h3 {
+    color: inherit;
+    margin: 0;
     font: 800 1.4rem Fraunces, serif;
     display: block;
 }
@@ -1323,7 +1393,7 @@ main .painel > h2.tituloPainel {
     min-width: 0;
 }
 
-.linhaItem b {
+.linhaItem :is(.nomeItem, strong) {
     font-size: 0.95rem;
     display: block;
 }
@@ -1416,7 +1486,7 @@ main .painel > h2.tituloPainel {
     background: var(--ambarSuave);
 }
 
-.linhaDiaSemana b {
+.linhaDiaSemana strong {
     width: 34px;
     color: var(--floresta);
 }
@@ -1469,8 +1539,9 @@ main .painel > h2.tituloPainel {
     gap: 8px;
 }
 
-.grupoCheckbox>b {
-    width: 100%;
+.grupoCheckbox legend {
+    margin-bottom: 8px;
+    font-weight: 700;
     color: var(--floresta);
     font-size: 0.85rem;
 }
@@ -1610,7 +1681,7 @@ main .painel > h2.tituloPainel {
     color: var(--branco);
 }
 
-.opcaoCidade b {
+.opcaoCidade .nomeCidade {
     font: 800 1.2rem Fraunces, serif;
     display: block;
 }
@@ -1874,7 +1945,8 @@ a.canalContato:hover {
     background: var(--salviaSuave);
 }
 
-.canalContato b {
+.canalContato .rotuloContato {
+    font-weight: 700;
     display: block;
 }
 
@@ -2138,11 +2210,11 @@ a.canalContato:hover {
         overflow-wrap: anywhere;
     }
 
-    .caixaUsuario b {
+    .caixaUsuario .nomeUsuario {
         display: block;
     }
 
-    .caixaUsuario button {
+    .caixaUsuario .nomeUsuarioutton {
         margin-top: 8px;
         color: var(--pessego);
         font-weight: 700;
@@ -2201,8 +2273,33 @@ a.canalContato:hover {
     }
 
     .rodapeConteudo {
-        grid-template-columns: 1.7fr 1.1fr 1fr 1.3fr;
-        gap: 36px;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 0.8fr) minmax(0, 1.4fr);
+        grid-template-areas:
+            "marca navegacao conta lembrete"
+            "marca topo conta lembrete";
+        grid-template-rows: auto 1fr;
+        gap: 12px 24px;
+        align-items: start;
+    }
+
+    .rodapeMarca {
+        grid-area: marca;
+    }
+
+    .rodapeNavegacao {
+        grid-area: navegacao;
+    }
+
+    .rodape .linkTopo {
+        grid-area: topo;
+    }
+
+    .rodapeConta {
+        grid-area: conta;
+    }
+
+    .rodapeLembrete {
+        grid-area: lembrete;
     }
 
     .rodapeDireitos {
@@ -2230,7 +2327,7 @@ a.canalContato:hover {
         padding: 18px 20px;
     }
 
-    .estatisticas b {
+    .estatisticas strong {
         font: 800 2rem Fraunces, serif;
     }
 
